@@ -2,7 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
 <<<<<<< HEAD
+<<<<<<< HEAD
     <list default="true" id="fc2bcc82-2564-453a-bece-2a39b3919b64" name="Default" comment="" />
+=======
+    <list default="true" id="b59b09d4-de6a-4db4-ba8c-2cbfdaa5592f" name="Default" comment="" />
+>>>>>>> d2294f76a46c75be4c305d33a12ca88b635625d1
 =======
     <list default="true" id="b59b09d4-de6a-4db4-ba8c-2cbfdaa5592f" name="Default" comment="" />
 >>>>>>> d2294f76a46c75be4c305d33a12ca88b635625d1
@@ -28,6 +32,7 @@
   <component name="FileEditorManager">
     <leaf>
 <<<<<<< HEAD
+<<<<<<< HEAD
       <file leaf-file-name="Person5.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/edu/gatech/oad/antlab/person/Person5.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -44,11 +49,16 @@
             <state vertical-scroll-proportion="3.5190616" vertical-offset="0" max-vertical-offset="1650">
               <caret line="82" column="18" selection-start-line="82" selection-start-column="18" selection-end-line="82" selection-end-column="18" />
 =======
+=======
+>>>>>>> d2294f76a46c75be4c305d33a12ca88b635625d1
       <file leaf-file-name="AntLabMain.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/edu/gatech/oad/antlab/pkg1/AntLabMain.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.56350625" vertical-offset="795" max-vertical-offset="1650">
               <caret line="76" column="50" selection-start-line="76" selection-start-column="50" selection-end-line="76" selection-end-column="50" />
+<<<<<<< HEAD
+>>>>>>> d2294f76a46c75be4c305d33a12ca88b635625d1
+=======
 >>>>>>> d2294f76a46c75be4c305d33a12ca88b635625d1
               <folding />
             </state>
@@ -66,7 +76,11 @@
     <option name="changedFiles">
       <list>
 <<<<<<< HEAD
+<<<<<<< HEAD
         <option value="$PROJECT_DIR$/src/main/java/edu/gatech/oad/antlab/person/Person5.java" />
+=======
+        <option value="$PROJECT_DIR$/src/main/java/edu/gatech/oad/antlab/person/Person4.java" />
+>>>>>>> d2294f76a46c75be4c305d33a12ca88b635625d1
 =======
         <option value="$PROJECT_DIR$/src/main/java/edu/gatech/oad/antlab/person/Person4.java" />
 >>>>>>> d2294f76a46c75be4c305d33a12ca88b635625d1
@@ -76,7 +90,11 @@
   </component>
   <component name="ProjectFrameBounds">
 <<<<<<< HEAD
+<<<<<<< HEAD
     <option name="x" value="156" />
+=======
+    <option name="x" value="4" />
+>>>>>>> d2294f76a46c75be4c305d33a12ca88b635625d1
 =======
     <option name="x" value="4" />
 >>>>>>> d2294f76a46c75be4c305d33a12ca88b635625d1
@@ -114,6 +132,12 @@
         <subPane />
       </pane>
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+      <pane id="PackagesPane">
+        <subPane />
+      </pane>
+>>>>>>> d2294f76a46c75be4c305d33a12ca88b635625d1
 =======
       <pane id="PackagesPane">
         <subPane />
@@ -218,12 +242,15 @@
             </PATH_ELEMENT>
           </PATH>
 <<<<<<< HEAD
+<<<<<<< HEAD
         </subPane>
       </pane>
       <pane id="PackagesPane">
         <subPane />
       </pane>
 =======
+=======
+>>>>>>> d2294f76a46c75be4c305d33a12ca88b635625d1
           <PATH>
             <PATH_ELEMENT>
               <option name="myItemId" value="M2" />
@@ -296,6 +323,9 @@
           </PATH>
         </subPane>
       </pane>
+<<<<<<< HEAD
+>>>>>>> d2294f76a46c75be4c305d33a12ca88b635625d1
+=======
 >>>>>>> d2294f76a46c75be4c305d33a12ca88b635625d1
       <pane id="Scope" />
     </panes>
@@ -309,9 +339,12 @@
     <property name="MemberChooser.copyJavadoc" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
 <<<<<<< HEAD
+<<<<<<< HEAD
   </component>
   <component name="RunManager">
 =======
+=======
+>>>>>>> d2294f76a46c75be4c305d33a12ca88b635625d1
     <property name="recentsLimit" value="5" />
   </component>
   <component name="RunManager">
@@ -336,6 +369,9 @@
       <option name="FILTER_LOGCAT_AUTOMATICALLY" value="true" />
       <method />
     </configuration>
+<<<<<<< HEAD
+>>>>>>> d2294f76a46c75be4c305d33a12ca88b635625d1
+=======
 >>>>>>> d2294f76a46c75be4c305d33a12ca88b635625d1
     <configuration default="true" type="Remote" factoryName="Remote">
       <option name="USE_SOCKET_TRANSPORT" value="true" />
@@ -407,7 +443,10 @@
       <method />
     </configuration>
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> d2294f76a46c75be4c305d33a12ca88b635625d1
     <configuration default="true" type="AndroidRunConfigurationType" factoryName="Android Application">
       <module name="" />
       <option name="ACTIVITY_CLASS" value="" />
@@ -428,6 +467,9 @@
       <option name="FILTER_LOGCAT_AUTOMATICALLY" value="true" />
       <method />
     </configuration>
+<<<<<<< HEAD
+>>>>>>> d2294f76a46c75be4c305d33a12ca88b635625d1
+=======
 >>>>>>> d2294f76a46c75be4c305d33a12ca88b635625d1
     <list size="0" />
     <configuration name="&lt;template&gt;" type="Applet" default="true" selected="false">
@@ -454,9 +496,15 @@
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
 <<<<<<< HEAD
+<<<<<<< HEAD
       <changelist id="fc2bcc82-2564-453a-bece-2a39b3919b64" name="Default" comment="" />
       <created>1421793794412</created>
       <updated>1421793794412</updated>
+=======
+      <changelist id="b59b09d4-de6a-4db4-ba8c-2cbfdaa5592f" name="Default" comment="" />
+      <created>1421793327666</created>
+      <updated>1421793327666</updated>
+>>>>>>> d2294f76a46c75be4c305d33a12ca88b635625d1
 =======
       <changelist id="b59b09d4-de6a-4db4-ba8c-2cbfdaa5592f" name="Default" comment="" />
       <created>1421793327666</created>
@@ -467,7 +515,11 @@
   </component>
   <component name="ToolWindowManager">
 <<<<<<< HEAD
+<<<<<<< HEAD
     <frame x="156" y="23" width="1260" height="703" extended-state="0" />
+=======
+    <frame x="4" y="23" width="1260" height="703" extended-state="0" />
+>>>>>>> d2294f76a46c75be4c305d33a12ca88b635625d1
 =======
     <frame x="4" y="23" width="1260" height="703" extended-state="0" />
 >>>>>>> d2294f76a46c75be4c305d33a12ca88b635625d1
@@ -478,7 +530,11 @@
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
 <<<<<<< HEAD
+<<<<<<< HEAD
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32879046" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+=======
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+>>>>>>> d2294f76a46c75be4c305d33a12ca88b635625d1
 =======
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
 >>>>>>> d2294f76a46c75be4c305d33a12ca88b635625d1
@@ -524,11 +580,14 @@
   </component>
   <component name="editorHistoryManager">
 <<<<<<< HEAD
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/src/main/java/edu/gatech/oad/antlab/person/Person5.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-9.36" vertical-offset="276" max-vertical-offset="810">
           <caret line="36" column="0" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
 =======
+=======
+>>>>>>> d2294f76a46c75be4c305d33a12ca88b635625d1
     <entry file="file://$PROJECT_DIR$/src/main/java/edu/gatech/oad/antlab/person/Person4.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.8121646" vertical-offset="281" max-vertical-offset="840">
@@ -541,6 +600,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="559">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+<<<<<<< HEAD
+>>>>>>> d2294f76a46c75be4c305d33a12ca88b635625d1
+=======
 >>>>>>> d2294f76a46c75be4c305d33a12ca88b635625d1
           <folding />
         </state>
@@ -549,8 +611,13 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/edu/gatech/oad/antlab/pkg1/AntLabMain.java">
       <provider selected="true" editor-type-id="text-editor">
 <<<<<<< HEAD
+<<<<<<< HEAD
         <state vertical-scroll-proportion="3.5190616" vertical-offset="0" max-vertical-offset="1650">
           <caret line="82" column="18" selection-start-line="82" selection-start-column="18" selection-end-line="82" selection-end-column="18" />
+=======
+        <state vertical-scroll-proportion="0.56350625" vertical-offset="795" max-vertical-offset="1650">
+          <caret line="76" column="50" selection-start-line="76" selection-start-column="50" selection-end-line="76" selection-end-column="50" />
+>>>>>>> d2294f76a46c75be4c305d33a12ca88b635625d1
 =======
         <state vertical-scroll-proportion="0.56350625" vertical-offset="795" max-vertical-offset="1650">
           <caret line="76" column="50" selection-start-line="76" selection-start-column="50" selection-end-line="76" selection-end-column="50" />

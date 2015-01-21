@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
 <<<<<<< HEAD
+<<<<<<< HEAD
   <component name="ProjectRootManager" version="2" languageLevel="JDK_1_6" assert-keyword="true" jdk-15="true" />
 =======
+=======
+>>>>>>> d2294f76a46c75be4c305d33a12ca88b635625d1
   <component name="ProjectRootManager" version="2" languageLevel="JDK_1_6" assert-keyword="true" jdk-15="true" project-jdk-name="1.8" project-jdk-type="JavaSDK" />
   <component name="masterDetails">
     <states>
@@ -20,6 +23,9 @@
       </state>
     </states>
   </component>
+<<<<<<< HEAD
+>>>>>>> d2294f76a46c75be4c305d33a12ca88b635625d1
+=======
 >>>>>>> d2294f76a46c75be4c305d33a12ca88b635625d1
 </project>
 
