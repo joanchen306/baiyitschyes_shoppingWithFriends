@@ -31,7 +31,17 @@ public class Person2 {
 	 */
 	private String calc(String input) {
 	  //Person 2 put your implementation here
-	  return null;
+        String output = "";
+        String used = "";
+        Random rand = new Random();
+        while (output.length() < input.length()) {
+            int charat = rand.getInt(input.length() - 1);
+            if (!used.contains(charat)) {
+                used += charat;
+                output += input.charAt(charat);
+            }
+        }
+	  return output;
 	}
 	/**
 	 * Return a string rep of this object
