@@ -1,3 +1,9 @@
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> d2294f76a46c75be4c305d33a12ca88b635625d1
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="CompilerConfiguration">
@@ -21,3 +27,35 @@
   </component>
 </project>
 
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> c0bceab1e65f574e044ce472def219500294e0a0
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <option name="DEFAULT_COMPILER" value="Javac" />
+    <resourceExtensions />
+    <wildcardResourcePatterns>
+      <entry name="!?*.java" />
+      <entry name="!?*.form" />
+      <entry name="!?*.class" />
+      <entry name="!?*.groovy" />
+      <entry name="!?*.scala" />
+      <entry name="!?*.flex" />
+      <entry name="!?*.kt" />
+      <entry name="!?*.clj" />
+    </wildcardResourcePatterns>
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="false">
+        <processorPath useClasspath="true" />
+      </profile>
+    </annotationProcessing>
+  </component>
+</project>
+
+<<<<<<< HEAD
+=======
+>>>>>>> e21fe60fb4828902798848fe009bb2c64e022a7a
+>>>>>>> c0bceab1e65f574e044ce472def219500294e0a0
+>>>>>>> d2294f76a46c75be4c305d33a12ca88b635625d1
