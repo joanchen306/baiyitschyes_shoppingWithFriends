@@ -45,6 +45,5 @@ public class Person3 {
 	  //Person 3 put your implementation here
         String reverse = new StringBuffer(input).reverse().toString();
         return reverse;
-        }
 	}
 }
