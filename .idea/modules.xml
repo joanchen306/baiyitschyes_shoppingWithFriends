@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ProjectModuleManager">
@@ -5,3 +6,12 @@
   </component>
 </project>
 
+=======
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules />
+  </component>
+</project>
+
+>>>>>>> e21fe60fb4828902798848fe009bb2c64e022a7a
