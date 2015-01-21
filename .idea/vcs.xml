@@ -1,3 +1,6 @@
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="VcsDirectoryMappings">
@@ -5,3 +8,16 @@
   </component>
 </project>
 
+=======
+>>>>>>> c0bceab1e65f574e044ce472def219500294e0a0
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="VcsDirectoryMappings">
+    <mapping directory="" vcs="" />
+  </component>
+</project>
+
+<<<<<<< HEAD
+=======
+>>>>>>> e21fe60fb4828902798848fe009bb2c64e022a7a
+>>>>>>> c0bceab1e65f574e044ce472def219500294e0a0

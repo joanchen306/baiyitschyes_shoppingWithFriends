@@ -1,5 +1,19 @@
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ProjectRootManager" version="2" languageLevel="JDK_1_6" assert-keyword="true" jdk-15="true" />
 </project>
 
+=======
+>>>>>>> c0bceab1e65f574e044ce472def219500294e0a0
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_6" assert-keyword="true" jdk-15="true" />
+</project>
+
+<<<<<<< HEAD
+=======
+>>>>>>> e21fe60fb4828902798848fe009bb2c64e022a7a
+>>>>>>> c0bceab1e65f574e044ce472def219500294e0a0
