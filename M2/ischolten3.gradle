@@ -1,0 +1,42 @@
+//Set a default task, so if I don't give a task, this (these) will be executed
+defaultTasks  'task1', 'task2'
+
+//Import a bunch of java related tasks like compileJava, compileJavaTest, clean, javadoc, jar
+apply plugin: 'java'
+
+//Define a simple task ourselves to print a message
+task hello << {
+      println 'Hello World'
+}
+
+//Define a simple task that depends on another task
+task intro(dependsOn: hello) << {
+    println 'I am gradle'
+}
+
+//Define a simple task
+task task1 << {
+    println 'Task 1'
+}
+
+
+//Define a simple task
+task task2 << {
+    println 'Task 2'
+}
+
+//Set up some variables (properties)
+sourceCompatibility = 1.7
+version = '1.0'
+
+//Define the contents of the jar file
+jar {
+    manifest {
+        attributes 'Implementation-Title': 'Gradle Quickstart', 'Implementation-Version': version , 'Main-Class' : 'Foo'
+    }
+}
+
+//Set up a location of repositories so that any needed library dependencies can be downloaded
+repositories {
+    mavenCentral()
+}

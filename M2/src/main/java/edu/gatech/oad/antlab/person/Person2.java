@@ -1,4 +1,5 @@
 package edu.gatech.oad.antlab.person;
+import java.util.Random;
 
 /**
  *  A simple class for person 2
@@ -35,8 +36,8 @@ public class Person2 {
         String used = "";
         Random rand = new Random();
         while (output.length() < input.length()) {
-            int charat = rand.getInt(input.length() - 1);
-            if (!used.contains(charat)) {
+            char charat = input.charAt(rand.nextInt(input.length() - 1));
+            if (used.indexOf(charat) < 0) {
                 used += charat;
                 output += input.charAt(charat);
             }

@@ -8,7 +8,7 @@ package edu.gatech.oad.antlab.person;
  *  @author James Nugent
  *  @version 1.1
  */
-public class JamesN {
+public class Person1 {
   /** Holds the persons real name */
   private String name;
   	/**
@@ -31,7 +31,7 @@ public class JamesN {
 	 */
 	private String calc(String input) {
 	  String ans = input.substring(2);
-      ans += imput.substring(0,2);
+      ans += input.substring(0,2);
 	  return ans;
 	}
 	
