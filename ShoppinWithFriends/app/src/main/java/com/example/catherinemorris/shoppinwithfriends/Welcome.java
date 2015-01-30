@@ -6,6 +6,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.content.Intent;
+import android.widget.Button;
 
 
 public class Welcome extends ActionBarActivity {
@@ -25,8 +26,8 @@ public class Welcome extends ActionBarActivity {
     }
 
     public void sendMessage(View view) {
-        Intent intent = new Intent(this, Login.class);
-        startActivity(intent);
+        Button button = (Button) view;
+        startActivity(new Intent("android.Login"));
     }
 
     @Override

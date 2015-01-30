@@ -7,7 +7,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="@android:style/TextAppearance.DeviceDefault.Large"
-        android:text="@string/Welcome to Shopping with Friends!"
+        android:text="Welcome to Shopping with Friends!"
         android:id="@+id/welcomeText"
         style="Times New Roman"
         android:layout_alignParentTop="true"
@@ -23,7 +23,8 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="108dp"
         android:textSize="20dp"
-        android:clickable="true" />
+        android:clickable="true"
+        android:onClick="sendMessage" />
 
     <Button
         android:layout_width="wrap_content"
