@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="module_edu" default="compile.module.edu">
+  <dirname property="module.edu.basedir" file="${ant.file.module_edu}"/>
+  
+  <property name="module.jdk.home.edu" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.edu" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.edu" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.edu" value="-encoding UTF-8 -source 1.6 ${compiler.args}"/>
+  
+  <property name="edu.output.dir" value="undefined"/>
+  <property name="edu.testoutput.dir" value="undefined"/>
+  
+  <path id="edu.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="edu.module.production.classpath">
+    <path refid="${module.jdk.classpath.edu}"/>
+  </path>
+  
+  <path id="edu.runtime.production.module.classpath"/>
+  
+  <path id="edu.module.classpath">
+    <path refid="${module.jdk.classpath.edu}"/>
+  </path>
+  
+  <path id="edu.runtime.module.classpath"/>
+  
+  
+  <patternset id="excluded.from.module.edu">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.edu">
+    <patternset refid="excluded.from.module.edu"/>
+  </patternset>
+  
+  
+  <target name="compile.module.edu" depends="compile.module.edu.production,compile.module.edu.tests" description="Compile module edu"/>
+  
+  <target name="compile.module.edu.production" depends="register.custom.compilers" description="Compile module edu; production classes"/>
+  
+  <target name="compile.module.edu.tests" depends="register.custom.compilers,compile.module.edu.production" description="compile module edu; test classes" unless="skip.tests"/>
+  
+  <target name="clean.module.edu" description="cleanup module">
+    <delete dir="${edu.output.dir}"/>
+    <delete dir="${edu.testoutput.dir}"/>
+  </target>
+</project>
