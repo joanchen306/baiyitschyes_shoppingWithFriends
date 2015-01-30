@@ -4,9 +4,9 @@ import java.util.Random;
 /**
  *  A simple class for person 2
  *  returns their name and a
- *  modified string 
+ *  modified string
  *
- * @author Bob
+ * @author Iris
  * @version 1.1
  */
 public class Person2 {
@@ -31,16 +31,15 @@ public class Person2 {
 	 * @return the modified string
 	 */
 	private String calc(String input) {
-	  //Person 2 put your implementation here
-        String output = "";
-        String used = "";
+		String output = "";
         Random rand = new Random();
-        while (output.length() < input.length()) {
-            char charat = input.charAt(rand.nextInt(input.length() - 1));
-            if (used.indexOf(charat) < 0) {
-                used += charat;
-                output += input.charAt(charat);
-            }
+        int n = 0;
+        int length = input.length();
+        while (n < length - 1) {
+        	int pos = rand.nextInt(input.length() - 1);
+            input = input.substring(0, pos) + input.substring(pos+1);
+            output += input.charAt(pos);
+            n++;
         }
 	  return output;
 	}
@@ -49,7 +48,7 @@ public class Person2 {
 	 * that varies with an input string
 	 *
 	 * @param input the varying string
-	 * @return the string representing the 
+	 * @return the string representing the
 	 *         object
 	 */
 	public String toString(String input) {
