@@ -1,5 +1,6 @@
 package com.example.catherinemorris.shoppinwithfriends;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
@@ -10,6 +11,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.os.Build;
+import android.widget.Button;
 
 
 public class Login extends ActionBarActivity {
@@ -31,6 +33,11 @@ public class Login extends ActionBarActivity {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_login, menu);
         return true;
+    }
+
+    public void sendMessageB(View view) {
+        Button button = (Button) view;
+        startActivity(new Intent("android.Welcome"));
     }
 
     @Override
