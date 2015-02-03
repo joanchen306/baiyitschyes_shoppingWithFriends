@@ -12,20 +12,10 @@
         android:layout_height="wrap_content"
         android:inputType="textPassword"
         android:ems="10"
-        android:id="@+id/Password"
+        android:id="@+id/PassField"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="149dp"
-        android:text="pass" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/Username"
-        android:text="user"
-        android:layout_centerVertical="true"
-        android:layout_alignLeft="@+id/Password"
-        android:layout_alignStart="@+id/Password" />
+        android:layout_marginBottom="149dp" />
 
     <TextView
         style="Times New Roman"
@@ -50,7 +40,7 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         android:clickable="true"
-        android:onClick="sendMessageB" />
+        android:onClick="sendMessageBack" />
 
     <Button
         android:layout_width="wrap_content"
@@ -60,5 +50,31 @@
         android:clickable="true"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_alignBottom="@+id/textView" />
+        android:layout_alignBottom="@+id/textView"
+        android:onClick="sendMessageJoin" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:id="@+id/UserField"
+        android:layout_centerVertical="true"
+        android:layout_alignStart="@+id/PassField" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/editText2"
+        android:layout_above="@+id/UserField"
+        android:layout_alignStart="@+id/UserField"
+        android:text="Username" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/editText3"
+        android:text="Password"
+        android:layout_above="@+id/PassField"
+        android:layout_alignStart="@+id/PassField" />
 </RelativeLayout>

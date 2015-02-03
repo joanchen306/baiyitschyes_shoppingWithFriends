@@ -35,9 +35,18 @@ public class Login extends ActionBarActivity {
         return true;
     }
 
-    public void sendMessageB(View view) {
+    public void sendMessageBack(View view) {
         Button button = (Button) view;
         startActivity(new Intent("android.Welcome"));
+    }
+
+    public void sendMessageLogin(View view) {
+        Button button = (Button) view;
+        String user = (String) this.findViewById(R.id.UserField).getContentDescription();
+        String pass = (String) this.findViewById(R.id.PassField).getContentDescription();
+        if (user.compareTo("user") == 0 && pass.compareTo("pass") == 0) {
+            startActivity(new Intent("android.Home"));
+        }
     }
 
     @Override
