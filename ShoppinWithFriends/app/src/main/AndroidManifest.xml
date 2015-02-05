@@ -22,7 +22,7 @@
             android:name=".Welcome"
             android:label="@string/app_name" >
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.Welcome" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
@@ -47,29 +47,30 @@
                 android:value="Welcome" />
         </activity>
         <activity
-            android:name=".WelcomeSequence"
-            android:label="@string/title_activity_welcome_sequence" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity
             android:name=".Registration"
-            android:label="@string/title_activity_registration"
+            android:label="@string/app_name"
             android:parentActivityName=".Welcome" >
+            <intent-filter>
+                <action android:name="android.Registration" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.catherinemorris.shoppinwithfriends.Welcome" />
+                android:value="Registration" />
         </activity>
         <activity
             android:name=".HomeScreen"
-            android:label="@string/title_activity_home_screen"
+            android:label="@string/app_name"
             android:parentActivityName=".Login" >
+            <intent-filter>
+                <action android:name="android.HomeScreen" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.catherinemorris.shoppinwithfriends.Login" />
+                android:value="HomeScreen" />
         </activity>
     </application>
 

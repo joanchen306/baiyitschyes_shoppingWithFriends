@@ -30,16 +30,21 @@ public class Registration extends ActionBarActivity {
         Button button = (Button) view;
         String user = (String) this.findViewById(R.id.UserField).getContentDescription();
         String email = (String) this.findViewById(R.id.EmailField).getContentDescription();
-        int pass = R.id.PassField;
-        int pass2 = R.id.PassField2;
-        if (pass == pass2 && user != null && email != null) {
+        String pass = (String) this.findViewById(R.id.PassField).getContentDescription();
+        String pass2 = (String) this.findViewById(R.id.PassField2).getContentDescription();
+        if (pass.equals(pass2) && user != null && email != null) {
             String password = (String) this.findViewById(R.id.PassField).getContentDescription();
             User1 user1 = new User1();
             user1.setUsername(user);
             user1.setPassword(password);
             user1.setEmail(email);
-            startActivity(new Intent("android.Home"));
+            startActivity(new Intent("android.HomeScreen"));
         }
+    }
+
+    public void sendMessageBack(View view) {
+        Button button = (Button) view;
+        finish();
     }
 
     @Override

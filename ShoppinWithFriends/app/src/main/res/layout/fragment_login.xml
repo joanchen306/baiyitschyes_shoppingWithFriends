@@ -51,7 +51,7 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_alignBottom="@+id/textView"
-        android:onClick="sendMessageJoin" />
+        android:onClick="sendMessageLogin" />
 
     <EditText
         android:layout_width="wrap_content"
