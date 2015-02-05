@@ -28,11 +28,16 @@ public class Registration extends ActionBarActivity {
 
     public void sendMessageJoin(View view) {
         Button button = (Button) view;
-        int user = R.id.UserField;
+        String user = (String) this.findViewById(R.id.UserField).getContentDescription();
+        String email = (String) this.findViewById(R.id.EmailField).getContentDescription();
         int pass = R.id.PassField;
         int pass2 = R.id.PassField2;
-        int email = R.id.EmailField;
-        if (pass == pass2 && user != 0 && email != 0) {
+        if (pass == pass2 && user != null && email != null) {
+            String password = (String) this.findViewById(R.id.PassField).getContentDescription();
+            User1 user1 = new User1();
+            user1.setUsername(user);
+            user1.setPassword(password);
+            user1.setEmail(email);
             startActivity(new Intent("android.Home"));
         }
     }

@@ -41,10 +41,11 @@ public class Login extends ActionBarActivity {
     }
 
     public void sendMessageLogin(View view) {
+        User1 user1 = new User1();
         Button button = (Button) view;
         String user = (String) this.findViewById(R.id.UserField).getContentDescription();
         String pass = (String) this.findViewById(R.id.PassField).getContentDescription();
-        if (user.compareTo("user") == 0 && pass.compareTo("pass") == 0) {
+        if (user.compareTo(user1.getUsername()) == 0 && pass.compareTo(user1.getPassword()) == 0) {
             startActivity(new Intent("android.Home"));
         }
     }
