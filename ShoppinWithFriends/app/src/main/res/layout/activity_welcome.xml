@@ -37,4 +37,14 @@
         android:clickable="true"
         android:onClick="sendMessageR" />
 
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageView"
+        android:src="@drawable/shoppingwithfriends1"
+        android:layout_alignEnd="@+id/welcomeText"
+        android:layout_alignTop="@+id/button2"
+        android:contentDescription="@string/title_activity_welcome_sequence"
+        android:clickable="false" />
+
 </RelativeLayout>
