@@ -42,6 +42,6 @@
         android:layout_height="wrap_content"
         android:id="@+id/imageView"
         android:src="@drawable/shoppingwithfriends1"
-        android:layout_alignTop="@+id/button2" />
+        android:layout_below="@+id/button2" />
 
 </RelativeLayout>
