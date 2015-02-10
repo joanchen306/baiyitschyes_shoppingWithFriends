@@ -4,6 +4,9 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.content.Intent;
 
 
 public class HomeScreen extends ActionBarActivity {
@@ -35,5 +38,10 @@ public class HomeScreen extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void sendMessageLogout(View view) {
+        Button button = (Button) view;
+        startActivity(new Intent("android.Login"));
     }
 }
