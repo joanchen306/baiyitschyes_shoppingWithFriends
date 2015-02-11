@@ -63,9 +63,9 @@ public class Login extends ActionBarActivity {
 
         Log.d("myApp", "Password: " + password);
         Log.d("myApp", "Username: " + email);
-        if (password.equals("pass")) {
+        //if (password.equals("pass")) {
             startActivity(new Intent("android.HomeScreen"));
-        }
+        //}
     }
 
     @Override
