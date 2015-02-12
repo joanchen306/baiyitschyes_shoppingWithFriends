@@ -33,16 +33,4 @@ public class User1 {
         return (pwList.contains(um));
     }
 
-    public static void main(String[] args) {
-    	Scanner input = new Scanner(System.in);
-    	User1 u = new User1();
-
-    	System.out.print("Please enter a username");
-    	u.setUsername(input.nextLine());
-
-    	System.out.print("Please enter a password");
-    	u.setPassword(input.nextLine());
-
-    }
-
 }
