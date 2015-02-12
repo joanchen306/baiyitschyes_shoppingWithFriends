@@ -37,11 +37,11 @@ public class Registration extends ActionBarActivity {
 
 
         if (user != null) {
-            if (u.findUsername()) {
+            if (u.findUsername(user)) {
                 //popup window
             } 
 
-            u.setUsername(user)
+            u.setUsername(user);
 
             if (pass != null && pass2 != null) {
                 if (pass.equals(pass2) && user != null && email != null) {
