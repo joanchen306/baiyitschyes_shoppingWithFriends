@@ -58,13 +58,21 @@ public class Login extends ActionBarActivity {
         Button button = (Button) view;
 
         // Store values at the time of the login attempt.
-        String email = mEmailView.getText().toString();
-        String password = mPasswordView.getText().toString();
+        String user = (String) this.findViewById(R.id.UserField).getContentDescription();
+        String password = (String) this.findViewById(R.id.PassField).getContentDescription();
 
-        Log.d("myApp", "Password: " + password);
-        Log.d("myApp", "Username: " + email);
+        //Log.d("myApp", "Password: " + password);
+        //Log.d("myApp", "Username: " + email);
         //if (password.equals("pass")) {
+        if (!u.findUsername(user)) {
+            //popup window "You are not registered"
+        }
+
+        if (u.findPassWord(password)){
             startActivity(new Intent("android.HomeScreen"));
+        } else {
+            //popup "Incorrect password"
+        }
         //}
     }
 
