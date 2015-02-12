@@ -1,4 +1,6 @@
 package com.example.catherinemorris.shoppinwithfriends;
+import java.util.ArrayList;
+import java.util.Scanner;
 
 /**
  * Created by joanchen on 2/4/15.
@@ -6,32 +8,41 @@ package com.example.catherinemorris.shoppinwithfriends;
 public class User1 {
 
     //why are these all ints?
-    private String username;
-    private String password;
-    private String email;
+    private ArrayList<String> userList = new ArrayList<String>();
+    private ArrayList<String>  pwList = new ArrayList<String>();
+    private ArrayList<String>  emList = new ArrayList<String>();
 
 
     public void setUsername(String un) {
-        username = un;
+        userList.add(un);
     }
 
     public void setPassword(String pw) {
-        password = pw;
+        pwList.add(pw);
     }
 
     public void setEmail(String em) {
-        email = em;
+        emList.add(em);
     }
 
-    public String getUsername() {
-        return username;
+    public boolean findUsername(String um) {
+        return (userList.contains(um));
     }
 
-    public String getPassword() {
-        return password;
+    public boolean findPassWord(String um) {
+        return (pwList.contains(um));
     }
 
-    public String getEmail() {
-        return email;
+    public static void main(String[] args) {
+    	Scanner input = new Scanner(System.in);
+    	User1 u = new User1();
+
+    	System.out.print("Please enter a username");
+    	u.setUsername(input.nextLine());
+
+    	System.out.print("Please enter a password");
+    	u.setPassword(input.nextLine());
+
     }
+
 }

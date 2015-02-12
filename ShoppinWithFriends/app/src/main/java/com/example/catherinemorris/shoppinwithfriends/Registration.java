@@ -12,6 +12,8 @@ import android.widget.Button;
 
 public class Registration extends ActionBarActivity {
 
+    User1 u= new User1();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,13 +34,25 @@ public class Registration extends ActionBarActivity {
         String email = (String) this.findViewById(R.id.EmailField).getContentDescription();
         String pass = (String) this.findViewById(R.id.PassField).getContentDescription();
         String pass2 = (String) this.findViewById(R.id.PassField2).getContentDescription();
-        if (pass.equals(pass2) && user != null && email != null) {
-            String password = (String) this.findViewById(R.id.PassField).getContentDescription();
-            User1 user1 = new User1();
-            user1.setUsername(user);
-            user1.setPassword(password);
-            user1.setEmail(email);
-            startActivity(new Intent("android.HomeScreen"));
+
+
+        if (user != null) {
+            if (u.findUsername()) {
+                //popup window
+            } 
+
+            u.setUsername(user)
+
+            if (pass != null && pass2 != null) {
+                if (pass.equals(pass2) && user != null && email != null) {
+                    String password = (String) this.findViewById(R.id.PassField).getContentDescription();
+                    u.setUsername(user);
+                    u.setPassword(pass);
+                    u.setEmail(email);
+                    startActivity(new Intent("android.HomeScreen"));
+                }   
+            }
+
         }
     }
 
