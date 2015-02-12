@@ -54,7 +54,7 @@ public class Login extends ActionBarActivity {
     }
 
     public void sendMessageLogin(View view) {
-        User1 user1 = new User1();
+        User1 u = new User1();
         Button button = (Button) view;
 
         // Store values at the time of the login attempt.
