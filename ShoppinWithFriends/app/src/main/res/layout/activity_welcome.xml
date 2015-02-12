@@ -23,8 +23,9 @@
         android:textSize="20dp"
         android:clickable="true"
         android:onClick="sendMessage"
-        android:layout_below="@+id/button2"
-        android:layout_centerHorizontal="true" />
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="42dp" />
 
     <Button
         android:layout_width="wrap_content"
@@ -34,8 +35,8 @@
         android:textSize="20dp"
         android:clickable="true"
         android:onClick="sendMessageR"
-        android:layout_below="@+id/welcomeText"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="154dp" />
+        android:layout_above="@+id/button"
+        android:layout_alignLeft="@+id/button"
+        android:layout_alignStart="@+id/button" />
 
 </RelativeLayout>

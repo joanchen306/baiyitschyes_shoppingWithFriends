@@ -8,11 +8,16 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 
 
 public class Registration extends ActionBarActivity {
 
     User1 u= new User1();
+    private EditText mUserView;
+    private EditText mPassView;
+    private EditText mEmailView;
+    private EditText mRePassView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,26 +35,31 @@ public class Registration extends ActionBarActivity {
 
     public void sendMessageJoin(View view) {
         Button button = (Button) view;
-        String user = (String) this.findViewById(R.id.UserField).getContentDescription();
-        String email = (String) this.findViewById(R.id.EmailField).getContentDescription();
-        String pass = (String) this.findViewById(R.id.PassField).getContentDescription();
-        String pass2 = (String) this.findViewById(R.id.PassField2).getContentDescription();
+        mUserView = (EditText) this.findViewById(R.id.UserField);
+        mPassView = (EditText) this.findViewById(R.id.PassField);
+        mEmailView = (EditText) this.findViewById(R.id.EmailField);
+        mRePassView = (EditText) this.findViewById(R.id.RePassField);
+
+        String mUser = mUserView.getText().toString();
+        String mEmail = mEmailView.getText().toString();
+        String mPass = mPassView.getText().toString();
+        String mRePass = mRePassView.getText().toString();
 
 
-        if (user != null) {
-            if (u.findUsername(user)) {
+        if (mUser != null) {
+            if (u.findUsername(mUser)) {
                 //popup window
             } 
 
-            u.setUsername(user);
+            u.setUsername(mUser);
 
-            if (pass != null && pass2 != null) {
-                if (pass.equals(pass2) && user != null && email != null) {
+            if (mPass != null && mRePass != null) {
+                if (mPass.equals(mRePass) && mUser != null && mEmail != null) {
                     String password = (String) this.findViewById(R.id.PassField).getContentDescription();
-                    u.setUsername(user);
-                    u.setPassword(pass);
-                    u.setEmail(email);
-                    startActivity(new Intent("android.HomeScreen"));
+                    u.setUsername(mUser);
+                    u.setPassword(mPass);
+                    u.setEmail(mEmail);
+                    startActivity(new Intent(".HomeScreen"));
                 }   
             }
 

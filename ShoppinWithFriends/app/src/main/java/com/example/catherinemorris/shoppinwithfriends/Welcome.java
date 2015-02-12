@@ -27,12 +27,12 @@ public class Welcome extends ActionBarActivity {
 
     public void sendMessageR(View view) {
         Button button = (Button) view;
-        startActivity(new Intent(this, Registration.class));
+        startActivity(new Intent(".Registration"));
     }
 
     public void sendMessage(View view) {
         Button button = (Button) view;
-        startActivity(new Intent(this, Login.class));
+        startActivity(new Intent(".Login"));
     }
 
 
