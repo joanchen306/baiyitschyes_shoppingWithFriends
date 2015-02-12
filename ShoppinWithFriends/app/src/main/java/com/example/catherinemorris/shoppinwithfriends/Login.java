@@ -5,16 +5,27 @@ import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.os.Build;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
+import android.widget.EditText;
 
 
 public class Login extends ActionBarActivity {
+
+    private static final String[] DUMMY_CREDENTIALS = new String[]{
+            "foo@example.com:hello", "bar@example.com:world"
+    };
+
+    private EditText mEmailView;
+    private EditText mPasswordView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +36,8 @@ public class Login extends ActionBarActivity {
                     .add(R.id.action_bar_container, new PlaceholderFragment())
                     .commit();
         }
+        mEmailView = (EditText) findViewById(R.id.UserField);
+        mPasswordView = (EditText) findViewById(R.id.PassField);
     }
 
 
@@ -41,12 +54,25 @@ public class Login extends ActionBarActivity {
     }
 
     public void sendMessageLogin(View view) {
-        //User1 user1 = new User1();
-        //Button button = (Button) view;
-        //String user = (String) this.findViewById(R.id.UserField).getContentDescription();
-        //String pass = (String) this.findViewById(R.id.PassField).getContentDescription();
-        //if (user.compareTo(user1.getUsername()) == 0 && pass.compareTo(user1.getPassword()) == 0) {
+        User1 user1 = new User1();
+        Button button = (Button) view;
+
+        // Store values at the time of the login attempt.
+        String user = (String) this.findViewById(R.id.UserField).getContentDescription();
+        String password = (String) this.findViewById(R.id.PassField).getContentDescription();
+
+        //Log.d("myApp", "Password: " + password);
+        //Log.d("myApp", "Username: " + email);
+        //if (password.equals("pass")) {
+        if (!u.findUsername(user)) {
+            //popup window "You are not registered"
+        }
+
+        if (u.findPassWord(password)){
             startActivity(new Intent("android.HomeScreen"));
+        } else {
+            //popup "Incorrect password"
+        }
         //}
     }
 
