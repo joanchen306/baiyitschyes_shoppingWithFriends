@@ -59,7 +59,7 @@ public class Registration extends ActionBarActivity {
                     u.setUsername(mUser);
                     u.setPassword(mPass);
                     u.setEmail(mEmail);
-                    startActivity(new Intent(".HomeScreen"));
+                    startActivity(new Intent(this, HomeScreen.class));
                 }   
             }
 
