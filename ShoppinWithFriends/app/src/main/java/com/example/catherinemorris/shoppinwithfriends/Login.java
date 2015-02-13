@@ -17,6 +17,8 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.example.catherinemorris.shoppinwithfriends.User1;
+
 
 public class Login extends ActionBarActivity {
 
@@ -57,9 +59,7 @@ public class Login extends ActionBarActivity {
         String user = mUserView.getText().toString();
         String password = mPasswordView.getText().toString();
 
-        Log.d("myApp", "Password: " + password);
-        Log.d("myApp", "Username: " + user);
-        if (password.equals("pass")) {
+        if (u.findUsername(user) && u.findPassWord(password)) {
             //if (!u.findUsername(user)) {
             //    //popup window "You are not registered";
             //}

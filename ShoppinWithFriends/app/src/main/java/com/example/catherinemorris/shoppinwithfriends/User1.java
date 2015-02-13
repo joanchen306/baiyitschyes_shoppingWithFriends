@@ -1,4 +1,5 @@
 package com.example.catherinemorris.shoppinwithfriends;
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -8,28 +9,28 @@ import java.util.Scanner;
 public class User1 {
 
     //why are these all ints?
-    private ArrayList<String> userList = new ArrayList<String>();
-    private ArrayList<String>  pwList = new ArrayList<String>();
-    private ArrayList<String>  emList = new ArrayList<String>();
+    private static ArrayList<String> userList = new ArrayList<String>();
+    private static ArrayList<String>  pwList = new ArrayList<String>();
+    private static ArrayList<String>  emList = new ArrayList<String>();
 
 
-    public void setUsername(String un) {
+    public static void setUsername(String un) {
         userList.add(un);
     }
 
-    public void setPassword(String pw) {
+    public static void setPassword(String pw) {
         pwList.add(pw);
     }
 
-    public void setEmail(String em) {
+    public static void setEmail(String em) {
         emList.add(em);
     }
 
-    public boolean findUsername(String um) {
+    public static boolean findUsername(String um) {
         return (userList.contains(um));
     }
 
-    public boolean findPassWord(String um) {
+    public static boolean findPassWord(String um) {
         return (pwList.contains(um));
     }
 
