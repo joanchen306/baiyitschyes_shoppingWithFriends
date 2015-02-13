@@ -25,15 +25,16 @@ public class Welcome extends ActionBarActivity {
         return true;
     }
 
-    public void sendMessage(View view) {
-        Button button = (Button) view;
-        startActivity(new Intent("android.Login"));
-    }
-
     public void sendMessageR(View view) {
         Button button = (Button) view;
-        startActivity(new Intent("android.Registration"));
+        startActivity(new Intent(".Registration"));
     }
+
+    public void sendMessage(View view) {
+        Button button = (Button) view;
+        startActivity(new Intent(".Login"));
+    }
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

@@ -20,26 +20,19 @@ import android.widget.EditText;
 
 public class Login extends ActionBarActivity {
 
-    private static final String[] DUMMY_CREDENTIALS = new String[]{
-            "foo@example.com:hello", "bar@example.com:world"
-    };
-
-    private EditText mEmailView;
+    /**
+     * private static final String[] DUMMY_CREDENTIALS = new String[]{
+     * "foo@example.com:hello", "bar@example.com:world"
+     * };
+     */
+    private EditText mUserView;
     private EditText mPasswordView;
 
-    @Override
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_login);
-        if (savedInstanceState == null) {
-            getSupportFragmentManager().beginTransaction()
-                    .add(R.id.action_bar_container, new PlaceholderFragment())
-                    .commit();
-        }
-        mEmailView = (EditText) findViewById(R.id.UserField);
-        mPasswordView = (EditText) findViewById(R.id.PassField);
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -54,30 +47,34 @@ public class Login extends ActionBarActivity {
     }
 
     public void sendMessageLogin(View view) {
-        User1 user1 = new User1();
+        User1 u = new User1();
         Button button = (Button) view;
 
         // Store values at the time of the login attempt.
-        String user = (String) this.findViewById(R.id.UserField).getContentDescription();
-        String password = (String) this.findViewById(R.id.PassField).getContentDescription();
+        mUserView = (EditText) this.findViewById(R.id.UserField);
+        mPasswordView = (EditText) this.findViewById(R.id.PassField);
 
-        //Log.d("myApp", "Password: " + password);
-        //Log.d("myApp", "Username: " + email);
-        //if (password.equals("pass")) {
-        if (!u.findUsername(user)) {
-            //popup window "You are not registered"
-        }
+        String user = mUserView.getText().toString();
+        String password = mPasswordView.getText().toString();
 
-        if (u.findPassWord(password)){
-            startActivity(new Intent("android.HomeScreen"));
-        } else {
-            //popup "Incorrect password"
+        Log.d("myApp", "Password: " + password);
+        Log.d("myApp", "Username: " + user);
+        if (password.equals("pass")) {
+            //if (!u.findUsername(user)) {
+            //    //popup window "You are not registered";
+            //}
+
+            //if (u.findPassWord(password)) {
+                startActivity(new Intent("android.HomeScreen"));
+            //} else {
+                //popup "Incorrect password"
+            //}
+            //}
         }
-        //}
     }
+}
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
+  /**  public void onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
@@ -85,15 +82,15 @@ public class Login extends ActionBarActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
-            return true;
+            //return true;
         }
 
         return super.onOptionsItemSelected(item);
     }
-
+*/
     /**
      * A placeholder fragment containing a simple view.
-     */
+
     public static class PlaceholderFragment extends Fragment {
 
         public PlaceholderFragment() {
@@ -106,4 +103,5 @@ public class Login extends ActionBarActivity {
             return rootView;
         }
     }
-}
+        */
+

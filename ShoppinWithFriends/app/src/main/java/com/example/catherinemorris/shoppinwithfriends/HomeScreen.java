@@ -42,6 +42,6 @@ public class HomeScreen extends ActionBarActivity {
 
     public void sendMessageLogout(View view) {
         Button button = (Button) view;
-        startActivity(new Intent("android.Login"));
+        startActivity(new Intent(this, Welcome.class));
     }
 }
