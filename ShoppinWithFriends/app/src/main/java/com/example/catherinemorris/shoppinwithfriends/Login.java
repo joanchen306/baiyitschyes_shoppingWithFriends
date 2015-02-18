@@ -17,6 +17,8 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.example.catherinemorris.shoppinwithfriends.User1;
+
 
 public class Login extends ActionBarActivity {
 
@@ -46,6 +48,13 @@ public class Login extends ActionBarActivity {
         finish();
     }
 
+    /**
+     * This methods allows the user to login if they 
+     * entered the correct password and username
+     * should bring the user to their homepage
+     * @param view
+     * @return none
+     */
     public void sendMessageLogin(View view) {
         User1 u = new User1();
         Button button = (Button) view;
@@ -57,13 +66,13 @@ public class Login extends ActionBarActivity {
         String user = mUserView.getText().toString();
         String password = mPasswordView.getText().toString();
 
-        Log.d("myApp", "Password: " + password);
-        Log.d("myApp", "Username: " + user);
-        if (password.equals("pass")) {
+        if (u.findUsername(user) && u.findPassWord(password)) {
+            //checks if the user is registered or not
             //if (!u.findUsername(user)) {
             //    //popup window "You are not registered";
             //}
 
+            //Check if the passwords are correct
             //if (u.findPassWord(password)) {
                 startActivity(new Intent("android.HomeScreen"));
             //} else {

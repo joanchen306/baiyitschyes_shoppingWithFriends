@@ -1,36 +1,56 @@
 package com.example.catherinemorris.shoppinwithfriends;
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import com.mongodb.MongoClient;
+import com.mongodb.client.MongoDatabase;
+import com.mongodb.client.MongoCollection;
+import com.mongodb.MongoClientURI;
+import org.bson.Document;
+import org.bson.types.ObjectId;
+
 /**
- * Created by joanchen on 2/4/15.
+ * The user1 class creates static lists of usernames and passwords when a user registers
+ *This will be transferred into the database 
  */
 public class User1 {
 
-    //why are these all ints?
-    private ArrayList<String> userList = new ArrayList<String>();
-    private ArrayList<String>  pwList = new ArrayList<String>();
-    private ArrayList<String>  emList = new ArrayList<String>();
+    //connecting to database right here
+    MongoClient mongoClient = new MongoClient(new MongoClientURI("mongodb://localhost:27017"));
 
 
-    public void setUsername(String un) {
-        userList.add(un);
-    }
-
-    public void setPassword(String pw) {
-        pwList.add(pw);
-    }
-
-    public void setEmail(String em) {
-        emList.add(em);
+    public void addUser(String un, String pw, String em) {
+        MongoDatabase database = mongoClient.getDatabase( "baiyitschyes" );
+        MongoCollection<Document> collection = database.getCollection("users");
+        Document doc = new Document("username", un)
+                .append("name", un)
+                .append("password", pw)
+                .append("email", em)
+                .append("sales", 0)
+                .append("rating", -1);
+        collection.insertOne(doc);
     }
 
     public boolean findUsername(String um) {
-        return (userList.contains(um));
+        MongoDatabase database = mongoClient.getDatabase( "baiyitschyes" );
+        MongoCollection<Document> collection = database.getCollection("users");
+        Document myDoc = collection.find(new Document("username", um)).first();
+        if (myDoc != null) {
+            return true;
+        }
+        return false;
     }
 
-    public boolean findPassWord(String um) {
-        return (pwList.contains(um));
+    public boolean findPassWord(String pw) {
+        MongoDatabase database = mongoClient.getDatabase( "baiyitschyes" );
+        MongoCollection<Document> collection = database.getCollection("users");
+        Document myDoc = collection.find(new Document("password", pw)).first();
+        if (myDoc != null) {
+            return true;
+        }
+        return false;
     }
+
 
 }

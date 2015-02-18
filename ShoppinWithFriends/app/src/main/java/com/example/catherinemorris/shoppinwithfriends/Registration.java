@@ -10,6 +10,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
+
+import java.util.regex.Matcher;
 
 public class Registration extends ActionBarActivity {
 
@@ -18,6 +24,8 @@ public class Registration extends ActionBarActivity {
     private EditText mPassView;
     private EditText mEmailView;
     private EditText mRePassView;
+
+    final Context context = this;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +41,16 @@ public class Registration extends ActionBarActivity {
         return true;
     }
 
+    /**
+     * This method reads all the text boxes and registers the users
+     * should show warnings if the user is already registered 
+     * or if any of the text boxes are empty
+     *If succeed, this should bring the user to their homepage
+     * @param view
+     * @return void 
+     *
+     */
+
     public void sendMessageJoin(View view) {
         Button button = (Button) view;
         mUserView = (EditText) this.findViewById(R.id.UserField);
@@ -47,19 +65,29 @@ public class Registration extends ActionBarActivity {
 
 
         if (mUser != null) {
+        	//check if the username is already registered
             if (u.findUsername(mUser)) {
-                //popup window
-            } 
+                AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
+                builder1.setMessage("Invalid Email");
+                builder1.setCancelable(true);
+                AlertDialog alert11 = builder1.create();
+                alert11.show();
+            }
 
-            u.setUsername(mUser);
+            //check if the email is valid
+            if (!mEmail.matches("\\w+@\\w.(com|gov|edu|org)")) {
+                AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
+                builder1.setMessage("Invalid Email");
+                builder1.setCancelable(true);
+                AlertDialog alert11 = builder1.create();
+                alert11.show();
+            }
 
-            if (mPass != null && mRePass != null) {
+
+             if (mPass != null && mRePass != null) {
                 if (mPass.equals(mRePass) && mUser != null && mEmail != null) {
-                    String password = (String) this.findViewById(R.id.PassField).getContentDescription();
-                    u.setUsername(mUser);
-                    u.setPassword(mPass);
-                    u.setEmail(mEmail);
-                    startActivity(new Intent(".HomeScreen"));
+                    u.addUser(mUser, mPass, mEmail);
+                    startActivity(new Intent(this, HomeScreen.class));
                 }   
             }
 
