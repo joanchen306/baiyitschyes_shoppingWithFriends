@@ -33,6 +33,16 @@ public class Registration extends ActionBarActivity {
         return true;
     }
 
+    /**
+     * This method reads all the text boxes and registers the users
+     * should show warnings if the user is already registered 
+     * or if any of the text boxes are empty
+     *If succeed, this should bring the user to their homepage
+     * @param view
+     * @return void 
+     *
+     */
+
     public void sendMessageJoin(View view) {
         Button button = (Button) view;
         mUserView = (EditText) this.findViewById(R.id.UserField);
@@ -47,11 +57,13 @@ public class Registration extends ActionBarActivity {
 
 
         if (mUser != null) {
+        	//check if the username is already registered
             if (u.findUsername(mUser)) {
                 //popup window
             } 
 
             u.setUsername(mUser);
+
 
             if (mPass != null && mRePass != null) {
                 if (mPass.equals(mRePass) && mUser != null && mEmail != null) {
