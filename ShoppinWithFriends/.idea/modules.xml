@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/ShoppinWithFriends.iml" filepath="$PROJECT_DIR$/ShoppinWithFriends.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/firebase-client-android-2.2.0/firebase-client-android-2.2.0.iml" filepath="$PROJECT_DIR$/firebase-client-android-2.2.0/firebase-client-android-2.2.0.iml" />
       <module fileurl="file://$PROJECT_DIR$/mongo-java-driver-3.0.0-beta2/mongo-java-driver-3.0.0-beta2.iml" filepath="$PROJECT_DIR$/mongo-java-driver-3.0.0-beta2/mongo-java-driver-3.0.0-beta2.iml" />
     </modules>
   </component>
