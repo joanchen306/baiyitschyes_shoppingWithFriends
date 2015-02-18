@@ -3,62 +3,54 @@ package com.example.catherinemorris.shoppinwithfriends;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import com.mongodb.MongoClient;
+import com.mongodb.client.MongoDatabase;
+import com.mongodb.client.MongoCollection;
+import com.mongodb.MongoClientURI;
+import org.bson.Document;
+import org.bson.types.ObjectId;
+
 /**
  * The user1 class creates static lists of usernames and passwords when a user registers
  *This will be transferred into the database 
  */
 public class User1 {
 
-    private static ArrayList<String> userList = new ArrayList<String>();
-    private static ArrayList<String>  pwList = new ArrayList<String>();
-    private static ArrayList<String>  emList = new ArrayList<String>();
+    //connecting to database right here
+    MongoClient mongoClient = new MongoClient(new MongoClientURI("mongodb://localhost:27017"));
 
 
-    /**
-     *This method adds a new username to the username list
-     * @param  un, username retrieved from the text box
-     * @return none
-     */
-    public static void setUsername(String un) {
-        userList.add(un);
+    public void addUser(String un, String pw, String em) {
+        MongoDatabase database = mongoClient.getDatabase( "baiyitschyes" );
+        MongoCollection<Document> collection = database.getCollection("users");
+        Document doc = new Document("username", un)
+                .append("name", un)
+                .append("password", pw)
+                .append("email", em)
+                .append("sales", 0)
+                .append("rating", -1);
+        collection.insertOne(doc);
     }
 
-    /**
-     *This method adds a new password to the password list
-     * @param pw, password retrieved from the text box
-     * @return none
-     */
-    public static void setPassword(String pw) {
-        pwList.add(pw);
+    public boolean findUsername(String um) {
+        MongoDatabase database = mongoClient.getDatabase( "baiyitschyes" );
+        MongoCollection<Document> collection = database.getCollection("users");
+        Document myDoc = collection.find(new Document("username", um)).first();
+        if (myDoc != null) {
+            return true;
+        }
+        return false;
     }
 
-    /**
-     *This method adds a new email to the email list
-     * @param em, emailretrieved from the text box
-     * @return none
-     */
-    public static void setEmail(String em) {
-        emList.add(em);
+    public boolean findPassWord(String pw) {
+        MongoDatabase database = mongoClient.getDatabase( "baiyitschyes" );
+        MongoCollection<Document> collection = database.getCollection("users");
+        Document myDoc = collection.find(new Document("password", pw)).first();
+        if (myDoc != null) {
+            return true;
+        }
+        return false;
     }
 
-    /**
-     *This method checks if the username is already in the list
-     * in order to authenticate login
-     * @param um, username retrieved from the text box
-     * @return true if it is in the list
-     */
-    public static boolean findUsername(String um) {
-        return (userList.contains(um));
-    }
-
-    /**
-     *This method checks if the password is already in the list
-     * in order to authenticate login
-     * @param pw, password retrieved from the text box
-     * @return true if it is in the list
-     */
-    public static boolean findPassWord(String pw) {
-        return (pwList.contains(pw));
-    }
 
 }
