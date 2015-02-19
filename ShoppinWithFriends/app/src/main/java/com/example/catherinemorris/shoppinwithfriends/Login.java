@@ -56,7 +56,6 @@ public class Login extends ActionBarActivity {
      * @return none
      */
     public void sendMessageLogin(View view) {
-        User1 u = new User1();
         Button button = (Button) view;
 
         // Store values at the time of the login attempt.
@@ -66,7 +65,7 @@ public class Login extends ActionBarActivity {
         String user = mUserView.getText().toString();
         String password = mPasswordView.getText().toString();
 
-        if (u.findUsername(user) && u.findPassWord(password)) {
+        //if (u.findUsername(user) && u.findPassWord(password)) {
             //checks if the user is registered or not
             //if (!u.findUsername(user)) {
             //    //popup window "You are not registered";
@@ -79,7 +78,7 @@ public class Login extends ActionBarActivity {
                 //popup "Incorrect password"
             //}
             //}
-        }
+        //}
     }
 }
 

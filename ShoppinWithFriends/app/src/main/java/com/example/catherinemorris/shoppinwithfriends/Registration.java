@@ -19,7 +19,7 @@ import java.util.regex.Matcher;
 
 public class Registration extends ActionBarActivity {
 
-    User1 u= new User1();
+    //User1 u= new User1();
     private EditText mUserView;
     private EditText mPassView;
     private EditText mEmailView;
@@ -66,16 +66,16 @@ public class Registration extends ActionBarActivity {
 
         if (mUser != null) {
         	//check if the username is already registered
-            if (u.findUsername(mUser)) {
+            //if (u.findUsername(mUser)) {
                 AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
                 builder1.setMessage("Invalid Email");
                 builder1.setCancelable(true);
                 AlertDialog alert11 = builder1.create();
                 alert11.show();
-            }
+            //}
 
             //check if the email is valid
-            if (!mEmail.matches("\\w+@\\w.(com|gov|edu|org)")) {
+       /**     if (!mEmail.matches("\\w+@\\w.(com|gov|edu|org)")) {
                 AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
                 builder1.setMessage("Invalid Email");
                 builder1.setCancelable(true);
@@ -89,7 +89,7 @@ public class Registration extends ActionBarActivity {
                     u.addUser(mUser, mPass, mEmail);
                     startActivity(new Intent(this, HomeScreen.class));
                 }   
-            }
+          */  }
 
         }
     }

@@ -74,6 +74,14 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="HomeScreen" />
         </activity>
+        <activity
+            android:name=".FriendList"
+            android:label="@string/title_activity_friend_list"
+            android:parentActivityName=".HomeScreen" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="FriendList" />
+        </activity>
     </application>
 
 </manifest>
