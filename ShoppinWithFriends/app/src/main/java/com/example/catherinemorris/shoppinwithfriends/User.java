@@ -3,18 +3,19 @@ package com.example.catherinemorris.shoppinwithfriends;
 import com.firebase.client.Firebase;
 
 import java.util.ArrayList;
+import android.content.Context;
 
 /**
  * Created by James Nugent on 2/18/2015.
  */
 public class User {
-    private ArrayList<User> friendList;
+    private ArrayList<User> friendList = new ArrayList<>();
     private String username;
     private String password;
-<<<<<<< HEAD
     private String email;
     private int rating;
     private int numSales;
+    private int numRate;
 
     private UserDB db = new UserDB();
 
@@ -24,12 +25,6 @@ public class User {
         password = pass;
     }
 
-=======
-    String email;
-    int rating;
-    private int numRate;
-    int numSales;
->>>>>>> faa40178e9b5b663af130ef9609562d7e7b6d272
 
     public User(String user, String email, String pass) {
         username = user;
@@ -85,15 +80,11 @@ public class User {
         rating = totRate / numRate;
     }
 
-    public void addFriend(User newU) {
-        friendList.add(newU);
+    public void addFriend(String username, User newU) {
+        db.addFriend(username, newU);
     }
 
-<<<<<<< HEAD
-
-=======
     public boolean deleteFriend(User deleteU) {
         return friendList.remove(deleteU);
     }
->>>>>>> faa40178e9b5b663af130ef9609562d7e7b6d272
 }

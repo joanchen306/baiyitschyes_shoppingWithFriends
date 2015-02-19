@@ -74,13 +74,27 @@ public class UserDB extends android.app.Application  {
                 loggedIn = false;
             }
         });
+    }
+
+    public void addFriend(String user, User friend) {
+        myFirebaseRef = new Firebase("https://baiyitschyes.firebaseio.com");
+        Firebase friendRef = myFirebaseRef.child(user).child("friends");
+        Query queryRef = myFirebaseRef.child(user).orderByChild("user").equalTo(user);
+        friendRef.push().setValue(friend);
+
+        ref.addChildEventListener(new ChildEventListener() {
+            // Retrieve new posts as they are added to Firebase
+            @Override
+            public void onChildAdded(DataSnapshot snapshot, String previousChildKey) {
+                Map<String, Object> newPost = (Map<String, Object>) snapshot.getValue();
+            }
+            //... ChildEventListener also defines onChildChanged, onChildRemoved,
+            //    onChildMoved and onCanceled, covered in later sections.
+        });
 
     }
 
     public boolean isLoggedIn() {
         return loggedIn;
     }
-
-
-
 }

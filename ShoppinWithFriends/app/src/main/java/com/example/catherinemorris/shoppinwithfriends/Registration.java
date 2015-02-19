@@ -21,10 +21,6 @@ import java.util.regex.Matcher;
 
 public class Registration extends ActionBarActivity {
 
-<<<<<<< HEAD
-=======
-    //User1 u= new User1();
->>>>>>> f5ccd9a9e2dade73ca9f17aba02f89f2b79bd0b3
     private EditText mUserView;
     private EditText mPassView;
     private EditText mEmailView;
@@ -32,6 +28,7 @@ public class Registration extends ActionBarActivity {
     private User u;
 
     UserDB db = new UserDB();
+    UserSQL sql = new UserSQL(this);
 
     final Context context = this;
 
@@ -52,12 +49,12 @@ public class Registration extends ActionBarActivity {
 
     /**
      * This method reads all the text boxes and registers the users
-     * should show warnings if the user is already registered 
+     * should show warnings if the user is already registered
      * or if any of the text boxes are empty
-     *If succeed, this should bring the user to their homepage
-     * @param view
-     * @return void 
+     * If succeed, this should bring the user to their homepage
      *
+     * @param view
+     * @return void
      */
 
     public void sendMessageJoin(View view) {
@@ -75,17 +72,25 @@ public class Registration extends ActionBarActivity {
 
         if (mUser != null) {
 
-             if (mPass != null && mRePass != null) {
+            if (mPass != null && mRePass != null) {
                 if (mPass.equals(mRePass) && mUser != null && mEmail != null) {
-                    new User(mUser, mEmail, mPass);
+                    u = new User(mUser, mEmail, mPass);
                     if (db.isLoggedIn()) {
-                        startActivity(new Intent(this, HomeScreen.class));
+                        sql.addUser(u);
+                        startActivity(new Intent("android.HomeScreen"));
+                    } else {
+                        AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
+                        builder1.setMessage("Please make sure you have entered valid information");
+                        builder1.setCancelable(true);
+                        AlertDialog alert11 = builder1.create();
+                        alert11.show();
                     }
                 }
-             }
+            }
 
         }
     }
+
 
     public void sendMessageBack(View view) {
         Button button = (Button) view;

@@ -2,12 +2,20 @@ package com.example.catherinemorris.shoppinwithfriends;
 
 
 import android.app.Activity;
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.ArrayAdapter;
+
+import com.firebase.client.Firebase;
+import com.firebase.client.Query;
+
+import java.util.ArrayList;
 
 
 public class FriendList extends ActionBarActivity {
@@ -17,6 +25,12 @@ public class FriendList extends ActionBarActivity {
         "Friend 2",
         "Friend 3"
     };
+
+    Firebase mFirebaseRef;
+    String username;
+    UserSQL mydb;
+    private ListView obj;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,6 +38,8 @@ public class FriendList extends ActionBarActivity {
 
         ListView view = (ListView)findViewById(R.id.friendList);
         view.setAdapter(new EnhancedListAdapter(this, myFriends));
+
+        mFirebaseRef = new Firebase("https://baiyitschyes.firebaseio.com");
 
     }
 
