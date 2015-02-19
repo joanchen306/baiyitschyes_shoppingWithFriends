@@ -11,6 +11,7 @@ public class User {
     private String password;
     String email;
     int rating;
+    private int numRate;
     int numSales;
 
     public User(String user, String email, String pass) {
@@ -18,6 +19,7 @@ public class User {
         this.email = email;
         password = pass;
         rating = 0;
+        numRate = 0;
         numSales = 0;
     }
 
@@ -41,13 +43,21 @@ public class User {
         return friendList;
     }
 
-    public void addSale(int rate) {
-        int totStar = rate + numSales * rating;
+    public void addSale() {
         numSales++;
-        rating = totStar / numSales;
+    }
+
+    public void addRate(int rate) {
+        int totRate = rate + numRate * rating;
+        numRate++;
+        rating = totRate / numRate;
     }
 
     public void addFriend(User newU) {
         friendList.add(newU);
+    }
+
+    public boolean deleteFriend(User deleteU) {
+        return friendList.remove(deleteU);
     }
 }

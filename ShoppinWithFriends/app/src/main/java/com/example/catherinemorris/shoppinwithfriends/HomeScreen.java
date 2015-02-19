@@ -44,4 +44,9 @@ public class HomeScreen extends ActionBarActivity {
         Button button = (Button) view;
         startActivity(new Intent(this, Welcome.class));
     }
+
+    public void openFriends(View view) {
+        Button button = (Button) view;
+        startActivity(new Intent(this, FriendList.class));
+    }
 }
