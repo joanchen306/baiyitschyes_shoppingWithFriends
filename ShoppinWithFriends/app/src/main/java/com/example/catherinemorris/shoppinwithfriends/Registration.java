@@ -15,15 +15,19 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 
+import com.firebase.client.Firebase;
+
 import java.util.regex.Matcher;
 
 public class Registration extends ActionBarActivity {
 
-    User1 u= new User1();
     private EditText mUserView;
     private EditText mPassView;
     private EditText mEmailView;
     private EditText mRePassView;
+    private User u;
+
+    UserDB db = new UserDB();
 
     final Context context = this;
 
@@ -31,6 +35,7 @@ public class Registration extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration);
+        Firebase.setAndroidContext(this);
     }
 
 
@@ -66,28 +71,31 @@ public class Registration extends ActionBarActivity {
 
         if (mUser != null) {
         	//check if the username is already registered
-            if (u.findUsername(mUser)) {
-                AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
-                builder1.setMessage("Invalid Email");
-                builder1.setCancelable(true);
-                AlertDialog alert11 = builder1.create();
-                alert11.show();
+            /*if (u.findUserName(mUser) != null) {
+                new AlertDialog.Builder(this)
+                        .setTitle("Error")
+                        .setMessage("You are already registered")
+                        .setPositiveButton(android.R.string.ok, null)
+                        .setIcon(android.R.drawable.ic_dialog_alert)
+                        .show();
             }
 
             //check if the email is valid
             if (!mEmail.matches("\\w+@\\w.(com|gov|edu|org)")) {
                 AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
-                builder1.setMessage("Invalid Email");
+                builder1.setMessage("Invalid Email Address");
                 builder1.setCancelable(true);
                 AlertDialog alert11 = builder1.create();
                 alert11.show();
-            }
+            }*/
 
 
              if (mPass != null && mRePass != null) {
                 if (mPass.equals(mRePass) && mUser != null && mEmail != null) {
-                    u.addUser(mUser, mPass, mEmail);
-                    startActivity(new Intent(this, HomeScreen.class));
+                    new User(mUser, mEmail, mPass);
+                    if (db.isLoggedIn()) {
+                        startActivity(new Intent(this, HomeScreen.class));
+                    }
                 }   
             }
 

@@ -1,23 +1,19 @@
 package com.example.catherinemorris.shoppinwithfriends;
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
-import android.support.v7.app.ActionBar;
-import android.support.v4.app.Fragment;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
-import android.os.Build;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 
-import com.example.catherinemorris.shoppinwithfriends.User1;
+import android.content.Context;
+
+import com.firebase.client.Firebase;
+import com.firebase.client.FirebaseError;
+import com.firebase.client.AuthData;
 
 
 public class Login extends ActionBarActivity {
@@ -30,10 +26,15 @@ public class Login extends ActionBarActivity {
     private EditText mUserView;
     private EditText mPasswordView;
 
+    final Context context = this;
+
+    UserDB db = new UserDB();
+
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_login);
+        Firebase.setAndroidContext(this);
     }
 
     @Override
@@ -56,7 +57,6 @@ public class Login extends ActionBarActivity {
      * @return none
      */
     public void sendMessageLogin(View view) {
-        User1 u = new User1();
         Button button = (Button) view;
 
         // Store values at the time of the login attempt.
@@ -66,19 +66,15 @@ public class Login extends ActionBarActivity {
         String user = mUserView.getText().toString();
         String password = mPasswordView.getText().toString();
 
-        if (u.findUsername(user) && u.findPassWord(password)) {
-            //checks if the user is registered or not
-            //if (!u.findUsername(user)) {
-            //    //popup window "You are not registered";
-            //}
-
-            //Check if the passwords are correct
-            //if (u.findPassWord(password)) {
-                startActivity(new Intent("android.HomeScreen"));
-            //} else {
-                //popup "Incorrect password"
-            //}
-            //}
+        db.login(new User(user, password));
+        if (db.isLoggedIn()) {
+            startActivity(new Intent("android.HomeScreen"));
+        } else {
+            AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
+            builder1.setMessage("Invalid Email Address or Password");
+            builder1.setCancelable(true);
+            AlertDialog alert11 = builder1.create();
+            alert11.show();
         }
     }
 }

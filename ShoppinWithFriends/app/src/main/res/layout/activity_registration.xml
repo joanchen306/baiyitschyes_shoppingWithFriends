@@ -51,7 +51,8 @@
         android:id="@+id/UserField"
         android:layout_below="@+id/textView3"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="98dp" />
+        android:layout_marginTop="98dp"
+        android:editable="false" />
 
     <EditText
         android:layout_width="wrap_content"
