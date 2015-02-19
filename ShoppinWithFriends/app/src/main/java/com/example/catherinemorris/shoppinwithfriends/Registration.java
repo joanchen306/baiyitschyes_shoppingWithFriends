@@ -74,35 +74,6 @@ public class Registration extends ActionBarActivity {
 
 
         if (mUser != null) {
-        	//check if the username is already registered
-<<<<<<< HEAD
-            /*if (u.findUserName(mUser) != null) {
-                new AlertDialog.Builder(this)
-                        .setTitle("Error")
-                        .setMessage("You are already registered")
-                        .setPositiveButton(android.R.string.ok, null)
-                        .setIcon(android.R.drawable.ic_dialog_alert)
-                        .show();
-            }
-=======
-            //if (u.findUsername(mUser)) {
-                AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
-                builder1.setMessage("Invalid Email");
-                builder1.setCancelable(true);
-                AlertDialog alert11 = builder1.create();
-                alert11.show();
-            //}
->>>>>>> f5ccd9a9e2dade73ca9f17aba02f89f2b79bd0b3
-
-            //check if the email is valid
-       /**     if (!mEmail.matches("\\w+@\\w.(com|gov|edu|org)")) {
-                AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
-                builder1.setMessage("Invalid Email Address");
-                builder1.setCancelable(true);
-                AlertDialog alert11 = builder1.create();
-                alert11.show();
-            }*/
-
 
              if (mPass != null && mRePass != null) {
                 if (mPass.equals(mRePass) && mUser != null && mEmail != null) {
@@ -110,8 +81,8 @@ public class Registration extends ActionBarActivity {
                     if (db.isLoggedIn()) {
                         startActivity(new Intent(this, HomeScreen.class));
                     }
-                }   
-          */  }
+                }
+             }
 
         }
     }
