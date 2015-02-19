@@ -23,6 +23,9 @@ dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile 'com.android.support:appcompat-v7:21.0.3'
     compile 'com.google.android.gms:play-services:6.5.87'
+<<<<<<< HEAD
     compile project(':mongo-java-driver-3.0.0-beta2')
     compile project(':firebase-client-android-2.2.0')
+=======
+>>>>>>> f5ccd9a9e2dade73ca9f17aba02f89f2b79bd0b3
 }

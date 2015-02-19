@@ -66,6 +66,7 @@ public class Login extends ActionBarActivity {
         String user = mUserView.getText().toString();
         String password = mPasswordView.getText().toString();
 
+<<<<<<< HEAD
         db.login(new User(user, password));
         if (db.isLoggedIn()) {
             startActivity(new Intent("android.HomeScreen"));
@@ -76,6 +77,22 @@ public class Login extends ActionBarActivity {
             AlertDialog alert11 = builder1.create();
             alert11.show();
         }
+=======
+        //if (u.findUsername(user) && u.findPassWord(password)) {
+            //checks if the user is registered or not
+            //if (!u.findUsername(user)) {
+            //    //popup window "You are not registered";
+            //}
+
+            //Check if the passwords are correct
+            //if (u.findPassWord(password)) {
+                startActivity(new Intent("android.HomeScreen"));
+            //} else {
+                //popup "Incorrect password"
+            //}
+            //}
+        //}
+>>>>>>> f5ccd9a9e2dade73ca9f17aba02f89f2b79bd0b3
     }
 }
 

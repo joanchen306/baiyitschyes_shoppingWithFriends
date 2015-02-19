@@ -8,5 +8,6 @@
     <string name="title_activity_welcome_sequence">WelcomeSequence</string>
     <string name="title_activity_registration">Registration</string>
     <string name="title_activity_home_screen">HomeScreen</string>
+    <string name="title_activity_friend_list">FriendList</string>
 
 </resources>

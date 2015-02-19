@@ -21,6 +21,10 @@ import java.util.regex.Matcher;
 
 public class Registration extends ActionBarActivity {
 
+<<<<<<< HEAD
+=======
+    //User1 u= new User1();
+>>>>>>> f5ccd9a9e2dade73ca9f17aba02f89f2b79bd0b3
     private EditText mUserView;
     private EditText mPassView;
     private EditText mEmailView;
@@ -71,6 +75,7 @@ public class Registration extends ActionBarActivity {
 
         if (mUser != null) {
         	//check if the username is already registered
+<<<<<<< HEAD
             /*if (u.findUserName(mUser) != null) {
                 new AlertDialog.Builder(this)
                         .setTitle("Error")
@@ -79,9 +84,18 @@ public class Registration extends ActionBarActivity {
                         .setIcon(android.R.drawable.ic_dialog_alert)
                         .show();
             }
+=======
+            //if (u.findUsername(mUser)) {
+                AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
+                builder1.setMessage("Invalid Email");
+                builder1.setCancelable(true);
+                AlertDialog alert11 = builder1.create();
+                alert11.show();
+            //}
+>>>>>>> f5ccd9a9e2dade73ca9f17aba02f89f2b79bd0b3
 
             //check if the email is valid
-            if (!mEmail.matches("\\w+@\\w.(com|gov|edu|org)")) {
+       /**     if (!mEmail.matches("\\w+@\\w.(com|gov|edu|org)")) {
                 AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
                 builder1.setMessage("Invalid Email Address");
                 builder1.setCancelable(true);
@@ -97,7 +111,7 @@ public class Registration extends ActionBarActivity {
                         startActivity(new Intent(this, HomeScreen.class));
                     }
                 }   
-            }
+          */  }
 
         }
     }
