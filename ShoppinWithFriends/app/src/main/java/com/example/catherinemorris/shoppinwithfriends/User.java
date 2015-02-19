@@ -11,6 +11,7 @@ public class User {
     private ArrayList<User> friendList;
     private String username;
     private String password;
+<<<<<<< HEAD
     private String email;
     private int rating;
     private int numSales;
@@ -23,12 +24,19 @@ public class User {
         password = pass;
     }
 
+=======
+    String email;
+    int rating;
+    private int numRate;
+    int numSales;
+>>>>>>> faa40178e9b5b663af130ef9609562d7e7b6d272
 
     public User(String user, String email, String pass) {
         username = user;
         this.email = email;
         password = pass;
         rating = 0;
+        numRate = 0;
         numSales = 0;
         db.authUser(this);
         db.addUser(this);
@@ -67,15 +75,25 @@ public class User {
         return friendList;
     }
 
-    public void addSale(int rate) {
-        int totStar = rate + numSales * rating;
+    public void addSale() {
         numSales++;
-        rating = totStar / numSales;
+    }
+
+    public void addRate(int rate) {
+        int totRate = rate + numRate * rating;
+        numRate++;
+        rating = totRate / numRate;
     }
 
     public void addFriend(User newU) {
         friendList.add(newU);
     }
 
+<<<<<<< HEAD
 
+=======
+    public boolean deleteFriend(User deleteU) {
+        return friendList.remove(deleteU);
+    }
+>>>>>>> faa40178e9b5b663af130ef9609562d7e7b6d272
 }
