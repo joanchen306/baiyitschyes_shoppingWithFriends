@@ -110,6 +110,17 @@ public class FriendList extends ActionBarActivity {
         myU.addUser(new User(un));
         Log.d("Is this working?","Yes it " + un);
         mUserText.setText("");
+        friendN = db.friendN;
+        myFriends = new String[friendN.size()];
+        for (int i = 0; i < friendN.size(); i++) {
+            myFriends[i] = friendN.get(i);
+        }
+        ListView lv = (ListView) findViewById(R.id.friendList);
+        ArrayAdapter<String> friendAdapt = new ArrayAdapter<String>(this,
+                android.R.layout.simple_list_item_1,
+                myFriends);
+
+        lv.setAdapter(friendAdapt);
     }
 
 }
