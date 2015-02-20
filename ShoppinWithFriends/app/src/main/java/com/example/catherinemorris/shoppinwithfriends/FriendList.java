@@ -35,8 +35,8 @@ public class FriendList extends ActionBarActivity {
     User myU;
     UserDB db = new UserDB();
 
-    String[] myFriends;
-    ArrayList friendN = db.friendN;
+    String[] myFriends = null;
+    ArrayList<String> friendN = db.friendN;
 
 
 
@@ -49,10 +49,9 @@ public class FriendList extends ActionBarActivity {
         Firebase.setAndroidContext(this);
 
         myU = (User) getIntent().getSerializableExtra("User");
-        ArrayList<String> hisFriends = myU.getFriends();
-        myFriends = new String[hisFriends.size()];
-        for (int i = 0; i < hisFriends.size(); i++) {
-            myFriends[i] = hisFriends.get(i);
+        myFriends = new String[friendN.size()];
+        for (int i = 0; i < friendN.size(); i++) {
+            myFriends[i] = friendN.get(i);
         }
         ListView lv = (ListView) findViewById(R.id.friendList);
         ArrayAdapter<String> friendAdapt = new ArrayAdapter<String>(this,
@@ -61,7 +60,7 @@ public class FriendList extends ActionBarActivity {
 
         lv.setAdapter(friendAdapt);
         Firebase.setAndroidContext(this);
-        myU = db.userInfoList.get(1);
+        //myU = db.userInfoList.get(1);
         Log.d("f" , friendN.toString());
 
     }
@@ -113,11 +112,7 @@ public class FriendList extends ActionBarActivity {
     }
 
     public void goHomeScreen(View view) {
-
-        Intent i = new Intent("android.HomeScreen");
-        i.putExtra("User", myU);
         finish();
-        startActivity(i);
     }
 
     public void addFriends(View view) {

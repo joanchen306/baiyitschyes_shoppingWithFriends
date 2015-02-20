@@ -77,7 +77,7 @@ public class Login extends ActionBarActivity {
             db.login(userFile);
             if (db.isLoggedIn()) {
                 Intent i = new Intent("android.HomeScreen");
-                i.putExtra("User", myU);
+                i.putExtra("User", userFile);
                 startActivity(i);
             } else {
                 AlertDialog.Builder builder1 = new AlertDialog.Builder(context);

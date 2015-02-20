@@ -76,8 +76,8 @@ public class Registration extends ActionBarActivity {
                     if (db.isLoggedIn()) {
                         db.addUser(myU);
                         db.login(myU);
-                        Intent i = new Intent("android.HomeScreen");
-                        i.putExtra("User", myU);
+                        Intent i = new Intent("android.Login");
+                        //i.putExtra("User", myU);
                         startActivity(i);
                     } else {
                         myU = null;

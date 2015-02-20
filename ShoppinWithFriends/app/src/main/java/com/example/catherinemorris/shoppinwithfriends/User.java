@@ -17,10 +17,10 @@ public class User implements Serializable{
     private String username;
     private String password;
     private String email;
-    private long rating;
-    private long numSales;
-    private long numRate;
-    private int registered = 0;
+    private long rating = 0;
+    private long numSales = 0;
+    private long numRate = 0;
+    private int registered = -1;
 
     private UserDB db = new UserDB();
 
@@ -29,18 +29,12 @@ public class User implements Serializable{
         username = user;
         password = "pass";
         email = "basic@gmail.com";
-        rating = 0;
-        numRate = 0;
-        numSales = 0;
     }
 
     public User(String user, String pass) {
         username = user;
         password = pass;
-        rating = 0;
-        numRate = 0;
-        numSales = 0;
-        //username = user;
+        email = "basic@gmail.com";
 
 
     }
@@ -50,9 +44,6 @@ public class User implements Serializable{
         username = user;
         this.email = email;
         password = pass;
-        rating = 0;
-        numRate = 0;
-        numSales = 0;
         db.authUser(this);
     }
 

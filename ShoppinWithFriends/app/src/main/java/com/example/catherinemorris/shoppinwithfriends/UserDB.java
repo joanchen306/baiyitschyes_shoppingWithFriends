@@ -82,6 +82,9 @@ public class UserDB extends android.app.Application implements Serializable {
         queryRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot snapshot) {
+                if(snapshot == null) {
+                    return;
+                }
                 Log.d("getValue", snapshot.getValue().toString());
                 Map<String, Object> userMap = (Map<String, Object>) snapshot.getValue();
                 String username = snapshot.getKey();
@@ -153,7 +156,7 @@ public class UserDB extends android.app.Application implements Serializable {
         friendN = new ArrayList<>();
         friendN.add(username + "'s Friends: ");
 
-        queryRef.addValueEventListener(new ValueEventListener() {
+        queryRef.addListenerForSingleValueEvent(new ValueEventListener() {
 
             @Override
             public void onDataChange(DataSnapshot snapshot) {
