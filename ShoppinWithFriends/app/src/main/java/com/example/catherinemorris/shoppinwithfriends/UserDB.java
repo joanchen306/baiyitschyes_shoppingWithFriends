@@ -162,8 +162,11 @@ public class UserDB extends android.app.Application implements Serializable {
                 if (snapshot.exists()) {
                         Map<String, Object> users = (Map<String, Object>) snapshot.getValue();
                         for (Object user : users.values()) {
-                            Log.d("friend", (String) user);
-                            friendN.add((String) user);
+                            String f = (String) user;
+                            Log.d("friend", f);
+                            if (!friendN.contains(f)) {
+                                friendN.add((String) user);
+                            }
                         }
                     }
             }
@@ -177,7 +180,11 @@ public class UserDB extends android.app.Application implements Serializable {
         queryRef.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                friendN.add((String)dataSnapshot.getValue());
+                String friend = (String)dataSnapshot.getValue();
+                if (!friendN.contains(friend)) {
+                    friendN.add(friend);
+                }
+
             }
 
             @Override

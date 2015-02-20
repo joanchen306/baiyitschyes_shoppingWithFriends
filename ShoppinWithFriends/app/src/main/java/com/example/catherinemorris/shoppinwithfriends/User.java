@@ -90,7 +90,7 @@ public class User implements Serializable{
     }
 
     public void addUser(User user) {
-        friendList.add(user.getUser());
+        //friendList.add(user.getUser());
         db.addFriend(this, user.getUser());
     }
 
