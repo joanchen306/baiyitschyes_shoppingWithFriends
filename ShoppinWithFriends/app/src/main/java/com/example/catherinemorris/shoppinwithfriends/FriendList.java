@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -18,20 +19,26 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.firebase.client.ChildEventListener;
+import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
+import com.firebase.client.FirebaseError;
 import com.firebase.client.Query;
+import com.firebase.client.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Map;
 
 
 public class FriendList extends ActionBarActivity {
 
+    User myU;
     UserDB db = new UserDB();
 
     String[] myFriends;
+    ArrayList friendN = db.friendN;
 
-    User myU;
-    String username;
+
 
     private EditText mUserText;
 
@@ -39,13 +46,13 @@ public class FriendList extends ActionBarActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_friend_list);
+        Firebase.setAndroidContext(this);
 
         myU = (User) getIntent().getSerializableExtra("User");
-
-        ArrayList<User> hisFriends = myU.getFriends();
+        ArrayList<String> hisFriends = myU.getFriends();
         myFriends = new String[hisFriends.size()];
         for (int i = 0; i < hisFriends.size(); i++) {
-            myFriends[i] = hisFriends.get(i).getUser();
+            myFriends[i] = hisFriends.get(i);
         }
         ListView lv = (ListView) findViewById(R.id.friendList);
         ArrayAdapter<String> friendAdapt = new ArrayAdapter<String>(this,
@@ -54,9 +61,35 @@ public class FriendList extends ActionBarActivity {
 
         lv.setAdapter(friendAdapt);
         Firebase.setAndroidContext(this);
+        myU = db.userInfoList.get(1);
+        Log.d("f" , friendN.toString());
+
     }
 
 
+    /*protected void onListItemClick(ListView list, View view, int position, long id) {
+        // TODO Auto-generated method stub
+        super.onListItemClick(list, view, position, id);
+
+        new AlertDialog.Builder(this)
+                .setTitle("Hello")
+                .setMessage("from " + getListView().getItemAtPosition(position))
+                .setPositiveButton("OK",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {}
+                        })
+                .show();
+
+        Toast.makeText(ListviewActivity.this,
+                "ListView: " + l.toString() + "\n" +
+                        "View: " + v.toString() + "\n" +
+                        "position: " + String.valueOf(position) + "\n" +
+                        "id: " + String.valueOf(id),
+                Toast.LENGTH_LONG).show();
+    }
+>>>>>>> 748d51ae959f1d2fa890a7f95551f048331410bb
+
+    */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -94,4 +127,5 @@ public class FriendList extends ActionBarActivity {
         Log.d("Is this working?","Yes it " + un);
         mUserText.setText("");
     }
+
 }

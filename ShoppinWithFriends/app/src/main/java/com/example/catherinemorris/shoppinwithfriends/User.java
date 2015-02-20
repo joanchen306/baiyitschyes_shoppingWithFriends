@@ -12,7 +12,8 @@ import android.widget.EditText;
  * Created by James Nugent on 2/18/2015.
  */
 public class User implements Serializable{
-    private ArrayList<User> friendList = new ArrayList<>();
+    private ArrayList<User> friendMe = new ArrayList<>();
+    private ArrayList<String> friendList = new ArrayList<>();
     private String username;
     private String password;
     private String email;
@@ -33,8 +34,8 @@ public class User implements Serializable{
         numSales = 0;
     }
 
-    public User(String email, String pass) {
-        this.email = email;
+    public User(String user, String pass) {
+        username = user;
         password = pass;
         rating = 0;
         numRate = 0;
@@ -84,7 +85,7 @@ public class User implements Serializable{
         return numSales;
     }
 
-    public ArrayList<User> getFriends() {
+    public ArrayList<String> getFriends() {
         return friendList;
     }
 
@@ -101,7 +102,7 @@ public class User implements Serializable{
     }
 
     public void addUser(User user) {
-        friendList.add(user);
+        friendList.add(user.getUser());
         db.addFriend(this, user.getUser());
     }
 
