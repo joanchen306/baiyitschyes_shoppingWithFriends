@@ -11,7 +11,7 @@ import android.content.Intent;
 
 public class HomeScreen extends ActionBarActivity {
 
-    static User myU = Login.myU;
+    static User myU;
     UserDB db = new UserDB();
 
     @Override

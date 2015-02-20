@@ -7,24 +7,37 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.ArrayAdapter;
 import android.widget.Toast;
 
+import com.firebase.client.ChildEventListener;
+import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
+import com.firebase.client.FirebaseError;
 import com.firebase.client.Query;
+import com.firebase.client.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Map;
 
 
 public class FriendList extends ActionBarActivity {
 
+    User myU;
     UserDB db = new UserDB();
+
+    ArrayList friendN = db.friendN;
+
+    Firebase myFirebaseRef;
+    Firebase userArray;
 
     static final String[] myFriends = {
         "Friend 1",
@@ -40,15 +53,22 @@ public class FriendList extends ActionBarActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_friend_list);
+        Firebase.setAndroidContext(this);
 
-        setListAdapter(new ArrayAdapter < String > (this,
+        /*setListAdapter(new ArrayAdapter<String>(this,
                 android.R.layout.simple_list_item_1, myFriends));
         getListView().setTextFilterEnabled(true);
+        */
 
         Firebase.setAndroidContext(this);
+        myU = db.userInfoList.get(1);
+        Log.d("f" , friendN.toString());
+
     }
 
-    protected void onListItemClick(ListView list, View view, int position, long id) {
+
+
+    /*protected void onListItemClick(ListView list, View view, int position, long id) {
         // TODO Auto-generated method stub
         super.onListItemClick(list, view, position, id);
 
@@ -69,6 +89,7 @@ public class FriendList extends ActionBarActivity {
                 Toast.LENGTH_LONG).show();
     }
 
+    */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -98,6 +119,7 @@ public class FriendList extends ActionBarActivity {
     public void addFriends(View view) {
         mUserText = (EditText) this.findViewById(R.id.userText);
         String un = mUserText.getText().toString();
-        Login.myU.addFriend(un);
+        myU.addFriend(un);
     }
+
 }

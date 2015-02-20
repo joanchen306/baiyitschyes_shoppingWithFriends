@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
@@ -25,13 +26,14 @@ public class Login extends ActionBarActivity {
      * "foo@example.com:hello", "bar@example.com:world"
      * };
      */
+
+    UserDB db = new UserDB();
     static User myU;
     private EditText mUserView;
     private EditText mPasswordView;
 
-    final Context context = this;
 
-    UserDB db = new UserDB();
+    final Context context = this;
 
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,17 +76,7 @@ public class Login extends ActionBarActivity {
             User userFile = new User(email, password);
             db.login(userFile);
             if (db.isLoggedIn()) {
-                ArrayList<User> list = db.getdata(userFile);
-                myU = list.get(0);
-                if (myU == null) {
-                    AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
-                    builder1.setMessage("Not getting data...");
-                    builder1.setCancelable(true);
-                    AlertDialog alert11 = builder1.create();
-                    alert11.show();
-                } else {
-                    startActivity(new Intent("android.HomeScreen"));
-                }
+                startActivity(new Intent("android.HomeScreen"));
             } else {
                 AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
                 builder1.setMessage("Invalid Email Address or Password");
