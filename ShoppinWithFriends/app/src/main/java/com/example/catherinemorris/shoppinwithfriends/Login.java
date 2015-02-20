@@ -26,9 +26,9 @@ public class Login extends ActionBarActivity {
      * "foo@example.com:hello", "bar@example.com:world"
      * };
      */
+    User myU;
 
     UserDB db = new UserDB();
-    static User myU;
     private EditText mUserView;
     private EditText mPasswordView;
 
@@ -76,7 +76,9 @@ public class Login extends ActionBarActivity {
             User userFile = new User(email, password);
             db.login(userFile);
             if (db.isLoggedIn()) {
-                startActivity(new Intent("android.HomeScreen"));
+                Intent i = new Intent("android.HomeScreen");
+                i.putExtra("User", userFile);
+                startActivity(i);
             } else {
                 AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
                 builder1.setMessage("Invalid Email Address or Password");

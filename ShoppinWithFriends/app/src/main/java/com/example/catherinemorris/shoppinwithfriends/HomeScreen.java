@@ -11,13 +11,15 @@ import android.content.Intent;
 
 public class HomeScreen extends ActionBarActivity {
 
-    static User myU;
+    User myU;
     UserDB db = new UserDB();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_screen);
+
+        myU = (User) getIntent().getSerializableExtra("User");
     }
 
 
@@ -46,12 +48,14 @@ public class HomeScreen extends ActionBarActivity {
     public void sendMessageLogout(View view) {
         Button button = (Button) view;
         db.logout();
-        Login.myU = null;
         startActivity(new Intent(this, Welcome.class));
     }
 
     public void openFriends(View view) {
         Button button = (Button) view;
-        startActivity(new Intent(this, FriendList.class));
+        Intent i = new Intent("android.FriendList");
+        i.putExtra("User", myU);
+        startActivity(i);
+        //startActivity(new Intent(this, FriendList.class));
     }
 }

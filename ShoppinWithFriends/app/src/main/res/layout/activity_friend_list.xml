@@ -24,7 +24,8 @@
         android:layout_below="@+id/textView2"
         android:layout_alignParentStart="true"
         android:choiceMode="singleChoice"
-        android:layout_above="@+id/addFriends" />
+        android:layout_above="@+id/addFriends"
+        android:clickable="true" />
 
     <ScrollView
         android:layout_width="wrap_content"

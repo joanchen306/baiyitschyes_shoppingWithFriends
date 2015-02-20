@@ -16,6 +16,7 @@ import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.ArrayAdapter;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.firebase.client.ChildEventListener;
@@ -34,14 +35,8 @@ public class FriendList extends ActionBarActivity {
     User myU;
     UserDB db = new UserDB();
 
-    ArrayList friendN = db.friendN;
-
-
-    static final String[] myFriends = {
-        "Friend 1",
-        "Friend 2",
-        "Friend 3"
-    };
+    String[] myFriends = null;
+    ArrayList<String> friendN = db.friendN;
 
     private EditText mUserText;
 
@@ -51,17 +46,22 @@ public class FriendList extends ActionBarActivity {
         setContentView(R.layout.activity_friend_list);
         Firebase.setAndroidContext(this);
 
-        /*setListAdapter(new ArrayAdapter<String>(this,
-                android.R.layout.simple_list_item_1, myFriends));
-        getListView().setTextFilterEnabled(true);
-        */
+        myU = (User) getIntent().getSerializableExtra("User");
+        myFriends = new String[friendN.size()];
+        for (int i = 0; i < friendN.size(); i++) {
+            myFriends[i] = friendN.get(i);
+        }
+        ListView lv = (ListView) findViewById(R.id.friendList);
+        ArrayAdapter<String> friendAdapt = new ArrayAdapter<String>(this,
+                android.R.layout.simple_list_item_1,
+                myFriends);
 
+        lv.setAdapter(friendAdapt);
         Firebase.setAndroidContext(this);
-        myU = db.userInfoList.get(1);
+        //myU = db.userInfoList.get(1);
         Log.d("f" , friendN.toString());
 
     }
-
 
 
     /*protected void onListItemClick(ListView list, View view, int position, long id) {
@@ -84,6 +84,7 @@ public class FriendList extends ActionBarActivity {
                         "id: " + String.valueOf(id),
                 Toast.LENGTH_LONG).show();
     }
+>>>>>>> 748d51ae959f1d2fa890a7f95551f048331410bb
 
     */
     @Override
@@ -115,7 +116,9 @@ public class FriendList extends ActionBarActivity {
     public void addFriends(View view) {
         mUserText = (EditText) this.findViewById(R.id.userText);
         String un = mUserText.getText().toString();
-        myU.addFriend(un);
+        myU.addUser(new User(un));
+        Log.d("Is this working?","Yes it " + un);
+        mUserText.setText("");
     }
 
 }

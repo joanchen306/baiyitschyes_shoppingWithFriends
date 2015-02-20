@@ -27,7 +27,7 @@ public class Registration extends ActionBarActivity {
     private EditText mRePassView;
 
     UserDB db = new UserDB();
-
+    User myU;
     final Context context = this;
 
     @Override
@@ -72,13 +72,15 @@ public class Registration extends ActionBarActivity {
 
             if (mPass != null && mRePass != null) {
                 if (mPass.equals(mRePass) && mUser != null && mEmail != null) {
-                    Login.myU = new User(mUser, mEmail, mPass);
+                    myU = new User(mUser, mEmail, mPass);
                     if (db.isLoggedIn()) {
-                        db.addUser(Login.myU);
-                        db.login(Login.myU);
-                        startActivity(new Intent("android.HomeScreen"));
+                        db.addUser(myU);
+                        db.login(myU);
+                        Intent i = new Intent("android.Login");
+                        //i.putExtra("User", myU);
+                        startActivity(i);
                     } else {
-                        Login.myU = null;
+                        myU = null;
                         AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
                         builder1.setMessage("Please make sure you have entered valid email");
                         builder1.setCancelable(true);
