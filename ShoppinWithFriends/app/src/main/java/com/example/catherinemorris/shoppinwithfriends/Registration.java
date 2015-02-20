@@ -94,6 +94,10 @@ public class Registration extends ActionBarActivity {
     }
 
 
+    /**
+     * Closes the Registration Activity and returns to the Welcome screen.
+     * @param view
+     */
     public void sendMessageBack(View view) {
         Button button = (Button) view;
         finish();
