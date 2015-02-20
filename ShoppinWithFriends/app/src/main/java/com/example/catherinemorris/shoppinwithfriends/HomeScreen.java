@@ -14,6 +14,11 @@ public class HomeScreen extends ActionBarActivity {
     User myU;
     UserDB db = new UserDB();
 
+    /**
+     * Overrides onCreate to store the User who is currently logged in
+     * to myU
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,12 +50,22 @@ public class HomeScreen extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    /**
+     * Logs you out of Application. It both moves you to Welcome screen and
+     * logs you out of the database.
+     * @param view
+     */
     public void sendMessageLogout(View view) {
         Button button = (Button) view;
         db.logout();
         startActivity(new Intent(this, Welcome.class));
     }
 
+    /**
+     * Opens the FriendList activity and sends the logged in User's
+     * information to the actiity via .putExtra()
+     * @param view
+     */
     public void openFriends(View view) {
         Button button = (Button) view;
         Intent i = new Intent("android.FriendList");
