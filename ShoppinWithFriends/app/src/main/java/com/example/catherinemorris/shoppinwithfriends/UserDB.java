@@ -155,7 +155,7 @@ public class UserDB extends android.app.Application implements Serializable {
         friendN = new ArrayList<>();
         friendN.add(username + "'s Friends: ");
 
-        queryRef.addListenerForSingleValueEvent(new ValueEventListener() {
+        queryRef.addValueEventListener(new ValueEventListener() {
 
             @Override
             public void onDataChange(DataSnapshot snapshot) {
