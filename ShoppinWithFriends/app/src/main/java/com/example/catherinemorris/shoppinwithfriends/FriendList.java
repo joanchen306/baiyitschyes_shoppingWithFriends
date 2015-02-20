@@ -23,7 +23,7 @@ public class FriendList extends ActionBarActivity {
 
     UserDB db = new UserDB();
 
-    public static final String[] myFriends = {
+    static final String[] myFriends = {
         "Friend 1",
         "Friend 2",
         "Friend 3"
@@ -38,12 +38,33 @@ public class FriendList extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_friend_list);
 
-        ListView view = (ListView)findViewById(R.id.friendList);
-        //view.setAdapter(new EnhancedListAdapter(this, myFriends));
+        setListAdapter(new ArrayAdapter < String > (this,
+                android.R.layout.simple_list_item_1, myFriends));
+        getListView().setTextFilterEnabled(true);
 
         Firebase.setAndroidContext(this);
     }
 
+    protected void onListItemClick(ListView list, View view, int position, long id) {
+        // TODO Auto-generated method stub
+        super.onListItemClick(list, view, position, id);
+
+        new AlertDialog.Builder(this)
+                .setTitle("Hello")
+                .setMessage("from " + getListView().getItemAtPosition(position))
+                .setPositiveButton("OK",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {}
+                        })
+                .show();
+
+        Toast.makeText(ListviewActivity.this,
+                "ListView: " + l.toString() + "\n" +
+                        "View: " + v.toString() + "\n" +
+                        "position: " + String.valueOf(position) + "\n" +
+                        "id: " + String.valueOf(id),
+                Toast.LENGTH_LONG).show();
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
