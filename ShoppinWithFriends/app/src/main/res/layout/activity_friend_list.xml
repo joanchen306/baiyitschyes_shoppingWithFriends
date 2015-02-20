@@ -23,7 +23,8 @@
         android:id="@+id/friendList"
         android:layout_below="@+id/textView2"
         android:layout_alignParentStart="true"
-        android:choiceMode="singleChoice" />
+        android:choiceMode="singleChoice"
+        android:layout_above="@+id/addFriends" />
 
     <ScrollView
         android:layout_width="wrap_content"
@@ -40,4 +41,24 @@
         android:layout_alignParentEnd="true"
         android:clickable="true"
         android:onClick="goHomeScreen" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add Friends"
+        android:id="@+id/addFriends"
+        android:clickable="true"
+        android:onClick="addFriends"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/userText"
+        android:layout_alignParentEnd="true"
+        android:layout_alignTop="@+id/addFriends"
+        android:layout_toEndOf="@+id/addFriends"
+        android:layout_alignBottom="@+id/addFriends"
+        android:hint="Enter Username" />
 </RelativeLayout>

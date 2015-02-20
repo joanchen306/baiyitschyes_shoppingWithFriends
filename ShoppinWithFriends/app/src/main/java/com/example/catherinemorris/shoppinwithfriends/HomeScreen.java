@@ -11,6 +11,9 @@ import android.content.Intent;
 
 public class HomeScreen extends ActionBarActivity {
 
+    static User myU = Login.myU;
+    UserDB db = new UserDB();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,6 +45,8 @@ public class HomeScreen extends ActionBarActivity {
 
     public void sendMessageLogout(View view) {
         Button button = (Button) view;
+        db.logout();
+        Login.myU = null;
         startActivity(new Intent(this, Welcome.class));
     }
 

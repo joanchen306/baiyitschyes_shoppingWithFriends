@@ -9,6 +9,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.ArrayAdapter;
 
@@ -20,16 +21,17 @@ import java.util.ArrayList;
 
 public class FriendList extends ActionBarActivity {
 
+    UserDB db = new UserDB();
+
     public static final String[] myFriends = {
         "Friend 1",
         "Friend 2",
         "Friend 3"
     };
 
-    Firebase mFirebaseRef;
     String username;
-    UserSQL mydb;
-    private ListView obj;
+
+    private EditText mUserText;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -37,10 +39,9 @@ public class FriendList extends ActionBarActivity {
         setContentView(R.layout.activity_friend_list);
 
         ListView view = (ListView)findViewById(R.id.friendList);
-        view.setAdapter(new EnhancedListAdapter(this, myFriends));
+        //view.setAdapter(new EnhancedListAdapter(this, myFriends));
 
-        mFirebaseRef = new Firebase("https://baiyitschyes.firebaseio.com");
-
+        Firebase.setAndroidContext(this);
     }
 
 
@@ -66,7 +67,13 @@ public class FriendList extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void goHomeScreen() {
+    public void goHomeScreen(View view) {
         finish();
+    }
+
+    public void addFriends(View view) {
+        mUserText = (EditText) this.findViewById(R.id.userText);
+        String un = mUserText.getText().toString();
+        Login.myU.addFriend(un);
     }
 }

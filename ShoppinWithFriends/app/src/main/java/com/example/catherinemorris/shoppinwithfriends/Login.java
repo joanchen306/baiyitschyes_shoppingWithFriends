@@ -23,6 +23,7 @@ public class Login extends ActionBarActivity {
      * "foo@example.com:hello", "bar@example.com:world"
      * };
      */
+    static User myU;
     private EditText mUserView;
     private EditText mPasswordView;
 
@@ -66,7 +67,9 @@ public class Login extends ActionBarActivity {
         String user = mUserView.getText().toString();
         String password = mPasswordView.getText().toString();
 
-        db.login(new User(user, password));
+        User userFile = new User(user, password);
+        db.login(userFile);
+        myU = db.getdata(userFile);
         if (db.isLoggedIn()) {
             startActivity(new Intent("android.HomeScreen"));
         } else {

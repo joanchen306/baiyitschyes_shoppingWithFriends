@@ -4,6 +4,7 @@ import com.firebase.client.Firebase;
 
 import java.util.ArrayList;
 import android.content.Context;
+import android.widget.EditText;
 
 /**
  * Created by James Nugent on 2/18/2015.
@@ -13,16 +14,19 @@ public class User {
     private String username;
     private String password;
     private String email;
-    private int rating;
-    private int numSales;
-    private int numRate;
+    private long rating;
+    private long numSales;
+    private long numRate;
+    private int registered = 0;
 
     private UserDB db = new UserDB();
+
 
 
     public User(String email, String pass) {
         this.email = email;
         password = pass;
+
     }
 
 
@@ -38,7 +42,7 @@ public class User {
     }
 
     //use to create the Array of Users
-    public User(String user, String email, String pass, int ra, int nSales) {
+    public User(String user, String email, String pass, long ra, long nSales) {
         username = user;
         this.email = email;
         password = pass;
@@ -58,11 +62,11 @@ public class User {
         return password;
     }
 
-    public int getRate() {
+    public long getRate() {
         return rating;
     }
 
-    public int getNumSales() {
+    public long getNumSales() {
         return numSales;
     }
 
@@ -70,18 +74,32 @@ public class User {
         return friendList;
     }
 
+    public int getRegistered() { return registered; }
+
     public void addSale() {
         numSales++;
     }
 
     public void addRate(int rate) {
-        int totRate = rate + numRate * rating;
+        long totRate = rate + numRate * rating;
         numRate++;
         rating = totRate / numRate;
     }
 
-    public void addFriend(String username, User newU) {
-        db.addFriend(username, newU);
+    public void addUser(User user) {
+
+    }
+
+    public void addFriend(String u) {
+        db.addFriend(email, u);
+    }
+
+    public void login() {
+
+    }
+
+    public void logout() {
+        db.logout();
     }
 
     public boolean deleteFriend(User deleteU) {
