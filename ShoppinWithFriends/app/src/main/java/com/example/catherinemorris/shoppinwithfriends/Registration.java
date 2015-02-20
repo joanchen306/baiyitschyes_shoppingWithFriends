@@ -72,13 +72,13 @@ public class Registration extends ActionBarActivity {
 
             if (mPass != null && mRePass != null) {
                 if (mPass.equals(mRePass) && mUser != null && mEmail != null) {
-                    User u = new User(mUser, mEmail, mPass);
-                    db.addUser(u);
+                    Login.myU = new User(mUser, mEmail, mPass);
                     if (db.isLoggedIn()) {
-                        db.login(u);
-                        Login.myU = u;
+                        db.addUser(Login.myU);
+                        db.login(Login.myU);
                         startActivity(new Intent("android.HomeScreen"));
                     } else {
+                        Login.myU = null;
                         AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
                         builder1.setMessage("Please make sure you have entered valid email");
                         builder1.setCancelable(true);

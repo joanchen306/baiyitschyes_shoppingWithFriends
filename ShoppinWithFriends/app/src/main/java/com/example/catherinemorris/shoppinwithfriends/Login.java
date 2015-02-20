@@ -15,6 +15,8 @@ import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
 import com.firebase.client.AuthData;
 
+import java.util.ArrayList;
+
 
 public class Login extends ActionBarActivity {
 
@@ -64,20 +66,32 @@ public class Login extends ActionBarActivity {
         mUserView = (EditText) this.findViewById(R.id.UserField);
         mPasswordView = (EditText) this.findViewById(R.id.PassField);
 
-        String user = mUserView.getText().toString();
+        String email = mUserView.getText().toString();
         String password = mPasswordView.getText().toString();
 
-        User userFile = new User(user, password);
-        db.login(userFile);
-        myU = db.getdata(userFile);
-        if (db.isLoggedIn()) {
-            startActivity(new Intent("android.HomeScreen"));
-        } else {
-            AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
-            builder1.setMessage("Invalid Email Address or Password");
-            builder1.setCancelable(true);
-            AlertDialog alert11 = builder1.create();
-            alert11.show();
+
+        if (!email.equals("") && !password.equals("")) {
+            User userFile = new User(email, password);
+            db.login(userFile);
+            if (db.isLoggedIn()) {
+                ArrayList<User> list = db.getdata(userFile);
+                myU = list.get(0);
+                if (myU == null) {
+                    AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
+                    builder1.setMessage("Not getting data...");
+                    builder1.setCancelable(true);
+                    AlertDialog alert11 = builder1.create();
+                    alert11.show();
+                } else {
+                    startActivity(new Intent("android.HomeScreen"));
+                }
+            } else {
+                AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
+                builder1.setMessage("Invalid Email Address or Password");
+                builder1.setCancelable(true);
+                AlertDialog alert11 = builder1.create();
+                alert11.show();
+            }
         }
     }
 }

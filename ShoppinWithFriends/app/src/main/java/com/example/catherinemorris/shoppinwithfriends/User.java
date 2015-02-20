@@ -38,7 +38,6 @@ public class User {
         numRate = 0;
         numSales = 0;
         db.authUser(this);
-        db.addUser(this);
     }
 
     //use to create the Array of Users
@@ -91,7 +90,7 @@ public class User {
     }
 
     public void addFriend(String u) {
-        db.addFriend(email, u);
+        db.addFriend(this, u);
     }
 
     public void login() {
