@@ -36,16 +36,12 @@ public class FriendList extends ActionBarActivity {
 
     ArrayList friendN = db.friendN;
 
-    Firebase myFirebaseRef;
-    Firebase userArray;
 
     static final String[] myFriends = {
         "Friend 1",
         "Friend 2",
         "Friend 3"
     };
-
-    String username;
 
     private EditText mUserText;
 

@@ -17,7 +17,6 @@ public class User {
     private long rating;
     private long numSales;
     private long numRate;
-    private int registered = 0;
 
     private UserDB db = new UserDB();
 
@@ -72,8 +71,6 @@ public class User {
     public ArrayList<String> getFriends() {
         return friendList;
     }
-
-    public int getRegistered() { return registered; }
 
     public void addSale() {
         numSales++;

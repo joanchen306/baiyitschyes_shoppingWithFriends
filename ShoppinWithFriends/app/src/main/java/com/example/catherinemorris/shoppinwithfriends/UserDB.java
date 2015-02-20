@@ -139,27 +139,26 @@ public class UserDB extends android.app.Application  {
             public void onCancelled(FirebaseError firebaseError) {
             }
         });
-
     }
 
-    public void getFriends(String username) {
+    public void getFriends(final String username) {
         myFirebaseRef = new Firebase("https://baiyitschyes.firebaseio.com");
         Query queryRef = myFirebaseRef.child("userInfo").child(username).child("friends").orderByKey();
 
         friendN = new ArrayList<>();
         friendN.add(username + "'s Friends: ");
 
-        queryRef.addValueEventListener(new ValueEventListener() {
+        queryRef.addListenerForSingleValueEvent(new ValueEventListener() {
 
             @Override
             public void onDataChange(DataSnapshot snapshot) {
                 if (snapshot.exists()) {
-                    Map<String, Object> users = (Map<String, Object>) snapshot.getValue();
-                    for (Object user : users.values()) {
-                        Log.d("friend", (String) user);
-                        friendN.add((String) user);
+                        Map<String, Object> users = (Map<String, Object>) snapshot.getValue();
+                        for (Object user : users.values()) {
+                            Log.d("friend", (String) user);
+                            friendN.add((String) user);
+                        }
                     }
-                }
             }
 
             @Override
@@ -171,7 +170,7 @@ public class UserDB extends android.app.Application  {
         queryRef.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-
+                friendN.add((String)dataSnapshot.getValue());
             }
 
             @Override
@@ -194,6 +193,8 @@ public class UserDB extends android.app.Application  {
 
             }
         });
+
+        friendN.remove(0);
     }
 
 
@@ -201,6 +202,7 @@ public class UserDB extends android.app.Application  {
     public void logout() {
         loggedIn = false;
         userInfoList = null;
+        friendN = null;
     }
 
     public boolean isLoggedIn() {
