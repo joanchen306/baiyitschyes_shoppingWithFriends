@@ -46,6 +46,10 @@ public class UserDB extends android.app.Application implements Serializable {
         Firebase.setAndroidContext(this);
     }
 
+    /**
+     * Creates a new User account in the database and logs that User in
+     * @param u
+     */
     public void authUser(final User u) {
         myFirebaseRef = new Firebase("https://baiyitschyes.firebaseio.com");
         myFirebaseRef.createUser(u.getEmail(), u.getPassWord(), new Firebase.ValueResultHandler<Map<String, Object>>() {
@@ -63,12 +67,21 @@ public class UserDB extends android.app.Application implements Serializable {
         });
     }
 
+    /**
+     * Adds a User to the database
+     * @param u
+     */
     public void addUser(User u) {
         myFirebaseRef = new Firebase("https://baiyitschyes.firebaseio.com");
         Firebase userRef = myFirebaseRef.child("userInfo");
         userRef.child(u.getUser()).setValue(u);
     }
 
+
+    /**
+     * Stores all the User's info in the respective fields of the database
+     * @param u
+     */
     public void login(User u) {
         Firebase myFirebaseRef = new Firebase("https://baiyitschyes.firebaseio.com");
         Query queryRef = myFirebaseRef.child("userInfo").child(u.getUser());
@@ -121,7 +134,12 @@ public class UserDB extends android.app.Application implements Serializable {
         getFriends(u.getUser());
     }
 
-
+    /**
+     * Adds a String name of a friend to the respective field in the current User's
+     * field of the database.
+     * @param u
+     * @param friend
+     */
     public void addFriend(final User u, final String friend) {
         myFirebaseRef = new Firebase("https://baiyitschyes.firebaseio.com");
         Query queryRef = myFirebaseRef.child("userInfo").orderByChild("user").equalTo(friend);
@@ -148,6 +166,10 @@ public class UserDB extends android.app.Application implements Serializable {
         });
     }
 
+    /**
+     * Returns an ArrayList of Strings of all the friend's a given User has.
+     * @param username
+     */
     public void getFriends(final String username) {
         myFirebaseRef = new Firebase("https://baiyitschyes.firebaseio.com");
         Query queryRef = myFirebaseRef.child("userInfo").child(username).child("friends").orderByKey();
@@ -212,17 +234,28 @@ public class UserDB extends android.app.Application implements Serializable {
     }
 
 
-
+    /**
+     * Logs the user out of being the current user in the app, and deauthorizes
+     * said user.
+     */
     public void logout() {
         loggedIn = false;
         userInfoList = null;
         friendN = null;
     }
 
+    /**
+     * Returns whether or not a user is logged in to the App
+     * @return
+     */
     public boolean isLoggedIn() {
         return loggedIn;
     }
 
+    /**
+     * Returns a negative number if the user is not registered with the database
+     * @return
+     */
     public int getRegistered() { return registered; }
 
     private static final long serialVersionUID = 7526471155622776147L;

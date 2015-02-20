@@ -40,6 +40,12 @@ public class FriendList extends ActionBarActivity {
 
     private EditText mUserText;
 
+    /**
+     * Overrides onCreate() to store the User who is currently logged in into
+     * myU. Creates a String array by parsing through the stored friendList in
+     * the database. Puts that String array into the ListView.
+     * @param savedInstanceState
+     */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,30 +69,6 @@ public class FriendList extends ActionBarActivity {
 
     }
 
-
-    /*protected void onListItemClick(ListView list, View view, int position, long id) {
-        // TODO Auto-generated method stub
-        super.onListItemClick(list, view, position, id);
-
-        new AlertDialog.Builder(this)
-                .setTitle("Hello")
-                .setMessage("from " + getListView().getItemAtPosition(position))
-                .setPositiveButton("OK",
-                        new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int which) {}
-                        })
-                .show();
-
-        Toast.makeText(ListviewActivity.this,
-                "ListView: " + l.toString() + "\n" +
-                        "View: " + v.toString() + "\n" +
-                        "position: " + String.valueOf(position) + "\n" +
-                        "id: " + String.valueOf(id),
-                Toast.LENGTH_LONG).show();
-    }
->>>>>>> 748d51ae959f1d2fa890a7f95551f048331410bb
-
-    */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -109,10 +91,19 @@ public class FriendList extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    /**
+     * CLoses the current Activity
+     * @param view
+     */
     public void goHomeScreen(View view) {
         finish();
     }
 
+    /**
+     * Finds the string stored in the Edit Text. Adds the User that has that
+     * username to User's friendList. Sets the text back to null.
+     * @param view
+     */
     public void addFriends(View view) {
         mUserText = (EditText) this.findViewById(R.id.userText);
         String un = mUserText.getText().toString();
