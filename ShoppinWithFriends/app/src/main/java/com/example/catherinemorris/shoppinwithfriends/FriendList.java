@@ -7,6 +7,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -14,6 +15,7 @@ import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.ArrayAdapter;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.firebase.client.Firebase;
@@ -26,12 +28,9 @@ public class FriendList extends ActionBarActivity {
 
     UserDB db = new UserDB();
 
-    static final String[] myFriends = {
-        "Friend 1",
-        "Friend 2",
-        "Friend 3"
-    };
+    String[] myFriends;
 
+    User myU;
     String username;
 
     private EditText mUserText;
@@ -41,33 +40,22 @@ public class FriendList extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_friend_list);
 
-        setListAdapter(new ArrayAdapter < String > (this,
-                android.R.layout.simple_list_item_1, myFriends));
-        getListView().setTextFilterEnabled(true);
+        myU = (User) getIntent().getSerializableExtra("User");
 
+        ArrayList<User> hisFriends = myU.getFriends();
+        myFriends = new String[hisFriends.size()];
+        for (int i = 0; i < hisFriends.size(); i++) {
+            myFriends[i] = hisFriends.get(i).getUser();
+        }
+        ListView lv = (ListView) findViewById(R.id.friendList);
+        ArrayAdapter<String> friendAdapt = new ArrayAdapter<String>(this,
+                android.R.layout.simple_list_item_1,
+                myFriends);
+
+        lv.setAdapter(friendAdapt);
         Firebase.setAndroidContext(this);
     }
 
-    protected void onListItemClick(ListView list, View view, int position, long id) {
-        // TODO Auto-generated method stub
-        super.onListItemClick(list, view, position, id);
-
-        new AlertDialog.Builder(this)
-                .setTitle("Hello")
-                .setMessage("from " + getListView().getItemAtPosition(position))
-                .setPositiveButton("OK",
-                        new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int which) {}
-                        })
-                .show();
-
-        Toast.makeText(ListviewActivity.this,
-                "ListView: " + l.toString() + "\n" +
-                        "View: " + v.toString() + "\n" +
-                        "position: " + String.valueOf(position) + "\n" +
-                        "id: " + String.valueOf(id),
-                Toast.LENGTH_LONG).show();
-    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -92,12 +80,18 @@ public class FriendList extends ActionBarActivity {
     }
 
     public void goHomeScreen(View view) {
+
+        Intent i = new Intent("android.HomeScreen");
+        i.putExtra("User", myU);
         finish();
+        startActivity(i);
     }
 
     public void addFriends(View view) {
         mUserText = (EditText) this.findViewById(R.id.userText);
         String un = mUserText.getText().toString();
-        Login.myU.addFriend(un);
+        myU.addUser(new User(un));
+        Log.d("Is this working?","Yes it " + un);
+        mUserText.setText("");
     }
 }

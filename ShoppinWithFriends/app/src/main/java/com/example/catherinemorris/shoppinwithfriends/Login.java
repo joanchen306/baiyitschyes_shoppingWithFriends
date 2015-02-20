@@ -25,7 +25,7 @@ public class Login extends ActionBarActivity {
      * "foo@example.com:hello", "bar@example.com:world"
      * };
      */
-    static User myU;
+    User myU;
     private EditText mUserView;
     private EditText mPasswordView;
 
@@ -83,7 +83,9 @@ public class Login extends ActionBarActivity {
                     AlertDialog alert11 = builder1.create();
                     alert11.show();
                 } else {
-                    startActivity(new Intent("android.HomeScreen"));
+                    Intent i = new Intent("android.HomeScreen");
+                    i.putExtra("User", myU);
+                    startActivity(i);
                 }
             } else {
                 AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
