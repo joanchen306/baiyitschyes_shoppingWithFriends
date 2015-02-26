@@ -50,17 +50,17 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="   Username"
-        android:id="@+id/textView4"
+        android:text="username"
+        android:id="@+id/currentUsername"
         android:layout_above="@+id/textView6"
-        android:layout_alignStart="@+id/ratingBar" />
+        android:layout_alignParentStart="true" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Medium Text"
-        android:id="@+id/textView8"
+        android:id="@+id/currentRating"
         android:layout_above="@+id/ratingBar"
         android:layout_toEndOf="@+id/textView7" />
 
@@ -68,9 +68,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="showUsername"
-        android:id="@+id/textView5"
-        android:layout_below="@+id/textView4"
+        android:text="email"
+        android:id="@+id/currentEmail"
+        android:layout_below="@+id/currentUsername"
         android:layout_toEndOf="@+id/textView6" />
 
 </RelativeLayout>

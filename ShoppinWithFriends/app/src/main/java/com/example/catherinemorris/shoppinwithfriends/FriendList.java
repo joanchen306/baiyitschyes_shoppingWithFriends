@@ -30,6 +30,7 @@ import java.util.ArrayList;
 import java.util.Map;
 
 
+
 public class FriendList extends ActionBarActivity {
 
     User myU;
@@ -67,6 +68,12 @@ public class FriendList extends ActionBarActivity {
         //myU = db.userInfoList.get(1);
         Log.d("f" , friendN.toString());
 
+        lv.setOnClickListener( new ListView.OnClickListener() {
+                    public void onClick(View view) {
+                        startActivity(new Intent("activity_profile.xml"));
+                    }
+                }
+        );
     }
 
     @Override
