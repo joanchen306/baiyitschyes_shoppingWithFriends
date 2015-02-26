@@ -24,33 +24,6 @@ public class Profile extends ActionBarActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
-        Firebase.setAndroidContext(this);
-        myU = (User) getIntent().getSerializableExtra("User");
 
-        final String username = myU.getCurrentFriend();
-        Firebase myFirebaseRef = new Firebase("https://baiyitschyes.firebaseio.com");
-        Query queryRef = myFirebaseRef.child("userInfo").orderByChild("user").equalTo(username);
-        queryRef.addListenerForSingleValueEvent(new ValueEventListener() {
-
-            @Override
-            public void onDataChange(DataSnapshot snapshot) {
-                Map<String, Object> infoMap = (Map<String, Object>) snapshot.getValue();
-                String email = (String) infoMap.remove("email");
-                long rate = (long) infoMap.remove("rate");
-
-                TextView currentUsername = (TextView)findViewById(R.id.currentUsername);
-                currentUsername.setText(username);
-
-                TextView currentEmail = (TextView)findViewById(R.id.currentEmail);
-                currentEmail.setText(email);
-;
-                TextView currentRating = (TextView)findViewById(R.id.currentRating);
-                currentRating.setText(""+rate);
-            }
-
-            @Override
-            public void onCancelled(FirebaseError firebaseError) {
-            }
-        });
     }
 }

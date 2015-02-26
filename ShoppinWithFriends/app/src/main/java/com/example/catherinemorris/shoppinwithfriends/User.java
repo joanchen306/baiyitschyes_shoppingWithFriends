@@ -23,8 +23,6 @@ public class User implements Serializable{
     private long numSales = 0;
     private long numRate = 0;
 
-    private String currentFriend;
-
     private UserDB db = new UserDB();
 
     /**
@@ -122,10 +120,6 @@ public class User implements Serializable{
     public ArrayList<String> getFriends() {
         return friendList;
     }
-
-    public void setCurrentFriend(String friend) { currentFriend = friend; }
-
-    public String getCurrentFriend() { return currentFriend;}
 
     /**
      * Increments sale counter
