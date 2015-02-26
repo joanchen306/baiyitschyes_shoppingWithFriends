@@ -80,9 +80,6 @@ public class FriendList extends ActionBarActivity {
                 Intent i = new Intent("android.Profile");
                 i.putExtra("Friend", friend);
                 startActivity(i);
-
-
-
             }
 
         });
