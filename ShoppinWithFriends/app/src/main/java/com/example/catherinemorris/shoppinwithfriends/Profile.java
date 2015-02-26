@@ -5,12 +5,14 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
+import android.widget.RatingBar;
 
 
 public class Profile extends ActionBarActivity {
 
     User myU;
     UserDB db = new UserDB();
+    private RatingBar ratingBar;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
