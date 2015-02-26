@@ -137,7 +137,7 @@ public class UserDB extends android.app.Application implements Serializable {
             public void onDataChange(DataSnapshot snapshot) {
                 if (snapshot.exists()) {
                     if (myFirebaseRef.child("userInfo").child(username).child("friends").equals(null)) {
-                        myFirebaseRef.child("userInfo").child(username).child("friends").child("name").setValue(friend);
+                        myFirebaseRef.child("userInfo").child(username).child("friends").child(friend).setValue(friend);
                     } else {
                         Firebase friendRef = myFirebaseRef.child("userInfo").child(username).child("friends");
                         Map<String, Object> friends = new HashMap<String, Object>();
@@ -163,10 +163,7 @@ public class UserDB extends android.app.Application implements Serializable {
             @Override
             public void onDataChange(DataSnapshot snapshot) {
                 if (snapshot.exists()) {
-                    Map<String, Object> friends = new HashMap<String, Object>();
-                    friends.remove(friend);
-                    Log.d("new friend list:", friends.toString());
-                    friendRef.updateChildren(friends);
+                    friendRef.setValue(null);
                 }
             }
 
