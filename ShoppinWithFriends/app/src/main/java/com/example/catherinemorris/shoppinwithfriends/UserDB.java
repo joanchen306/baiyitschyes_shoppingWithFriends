@@ -96,33 +96,6 @@ public class UserDB extends android.app.Application implements Serializable {
      * @param u
      */
     public void login(User u) {
-        Firebase myFirebaseRef = new Firebase("https://baiyitschyes.firebaseio.com");
-        Query queryRef = myFirebaseRef.child("userInfo").child(u.getUser());
-
-        final String pass = u.getPassWord();
-        Log.d("email is", u.getUser());
-
-
-        queryRef.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot snapshot) {
-                if(snapshot == null || snapshot.getValue() == null) {
-
-                } else {
-                    Map<String, Object> userMap = (Map<String, Object>) snapshot.getValue();
-                    String password = (String) userMap.remove("passWord");
-                    if (pass.equals(password)) {
-                        counter++;
-                    }
-                }
-            }
-
-            @Override
-            public void onCancelled(FirebaseError firebaseError) {
-            }
-        });
-
-        getFriends(u.getUser());
     }
 
     public void getUserInfo(final String username) {

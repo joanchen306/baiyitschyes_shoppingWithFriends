@@ -7,6 +7,14 @@ import android.view.MenuItem;
 import android.widget.TextView;
 import android.widget.RatingBar;
 
+import com.firebase.client.DataSnapshot;
+import com.firebase.client.Firebase;
+import com.firebase.client.FirebaseError;
+import com.firebase.client.Query;
+import com.firebase.client.ValueEventListener;
+
+import java.util.Map;
+
 
 public class Profile extends ActionBarActivity {
 
@@ -18,21 +26,34 @@ public class Profile extends ActionBarActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
-//        myU = (User) getIntent().getSerializableExtra("User");
+        Firebase.setAndroidContext(this);
 
-//        String username = myU.getUser();
-        String username = "MyUsername";
-        TextView currentUsername = (TextView)findViewById(R.id.currentUsername);
-        currentUsername.setText(username);
+        myU = (User) getIntent().getSerializableExtra("User");
 
-//        String email = myU.getEmail();
-        String email = "email@gmail.com";
-        TextView currentEmail = (TextView)findViewById(R.id.currentEmail);
-        currentEmail.setText(email);
+        //final String username = getIntent().getStringExtra("Friend");
+        Firebase myFirebaseRef = new Firebase("https://baiyitschyes.firebaseio.com");
+        Query queryRef = myFirebaseRef.child("userInfo").orderByChild("user").equalTo("annoyingOrange");
+        queryRef.addListenerForSingleValueEvent(new ValueEventListener() {
 
-//        String rating = "" + myU.getRate();
-        String rating = "10";
-        TextView currentRating = (TextView)findViewById(R.id.currentRating);
-        currentRating.setText(rating);
+            @Override
+            public void onDataChange(DataSnapshot snapshot) {
+                Map<String, Object> infoMap = (Map<String, Object>) snapshot.getValue();
+                String email = (String) infoMap.remove("email");
+                long rate = (long) infoMap.remove("rate");
+
+                TextView currentUsername = (TextView)findViewById(R.id.currentUsername);
+                currentUsername.setText("annoyingOrange");
+
+                TextView currentEmail = (TextView)findViewById(R.id.currentEmail);
+                currentEmail.setText(email);
+                ;
+                TextView currentRating = (TextView)findViewById(R.id.currentRating);
+                currentRating.setText(""+rate);
+            }
+
+            @Override
+            public void onCancelled(FirebaseError firebaseError) {
+            }
+        });
     }
 }
