@@ -71,6 +71,7 @@ public class UserDB extends android.app.Application implements Serializable {
      * Adds a User to the database
      * @param u
      */
+
     public void addUser(User u) {
         myFirebaseRef = new Firebase("https://baiyitschyes.firebaseio.com");
         Firebase userRef = myFirebaseRef.child("userInfo");
@@ -78,6 +79,7 @@ public class UserDB extends android.app.Application implements Serializable {
     }
 
     public void deleteUser(User u) {
+        Log.d("UserDB deleteUser is called", "" + u);
         myFirebaseRef = new Firebase("https://baiyitschyes.firebaseio.com");
         Firebase userRef = myFirebaseRef.child("userInfo");
         Map<String, Object> users = new HashMap<String, Object>();
@@ -178,8 +180,7 @@ public class UserDB extends android.app.Application implements Serializable {
         myFirebaseRef = new Firebase("https://baiyitschyes.firebaseio.com");
         final String username = u.getUser();
         final Firebase friendRef = myFirebaseRef.child("userInfo").child(username).child("friends").child(friend);
-
-        Log.d("Delet friend from DB:", friend);
+        Log.d("UserDB deleteFriend is called", friend);
 
         friendRef.addValueEventListener(new ValueEventListener() {
             @Override

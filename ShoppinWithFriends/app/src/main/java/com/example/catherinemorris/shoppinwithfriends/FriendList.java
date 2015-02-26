@@ -126,8 +126,10 @@ public class FriendList extends ActionBarActivity {
     public void deleteFriends(View view) {
         mUserText = (EditText) this.findViewById(R.id.userText);
         String un = mUserText.getText().toString();
+        friendN.remove(un);
         myU.deleteUser(new User(un));
-        Log.d("Is this working?","Yes it " + un);
+        myU.deleteFriend(new User(un));
+        Log.d("deleteFriends is called", un);
         mUserText.setText("");
         friendN = db.friendN;
         myFriends = new String[friendN.size()];
