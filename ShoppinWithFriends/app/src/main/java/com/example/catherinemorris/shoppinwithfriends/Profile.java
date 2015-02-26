@@ -17,21 +17,15 @@ public class Profile extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
         myU = (User) getIntent().getSerializableExtra("User");
-    }
 
-    public void showUsername() {
         String username = myU.getUser();
         TextView currentUsername = (TextView)findViewById(R.id.currentUsername);
         currentUsername.setText(username);
-    }
 
-    public void showEmail() {
         String email = myU.getEmail();
         TextView currentEmail = (TextView)findViewById(R.id.currentEmail);
         currentEmail.setText(email);
-    }
 
-    public void showRating() {
         String rating = "" + myU.getRate();
         TextView currentRating = (TextView)findViewById(R.id.currentRating);
         currentRating.setText(rating);
