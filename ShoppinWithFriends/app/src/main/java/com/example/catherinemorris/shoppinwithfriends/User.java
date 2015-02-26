@@ -6,6 +6,7 @@ import java.io.Serializable;
 import java.io.*;
 import java.util.ArrayList;
 import android.content.Context;
+import android.util.Log;
 import android.widget.EditText;
 
 /**
@@ -142,6 +143,12 @@ public class User implements Serializable{
     public void addUser(User user) {
         //friendList.add(user.getUser());
         db.addFriend(this, user.getUser());
+    }
+
+    public void deleteUser(User user) {
+        //friendList.remove(user.getUser());
+        Log.d("User deleteUser is called", "" + user);
+        db.deleteFriend(this, user.getUser());
     }
 
     public void login() {
