@@ -9,5 +9,7 @@
     <string name="title_activity_registration">Registration</string>
     <string name="title_activity_home_screen">HomeScreen</string>
     <string name="title_activity_friend_list">FriendList</string>
+    <string name="title_activity_profile_screen">ProfileScreen</string>
+    <string name="title_activity_profile">Profile</string>
 
 </resources>

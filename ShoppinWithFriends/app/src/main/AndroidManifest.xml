@@ -83,9 +83,18 @@
 
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
+
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="FriendList" />
+        </activity>
+        <activity
+            android:name=".ProfileScreen"
+            android:label="@string/title_activity_profile_screen" >
+        </activity>
+        <activity
+            android:name=".Profile"
+            android:label="@string/title_activity_profile" >
         </activity>
     </application>
 

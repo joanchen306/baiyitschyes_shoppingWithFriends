@@ -4,6 +4,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 import android.widget.RatingBar;
 
@@ -23,7 +24,7 @@ public class Profile extends ActionBarActivity {
     private RatingBar ratingBar;
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
         Firebase.setAndroidContext(this);
@@ -41,19 +42,41 @@ public class Profile extends ActionBarActivity {
                 String email = (String) infoMap.remove("email");
                 long rate = (long) infoMap.remove("rate");
 
-                TextView currentUsername = (TextView)findViewById(R.id.currentUsername);
+                TextView currentUsername = (TextView) findViewById(R.id.currentUsername);
                 currentUsername.setText("annoyingOrange");
 
-                TextView currentEmail = (TextView)findViewById(R.id.currentEmail);
+                TextView currentEmail = (TextView) findViewById(R.id.currentEmail);
                 currentEmail.setText(email);
-                ;
-                TextView currentRating = (TextView)findViewById(R.id.currentRating);
-                currentRating.setText(""+rate);
-            }
 
-            @Override
-            public void onCancelled(FirebaseError firebaseError) {
+                TextView currentRating = (TextView) findViewById(R.id.currentRating);
+                currentRating.setText("" + rate);
             }
-        });
+                @Override
+                public void onCancelled(FirebaseError firebaseError) {
+                }
+            });
+    }
+
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_profile, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_settings) {
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 }
