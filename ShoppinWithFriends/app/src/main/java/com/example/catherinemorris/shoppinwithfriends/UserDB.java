@@ -77,6 +77,14 @@ public class UserDB extends android.app.Application implements Serializable {
         userRef.child(u.getUser()).setValue(u);
     }
 
+    public void deleteUser(User u) {
+        myFirebaseRef = new Firebase("https://baiyitschyes.firebaseio.com");
+        Firebase userRef = myFirebaseRef.child("userInfo");
+        Map<String, Object> users = new HashMap<String, Object>();
+        users.remove(u.getUser());
+        userRef.child(u.getUser()).updateChildren(users);
+    }
+
 
     /**
      * Stores all the User's info in the respective fields of the database
@@ -157,6 +165,30 @@ public class UserDB extends android.app.Application implements Serializable {
                         friends.put(friend, friend);
                         friendRef.updateChildren(friends);
                     }
+                }
+            }
+
+            @Override
+            public void onCancelled(FirebaseError firebaseError) {
+            }
+        });
+    }
+
+    public void deleteFriend(final User u, final String friend) {
+        myFirebaseRef = new Firebase("https://baiyitschyes.firebaseio.com");
+        final String username = u.getUser();
+        final Firebase friendRef = myFirebaseRef.child("userInfo").child(username).child("friends").child(friend);
+
+        Log.d("Delet friend from DB:", friend);
+
+        friendRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot snapshot) {
+                if (snapshot.exists()) {
+                    Map<String, Object> friends = new HashMap<String, Object>();
+                    friends.remove(friend);
+                    Log.d("new friend list:", friends.toString());
+                    friendRef.updateChildren(friends);
                 }
             }
 

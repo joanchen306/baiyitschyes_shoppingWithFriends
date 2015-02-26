@@ -144,6 +144,11 @@ public class User implements Serializable{
         db.addFriend(this, user.getUser());
     }
 
+    public void deleteUser(User user) {
+        //friendList.remove(user.getUser());
+        db.deleteFriend(this, user.getUser());
+    }
+
     public void login() {
 
     }
