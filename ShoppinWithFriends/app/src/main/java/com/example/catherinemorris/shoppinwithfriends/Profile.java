@@ -4,6 +4,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 
 public class Profile extends ActionBarActivity {
@@ -18,14 +19,21 @@ public class Profile extends ActionBarActivity {
         myU = (User) getIntent().getSerializableExtra("User");
     }
 
-//    @Override
-//    public boolean onCreateOptionsMenu(Menu menu) {
-//        getMenuInflater().inflate(R.menu.menu_profile, menu);
-//        return true;
-//    }
-
-    public String showUsername() {
+    public void showUsername() {
         String username = myU.getUser();
-        return username;
+        TextView currentUsername = (TextView)findViewById(R.id.currentUsername);
+        currentUsername.setText(username);
+    }
+
+    public void showEmail() {
+        String email = myU.getEmail();
+        TextView currentEmail = (TextView)findViewById(R.id.currentEmail);
+        currentEmail.setText(email);
+    }
+
+    public void showRating() {
+        String rating = "" + myU.getRate();
+        TextView currentRating = (TextView)findViewById(R.id.currentRating);
+        currentRating.setText(rating);
     }
 }
