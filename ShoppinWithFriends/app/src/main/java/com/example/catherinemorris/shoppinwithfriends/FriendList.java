@@ -30,6 +30,7 @@ import com.firebase.client.ValueEventListener;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import android.widget.AdapterView.OnItemClickListener;
 
 public class FriendList extends ActionBarActivity {
 
@@ -62,7 +63,7 @@ public class FriendList extends ActionBarActivity {
         for (int i = 0; i < friendN.size(); i++) {
             myFriends[i] = friendN.get(i);
         }
-        ListView lv = (ListView) findViewById(R.id.friendList);
+        final ListView lv = (ListView) findViewById(R.id.friendList);
         ArrayAdapter<String> friendAdapt = new ArrayAdapter<String>(this,
                 android.R.layout.simple_list_item_1,
                 myFriends);
@@ -71,14 +72,24 @@ public class FriendList extends ActionBarActivity {
         Firebase.setAndroidContext(this);
         //myU = db.userInfoList.get(1);
         Log.d("f" , friendN.toString());
+
+        lv.setOnItemClickListener(new OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                String friend = (String) lv.getItemAtPosition(position);
+                Intent i = new Intent("android.Profile");
+                i.putExtra("Friend", friend);
+                startActivity(i);
+
+
+
+            }
+
+        });
+
     }
 
-    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        String friend = this.friendN.get(position);
-        Intent i = new Intent("android.Profile");
-        i.putExtra("Friend", friend);
-        startActivity(i);
-    }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
