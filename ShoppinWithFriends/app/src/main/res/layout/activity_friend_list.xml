@@ -51,7 +51,8 @@
         android:clickable="true"
         android:onClick="addFriends"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:nestedScrollingEnabled="false" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -62,4 +63,16 @@
         android:layout_toEndOf="@+id/addFriends"
         android:layout_alignBottom="@+id/addFriends"
         android:hint="Enter Username" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Delete Friend"
+        android:id="@+id/deleteUser"
+        android:layout_alignBottom="@+id/friendList"
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="76dp"
+        android:clickable="true"
+        android:nestedScrollingEnabled="false"
+        android:onClick="deleteFriends" />
 </RelativeLayout>

@@ -1,9 +1,7 @@
 package com.example.catherinemorris.shoppinwithfriends;
 
 
-import android.app.AlertDialog;
 import android.util.Log;
-import android.widget.Toast;
 
 import com.firebase.client.ChildEventListener;
 import com.firebase.client.DataSnapshot;
@@ -11,20 +9,13 @@ import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
 import com.firebase.client.Query;
 import com.firebase.client.ValueEventListener;
-import com.firebase.client.MutableData;
-import com.firebase.client.AuthData;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
-import java.util.Collections;
-import java.util.regex.Pattern;
-
-import android.content.Context;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
 import java.util.HashMap;
 
@@ -37,7 +28,6 @@ public class UserDB extends android.app.Application implements Serializable {
     private boolean loggedIn = true;
     private int registered = -1;
     private int counter = 0;
-    static ArrayList<User> userInfoList;
     static ArrayList<String> friendN;
 
     @Override
@@ -71,10 +61,20 @@ public class UserDB extends android.app.Application implements Serializable {
      * Adds a User to the database
      * @param u
      */
+
     public void addUser(User u) {
         myFirebaseRef = new Firebase("https://baiyitschyes.firebaseio.com");
         Firebase userRef = myFirebaseRef.child("userInfo");
         userRef.child(u.getUser()).setValue(u);
+    }
+
+    public void deleteUser(User u) {
+        Log.d("UserDB deleteUser is called", "" + u);
+        myFirebaseRef = new Firebase("https://baiyitschyes.firebaseio.com");
+        Firebase userRef = myFirebaseRef.child("userInfo");
+        Map<String, Object> users = new HashMap<String, Object>();
+        users.remove(u.getUser());
+        userRef.child(u.getUser()).updateChildren(users);
     }
 
 
@@ -87,33 +87,20 @@ public class UserDB extends android.app.Application implements Serializable {
         Query queryRef = myFirebaseRef.child("userInfo").child(u.getUser());
 
         final String pass = u.getPassWord();
-        userInfoList = new ArrayList<>();
         Log.d("email is", u.getUser());
 
-        userInfoList.add(new User("joanmouse", "joan.chen@gatech.edu", "joajoan11", -1, -1));
 
         queryRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot snapshot) {
-                if(snapshot == null) {
-                    return;
-                }
-                Log.d("getValue", snapshot.getValue().toString());
-                Map<String, Object> userMap = (Map<String, Object>) snapshot.getValue();
-                String username = snapshot.getKey();
-                Log.d("query successful with username", username);
-                String password = (String) userMap.remove("passWord");
-                Log.d("query successful with password", password);
-                String email = (String) userMap.remove("email");
-                Log.d("query successful with email", email);
-                long rating = (long) userMap.remove("rate");
-                Log.d("query successful with rating", "" + rating);
-                long sales = (long) userMap.remove("numSales");
-                Log.d("query successful with sales", "" + sales);
-                userInfoList.add(new User(username, password, email, rating, sales));
-                Log.d("size of list", "" + userInfoList.size());
-                if (pass.equals(password)) {
-                    counter++;
+                if(snapshot == null || snapshot.getValue() == null) {
+
+                } else {
+                    Map<String, Object> userMap = (Map<String, Object>) snapshot.getValue();
+                    String password = (String) userMap.remove("passWord");
+                    if (pass.equals(password)) {
+                        counter++;
+                    }
                 }
             }
 
@@ -150,13 +137,33 @@ public class UserDB extends android.app.Application implements Serializable {
             public void onDataChange(DataSnapshot snapshot) {
                 if (snapshot.exists()) {
                     if (myFirebaseRef.child("userInfo").child(username).child("friends").equals(null)) {
-                        myFirebaseRef.child("userInfo").child(username).child("friends").child("name").setValue(friend);
+                        myFirebaseRef.child("userInfo").child(username).child("friends").child(friend).setValue(friend);
                     } else {
                         Firebase friendRef = myFirebaseRef.child("userInfo").child(username).child("friends");
                         Map<String, Object> friends = new HashMap<String, Object>();
                         friends.put(friend, friend);
                         friendRef.updateChildren(friends);
                     }
+                }
+            }
+
+            @Override
+            public void onCancelled(FirebaseError firebaseError) {
+            }
+        });
+    }
+
+    public void deleteFriend(final User u, final String friend) {
+        myFirebaseRef = new Firebase("https://baiyitschyes.firebaseio.com");
+        final String username = u.getUser();
+        final Firebase friendRef = myFirebaseRef.child("userInfo").child(username).child("friends").child(friend);
+        Log.d("UserDB deleteFriend is called", friend);
+
+        friendRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot snapshot) {
+                if (snapshot.exists()) {
+                    friendRef.setValue(null);
                 }
             }
 
@@ -240,7 +247,6 @@ public class UserDB extends android.app.Application implements Serializable {
      */
     public void logout() {
         loggedIn = false;
-        userInfoList = null;
         friendN = null;
     }
 
