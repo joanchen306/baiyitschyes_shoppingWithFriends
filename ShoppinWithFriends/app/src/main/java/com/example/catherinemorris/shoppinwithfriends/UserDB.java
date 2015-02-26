@@ -233,8 +233,6 @@ public class UserDB extends android.app.Application implements Serializable {
 
             }
         });
-
-        friendN.remove(0);
     }
 
 

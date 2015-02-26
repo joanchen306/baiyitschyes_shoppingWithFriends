@@ -75,7 +75,6 @@ public class Registration extends ActionBarActivity {
                     myU = new User(mUser, mEmail, mPass);
                     if (db.isLoggedIn()) {
                         db.addUser(myU);
-                        db.login(myU);
                         Intent i = new Intent("android.Login");
                         //i.putExtra("User", myU);
                         startActivity(i);
