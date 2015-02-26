@@ -12,11 +12,15 @@ import android.widget.EditText;
 
 import android.content.Context;
 
+import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
 import com.firebase.client.AuthData;
+import com.firebase.client.Query;
+import com.firebase.client.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Map;
 
 
 public class Login extends ActionBarActivity {
@@ -82,24 +86,55 @@ public class Login extends ActionBarActivity {
         mUserView = (EditText) this.findViewById(R.id.UserField);
         mPasswordView = (EditText) this.findViewById(R.id.PassField);
 
-        String email = mUserView.getText().toString();
-        String password = mPasswordView.getText().toString();
+        final String username = mUserView.getText().toString();
+        final String password = mPasswordView.getText().toString();
 
 
-        if (!email.equals("") && !password.equals("")) {
-            User userFile = new User(email, password);
-            db.login(userFile);
-            if (db.isLoggedIn()) {
-                Intent i = new Intent("android.HomeScreen");
-                i.putExtra("User", userFile);
-                startActivity(i);
-            } else {
-                AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
-                builder1.setMessage("Invalid Email Address or Password");
-                builder1.setCancelable(true);
-                AlertDialog alert11 = builder1.create();
-                alert11.show();
-            }
+        if (!username.equals("") && !password.equals("")) {
+
+            final User userFile = new User(username, password);
+            Firebase myFirebaseRef = new Firebase("https://baiyitschyes.firebaseio.com");
+            Query queryRef = myFirebaseRef.child("userInfo").child(username);
+
+            queryRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot snapshot) {
+                    if(snapshot == null || snapshot.getValue() == null) {
+                        AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
+                        builder1.setMessage("You are not registered");
+                        builder1.setCancelable(true);
+                        AlertDialog alert11 = builder1.create();
+                        alert11.show();
+                    } else {
+                        Map<String, Object> userMap = (Map<String, Object>) snapshot.getValue();
+                        String pass = (String) userMap.remove("passWord");
+                        if (password.equals(pass)) {
+                            db. getFriends(username);
+                            Intent i = new Intent("android.HomeScreen");
+                            i.putExtra("User", userFile);
+                            startActivity(i);
+                        }
+                        else {
+                            AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
+                            builder1.setMessage("Wrong Password");
+                            builder1.setCancelable(true);
+                            AlertDialog alert11 = builder1.create();
+                            alert11.show();
+                        }
+                    }
+                }
+
+                @Override
+                public void onCancelled(FirebaseError firebaseError) {
+                }
+            });
+
+        } else {
+            AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
+            builder1.setMessage("no information should be left blank for correct login");
+            builder1.setCancelable(true);
+            AlertDialog alert11 = builder1.create();
+            alert11.show();
         }
     }
 }

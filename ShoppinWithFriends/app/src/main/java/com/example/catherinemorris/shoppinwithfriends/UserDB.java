@@ -1,7 +1,11 @@
 package com.example.catherinemorris.shoppinwithfriends;
 
 
+import android.app.AlertDialog;
+import android.content.Context;
 import android.util.Log;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 
 import com.firebase.client.ChildEventListener;
 import com.firebase.client.DataSnapshot;
@@ -71,10 +75,19 @@ public class UserDB extends android.app.Application implements Serializable {
     public void deleteUser(User u) {
         Log.d("UserDB deleteUser is called", "" + u);
         myFirebaseRef = new Firebase("https://baiyitschyes.firebaseio.com");
-        Firebase userRef = myFirebaseRef.child("userInfo");
-        Map<String, Object> users = new HashMap<String, Object>();
-        users.remove(u.getUser());
-        userRef.child(u.getUser()).updateChildren(users);
+        final Firebase userRef = myFirebaseRef.child("userInfo").child(u.getUser());
+
+        userRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot snapshot) {
+                userRef.setValue(null);
+            }
+
+            @Override
+            public void onCancelled(FirebaseError firebaseError) {
+            }
+        });
+
     }
 
 
@@ -109,41 +122,74 @@ public class UserDB extends android.app.Application implements Serializable {
             }
         });
 
-
-        if (counter <= 0) {
-            loggedIn = false;
-            Log.d("Failed to log in user: ", u.getUser());
-        } else {
-            loggedIn = true;
-            Log.d("Successfully logged in user: ", ""+counter);
-        }
-
         getFriends(u.getUser());
     }
 
-    /**
+    public void getUserInfo(final String username) {
+        myFirebaseRef = new Firebase("https://baiyitschyes.firebaseio.com");
+        Query queryRef = myFirebaseRef.child("userInfo").orderByChild("user").equalTo(username);
+        queryRef.addListenerForSingleValueEvent(new ValueEventListener() {
+
+            @Override
+            public void onDataChange(DataSnapshot snapshot) {
+                Map<String, Object> infoMap = (Map<String, Object>) snapshot.getValue();
+                String email = (String) infoMap.remove("email");
+                String password = (String) infoMap.remove("passWord");
+                long sales = (long) infoMap.remove("numSales");
+                long rate = (long) infoMap.remove("rate");
+            }
+
+            @Override
+            public void onCancelled(FirebaseError firebaseError) {
+            }
+        });
+
+    }
+
+    /*
      * Adds a String name of a friend to the respective field in the current User's
      * field of the database.
      * @param u
      * @param friend
      */
-    public void addFriend(final User u, final String friend) {
+    public void addFriend(final User u, final String friend, final Context context, final ListView lv) {
         myFirebaseRef = new Firebase("https://baiyitschyes.firebaseio.com");
         Query queryRef = myFirebaseRef.child("userInfo").orderByChild("user").equalTo(friend);
+        //myU.addUser(new User(friend));
+
         final String username = u.getUser();
 
         queryRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot snapshot) {
                 if (snapshot.exists()) {
+                    friendN.add(friend);
+                    Log.d("Update FriendList by adding:", friend);
                     if (myFirebaseRef.child("userInfo").child(username).child("friends").equals(null)) {
-                        myFirebaseRef.child("userInfo").child(username).child("friends").child(friend).setValue(friend);
+                        myFirebaseRef.child("userInfo").child(username).child("friends").child("name").setValue(friend);
                     } else {
                         Firebase friendRef = myFirebaseRef.child("userInfo").child(username).child("friends");
                         Map<String, Object> friends = new HashMap<String, Object>();
                         friends.put(friend, friend);
                         friendRef.updateChildren(friends);
                     }
+
+                    AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
+                    builder1.setMessage("You have added " + friend + " as a new friend :)");
+                    builder1.setCancelable(true);
+                    AlertDialog alert11 = builder1.create();
+                    alert11.show();
+
+                    ArrayAdapter<String> friendAdapt = new ArrayAdapter<String>(context, android.R.layout.simple_list_item_1, friendN);
+                    lv.setAdapter(friendAdapt);
+
+                }
+            else {
+                    AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
+                    builder1.setMessage("This user does not exist");
+                    builder1.setCancelable(true);
+                    AlertDialog alert11 = builder1.create();
+                    alert11.show();
                 }
             }
 
@@ -159,7 +205,7 @@ public class UserDB extends android.app.Application implements Serializable {
         final Firebase friendRef = myFirebaseRef.child("userInfo").child(username).child("friends").child(friend);
         Log.d("UserDB deleteFriend is called", friend);
 
-        friendRef.addValueEventListener(new ValueEventListener() {
+        friendRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot snapshot) {
                 if (snapshot.exists()) {
@@ -192,7 +238,7 @@ public class UserDB extends android.app.Application implements Serializable {
                         Map<String, Object> users = (Map<String, Object>) snapshot.getValue();
                         for (Object user : users.values()) {
                             String f = (String) user;
-                            Log.d("friend", f);
+                            //Log.d("friend", f);
                             if (!friendN.contains(f)) {
                                 friendN.add((String) user);
                             }
@@ -212,6 +258,7 @@ public class UserDB extends android.app.Application implements Serializable {
                 String friend = (String)dataSnapshot.getValue();
                 if (!friendN.contains(friend)) {
                     friendN.add(friend);
+                    Log.d("Child add in getfriend when added: ", friend);
                 }
 
             }
