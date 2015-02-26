@@ -109,7 +109,7 @@ public class Login extends ActionBarActivity {
                         Map<String, Object> userMap = (Map<String, Object>) snapshot.getValue();
                         String pass = (String) userMap.remove("passWord");
                         if (password.equals(pass)) {
-                            db. getFriends(username);
+                            db.getFriends(username);
                             Intent i = new Intent("android.HomeScreen");
                             i.putExtra("User", userFile);
                             startActivity(i);

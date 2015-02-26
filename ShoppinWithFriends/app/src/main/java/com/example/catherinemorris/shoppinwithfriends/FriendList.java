@@ -70,7 +70,6 @@ public class FriendList extends ActionBarActivity {
 
         lv.setAdapter(friendAdapt);
         Firebase.setAndroidContext(this);
-        //myU = db.userInfoList.get(1);
         Log.d("f" , friendN.toString());
 
         lv.setOnItemClickListener(new OnItemClickListener() {
@@ -133,6 +132,13 @@ public class FriendList extends ActionBarActivity {
 
         mUserText.setText("");
     }
+
+    /**
+     * delet the user that is specified in the text box if the friend is in the
+     * friendlist of the User. If not shows a warning
+     * Sets the text box back to null.
+     * @param view
+     */
 
     public void deleteFriends(View view) {
         mUserText = (EditText) this.findViewById(R.id.userText);

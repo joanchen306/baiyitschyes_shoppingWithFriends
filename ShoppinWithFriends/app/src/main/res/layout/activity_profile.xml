@@ -8,9 +8,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/button11"
+        android:text="Report Sale"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true"
-        android:text="Report Sale" />
+        android:layout_toEndOf="@+id/textView4" />
 
     <Button
         style="?android:attr/buttonStyleSmall"
@@ -19,14 +19,16 @@
         android:text="Request Sale"
         android:id="@+id/button12"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="26dp" />
 
     <RatingBar
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/ratingBar"
-        android:layout_centerVertical="true"
-        android:layout_alignParentStart="true" />
+        android:layout_marginBottom="152dp"
+        android:layout_above="@+id/button11"
+        android:layout_alignStart="@+id/textView7" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -34,8 +36,8 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="   Email : "
         android:id="@+id/textView6"
-        android:layout_above="@+id/textView7"
-        android:layout_alignParentStart="true" />
+        android:layout_above="@+id/textView4"
+        android:layout_alignStart="@+id/currentUsername" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -44,7 +46,7 @@
         android:text="   Rating : "
         android:id="@+id/textView7"
         android:layout_above="@+id/ratingBar"
-        android:layout_alignParentStart="true" />
+        android:layout_alignStart="@+id/textView6" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -53,7 +55,7 @@
         android:text="username"
         android:id="@+id/currentUsername"
         android:layout_above="@+id/textView6"
-        android:layout_alignParentStart="true" />
+        android:layout_alignStart="@id/button12" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -61,8 +63,8 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Medium Text"
         android:id="@+id/currentRating"
-        android:layout_above="@+id/ratingBar"
-        android:layout_toEndOf="@+id/textView7" />
+        android:layout_alignTop="@+id/textView7"
+        android:layout_alignStart="@+id/currentEmail" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -70,7 +72,25 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="email"
         android:id="@+id/currentEmail"
-        android:layout_below="@+id/currentUsername"
-        android:layout_toEndOf="@+id/textView6" />
+        android:layout_above="@+id/textView4"
+        android:layout_toEndOf="@+id/textView7" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="   Number of Sales : "
+        android:id="@+id/textView4"
+        android:layout_above="@+id/textView7"
+        android:layout_alignStart="@+id/textView7" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="sales"
+        android:id="@+id/currentSales"
+        android:layout_above="@+id/currentRating"
+        android:layout_toEndOf="@+id/textView4" />
 
 </RelativeLayout>

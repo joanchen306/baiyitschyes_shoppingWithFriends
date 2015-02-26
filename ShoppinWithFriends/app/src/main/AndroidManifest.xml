@@ -87,6 +87,20 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="FriendList" />
         </activity>
+        <activity
+            android:name=".Profile"
+            android:label="@string/app_name"
+            android:parentActivityName=".FriendList" >
+            <intent-filter>
+                <action android:name="android.Profile" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="Profile" />
+        </activity>
     </application>
 
 </manifest>

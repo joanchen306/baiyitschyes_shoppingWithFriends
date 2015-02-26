@@ -1,5 +1,10 @@
 package com.example.catherinemorris.shoppinwithfriends;
 
+/**
+ * This class displays the username, email, ratings, and number
+ * of sales of the user that is selected from the friend's list.
+ */
+
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -20,6 +25,12 @@ public class Profile extends ActionBarActivity {
     User myU;
     UserDB db = new UserDB();
 
+    /**
+     * Creates the view by searching in the database for the information
+     * of the specified user and displays it
+     * @param savedInstanceState
+     */
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,23 +39,27 @@ public class Profile extends ActionBarActivity {
 
         myU = (User) getIntent().getSerializableExtra("User");
 
-        //final String username = getIntent().getStringExtra("Friend");
+        final String username = getIntent().getStringExtra("Friend");
         Firebase myFirebaseRef = new Firebase("https://baiyitschyes.firebaseio.com");
-        Query queryRef = myFirebaseRef.child("userInfo").orderByChild("user").equalTo("annoyingOrange");
+        Query queryRef = myFirebaseRef.child("userInfo").child(username);
         queryRef.addListenerForSingleValueEvent(new ValueEventListener() {
 
             @Override
             public void onDataChange(DataSnapshot snapshot) {
                 Map<String, Object> infoMap = (Map<String, Object>) snapshot.getValue();
                 String email = (String) infoMap.remove("email");
+                long sales = (long) infoMap.remove("numSales");
                 long rate = (long) infoMap.remove("rate");
 
                 TextView currentUsername = (TextView)findViewById(R.id.currentUsername);
-                currentUsername.setText("annoyingOrange");
+                currentUsername.setText(username);
 
                 TextView currentEmail = (TextView)findViewById(R.id.currentEmail);
                 currentEmail.setText(email);
-                ;
+
+                TextView currentSales = (TextView)findViewById(R.id.currentSales);
+                currentSales.setText(""+sales);
+
                 TextView currentRating = (TextView)findViewById(R.id.currentRating);
                 currentRating.setText(""+rate);
             }

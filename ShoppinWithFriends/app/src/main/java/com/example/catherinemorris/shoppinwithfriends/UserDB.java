@@ -91,34 +91,6 @@ public class UserDB extends android.app.Application implements Serializable {
     }
 
 
-    /**
-     * Stores all the User's info in the respective fields of the database
-     * @param u
-     */
-    public void login(User u) {
-    }
-
-    public void getUserInfo(final String username) {
-        myFirebaseRef = new Firebase("https://baiyitschyes.firebaseio.com");
-        Query queryRef = myFirebaseRef.child("userInfo").orderByChild("user").equalTo(username);
-        queryRef.addListenerForSingleValueEvent(new ValueEventListener() {
-
-            @Override
-            public void onDataChange(DataSnapshot snapshot) {
-                Map<String, Object> infoMap = (Map<String, Object>) snapshot.getValue();
-                String email = (String) infoMap.remove("email");
-                String password = (String) infoMap.remove("passWord");
-                long sales = (long) infoMap.remove("numSales");
-                long rate = (long) infoMap.remove("rate");
-            }
-
-            @Override
-            public void onCancelled(FirebaseError firebaseError) {
-            }
-        });
-
-    }
-
     /*
      * Adds a String name of a friend to the respective field in the current User's
      * field of the database.
@@ -172,6 +144,12 @@ public class UserDB extends android.app.Application implements Serializable {
         });
     }
 
+    /**
+     * finds the user's friend list and delets the specifies friend if it exists
+     * @param u, the User that is currently using the app
+     * @param friend, the username of the friend that the user wants to delete
+     */
+
     public void deleteFriend(final User u, final String friend) {
         myFirebaseRef = new Firebase("https://baiyitschyes.firebaseio.com");
         final String username = u.getUser();
@@ -201,7 +179,6 @@ public class UserDB extends android.app.Application implements Serializable {
         Query queryRef = myFirebaseRef.child("userInfo").child(username).child("friends").orderByKey();
 
         friendN = new ArrayList<>();
-        friendN.add(username + "'s Friends: ");
 
         queryRef.addValueEventListener(new ValueEventListener() {
 
