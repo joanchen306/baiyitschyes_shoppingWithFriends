@@ -68,6 +68,17 @@ public class FriendList extends ActionBarActivity {
                 myFriends);
 
         lv.setAdapter(friendAdapt);
+        Firebase.setAndroidContext(this);
+        //myU = db.userInfoList.get(1);
+        Log.d("f" , friendN.toString());
+
+        lv.setOnClickListener( new ListView.OnClickListener() {
+                    public void onClick(View view) {
+                        startActivity(new Intent("activity_profile.xml"));
+                    }
+                }
+        );
+
     }
 
     @Override
