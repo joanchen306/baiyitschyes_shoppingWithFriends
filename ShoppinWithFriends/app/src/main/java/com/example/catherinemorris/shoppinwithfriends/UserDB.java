@@ -174,6 +174,12 @@ public class UserDB extends android.app.Application implements Serializable {
                         friendRef.updateChildren(friends);
                     }
 
+                    AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
+                    builder1.setMessage("You have added " + friend + " as a new friend :)");
+                    builder1.setCancelable(true);
+                    AlertDialog alert11 = builder1.create();
+                    alert11.show();
+
                     ArrayAdapter<String> friendAdapt = new ArrayAdapter<String>(context, android.R.layout.simple_list_item_1, friendN);
                     lv.setAdapter(friendAdapt);
 

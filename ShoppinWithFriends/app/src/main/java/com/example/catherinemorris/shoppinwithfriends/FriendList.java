@@ -131,6 +131,13 @@ public class FriendList extends ActionBarActivity {
             Log.d("deleteFriends is called", un);
             mUserText.setText("");
             friendN = db.friendN;
+
+            AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
+            builder1.setMessage("You have deleted " + un + " as a friend :'(");
+            builder1.setCancelable(true);
+            AlertDialog alert11 = builder1.create();
+            alert11.show();
+
             myFriends = new String[friendN.size()];
             for (int i = 0; i < friendN.size(); i++) {
                 myFriends[i] = friendN.get(i);
