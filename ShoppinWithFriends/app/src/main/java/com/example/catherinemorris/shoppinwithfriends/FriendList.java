@@ -3,6 +3,7 @@ package com.example.catherinemorris.shoppinwithfriends;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
@@ -27,8 +28,8 @@ import com.firebase.client.Query;
 import com.firebase.client.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Map;
-
 
 public class FriendList extends ActionBarActivity {
 
@@ -38,7 +39,11 @@ public class FriendList extends ActionBarActivity {
     String[] myFriends = null;
     ArrayList<String> friendN = db.friendN;
 
+    Firebase myFirebaseRef;
+
     private EditText mUserText;
+
+    final Context context = this;
 
     /**
      * Overrides onCreate() to store the User who is currently logged in into
@@ -63,10 +68,6 @@ public class FriendList extends ActionBarActivity {
                 myFriends);
 
         lv.setAdapter(friendAdapt);
-        Firebase.setAndroidContext(this);
-        //myU = db.userInfoList.get(1);
-        Log.d("f" , friendN.toString());
-
     }
 
     @Override
@@ -106,42 +107,41 @@ public class FriendList extends ActionBarActivity {
      */
     public void addFriends(View view) {
         mUserText = (EditText) this.findViewById(R.id.userText);
-        String un = mUserText.getText().toString();
-        myU.addUser(new User(un));
-        Log.d("Is this working?","Yes it " + un);
-        mUserText.setText("");
-        friendN = db.friendN;
-        myFriends = new String[friendN.size()];
-        for (int i = 0; i < friendN.size(); i++) {
-            myFriends[i] = friendN.get(i);
-        }
-        ListView lv = (ListView) findViewById(R.id.friendList);
-        ArrayAdapter<String> friendAdapt = new ArrayAdapter<String>(this,
-                android.R.layout.simple_list_item_1,
-                myFriends);
+        final String friend = mUserText.getText().toString();
 
-        lv.setAdapter(friendAdapt);
+        Log.d("Is this working?","Yes it " + friend);
+
+        db.addFriend(myU, friend,context, (ListView) findViewById(R.id.friendList));
+
+        mUserText.setText("");
     }
 
     public void deleteFriends(View view) {
         mUserText = (EditText) this.findViewById(R.id.userText);
         String un = mUserText.getText().toString();
-        friendN.remove(un);
-        myU.deleteUser(new User(un));
-        myU.deleteFriend(new User(un));
-        Log.d("deleteFriends is called", un);
-        mUserText.setText("");
-        friendN = db.friendN;
-        myFriends = new String[friendN.size()];
-        for (int i = 0; i < friendN.size(); i++) {
-            myFriends[i] = friendN.get(i);
-        }
-        ListView lv = (ListView) findViewById(R.id.friendList);
-        ArrayAdapter<String> friendAdapt = new ArrayAdapter<String>(this,
-                android.R.layout.simple_list_item_1,
-                myFriends);
+        if(!friendN.contains(un)) {
+            AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
+            builder1.setMessage("you don't have a friend named: " + un);
+            builder1.setCancelable(true);
+            AlertDialog alert11 = builder1.create();
+            alert11.show();
+        } else {
+            friendN.remove(un);
+            myU.deleteFriend(un);
+            Log.d("deleteFriends is called", un);
+            mUserText.setText("");
+            friendN = db.friendN;
+            myFriends = new String[friendN.size()];
+            for (int i = 0; i < friendN.size(); i++) {
+                myFriends[i] = friendN.get(i);
+            }
+            ListView lv = (ListView) findViewById(R.id.friendList);
+            ArrayAdapter<String> friendAdapt = new ArrayAdapter<String>(this,
+                    android.R.layout.simple_list_item_1,
+                    myFriends);
 
-        lv.setAdapter(friendAdapt);
+            lv.setAdapter(friendAdapt);
+        }
     }
 
 }

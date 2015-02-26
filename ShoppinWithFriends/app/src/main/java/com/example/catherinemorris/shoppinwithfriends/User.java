@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import android.content.Context;
 import android.util.Log;
 import android.widget.EditText;
+import android.widget.ListView;
 
 /**
  * Created by James Nugent on 2/18/2015.
@@ -58,15 +59,17 @@ public class User implements Serializable{
         this.email = email;
         password = pass;
         db.authUser(this);
+        db.addUser(this);
     }
 
     //use to create the Array of Users
-    public User(String user, String email, String pass, long ra, long nSales) {
+    public User(String user, String email, String pass, long ra, long nSales, long nRate) {
         username = user;
         this.email = email;
         password = pass;
         rating = ra;
         numSales = nSales;
+        numRate = nRate;
     }
 
     /**
@@ -136,19 +139,8 @@ public class User implements Serializable{
         rating = totRate / numRate;
     }
 
-    /**
-     * Adds a User to both the FriendLit of Users and the database
-     * @return
-     */
-    public void addUser(User user) {
-        //friendList.add(user.getUser());
-        db.addFriend(this, user.getUser());
-    }
-
     public void deleteUser(User user) {
         //friendList.remove(user.getUser());
-        Log.d("User deleteUser is called", "" + user);
-        db.deleteFriend(this, user.getUser());
     }
 
     public void login() {
@@ -167,8 +159,8 @@ public class User implements Serializable{
      * Removes a given friend from the ArrayList of Users
      * @return boolean
      */
-    public boolean deleteFriend(User deleteU) {
-        return friendList.remove(deleteU);
+    public void deleteFriend(String deleteU) {
+        db.deleteFriend(this, deleteU);
     }
 
     private static final long serialVersionUID = 7526471155622776147L;
