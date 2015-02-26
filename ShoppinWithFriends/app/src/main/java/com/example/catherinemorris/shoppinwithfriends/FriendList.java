@@ -1,6 +1,5 @@
 package com.example.catherinemorris.shoppinwithfriends;
 
-
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
@@ -80,7 +79,6 @@ public class FriendList extends ActionBarActivity {
                 i.putExtra("Friend", friend);
                 startActivity(i);
             }
-
         });
 
     }
