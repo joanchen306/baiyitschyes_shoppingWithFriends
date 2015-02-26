@@ -40,6 +40,16 @@ public class Login extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_login);
         Firebase.setAndroidContext(this);
+
+        if (this.getParent() instanceof Registration) {
+            myU = (User) getIntent().getSerializableExtra("User");
+
+            mUserView = (EditText) this.findViewById(R.id.UserField);
+            mPasswordView = (EditText) this.findViewById(R.id.PassField);
+
+            mUserView.setText(myU.getUser());
+            mPasswordView.setText(myU.getPassWord());
+        }
     }
 
     @Override
