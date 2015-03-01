@@ -11,5 +11,6 @@
     <string name="title_activity_friend_list">FriendList</string>
     <string name="title_activity_profile_screen">ProfileScreen</string>
     <string name="title_activity_profile">Profile</string>
+    <string name="title_activity_enter__item__request">Enter_Item_Request</string>
 
 </resources>
