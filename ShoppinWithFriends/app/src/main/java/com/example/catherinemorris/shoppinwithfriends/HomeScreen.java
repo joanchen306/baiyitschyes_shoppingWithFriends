@@ -63,7 +63,7 @@ public class HomeScreen extends ActionBarActivity {
 
     /**
      * Opens the FriendList activity and sends the logged in User's
-     * information to the actiity via .putExtra()
+     * information to the activity via .putExtra()
      * @param view
      */
     public void openFriends(View view) {

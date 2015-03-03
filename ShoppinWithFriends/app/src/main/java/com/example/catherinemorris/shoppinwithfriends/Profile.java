@@ -5,11 +5,13 @@ package com.example.catherinemorris.shoppinwithfriends;
  * of sales of the user that is selected from the friend's list.
  */
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.RatingBar;
 
@@ -94,4 +96,14 @@ public class Profile extends ActionBarActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+    /**
+     * Opens the request sale Activity
+     * @param view
+     */
+    public void goToItemRequest(View view) {
+        Button button = (Button) view;
+        startActivity(new Intent(this, Enter_Item_Request.class));
+    }
 }
+
