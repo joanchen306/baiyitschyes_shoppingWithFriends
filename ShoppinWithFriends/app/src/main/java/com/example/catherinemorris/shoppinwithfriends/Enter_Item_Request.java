@@ -1,7 +1,6 @@
 package com.example.catherinemorris.shoppinwithfriends;
 
 import android.support.v7.app.ActionBarActivity;
-import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -9,13 +8,22 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.os.Build;
+import android.widget.EditText;
 
 
 public class Enter_Item_Request extends ActionBarActivity {
 
+    User myU;
+
+    private EditText itemName;
+    private EditText itemDescription;
+    private EditText itemPrice;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        myU = (User) getIntent().getSerializableExtra("User");
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_enter__item__request);
         if (savedInstanceState == null) {
@@ -62,5 +70,17 @@ public class Enter_Item_Request extends ActionBarActivity {
             View rootView = inflater.inflate(R.layout.fragment_enter__item__request, container, false);
             return rootView;
         }
+    }
+
+    public void sendItemRequest(View view) {
+        itemName = (EditText) this.findViewById(R.id.itemNameField);
+        itemDescription = (EditText) this.findViewById(R.id.itemDescriptionField);
+        itemPrice = (EditText) this.findViewById(R.id.priceField);
+
+        String item = itemName.getText().toString();
+        String descrip = itemDescription.getText().toString();
+        String price = itemPrice.getText().toString();
+
+
     }
 }

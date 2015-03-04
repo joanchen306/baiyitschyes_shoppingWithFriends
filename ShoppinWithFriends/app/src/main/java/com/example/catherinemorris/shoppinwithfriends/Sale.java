@@ -7,19 +7,34 @@ package com.example.catherinemorris.shoppinwithfriends;
 public class Sale {
 
     private String item;
-    private String descripton;
-    private long min;
-    private long max;
+    private String description;
+    private double price;
     private User user;
 
     private UserDB db = new UserDB();
 
-    public Sale(String it, String des, long max, long min, User u) {
+    public Sale(String it, String des, double price, User u) {
         item = it;
-        descripton = des;
-        this.max = max;
-        this.min = min;
+        description = des;
+        this.price = price;
         user = u;
+    }
+
+    public String getItem() {
+        return item;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+
+    public User getUser() {
+        return user;
     }
 
 }

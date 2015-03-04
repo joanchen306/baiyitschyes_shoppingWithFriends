@@ -96,14 +96,5 @@ public class Profile extends ActionBarActivity {
 
         return super.onOptionsItemSelected(item);
     }
-
-    /**
-     * Opens the request sale Activity
-     * @param view
-     */
-    public void goToItemRequest(View view) {
-        Button button = (Button) view;
-        startActivity(new Intent(this, Enter_Item_Request.class));
-    }
 }
 

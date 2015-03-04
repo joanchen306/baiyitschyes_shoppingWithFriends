@@ -5,35 +5,28 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
     tools:context="com.example.catherinemorris.shoppinwithfriends.Enter_Item_Request$PlaceholderFragment"
-    android:onClick="goToItemRequest">
+    android:onClick="goToItemRequest"
+    android:background="#00FFFF"
+    android:id="@+id/">
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/ItemNameField"
+        android:id="@+id/itemNameField"
+        android:layout_marginTop="101dp"
+        android:hint="Item"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="59dp"
-        android:hint="item" />
+        android:layout_centerHorizontal="true" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/maxPriceField"
+        android:id="@+id/priceField"
         android:inputType="number"
-        android:layout_centerVertical="true"
-        android:layout_alignEnd="@+id/minPriceField"
-        android:hint="Max Price" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/minPriceField"
-        android:layout_marginTop="35dp"
-        android:inputType="number"
-        android:layout_below="@+id/maxPriceField"
-        android:layout_centerHorizontal="true"
-        android:hint="Min Price" />
+        android:hint="Price"
+        android:layout_above="@+id/requestItem"
+        android:layout_alignEnd="@+id/itemNameField"
+        android:layout_marginBottom="54dp" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -41,10 +34,10 @@
         android:inputType="textMultiLine"
         android:ems="10"
         android:id="@+id/itemDescriptionField"
-        android:layout_below="@+id/ItemNameField"
+        android:hint="Item Description"
+        android:layout_below="@+id/itemNameField"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="69dp"
-        android:hint="Item Description" />
+        android:layout_marginTop="48dp" />
 
     <Button
         android:id="@+id/requestItem"
@@ -62,7 +55,7 @@
         android:shadowRadius="5"
         android:clickable="true"
         android:nestedScrollingEnabled="false"
-        android:layout_below="@+id/minPriceField"
-        android:layout_alignStart="@+id/minPriceField"
-        android:layout_marginTop="52dp" />
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="109dp" />
 </RelativeLayout>

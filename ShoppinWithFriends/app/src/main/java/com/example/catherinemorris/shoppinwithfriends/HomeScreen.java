@@ -73,4 +73,15 @@ public class HomeScreen extends ActionBarActivity {
         startActivity(i);
         //startActivity(new Intent(this, FriendList.class));
     }
+
+    /**
+     * Opens the request sale Activity
+     * @param view
+     */
+    public void goToItemRequest(View view) {
+        Button button = (Button) view;
+        Intent i = new Intent("android.Enter_Item_Request");
+        i.putExtra("User", myU);
+        startActivity(i);
+    }
 }
