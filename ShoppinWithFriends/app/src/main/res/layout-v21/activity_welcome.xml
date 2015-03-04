@@ -36,7 +36,6 @@
         android:clickable="true"
         android:onClick="sendMessageR"
         android:layout_above="@+id/button"
-        android:layout_alignLeft="@+id/button"
-        android:layout_alignStart="@+id/button" />
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>

@@ -22,25 +22,45 @@
         android:layout_alignParentEnd="true" />
 
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/register"
+
         android:text="Register"
-        android:id="@+id/button3"
+        android:textColor="#FFFFFF"
+        android:textSize="17dp"
+
+        android:layout_width="90dp"
+        android:layout_height="50dp"
+        android:background="@drawable/buttonshape"
+        android:shadowColor="#A8A8A8"
+        android:shadowDx="3"
+        android:shadowDy="1"
+        android:shadowRadius="5"
         android:clickable="true"
+        android:nestedScrollingEnabled="false"
         android:onClick="sendMessageJoin"
-        android:layout_alignParentBottom="true"
-        android:layout_alignEnd="@+id/textView3" />
+        android:layout_marginTop="44dp"
+        android:layout_below="@+id/RePassField"
+        android:layout_alignStart="@+id/RePassField" />
 
     <Button
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Cancel"
-        android:id="@+id/button4"
+        android:id="@+id/back"
+
+        android:text="Back"
+        android:textColor="#FFFFFF"
+        android:textSize="17dp"
+
+        android:layout_width="90dp"
+        android:layout_height="50dp"
+        android:background="@drawable/buttonshape"
+        android:shadowColor="#A8A8A8"
+        android:shadowDx="3"
+        android:shadowDy="1"
+        android:shadowRadius="5"
         android:clickable="true"
+        android:nestedScrollingEnabled="false"
         android:onClick="sendMessageBack"
-        android:layout_alignTop="@+id/button3"
-        android:layout_alignParentStart="true" />
+        android:layout_alignTop="@+id/register"
+        android:layout_alignEnd="@+id/RePassField" />
 
     <EditText
         android:layout_width="wrap_content"

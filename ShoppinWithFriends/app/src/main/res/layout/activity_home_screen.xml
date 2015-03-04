@@ -18,62 +18,116 @@
         android:layout_marginTop="43dp" />
 
     <Button
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/Logout"
+
         android:text="Logout"
-        android:id="@+id/button5"
+        android:textColor="#FFFFFF"
+        android:textSize="17dp"
+
+        android:layout_width="90dp"
+        android:layout_height="50dp"
+        android:background="@drawable/buttonshape"
+        android:shadowColor="#A8A8A8"
+        android:shadowDx="3"
+        android:shadowDy="1"
+        android:shadowRadius="5"
         android:clickable="true"
         android:onClick="sendMessageLogout"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:width="90dp" />
+        android:layout_above="@+id/text"
+        android:layout_centerHorizontal="true" />
 
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/FriendsList"
+
         android:text="Friends List"
-        android:id="@+id/button6"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true"
-        android:width="90dp"
+        android:textColor="#FFFFFF"
+        android:textSize="17dp"
+
+        android:layout_width="90dp"
+        android:layout_height="50dp"
+        android:background="@drawable/buttonshape"
+        android:shadowColor="#A8A8A8"
+        android:shadowDx="3"
+        android:shadowDy="1"
+        android:shadowRadius="5"
         android:clickable="true"
-        android:onClick="openFriends" />
+        android:onClick="openFriends"
+        android:layout_above="@+id/text"
+        android:layout_alignParentStart="true" />
 
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+
         android:text="Settings"
-        android:id="@+id/button7"
+        android:textColor="#FFFFFF"
+        android:textSize="17dp"
+
+        android:layout_width="90dp"
+        android:layout_height="50dp"
+        android:background="@drawable/buttonshape"
+        android:shadowColor="#A8A8A8"
+        android:shadowDx="3"
+        android:shadowDy="1"
+        android:shadowRadius="5"
+        android:clickable="true"
+        android:id="@+id/button5"
         android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:width="90dp" />
+        android:layout_alignParentEnd="true" />
 
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="My List"
-        android:id="@+id/button8"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true"
-        android:width="90dp" />
+        android:id="@+id/angry_btn"
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:text="Friend Wishes"
-        android:id="@+id/button9"
+        android:textColor="#FFFFFF"
+        android:textSize="17sp"
+
+        android:layout_width="90dp"
+        android:layout_height="50dp"
+        android:background="@drawable/buttonshape"
+        android:shadowColor="#A8A8A8"
+        android:shadowDx="3"
+        android:shadowDy="1"
+        android:shadowRadius="5"
+        android:clickable="true"
+        android:nestedScrollingEnabled="false"
         android:layout_alignParentBottom="true"
-        android:layout_alignStart="@+id/button5"
-        android:width="90dp" />
+        android:layout_alignStart="@+id/Logout" />
 
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/sales"
+
         android:text="Sales"
-        android:id="@+id/button10"
+        android:textColor="#FFFFFF"
+        android:textSize="17dp"
+
+        android:layout_width="90dp"
+        android:layout_height="50dp"
+        android:background="@drawable/buttonshape"
+        android:shadowColor="#A8A8A8"
+        android:shadowDx="3"
+        android:shadowDy="1"
+        android:shadowRadius="5"
+        android:clickable="true"
+        android:nestedScrollingEnabled="false"
         android:layout_alignParentBottom="true"
-        android:layout_alignStart="@+id/button7"
-        android:width="90dp" />
+        android:layout_alignParentEnd="true" />
+
+    <Button
+        android:id="@+id/mylist"
+
+        android:text="My List"
+        android:textColor="#FFFFFF"
+        android:textSize="17dp"
+
+        android:layout_width="90dp"
+        android:layout_height="50dp"
+        android:background="@drawable/buttonshape"
+        android:shadowColor="#A8A8A8"
+        android:shadowDx="3"
+        android:shadowDy="1"
+        android:shadowRadius="5"
+        android:clickable="true"
+        android:nestedScrollingEnabled="false"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true" />
 
 </RelativeLayout>

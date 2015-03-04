@@ -47,12 +47,22 @@
         android:hint="Item Description" />
 
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/requestItem"
+
         android:text="Request Item"
-        android:id="@+id/requestItemButton"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="66dp"
-        android:clickable="true" />
+        android:textColor="#FFFFFF"
+        android:textSize="17dp"
+
+        android:layout_width="90dp"
+        android:layout_height="50dp"
+        android:background="@drawable/buttonshape"
+        android:shadowColor="#A8A8A8"
+        android:shadowDx="3"
+        android:shadowDy="1"
+        android:shadowRadius="5"
+        android:clickable="true"
+        android:nestedScrollingEnabled="false"
+        android:layout_below="@+id/minPriceField"
+        android:layout_alignStart="@+id/minPriceField"
+        android:layout_marginTop="52dp" />
 </RelativeLayout>
