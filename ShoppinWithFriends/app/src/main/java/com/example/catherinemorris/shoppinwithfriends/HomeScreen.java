@@ -12,7 +12,7 @@ import android.content.Intent;
 public class HomeScreen extends ActionBarActivity {
 
     User myU;
-    UserDB db = new UserDB();
+    Sale mySale;
 
     /**
      * Overrides onCreate to store the User who is currently logged in
@@ -57,13 +57,13 @@ public class HomeScreen extends ActionBarActivity {
      */
     public void sendMessageLogout(View view) {
         Button button = (Button) view;
-        db.logout();
+        myU.logout();
         startActivity(new Intent(this, Welcome.class));
     }
 
     /**
      * Opens the FriendList activity and sends the logged in User's
-     * information to the actiity via .putExtra()
+     * information to the activity via .putExtra()
      * @param view
      */
     public void openFriends(View view) {
@@ -72,5 +72,9 @@ public class HomeScreen extends ActionBarActivity {
         i.putExtra("User", myU);
         startActivity(i);
         //startActivity(new Intent(this, FriendList.class));
+    }
+
+    public void createSale(View view) {
+        new Sale("test_item", "test to see if an item is created correctly", 25.00, 10.00, myU);
     }
 }

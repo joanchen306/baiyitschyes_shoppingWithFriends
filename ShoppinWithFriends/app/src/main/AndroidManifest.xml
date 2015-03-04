@@ -102,6 +102,10 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="Profile" />
         </activity>
+        <activity
+            android:name=".Enter_Item_Request"
+            android:label="@string/title_activity_enter__item__request" >
+        </activity>
     </application>
 
 </manifest>

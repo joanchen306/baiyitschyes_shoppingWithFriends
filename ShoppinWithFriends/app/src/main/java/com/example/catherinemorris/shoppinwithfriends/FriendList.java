@@ -126,7 +126,50 @@ public class FriendList extends ActionBarActivity {
 
         Log.d("Is this working?","Yes it " + friend);
 
-        db.addFriend(myU, friend,context, (ListView) findViewById(R.id.friendList));
+        myFirebaseRef = new Firebase("https://baiyitschyes.firebaseio.com");
+        Query queryRef = myFirebaseRef.child("userInfo").orderByChild("user").equalTo(friend);
+
+        final String username = myU.getUser();
+        final ListView lv = (ListView) findViewById(R.id.friendList);
+
+        queryRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot snapshot) {
+                if (snapshot.exists()) {
+                    friendN.add(friend);
+                    Log.d("Update FriendList by adding:", friend);
+                    if (myFirebaseRef.child("userInfo").child(username).child("friends").equals(null)) {
+                        myFirebaseRef.child("userInfo").child(username).child("friends").child("name").setValue(friend);
+                    } else {
+                        Firebase friendRef = myFirebaseRef.child("userInfo").child(username).child("friends");
+                        Map<String, Object> friends = new HashMap<String, Object>();
+                        friends.put(friend, friend);
+                        friendRef.updateChildren(friends);
+                    }
+
+                    AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
+                    builder1.setMessage("You have added " + friend + " as a new friend :)");
+                    builder1.setCancelable(true);
+                    AlertDialog alert11 = builder1.create();
+                    alert11.show();
+
+                    ArrayAdapter<String> friendAdapt = new ArrayAdapter<String>(context, android.R.layout.simple_list_item_1, friendN);
+                    lv.setAdapter(friendAdapt);
+
+                }
+                else {
+                    AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
+                    builder1.setMessage("This user does not exist");
+                    builder1.setCancelable(true);
+                    AlertDialog alert11 = builder1.create();
+                    alert11.show();
+                }
+            }
+
+            @Override
+            public void onCancelled(FirebaseError firebaseError) {
+            }
+        });
 
         mUserText.setText("");
     }

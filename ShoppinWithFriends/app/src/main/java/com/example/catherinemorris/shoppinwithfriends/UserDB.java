@@ -34,6 +34,8 @@ public class UserDB extends android.app.Application implements Serializable {
     private int counter = 0;
     static ArrayList<String> friendN;
 
+    User myU;
+
     @Override
     public void onCreate() {
         super.onCreate();
@@ -91,59 +93,6 @@ public class UserDB extends android.app.Application implements Serializable {
     }
 
 
-    /*
-     * Adds a String name of a friend to the respective field in the current User's
-     * field of the database.
-     * @param u
-     * @param friend
-     */
-    public void addFriend(final User u, final String friend, final Context context, final ListView lv) {
-        myFirebaseRef = new Firebase("https://baiyitschyes.firebaseio.com");
-        Query queryRef = myFirebaseRef.child("userInfo").orderByChild("user").equalTo(friend);
-        //myU.addUser(new User(friend));
-
-        final String username = u.getUser();
-
-        queryRef.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot snapshot) {
-                if (snapshot.exists()) {
-                    friendN.add(friend);
-                    Log.d("Update FriendList by adding:", friend);
-                    if (myFirebaseRef.child("userInfo").child(username).child("friends").equals(null)) {
-                        myFirebaseRef.child("userInfo").child(username).child("friends").child("name").setValue(friend);
-                    } else {
-                        Firebase friendRef = myFirebaseRef.child("userInfo").child(username).child("friends");
-                        Map<String, Object> friends = new HashMap<String, Object>();
-                        friends.put(friend, friend);
-                        friendRef.updateChildren(friends);
-                    }
-
-                    AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
-                    builder1.setMessage("You have added " + friend + " as a new friend :)");
-                    builder1.setCancelable(true);
-                    AlertDialog alert11 = builder1.create();
-                    alert11.show();
-
-                    ArrayAdapter<String> friendAdapt = new ArrayAdapter<String>(context, android.R.layout.simple_list_item_1, friendN);
-                    lv.setAdapter(friendAdapt);
-
-                }
-            else {
-                    AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
-                    builder1.setMessage("This user does not exist");
-                    builder1.setCancelable(true);
-                    AlertDialog alert11 = builder1.create();
-                    alert11.show();
-                }
-            }
-
-            @Override
-            public void onCancelled(FirebaseError firebaseError) {
-            }
-        });
-    }
-
     /**
      * finds the user's friend list and delets the specifies friend if it exists
      * @param u, the User that is currently using the app
@@ -188,7 +137,6 @@ public class UserDB extends android.app.Application implements Serializable {
                         Map<String, Object> users = (Map<String, Object>) snapshot.getValue();
                         for (Object user : users.values()) {
                             String f = (String) user;
-                            //Log.d("friend", f);
                             if (!friendN.contains(f)) {
                                 friendN.add((String) user);
                             }
