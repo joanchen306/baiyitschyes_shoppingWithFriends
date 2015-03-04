@@ -5,11 +5,17 @@ package com.example.catherinemorris.shoppinwithfriends;
  * of sales of the user that is selected from the friend's list.
  */
 
+import android.app.AlertDialog;
+import android.content.Context;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.RatingBar;
 
@@ -27,6 +33,9 @@ public class Profile extends ActionBarActivity {
     User myU;
     UserDB db = new UserDB();
     private RatingBar ratingBar;
+    private String username;
+    Context context = this;
+
 
     /**
      * Creates the view by searching in the database for the information
@@ -42,7 +51,7 @@ public class Profile extends ActionBarActivity {
 
         myU = (User) getIntent().getSerializableExtra("User");
 
-        final String username = getIntent().getStringExtra("Friend");
+        username = getIntent().getStringExtra("Friend");
         Firebase myFirebaseRef = new Firebase("https://baiyitschyes.firebaseio.com");
         Query queryRef = myFirebaseRef.child("userInfo").child(username);
         queryRef.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -93,5 +102,33 @@ public class Profile extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    /**
+     * CLoses the current Activity
+     * @param view
+     */
+    public void goBack(View view) {
+        finish();
+    }
+
+    /**
+     * delet the user that is specified in the text box if the friend is in the
+     * friendlist of the User. If not shows a warning
+     * Sets the text box back to null.
+     * @param view
+     */
+
+    public void deleteFriend(View view) {
+        myU.deleteFriend(username);
+        Log.d("deleteFriends is called", username);
+
+        AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
+        builder1.setMessage("You have deleted " + username + " as a friend :'(");
+        builder1.setCancelable(true);
+        AlertDialog alert11 = builder1.create();
+        alert11.show();
+
+        finish();
     }
 }

@@ -24,8 +24,8 @@
         android:layout_below="@+id/textView2"
         android:layout_alignParentStart="true"
         android:choiceMode="singleChoice"
-        android:layout_above="@+id/addFriends"
-        android:clickable="true"/>
+        android:clickable="true"
+        android:layout_above="@+id/addFriends" />
 
     <ScrollView
         android:layout_width="wrap_content"
@@ -46,33 +46,31 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Add Friends"
+        android:text="Add Friend"
         android:id="@+id/addFriends"
         android:clickable="true"
         android:onClick="addFriends"
+        android:nestedScrollingEnabled="false"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true"
-        android:nestedScrollingEnabled="false" />
+        android:layout_alignEnd="@+id/friendList" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/userText"
-        android:layout_alignParentEnd="true"
-        android:layout_alignTop="@+id/addFriends"
-        android:layout_toEndOf="@+id/addFriends"
+        android:hint="Enter Username"
         android:layout_alignBottom="@+id/addFriends"
-        android:hint="Enter Username" />
+        android:layout_alignParentStart="true"
+        android:layout_toStartOf="@+id/deleteUser" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Delete Friend"
         android:id="@+id/deleteUser"
-        android:layout_alignBottom="@+id/friendList"
-        android:layout_alignParentEnd="true"
-        android:layout_marginBottom="76dp"
         android:clickable="true"
         android:nestedScrollingEnabled="false"
-        android:onClick="deleteFriends" />
+        android:onClick="deleteFriends"
+        android:layout_above="@+id/addFriends"
+        android:layout_alignEnd="@+id/friendList" />
 </RelativeLayout>

@@ -12,7 +12,7 @@
         android:id="@+id/button11"
         android:text="Report Sale"
         android:layout_alignParentBottom="true"
-        android:layout_toEndOf="@+id/textView4" />
+        android:layout_alignEnd="@+id/button12" />
 
     <Button
         style="?android:attr/buttonStyleSmall"
@@ -20,9 +20,8 @@
         android:layout_height="wrap_content"
         android:text="Request Sale"
         android:id="@+id/button12"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="26dp" />
+        android:layout_above="@+id/button11"
+        android:layout_alignParentStart="true" />
 
     <RatingBar
         android:layout_width="wrap_content"
@@ -57,7 +56,7 @@
         android:text="username"
         android:id="@+id/currentUsername"
         android:layout_above="@+id/textView6"
-        android:layout_alignStart="@id/button12" />
+        android:layout_alignStart="@id/button11" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -93,6 +92,37 @@
         android:text="sales"
         android:id="@+id/currentSales"
         android:layout_above="@+id/currentRating"
+        android:layout_toEndOf="@+id/textView4" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="back"
+        android:id="@+id/backbutton"
+        android:onClick="goBack"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="CRASH!"
+        android:id="@+id/deleteFriendButton"
+        android:layout_alignParentBottom="true"
+        android:layout_alignEnd="@+id/backbutton"
+        android:singleLine="true"
+        android:onClick="deleteFriend" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Do you want to crash the code?"
+        android:id="@+id/textView5"
+        android:layout_alignBaseline="@+id/button12"
+        android:layout_alignBottom="@+id/button12"
         android:layout_toEndOf="@+id/textView4" />
 
 </RelativeLayout>
