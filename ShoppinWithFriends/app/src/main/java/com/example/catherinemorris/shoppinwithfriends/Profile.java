@@ -5,12 +5,22 @@ package com.example.catherinemorris.shoppinwithfriends;
  * of sales of the user that is selected from the friend's list.
  */
 
+
+import android.app.AlertDialog;
+import android.content.Context;
+
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+
+import android.widget.ArrayAdapter;
+import android.widget.EditText;
+import android.widget.ListView;
+
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.RatingBar;
@@ -29,6 +39,9 @@ public class Profile extends ActionBarActivity {
     User myU;
     UserDB db = new UserDB();
     private RatingBar ratingBar;
+    private String username;
+    Context context = this;
+
 
     /**
      * Creates the view by searching in the database for the information
@@ -44,7 +57,7 @@ public class Profile extends ActionBarActivity {
 
         myU = (User) getIntent().getSerializableExtra("User");
 
-        final String username = getIntent().getStringExtra("Friend");
+        username = getIntent().getStringExtra("Friend");
         Firebase myFirebaseRef = new Firebase("https://baiyitschyes.firebaseio.com");
         Query queryRef = myFirebaseRef.child("userInfo").child(username);
         queryRef.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -96,5 +109,15 @@ public class Profile extends ActionBarActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+    /**
+     * CLoses the current Activity
+     * @param view
+     */
+    public void goBack(View view) {
+        finish();
+    }
+
+
 }
 

@@ -97,5 +97,15 @@
         android:layout_above="@+id/currentRating"
         android:layout_toEndOf="@+id/textView4" />
 
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="back"
+        android:id="@+id/backbutton"
+        android:onClick="goBack"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true" />
+
 </RelativeLayout>
 

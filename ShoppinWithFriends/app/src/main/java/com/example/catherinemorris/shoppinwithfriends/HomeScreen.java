@@ -12,7 +12,7 @@ import android.content.Intent;
 public class HomeScreen extends ActionBarActivity {
 
     User myU;
-    UserDB db = new UserDB();
+    Sale mySale;
 
     /**
      * Overrides onCreate to store the User who is currently logged in
@@ -57,7 +57,7 @@ public class HomeScreen extends ActionBarActivity {
      */
     public void sendMessageLogout(View view) {
         Button button = (Button) view;
-        db.logout();
+        myU.logout();
         startActivity(new Intent(this, Welcome.class));
     }
 
@@ -83,5 +83,7 @@ public class HomeScreen extends ActionBarActivity {
         Intent i = new Intent("android.Enter_Item_Request");
         i.putExtra("User", myU);
         startActivity(i);
+ //   public void createSale(View view) {
+ //       new Sale("test_item", "test to see if an item is created correctly", 25.00, 10.00, myU);
     }
 }

@@ -109,7 +109,8 @@
         android:clickable="true"
         android:nestedScrollingEnabled="false"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentEnd="true"
+        android:onClick="createSale" />
 
     <Button
         android:id="@+id/mylist"
