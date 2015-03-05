@@ -28,7 +28,7 @@ public class UserDB extends android.app.Application implements Serializable {
     private int registered = -1;
     private int counter = 0;
     public static ArrayList<String> friendN;
-    public static ArrayList<Sale> wishlist;
+    public static ArrayList<Wish> wishlist;
 
     User myU;
 

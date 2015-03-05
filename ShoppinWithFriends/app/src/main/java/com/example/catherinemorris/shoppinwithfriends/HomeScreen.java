@@ -25,12 +25,12 @@ import java.util.Map;
 public class HomeScreen extends ActionBarActivity {
 
     User myU;
-    Sale mySale;
+    Wish mySale;
     UserDB udb;
 
     Context context = this;
 
-    ArrayList<Sale> wishlist = new ArrayList<>();
+    ArrayList<Wish> wishlist = new ArrayList<>();
     String[] wishes = null;
 
     /**
@@ -63,7 +63,7 @@ public class HomeScreen extends ActionBarActivity {
                             String it = (String) itemMap.remove("item");
                             String des = (String) itemMap.remove("description");
                             double price = (double) itemMap.remove("price");
-                            Sale item = new Sale(it, des, price);
+                            Wish item = new Wish(it, des, price);
                             Log.d("This is the item added at get: ", it);
                             if (wishlist != null && !wishlist.contains(item)) {
                                 wishlist.add(item);

@@ -8,7 +8,7 @@ import java.util.ArrayList;
  * Created by James Nugent on 2/18/2015.
  */
 public class User implements Serializable{
-    private ArrayList<Sale> wishlist = new ArrayList<>();
+    private ArrayList<Wish> wishlist = new ArrayList<>();
     private ArrayList<String> friendList = new ArrayList<>();
     private String username;
     private String password;
@@ -64,7 +64,7 @@ public class User implements Serializable{
         numRate = nRate;
     }
 
-    public void setWishlist(ArrayList<Sale> wl) {
+    public void setWishlist(ArrayList<Wish> wl) {
         wishlist = wl;
     }
 
@@ -117,7 +117,7 @@ public class User implements Serializable{
         return friendList;
     }
 
-    public ArrayList<Sale> getWishlist() {
+    public ArrayList<Wish> getWishlist() {
         return wishlist;
     }
 

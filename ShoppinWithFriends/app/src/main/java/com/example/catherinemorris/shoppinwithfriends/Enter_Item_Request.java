@@ -34,7 +34,7 @@ public class Enter_Item_Request extends ActionBarActivity {
     private EditText itemPrice;
     Context context = this;
 
-    ArrayList<Sale> wishlist = new ArrayList<>();
+    ArrayList<Wish> wishlist = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -94,7 +94,7 @@ public class Enter_Item_Request extends ActionBarActivity {
         final String descrip = itemDescription.getText().toString();
         final double price = Double.parseDouble(itemPrice.getText().toString());
 
-        final Sale wishItems = new Sale(item, descrip, price);
+        final Wish wishItems = new Wish(item, descrip, price);
         final String username = myU.getUser();
 
         myFirebaseRef = new Firebase("https://baiyitschyes.firebaseio.com");
