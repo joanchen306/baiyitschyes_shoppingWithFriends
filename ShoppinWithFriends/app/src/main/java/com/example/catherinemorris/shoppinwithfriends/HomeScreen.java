@@ -2,17 +2,30 @@ package com.example.catherinemorris.shoppinwithfriends;
 
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.content.Intent;
 
+import com.firebase.client.DataSnapshot;
+import com.firebase.client.Firebase;
+import com.firebase.client.FirebaseError;
+import com.firebase.client.Query;
+import com.firebase.client.ValueEventListener;
+
+import java.util.ArrayList;
+import java.util.Map;
+
 
 public class HomeScreen extends ActionBarActivity {
 
     User myU;
     Sale mySale;
+    UserDB udb;
+
+    ArrayList<Sale> wishlist = udb.wishlist;
 
     /**
      * Overrides onCreate to store the User who is currently logged in
@@ -23,8 +36,43 @@ public class HomeScreen extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_screen);
+        Firebase.setAndroidContext(this);
 
+
+        //gets and maybe prints wishlist
         myU = (User) getIntent().getSerializableExtra("User");
+
+        String username = myU.getUser();
+        Firebase myFirebaseRef = new Firebase("https://baiyitschyes.firebaseio.com");
+        Query queryRef = myFirebaseRef.child("userInfo").child(username).child("wishlist").orderByKey();
+
+        wishlist = new ArrayList<>();
+
+        queryRef.addValueEventListener(new ValueEventListener() {
+
+            @Override
+            public void onDataChange(DataSnapshot snapshot) {
+                if (snapshot.exists()) {
+                    Map<String, Map<String, Object>> list = (Map<String, Map<String, Object>>) snapshot.getValue();
+                    for (Map<String, Object> itemMap : list.values()) {
+                        String it = (String) itemMap.remove("item");
+                        String des = (String) itemMap.remove("description");
+                        double price = (double) itemMap.remove("price");
+                        Sale item = new Sale(it, des, price);
+                        Log.d("This is the item added at get: ", it);
+                        if (!wishlist.contains(item)) {
+                            wishlist.add(item);
+                            myU.setWishlist(wishlist);
+                        }
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(FirebaseError firebaseError) {
+                Log.d("The read failed: ", "too bad");
+            }
+        });
     }
 
 
@@ -83,7 +131,5 @@ public class HomeScreen extends ActionBarActivity {
         Intent i = new Intent("android.Enter_Item_Request");
         i.putExtra("User", myU);
         startActivity(i);
- //   public void createSale(View view) {
- //       new Sale("test_item", "test to see if an item is created correctly", 25.00, 10.00, myU);
     }
 }

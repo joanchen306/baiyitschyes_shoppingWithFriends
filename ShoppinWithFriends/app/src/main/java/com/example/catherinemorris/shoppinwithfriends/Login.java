@@ -4,7 +4,6 @@ import android.app.AlertDialog;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
@@ -15,7 +14,6 @@ import android.content.Context;
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
-import com.firebase.client.AuthData;
 import com.firebase.client.Query;
 import com.firebase.client.ValueEventListener;
 
@@ -32,7 +30,7 @@ public class Login extends ActionBarActivity {
      */
     User myU;
 
-    UserDB db = new UserDB();
+    UserDB udb = new UserDB();
     private EditText mUserView;
     private EditText mPasswordView;
 
@@ -109,7 +107,11 @@ public class Login extends ActionBarActivity {
                         Map<String, Object> userMap = (Map<String, Object>) snapshot.getValue();
                         String pass = (String) userMap.remove("passWord");
                         if (password.equals(pass)) {
-                            db.getFriends(username);
+                            String email = (String) userMap.remove("email");
+                            long s = (long) userMap.remove("numSales");
+                            long r = (long) userMap.remove("rate");
+                           // myU = new User(username, email, pass, r, s, 0);
+                            udb.getFriends(username);
                             Intent i = new Intent("android.HomeScreen");
                             i.putExtra("User", userFile);
                             startActivity(i);

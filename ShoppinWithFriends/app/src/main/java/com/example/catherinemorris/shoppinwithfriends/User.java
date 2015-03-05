@@ -1,20 +1,14 @@
 package com.example.catherinemorris.shoppinwithfriends;
 
-import com.firebase.client.Firebase;
-
 import java.io.Serializable;
 import java.io.*;
 import java.util.ArrayList;
-import android.content.Context;
-import android.util.Log;
-import android.widget.EditText;
-import android.widget.ListView;
 
 /**
  * Created by James Nugent on 2/18/2015.
  */
 public class User implements Serializable{
-    private ArrayList<User> friendMe = new ArrayList<>();
+    private ArrayList<Sale> wishlist = new ArrayList<>();
     private ArrayList<String> friendList = new ArrayList<>();
     private String username;
     private String password;
@@ -45,8 +39,6 @@ public class User implements Serializable{
         username = user;
         password = pass;
         email = "basic@gmail.com";
-
-
     }
 
     /**
@@ -70,6 +62,10 @@ public class User implements Serializable{
         rating = ra;
         numSales = nSales;
         numRate = nRate;
+    }
+
+    public void setWishlist(ArrayList<Sale> wl) {
+        wishlist = wl;
     }
 
     /**
@@ -119,6 +115,10 @@ public class User implements Serializable{
      */
     public ArrayList<String> getFriends() {
         return friendList;
+    }
+
+    public ArrayList<Sale> getwishlist() {
+        return wishlist;
     }
 
     /**

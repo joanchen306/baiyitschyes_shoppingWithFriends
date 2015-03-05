@@ -1,11 +1,7 @@
 package com.example.catherinemorris.shoppinwithfriends;
 
 
-import android.app.AlertDialog;
-import android.content.Context;
 import android.util.Log;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
 
 import com.firebase.client.ChildEventListener;
 import com.firebase.client.DataSnapshot;
@@ -21,7 +17,6 @@ import java.io.Serializable;
 
 import java.util.ArrayList;
 import java.util.Map;
-import java.util.HashMap;
 
 /**
  * Created by joanchen on 2/18/15.
@@ -32,7 +27,8 @@ public class UserDB extends android.app.Application implements Serializable {
     private boolean loggedIn = true;
     private int registered = -1;
     private int counter = 0;
-    static ArrayList<String> friendN;
+    public static ArrayList<String> friendN;
+    public static ArrayList<Sale> wishlist;
 
     User myU;
 

@@ -18,9 +18,8 @@ public class SaleDB  extends android.app.Application {
 
     public void addSales(Sale s) {
         myFirebaseRef = new Firebase("https://baiyitschyes.firebaseio.com");
-        Firebase saleRef = myFirebaseRef.child("sales");
+        Firebase saleRef = myFirebaseRef.child("userInfo").child(myU.getUser()).child("wishlist");
         saleRef.push().setValue(s);
     }
-
 
 }
