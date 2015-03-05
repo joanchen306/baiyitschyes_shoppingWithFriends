@@ -110,7 +110,7 @@
         android:nestedScrollingEnabled="false"
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
-        android:onClick="createSale" />
+        android:onClick="goToSalesList" />
 
     <Button
         android:id="@+id/mylist"
@@ -145,7 +145,7 @@
         android:shadowRadius="5"
         android:clickable="true"
         android:nestedScrollingEnabled="false"
-        android:onClick="goToItemRequest"
+        android:onClick="createSale"
         android:layout_alignBottom="@+id/text"
         android:layout_alignParentEnd="true" />
 

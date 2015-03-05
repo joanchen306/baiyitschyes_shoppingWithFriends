@@ -117,7 +117,7 @@ public class User implements Serializable{
         return friendList;
     }
 
-    public ArrayList<Sale> getwishlist() {
+    public ArrayList<Sale> getWishlist() {
         return wishlist;
     }
 

@@ -139,7 +139,6 @@ public class HomeScreen extends ActionBarActivity {
         Intent i = new Intent("android.FriendList");
         i.putExtra("User", myU);
         startActivity(i);
-        //startActivity(new Intent(this, FriendList.class));
     }
 
     /**

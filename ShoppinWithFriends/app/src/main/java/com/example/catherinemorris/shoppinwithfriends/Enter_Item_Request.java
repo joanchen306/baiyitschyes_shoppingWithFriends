@@ -2,6 +2,7 @@ package com.example.catherinemorris.shoppinwithfriends;
 
 import android.app.AlertDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
@@ -120,9 +121,10 @@ public class Enter_Item_Request extends ActionBarActivity {
                 AlertDialog alert11 = builder1.create();
                 alert11.show();
 
-                //ArrayAdapter<String> friendAdapt = new ArrayAdapter<String>(context, android.R.layout.simple_list_item_1, );
-                //lv.setAdapter(friendAdapt);
-                finish();
+                Intent i = new Intent("android.HomeScreen");
+                i.putExtra("User", myU);
+                startActivity(i);
+                //finish();
 
             }
 
