@@ -151,4 +151,10 @@ public class HomeScreen extends ActionBarActivity {
         i.putExtra("User", myU);
         startActivity(i);
     }
+
+    public void sendSettings(View view) {
+        Intent i = new Intent("android.Settings");
+        i.putExtra("User", myU);
+        startActivity(i);
+    }
 }
