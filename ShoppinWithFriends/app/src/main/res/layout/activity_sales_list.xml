@@ -4,15 +4,14 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
-    tools:context=".HomeScreen"
     android:background="#00ffff"
-    android:clickable="false"
-    android:id="@+id/textbox">
+    tools:context=".SalesList"
+    android:onClick="goToMyWish">
 
-    <TextView android:text="Welcome to Shopping with Friends" android:layout_width="wrap_content"
+    <TextView android:text="Global Sales List" android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/text"
-        android:textSize="20dp"
+        android:textSize="33dp"
         android:layout_below="@+id/button5"
         android:layout_marginTop="43dp" />
 
@@ -70,13 +69,12 @@
         android:shadowRadius="5"
         android:clickable="true"
         android:nestedScrollingEnabled="false"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_alignParentBottom="true" />
 
     <Button
-        android:id="@+id/sales"
+        android:id="@+id/mylist"
 
-        android:text="Sales"
+        android:text="My List"
         android:textColor="#FFFFFF"
         android:textSize="17dp"
 
@@ -90,15 +88,24 @@
         android:clickable="true"
         android:nestedScrollingEnabled="false"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true"
-        android:onClick="goToSalesList" />
+        android:layout_alignParentStart="true" />
 
-    <ListView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/myWishlist"
-        android:layout_alignParentStart="true"
-        android:choiceMode="singleChoice"
-        android:layout_below="@+id/text" />
+    <Button
+        android:id="@+id/button3"
+        android:text="Friend Wishes"
+        android:textColor="#FFFFFF"
+        android:textSize="17sp"
+        android:layout_width="90dp"
+        android:layout_height="50dp"
+        android:background="@drawable/buttonshape"
+        android:shadowColor="#A8A8A8"
+        android:shadowDx="3"
+        android:shadowDy="1"
+        android:shadowRadius="5"
+        android:clickable="true"
+        android:nestedScrollingEnabled="false"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
+
 
 </RelativeLayout>

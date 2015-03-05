@@ -119,17 +119,6 @@ public class HomeScreen extends ActionBarActivity {
     }
 
     /**
-     * Logs you out of Application. It both moves you to Welcome screen and
-     * logs you out of the database.
-     * @param view
-     */
-    public void sendMessageLogout(View view) {
-        Button button = (Button) view;
-        myU.logout();
-        startActivity(new Intent(this, Welcome.class));
-    }
-
-    /**
      * Opens the FriendList activity and sends the logged in User's
      * information to the activity via .putExtra()
      * @param view
@@ -141,19 +130,14 @@ public class HomeScreen extends ActionBarActivity {
         startActivity(i);
     }
 
-    /**
-     * Opens the request sale Activity
-     * @param view
-     */
-    public void createSale(View view) {
-        Button button = (Button) view;
-        Intent i = new Intent("android.Enter_Item_Request");
+    public void sendSettings(View view) {
+        Intent i = new Intent("android.Settings");
         i.putExtra("User", myU);
         startActivity(i);
     }
 
-    public void sendSettings(View view) {
-        Intent i = new Intent("android.Settings");
+    public void goToSalesList(View view) {
+        Intent i = new Intent("android.SalesList");
         i.putExtra("User", myU);
         startActivity(i);
     }

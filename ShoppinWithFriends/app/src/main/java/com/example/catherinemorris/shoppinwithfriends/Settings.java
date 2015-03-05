@@ -37,6 +37,10 @@ public class Settings extends ActionBarActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 String friend = (String) lv.getItemAtPosition(position);
                 if (friend.equals("Request Sale")) {
+                    /**
+                     * Opens the request sale Activity
+                     * @param view
+                     */
                     Intent i = new Intent("android.Enter_Item_Request");
                     i.putExtra("User", myU);
                     startActivity(i);
@@ -45,6 +49,11 @@ public class Settings extends ActionBarActivity {
                 } else if (friend.equals("Preferences")) {
 
                 } else if (friend.equals("Logout")) {
+                    /**
+                     * Logs you out of Application. It both moves you to Welcome screen and
+                     * logs you out of the database.
+                     * @param view
+                     */
                     myU.logout();
                     startActivity(new Intent(set, Welcome.class));
                 }
@@ -59,6 +68,7 @@ public class Settings extends ActionBarActivity {
         getMenuInflater().inflate(R.menu.menu_settings, menu);
         return true;
     }
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
