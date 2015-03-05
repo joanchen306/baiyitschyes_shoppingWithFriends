@@ -1,9 +1,8 @@
-package com.example.catherinemorris.shoppinwithfriends.Model;
+package com.example.catherinemorris.shoppinwithfriends;
 
 
 import android.util.Log;
 
-import com.example.catherinemorris.shoppinwithfriends.Model.User;
 import com.firebase.client.ChildEventListener;
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
@@ -29,6 +28,7 @@ public class UserDB extends android.app.Application implements Serializable {
     private int registered = -1;
     private int counter = 0;
     public static ArrayList<String> friendN;
+    public static ArrayList<Sale> wishlist;
 
     User myU;
 

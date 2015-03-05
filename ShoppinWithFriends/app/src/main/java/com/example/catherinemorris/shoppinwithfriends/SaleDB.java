@@ -1,7 +1,5 @@
-package com.example.catherinemorris.shoppinwithfriends.Model;
+package com.example.catherinemorris.shoppinwithfriends;
 
-import com.example.catherinemorris.shoppinwithfriends.Model.Sale;
-import com.example.catherinemorris.shoppinwithfriends.Model.User;
 import com.firebase.client.Firebase;
 
 /**
@@ -20,7 +18,7 @@ public class SaleDB  extends android.app.Application {
 
     public void addSales(Sale s) {
         myFirebaseRef = new Firebase("https://baiyitschyes.firebaseio.com");
-        Firebase saleRef = myFirebaseRef.child("userInfo").child(myU.getUser()).child("sales");
+        Firebase saleRef = myFirebaseRef.child("userInfo").child(myU.getUser()).child("wishlist");
         saleRef.push().setValue(s);
     }
 

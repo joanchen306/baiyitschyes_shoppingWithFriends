@@ -13,10 +13,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/itemNameField"
-        android:layout_marginTop="101dp"
         android:hint="Item"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_above="@+id/priceField"
+        android:layout_alignEnd="@+id/itemDescriptionField"
+        android:layout_marginBottom="33dp"
+        android:layout_alignStart="@+id/priceField" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -25,8 +26,9 @@
         android:inputType="number|numberDecimal"
         android:hint="Price"
         android:layout_above="@+id/requestItem"
-        android:layout_alignEnd="@+id/itemNameField"
-        android:layout_marginBottom="54dp" />
+        android:layout_alignStart="@+id/requestItem"
+        android:layout_marginBottom="116dp"
+        android:layout_alignEnd="@+id/itemDescriptionField" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -35,9 +37,10 @@
         android:ems="10"
         android:id="@+id/itemDescriptionField"
         android:hint="Item Description"
+        android:layout_marginTop="58dp"
         android:layout_below="@+id/itemNameField"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="48dp" />
+        android:layout_above="@+id/requestItem" />
 
     <Button
         android:id="@+id/requestItem"
@@ -55,7 +58,8 @@
         android:shadowRadius="5"
         android:clickable="true"
         android:nestedScrollingEnabled="false"
+        android:onClick="sendItemRequest"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="109dp" />
+        android:layout_marginBottom="29dp" />
 </RelativeLayout>

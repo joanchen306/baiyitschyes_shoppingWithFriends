@@ -1,4 +1,4 @@
-package com.example.catherinemorris.shoppinwithfriends.Model;
+package com.example.catherinemorris.shoppinwithfriends;
 
 import java.util.ArrayList;
 
@@ -23,7 +23,7 @@ public class Sale {
         description = des;
         this.price = price;
         matched = false;
-        db.addSales(this);
+        //db.addSales(this);
     }
 
     public String getItem() {

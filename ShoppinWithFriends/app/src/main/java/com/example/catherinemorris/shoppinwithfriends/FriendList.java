@@ -14,8 +14,6 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.ArrayAdapter;
 
-import com.example.catherinemorris.shoppinwithfriends.Model.User;
-import com.example.catherinemorris.shoppinwithfriends.R;
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
@@ -26,8 +24,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import android.widget.AdapterView.OnItemClickListener;
-
-import com.example.catherinemorris.shoppinwithfriends.Model.*;
 
 public class FriendList extends ActionBarActivity {
 

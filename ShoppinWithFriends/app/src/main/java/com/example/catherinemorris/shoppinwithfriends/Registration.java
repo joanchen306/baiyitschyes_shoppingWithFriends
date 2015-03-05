@@ -12,9 +12,6 @@ import android.widget.EditText;
 import android.app.AlertDialog;
 import android.content.Context;
 
-import com.example.catherinemorris.shoppinwithfriends.Model.User;
-import com.example.catherinemorris.shoppinwithfriends.Model.UserDB;
-import com.example.catherinemorris.shoppinwithfriends.R;
 import com.firebase.client.Firebase;
 
 public class Registration extends ActionBarActivity {

@@ -17,9 +17,6 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.RatingBar;
 
-import com.example.catherinemorris.shoppinwithfriends.Model.User;
-import com.example.catherinemorris.shoppinwithfriends.Model.UserDB;
-import com.example.catherinemorris.shoppinwithfriends.R;
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
