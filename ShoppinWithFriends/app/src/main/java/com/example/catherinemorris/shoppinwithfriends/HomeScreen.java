@@ -1,5 +1,6 @@
 package com.example.catherinemorris.shoppinwithfriends;
 
+import android.content.Context;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -27,7 +28,9 @@ public class HomeScreen extends ActionBarActivity {
     Sale mySale;
     UserDB udb;
 
-    ArrayList<Sale> wishlist = udb.wishlist;
+    Context context = this;
+
+    ArrayList<Sale> wishlist = new ArrayList<>();
     String[] wishes = null;
 
     /**
@@ -49,17 +52,6 @@ public class HomeScreen extends ActionBarActivity {
         Firebase myFirebaseRef = new Firebase("https://baiyitschyes.firebaseio.com");
         Query queryRef = myFirebaseRef.child("userInfo").child(username).child("wishlist").orderByKey();
 
-        wishes = new String[wishlist.size()];
-        for (int i = 0; i < wishlist.size(); i++) {
-            wishes[i] = wishlist.get(i).getItem();
-        }
-
-        final ListView lv = (ListView) findViewById(R.id.myWishlist);
-        ArrayAdapter<String> friendAdapt = new ArrayAdapter<String>(this,
-                android.R.layout.simple_list_item_1,
-                wishes);
-
-        lv.setAdapter(friendAdapt);
 
         queryRef.addValueEventListener(new ValueEventListener() {
 
@@ -79,6 +71,18 @@ public class HomeScreen extends ActionBarActivity {
                             }
                     }
 
+                    wishes = new String[wishlist.size()];
+                    for (int i = 0; i < wishlist.size(); i++) {
+                        wishes[i] = wishlist.get(i).getItem();
+                    }
+
+                    final ListView lv = (ListView) findViewById(R.id.myWishlist);
+                    ArrayAdapter<String> friendAdapt = new ArrayAdapter<String>(context,
+                            android.R.layout.simple_list_item_1,
+                            wishes);
+
+                    lv.setAdapter(friendAdapt);
+
                 }
             }
 
@@ -86,7 +90,9 @@ public class HomeScreen extends ActionBarActivity {
             public void onCancelled(FirebaseError firebaseError) {
                 Log.d("The read failed: ", "too bad");
             }
+
         });
+
     }
 
 
