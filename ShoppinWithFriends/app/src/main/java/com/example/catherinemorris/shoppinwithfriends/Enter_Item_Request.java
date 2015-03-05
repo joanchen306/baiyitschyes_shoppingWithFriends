@@ -25,12 +25,7 @@ public class Enter_Item_Request extends ActionBarActivity {
         myU = (User) getIntent().getSerializableExtra("User");
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_enter__item__request);
-        if (savedInstanceState == null) {
-            getSupportFragmentManager().beginTransaction()
-                    .add(R.id.container, new PlaceholderFragment())
-                    .commit();
-        }
+        setContentView(R.layout.fragment_enter__item__request);
     }
 
 

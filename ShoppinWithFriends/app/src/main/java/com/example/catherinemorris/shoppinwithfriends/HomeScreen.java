@@ -78,7 +78,7 @@ public class HomeScreen extends ActionBarActivity {
      * Opens the request sale Activity
      * @param view
      */
-    public void goToItemRequest(View view) {
+    public void createSale(View view) {
         Button button = (Button) view;
         Intent i = new Intent("android.Enter_Item_Request");
         i.putExtra("User", myU);
