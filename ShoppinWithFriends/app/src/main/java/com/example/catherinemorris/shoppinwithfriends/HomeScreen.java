@@ -6,8 +6,10 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.content.Intent;
+import android.widget.ListView;
 
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
@@ -26,6 +28,7 @@ public class HomeScreen extends ActionBarActivity {
     UserDB udb;
 
     ArrayList<Sale> wishlist = udb.wishlist;
+    String[] wishes = null;
 
     /**
      * Overrides onCreate to store the User who is currently logged in
@@ -46,25 +49,36 @@ public class HomeScreen extends ActionBarActivity {
         Firebase myFirebaseRef = new Firebase("https://baiyitschyes.firebaseio.com");
         Query queryRef = myFirebaseRef.child("userInfo").child(username).child("wishlist").orderByKey();
 
-        wishlist = new ArrayList<>();
+        wishes = new String[wishlist.size()];
+        for (int i = 0; i < wishlist.size(); i++) {
+            wishes[i] = wishlist.get(i).getItem();
+        }
+
+        final ListView lv = (ListView) findViewById(R.id.myWishlist);
+        ArrayAdapter<String> friendAdapt = new ArrayAdapter<String>(this,
+                android.R.layout.simple_list_item_1,
+                wishes);
+
+        lv.setAdapter(friendAdapt);
 
         queryRef.addValueEventListener(new ValueEventListener() {
 
             @Override
             public void onDataChange(DataSnapshot snapshot) {
                 if (snapshot.exists()) {
-                    Map<String, Map<String, Object>> list = (Map<String, Map<String, Object>>) snapshot.getValue();
-                    for (Map<String, Object> itemMap : list.values()) {
-                        String it = (String) itemMap.remove("item");
-                        String des = (String) itemMap.remove("description");
-                        double price = (double) itemMap.remove("price");
-                        Sale item = new Sale(it, des, price);
-                        Log.d("This is the item added at get: ", it);
-                        if (!wishlist.contains(item)) {
-                            wishlist.add(item);
-                            myU.setWishlist(wishlist);
-                        }
+                        Map<String, Map<String, Object>> list = (Map<String, Map<String, Object>>) snapshot.getValue();
+                        for (Map<String, Object> itemMap : list.values()) {
+                            String it = (String) itemMap.remove("item");
+                            String des = (String) itemMap.remove("description");
+                            double price = (double) itemMap.remove("price");
+                            Sale item = new Sale(it, des, price);
+                            Log.d("This is the item added at get: ", it);
+                            if (wishlist != null && !wishlist.contains(item)) {
+                                wishlist.add(item);
+                                myU.setWishlist(wishlist);
+                            }
                     }
+
                 }
             }
 
