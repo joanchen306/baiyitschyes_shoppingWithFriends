@@ -4,7 +4,6 @@ import android.app.AlertDialog;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
@@ -12,14 +11,14 @@ import android.widget.EditText;
 
 import android.content.Context;
 
+import com.example.catherinemorris.shoppinwithfriends.Model.User;
+import com.example.catherinemorris.shoppinwithfriends.Model.UserDB;
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
-import com.firebase.client.AuthData;
 import com.firebase.client.Query;
 import com.firebase.client.ValueEventListener;
 
-import java.util.ArrayList;
 import java.util.Map;
 
 

@@ -8,6 +8,9 @@ import android.view.View;
 import android.widget.Button;
 import android.content.Intent;
 
+import com.example.catherinemorris.shoppinwithfriends.Model.Sale;
+import com.example.catherinemorris.shoppinwithfriends.Model.User;
+
 
 public class HomeScreen extends ActionBarActivity {
 
@@ -83,7 +86,5 @@ public class HomeScreen extends ActionBarActivity {
         Intent i = new Intent("android.Enter_Item_Request");
         i.putExtra("User", myU);
         startActivity(i);
- //   public void createSale(View view) {
- //       new Sale("test_item", "test to see if an item is created correctly", 25.00, 10.00, myU);
     }
 }

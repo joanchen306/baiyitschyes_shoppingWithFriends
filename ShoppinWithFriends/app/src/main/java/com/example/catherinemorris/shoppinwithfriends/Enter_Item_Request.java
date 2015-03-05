@@ -10,6 +10,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 
+import com.example.catherinemorris.shoppinwithfriends.Model.User;
+import com.example.catherinemorris.shoppinwithfriends.R;
+
 
 public class Enter_Item_Request extends ActionBarActivity {
 
@@ -25,12 +28,7 @@ public class Enter_Item_Request extends ActionBarActivity {
         myU = (User) getIntent().getSerializableExtra("User");
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_enter__item__request);
-        if (savedInstanceState == null) {
-            getSupportFragmentManager().beginTransaction()
-                    .add(R.id.container, new PlaceholderFragment())
-                    .commit();
-        }
+        setContentView(R.layout.fragment_enter__item__request);
     }
 
 
@@ -79,7 +77,9 @@ public class Enter_Item_Request extends ActionBarActivity {
 
         String item = itemName.getText().toString();
         String descrip = itemDescription.getText().toString();
-        String price = itemPrice.getText().toString();
+        double price = Double.parseDouble(itemPrice.getText().toString());
+
+
 
 
     }

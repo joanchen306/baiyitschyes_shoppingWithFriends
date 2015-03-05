@@ -7,7 +7,7 @@
     tools:context="com.example.catherinemorris.shoppinwithfriends.Enter_Item_Request$PlaceholderFragment"
     android:onClick="goToItemRequest"
     android:background="#00FFFF"
-    android:id="@+id/">
+    android:id="@+id/itrequest">
 
     <EditText
         android:layout_width="wrap_content"
@@ -22,7 +22,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/priceField"
-        android:inputType="number"
+        android:inputType="number|numberDecimal"
         android:hint="Price"
         android:layout_above="@+id/requestItem"
         android:layout_alignEnd="@+id/itemNameField"

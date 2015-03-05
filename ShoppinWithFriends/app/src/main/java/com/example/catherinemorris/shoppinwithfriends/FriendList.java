@@ -1,9 +1,7 @@
 package com.example.catherinemorris.shoppinwithfriends;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -11,15 +9,13 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.ArrayAdapter;
-import android.widget.TextView;
-import android.widget.Toast;
 
-import com.firebase.client.ChildEventListener;
+import com.example.catherinemorris.shoppinwithfriends.Model.User;
+import com.example.catherinemorris.shoppinwithfriends.R;
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
@@ -30,6 +26,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import android.widget.AdapterView.OnItemClickListener;
+
+import com.example.catherinemorris.shoppinwithfriends.Model.*;
 
 public class FriendList extends ActionBarActivity {
 

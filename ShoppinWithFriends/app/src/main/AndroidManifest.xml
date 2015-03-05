@@ -44,7 +44,7 @@
 
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="Welcome" />
+                android:value=".Welcome" />
         </activity>
         <activity
             android:name=".Registration"
@@ -58,7 +58,7 @@
 
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="Registration" />
+                android:value=".Registration" />
         </activity>
         <activity
             android:name=".HomeScreen"
@@ -72,7 +72,7 @@
 
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="HomeScreen" />
+                android:value=".HomeScreen" />
         </activity>
         <activity
             android:name=".FriendList"
@@ -86,7 +86,7 @@
 
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="FriendList" />
+                android:value=".FriendList" />
         </activity>
         <activity
             android:name=".Profile"
@@ -100,7 +100,7 @@
 
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="Profile" />
+                android:value=".Profile" />
         </activity>
         <activity
             android:name=".Enter_Item_Request"
@@ -114,7 +114,7 @@
 
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="HomeScreen" />
+                android:value=".HomeScreen" />
         </activity>
     </application>
 

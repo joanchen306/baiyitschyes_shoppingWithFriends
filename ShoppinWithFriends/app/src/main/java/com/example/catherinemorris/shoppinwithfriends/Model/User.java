@@ -1,14 +1,8 @@
-package com.example.catherinemorris.shoppinwithfriends;
-
-import com.firebase.client.Firebase;
+package com.example.catherinemorris.shoppinwithfriends.Model;
 
 import java.io.Serializable;
 import java.io.*;
 import java.util.ArrayList;
-import android.content.Context;
-import android.util.Log;
-import android.widget.EditText;
-import android.widget.ListView;
 
 /**
  * Created by James Nugent on 2/18/2015.

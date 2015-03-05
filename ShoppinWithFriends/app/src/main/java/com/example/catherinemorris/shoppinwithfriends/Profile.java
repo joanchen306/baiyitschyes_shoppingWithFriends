@@ -6,25 +6,20 @@ package com.example.catherinemorris.shoppinwithfriends;
  */
 
 
-import android.app.AlertDialog;
 import android.content.Context;
 
-import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
-import android.widget.ArrayAdapter;
-import android.widget.EditText;
-import android.widget.ListView;
-
-import android.widget.Button;
 import android.widget.TextView;
 import android.widget.RatingBar;
 
+import com.example.catherinemorris.shoppinwithfriends.Model.User;
+import com.example.catherinemorris.shoppinwithfriends.Model.UserDB;
+import com.example.catherinemorris.shoppinwithfriends.R;
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
