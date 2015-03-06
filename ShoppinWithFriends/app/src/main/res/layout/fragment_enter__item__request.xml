@@ -7,6 +7,13 @@
     tools:context="com.example.catherinemorris.shoppinwithfriends.Enter_Item_Request$PlaceholderFragment"
     android:background="#00FFFF">
 
+    <TextView android:text="What are you looking for?" android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/text"
+        android:textSize="33dp"
+        android:layout_below="@+id/button5"
+        android:layout_marginTop="43dp" />
+
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -59,4 +66,22 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="29dp" />
+
+    <Button
+        android:id="@+id/button8"
+        android:text="Back"
+        android:textColor="#FFFFFF"
+        android:textSize="17dp"
+        android:layout_width="60dp"
+        android:layout_height="50dp"
+        android:background="@drawable/buttonshape"
+        android:shadowColor="#A8A8A8"
+        android:shadowDx="3"
+        android:shadowDy="1"
+        android:shadowRadius="5"
+        android:clickable="true"
+        android:nestedScrollingEnabled="false"
+        android:onClick="back"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true" />
 </RelativeLayout>

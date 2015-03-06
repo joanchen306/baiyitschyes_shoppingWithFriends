@@ -136,4 +136,8 @@ public class Enter_Item_Request extends ActionBarActivity {
 
 
     }
+
+    public void back(View view) {
+        finish();
+    }
 }

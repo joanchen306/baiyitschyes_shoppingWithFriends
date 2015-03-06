@@ -9,14 +9,14 @@ import android.view.View;
 import android.widget.Button;
 
 
-public class SalesList extends ActionBarActivity {
+public class FriendWishes extends ActionBarActivity {
 
     User myU;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_sales_list);
+        setContentView(R.layout.activity_friend_wishes);
 
         myU = (User) getIntent().getSerializableExtra("User");
     }
@@ -25,7 +25,7 @@ public class SalesList extends ActionBarActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_sales_list, menu);
+        getMenuInflater().inflate(R.menu.menu_friend_wishes, menu);
         return true;
     }
 
@@ -68,8 +68,8 @@ public class SalesList extends ActionBarActivity {
         startActivity(i);
     }
 
-    public void goToFWish(View view) {
-        Intent i = new Intent("android.FriendWishes");
+    public void goToSalesList(View view) {
+        Intent i = new Intent("android.SalesList");
         i.putExtra("User", myU);
         startActivity(i);
     }

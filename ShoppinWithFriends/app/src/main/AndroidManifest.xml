@@ -105,7 +105,7 @@
         <activity
             android:name=".Enter_Item_Request"
             android:label="@string/app_name"
-            android:parentActivityName=".HomeScreen" >
+            android:parentActivityName=".Settings" >
             <intent-filter>
                 <action android:name="android.Enter_Item_Request" />
 
@@ -114,8 +114,24 @@
 
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".HomeScreen" />
+                android:value=".Settings" />
         </activity>
+
+        <activity
+            android:name=".SaleItem"
+            android:label="@string/app_name"
+            android:parentActivityName=".Settings" >
+            <intent-filter>
+                <action android:name="android.SaleItem" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Settings" />
+        </activity>
+
         <activity
             android:name=".Settings"
             android:label="@string/app_name"
@@ -130,6 +146,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".HomeScreen" />
         </activity>
+
         <activity
             android:name=".SalesList"
             android:label="@string/app_name"
@@ -144,6 +161,22 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".HomeScreen" />
         </activity>
+
+        <activity
+            android:name=".FriendWishes"
+            android:label="@string/app_name"
+            android:parentActivityName=".HomeScreen" >
+            <intent-filter>
+                <action android:name="android.FriendWishes" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".HomeScreen" />
+        </activity>
+
     </application>
 
 </manifest>

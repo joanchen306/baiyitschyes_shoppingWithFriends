@@ -1,31 +1,38 @@
 package com.example.catherinemorris.shoppinwithfriends;
 
-import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
+import android.widget.EditText;
+
+import com.firebase.client.Firebase;
 
 
-public class SalesList extends ActionBarActivity {
+public class SaleItem extends ActionBarActivity {
 
     User myU;
+    Firebase myFirebaseRef;
+
+    private EditText itemName;
+    private EditText itemPrice;
+    private EditText itemLoc;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_sales_list);
+        setContentView(R.layout.activity_sale_item);
 
         myU = (User) getIntent().getSerializableExtra("User");
+        Firebase.setAndroidContext(this);
     }
 
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_sales_list, menu);
+        getMenuInflater().inflate(R.menu.menu_sale_item, menu);
         return true;
     }
 
@@ -44,33 +51,11 @@ public class SalesList extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    /**
-     * Opens the FriendList activity and sends the logged in User's
-     * information to the activity via .putExtra()
-     * @param view
-     */
-    public void openFriends(View view) {
-        Button button = (Button) view;
-        Intent i = new Intent("android.FriendList");
-        i.putExtra("User", myU);
-        startActivity(i);
+    public void back(View view) {
+        finish();
     }
 
-    public void sendSettings(View view) {
-        Intent i = new Intent("android.Settings");
-        i.putExtra("User", myU);
-        startActivity(i);
-    }
+    public void sendSaleRequest(View view) {
 
-    public void goToMyWish(View view) {
-        Intent i = new Intent("android.HomeScreen");
-        i.putExtra("User", myU);
-        startActivity(i);
-    }
-
-    public void goToFWish(View view) {
-        Intent i = new Intent("android.FriendWishes");
-        i.putExtra("User", myU);
-        startActivity(i);
     }
 }

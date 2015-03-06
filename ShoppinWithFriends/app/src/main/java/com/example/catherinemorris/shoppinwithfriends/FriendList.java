@@ -133,7 +133,6 @@ public class FriendList extends ActionBarActivity {
                     friendN.add(friend);
                     Log.d("Update FriendList by adding:", friend);
                     if (myFirebaseRef.child("userInfo").child(username).child("friends").equals(null)) {
-                        myFirebaseRef.child("userInfo").child(username).child("friends").child("name").setValue(friend);
                     } else {
                         Firebase friendRef = myFirebaseRef.child("userInfo").child(username).child("friends");
                         Map<String, Object> friends = new HashMap<String, Object>();

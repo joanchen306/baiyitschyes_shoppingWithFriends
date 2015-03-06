@@ -141,4 +141,10 @@ public class HomeScreen extends ActionBarActivity {
         i.putExtra("User", myU);
         startActivity(i);
     }
+
+    public void goToFWish(View view) {
+        Intent i = new Intent("android.FriendWishes");
+        i.putExtra("User", myU);
+        startActivity(i);
+    }
 }

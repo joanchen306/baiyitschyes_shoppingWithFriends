@@ -45,7 +45,9 @@ public class Settings extends ActionBarActivity {
                     i.putExtra("User", myU);
                     startActivity(i);
                 } else if (friend.equals("Add Sale")) {
-
+                    Intent i = new Intent("android.SaleItem");
+                    i.putExtra("User", myU);
+                    startActivity(i);
                 } else if (friend.equals("Preferences")) {
 
                 } else if (friend.equals("Logout")) {
