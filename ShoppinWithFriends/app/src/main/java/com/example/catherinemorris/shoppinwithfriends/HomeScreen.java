@@ -28,6 +28,10 @@ public class HomeScreen extends ActionBarActivity {
     Wish mySale;
     UserDB udb;
 
+    String found = " (Found!)";
+    String looking = " (Still looking!)";
+
+
     Context context = this;
 
     ArrayList<Wish> wishlist = new ArrayList<>();
@@ -74,12 +78,18 @@ public class HomeScreen extends ActionBarActivity {
                     wishes = new String[wishlist.size()];
                     for (int i = 0; i < wishlist.size(); i++) {
                         wishes[i] = wishlist.get(i).getItem();
+                        if (wishlist.get(i).getMatched()) {
+                            wishes[i] = wishes[i] + found;
+                        } else {
+                            wishes[i] = wishes[i] + looking;
+                        }
                     }
 
                     final ListView lv = (ListView) findViewById(R.id.myWishlist);
                     ArrayAdapter<String> friendAdapt = new ArrayAdapter<String>(context,
                             android.R.layout.simple_list_item_1,
                             wishes);
+
 
                     lv.setAdapter(friendAdapt);
 
