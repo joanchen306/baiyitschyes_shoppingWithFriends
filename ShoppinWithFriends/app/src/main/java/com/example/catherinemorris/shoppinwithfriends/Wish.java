@@ -17,7 +17,7 @@ public class Wish implements Serializable {
     private double price;
     private User user;
     private boolean matched;
-    private ArrayList<String> matchIDList;
+    private ArrayList<ItemOnSale> matchedSales = new ArrayList<ItemOnSale>();
 
     User myU;
 
@@ -40,6 +40,10 @@ public class Wish implements Serializable {
     public double getPrice() {
         return price;
     }
+
+    public ArrayList<ItemOnSale> getSales() { return matchedSales; }
+
+    public void addSale(ItemOnSale sale) { matchedSales.add(sale); }
 
     public boolean getMatched() { return matched; }
 
