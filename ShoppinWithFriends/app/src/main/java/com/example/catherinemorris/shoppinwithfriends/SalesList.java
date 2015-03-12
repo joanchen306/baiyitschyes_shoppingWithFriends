@@ -3,15 +3,22 @@ package com.example.catherinemorris.shoppinwithfriends;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ListView;
+
+import com.firebase.client.Firebase;
 
 
 public class SalesList extends ActionBarActivity {
 
     User myU;
+    String[] globalSales;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,6 +26,37 @@ public class SalesList extends ActionBarActivity {
         setContentView(R.layout.activity_sales_list);
 
         myU = (User) getIntent().getSerializableExtra("User");
+
+        ArrayList<ItemOnSale> saleList = new ArrayList<ItemOnSale>();
+        //saleList = ;
+        globalSales = new String[saleList.size()];
+        for (int i = 0; i < saleList.size(); i++) {
+            globalSales[i] = saleList.get(i).getItem();
+        }
+        final ListView lv = (ListView) findViewById(R.id.globalList);
+        ArrayAdapter<String> friendAdapt = new ArrayAdapter<String>(this,
+                android.R.layout.simple_list_item_1,
+                globalSales);
+
+        lv.setAdapter(friendAdapt);
+        Firebase.setAndroidContext(this);
+        Log.d("f", saleList.toString());
+
+        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                String sale = (String) lv.getItemAtPosition(position);
+                Intent i = new Intent("android.SaleConnection");
+                i.putExtra("User", myU);
+                for (ItemOnSale item : saleList) {
+                    if(item.getItem().equals(sale)) {
+                        i.putExtra("Sale", item);
+                        break;
+                    }
+                }
+                startActivity(i);
+            }
+        });
     }
 
 

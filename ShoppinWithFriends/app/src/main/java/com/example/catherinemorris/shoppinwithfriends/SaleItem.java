@@ -12,6 +12,9 @@ import android.widget.EditText;
 
 import com.firebase.client.Firebase;
 
+import java.util.HashMap;
+import java.util.Map;
+
 
 public class SaleItem extends ActionBarActivity {
 
@@ -78,9 +81,14 @@ public class SaleItem extends ActionBarActivity {
         } else {
 
             ItemOnSale saleMe = new ItemOnSale(item, price, myU, loc);
+            Map<String, Object> newItem = new HashMap<>();
+            newItem.put("item", item);
+            newItem.put("price", price);
+            newItem.put("location", loc);
             Log.d("Tag", "The item is " + item + ". It costs " + price + ". It's from " + loc);
-            myFirebaseRef = new Firebase("https://baiyitschyes.firebaseio.com").child("sales");
-            myFirebaseRef.push().setValue(saleMe);
+            myFirebaseRef = new Firebase("https://baiyitschyes.firebaseio.com");
+            Firebase salesRef = myFirebaseRef.child("sales");
+            salesRef.child(item).setValue(newItem);
         }
 
         itemPrice.setText("");
