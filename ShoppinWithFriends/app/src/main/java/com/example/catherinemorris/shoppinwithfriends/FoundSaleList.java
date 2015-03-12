@@ -45,7 +45,11 @@ public class FoundSaleList extends ActionBarActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 String sale = (String) lv.getItemAtPosition(position);
                 Intent i = new Intent("android.SaleConnection");
-                i.putExtra("Sale", sale);
+                for (ItemOnSale saleMe : salesList) {
+                    if (saleMe.getItem().equals(sale)) {
+                        i.putExtra("Sale", saleMe);
+                    }
+                }
                 startActivity(i);
             }
         });
