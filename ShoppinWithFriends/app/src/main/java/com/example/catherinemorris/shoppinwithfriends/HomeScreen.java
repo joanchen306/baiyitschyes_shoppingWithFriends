@@ -36,6 +36,7 @@ public class HomeScreen extends ActionBarActivity {
     Context context = this;
 
     ArrayList<Wish> wishlist = new ArrayList<>();
+    ArrayList<ItemOnSale> globalSales = new ArrayList<>();
     String[] wishes = null;
 
     /**
@@ -119,6 +120,37 @@ public class HomeScreen extends ActionBarActivity {
                         }
                     });
 
+                }
+
+            }
+
+            @Override
+            public void onCancelled(FirebaseError firebaseError) {
+                Log.d("The read failed: ", "too bad");
+            }
+
+        });
+
+        queryRef = myFirebaseRef.child("userInfo").child(username).child("sales").orderByKey();
+
+
+        queryRef.addValueEventListener(new ValueEventListener() {
+
+            @Override
+            public void onDataChange(DataSnapshot snapshot) {
+                if (snapshot.exists()) {
+                    Map<String, Map<String, Object>> list = (Map<String, Map<String, Object>>) snapshot.getValue();
+                    for (Map<String, Object> itemMap : list.values()) {
+                        String it = (String) itemMap.remove("item");
+                        String des = (String) itemMap.remove("description");
+                        double price = (double) itemMap.remove("price");
+
+                        ItemOnSale item = new ItemOnSale(it, price, myU, des);
+                        Log.d("This is the item added at get: ", it);
+                        if (globalSales != null && !globalSales.contains(item)) {
+                            globalSales.add(item);
+                        }
+                    }
                 }
             }
 
