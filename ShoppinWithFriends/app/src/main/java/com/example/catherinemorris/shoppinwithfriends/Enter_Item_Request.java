@@ -94,47 +94,54 @@ public class Enter_Item_Request extends ActionBarActivity {
         final String descrip = itemDescription.getText().toString();
         final double price = Double.parseDouble(itemPrice.getText().toString());
 
-        final Wish wishItems = new Wish(item, descrip, price);
-        final String username = myU.getUser();
+        if (itemName.equals("") | itemDescription.equals("") | itemPrice.equals("")) {
+            AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
+            builder1.setMessage("No fields should be blank");
+            builder1.setCancelable(true);
+            AlertDialog alert11 = builder1.create();
+            alert11.show();
+        } else {
 
-        myFirebaseRef = new Firebase("https://baiyitschyes.firebaseio.com");
-        Firebase queryRef = myFirebaseRef.child("userInfo").child(myU.getUser()).child("wishlist");
+            final Wish wishItems = new Wish(item, descrip, price);
+            final String username = myU.getUser();
 
-        queryRef.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot snapshot) {
+            myFirebaseRef = new Firebase("https://baiyitschyes.firebaseio.com");
+            Firebase queryRef = myFirebaseRef.child("userInfo").child(myU.getUser()).child("wishlist");
 
-                wishlist.add(wishItems);
-                Log.d("Update wishlist by adding:", wishItems.getItem());
-                if (wishlist.size() == 1) {
-                    myFirebaseRef.child("userInfo").child(username).child("wishlist").child(item).setValue(wishItems);
-                } else {
-                    Firebase itemRef = myFirebaseRef.child("userInfo").child(username).child("wishlist");
-                    Map<String, Object> wish = new HashMap<>();
-                    wish.put(item, wishItems);
-                    itemRef.updateChildren(wish);
+            queryRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot snapshot) {
+
+                    wishlist.add(wishItems);
+                    Log.d("Update wishlist by adding:", wishItems.getItem());
+                    if (wishlist.size() == 1) {
+                        myFirebaseRef.child("userInfo").child(username).child("wishlist").child(item).setValue(wishItems);
+                    } else {
+                        Firebase itemRef = myFirebaseRef.child("userInfo").child(username).child("wishlist");
+                        Map<String, Object> wish = new HashMap<>();
+                        wish.put(item, wishItems);
+                        itemRef.updateChildren(wish);
+                    }
+
+                    AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
+                    builder1.setMessage("You have added " + item + " on your wishlist :)");
+                    builder1.setCancelable(true);
+                    AlertDialog alert11 = builder1.create();
+                    alert11.show();
+
+                    Intent i = new Intent("android.HomeScreen");
+                    i.putExtra("User", myU);
+                    startActivity(i);
+                    //finish();
+
                 }
 
-                AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
-                builder1.setMessage("You have added " + item + " on your wishlist :)");
-                builder1.setCancelable(true);
-                AlertDialog alert11 = builder1.create();
-                alert11.show();
+                @Override
+                public void onCancelled(FirebaseError firebaseError) {
+                }
+            });
 
-                Intent i = new Intent("android.HomeScreen");
-                i.putExtra("User", myU);
-                startActivity(i);
-                //finish();
-
-            }
-
-            @Override
-            public void onCancelled(FirebaseError firebaseError) {
-            }
-        });
-
-
-
+        }
     }
 
     public void back(View view) {
