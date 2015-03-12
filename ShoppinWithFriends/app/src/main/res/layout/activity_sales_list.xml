@@ -114,7 +114,8 @@
         android:id="@+id/globalList"
         android:layout_below="@+id/text"
         android:layout_alignParentStart="true"
-        android:choiceMode="singleChoice" />
+        android:choiceMode="singleChoice"
+        android:layout_above="@+id/angry_btn" />
 
 
 </RelativeLayout>
