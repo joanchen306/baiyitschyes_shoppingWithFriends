@@ -85,6 +85,11 @@ public class Enter_Item_Request extends ActionBarActivity {
         }
     }
 
+    /**
+     * When a user sends in an item request it adds in the wishlist on the database
+     * @param view
+     */
+
     public void sendItemRequest(View view) {
         itemName = (EditText) this.findViewById(R.id.itemNameField);
         itemDescription = (EditText) this.findViewById(R.id.itemDescriptionField);
@@ -119,12 +124,20 @@ public class Enter_Item_Request extends ActionBarActivity {
                     } else {
                         Firebase itemRef = myFirebaseRef.child("userInfo").child(username).child("wishlist");
                         Map<String, Object> wish = new HashMap<>();
-                        wish.put(item, wishItems);
-                        itemRef.updateChildren(wish);
+                        if(wish.containsKey(item)){
+                            AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
+                            builder1.setMessage("You have already added " + item + ".");
+                            builder1.setCancelable(true);
+                            AlertDialog alert11 = builder1.create();
+                            alert11.show();
+                        } else {
+                            wish.put(item, wishItems);
+                            itemRef.updateChildren(wish);
+                        }
                     }
 
                     AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
-                    builder1.setMessage("You have added " + item + " on your wishlist :)");
+                    builder1.setMessage("You have added " + item + " on your wish list :)");
                     builder1.setCancelable(true);
                     AlertDialog alert11 = builder1.create();
                     alert11.show();

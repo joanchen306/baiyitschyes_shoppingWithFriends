@@ -56,7 +56,42 @@ public class HomeScreen extends ActionBarActivity {
 
         String username = myU.getUser();
         Firebase myFirebaseRef = new Firebase("https://baiyitschyes.firebaseio.com");
-        Query queryRef = myFirebaseRef.child("userInfo").child(username).child("wishlist").orderByKey();
+
+        Query queryRef = myFirebaseRef.child("globalsales").orderByKey();
+
+
+        queryRef.addValueEventListener(new ValueEventListener() {
+
+            @Override
+            public void onDataChange(DataSnapshot snapshot) {
+                if (snapshot.exists()) {
+                    Map<String, Map<String, Object>> list = (Map<String, Map<String, Object>>) snapshot.getValue();
+                    for (Map<String, Object> itemMap : list.values()) {
+                        String it = (String) itemMap.remove("item");
+                        String loc = (String) itemMap.remove("location");
+                        double price = (double) itemMap.remove("price");
+                        String um = (String) itemMap.remove("user");
+
+                        ItemOnSale item = new ItemOnSale(it, price, um, loc);
+                        Log.d("This is the item added at get: ", it);
+                        if (globalSales != null && !globalSales.contains(item)) {
+                            globalSales.add(item);
+                            Log.d("Matched " + item.getItem() + " , $ " + item.getPrice() + " at ", item.getLocation());
+                        }
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(FirebaseError firebaseError) {
+                Log.d("The read failed: ", "too bad");
+            }
+
+        });
+
+
+
+        queryRef = myFirebaseRef.child("userInfo").child(username).child("wishlist").orderByValue();
 
 
         queryRef.addValueEventListener(new ValueEventListener() {
@@ -77,6 +112,19 @@ public class HomeScreen extends ActionBarActivity {
                             }
                     }
 
+                    //compares the wishlist to the global sales list
+                    for(Wish currWish : wishlist) {
+                        String name = currWish.getItem();
+                        for(ItemOnSale currSale : globalSales) {
+                            String sale = currSale.getItem();
+                            if(name.equals(sale) && currWish.getPrice() >= currSale.getPrice()) {
+                                currWish.foundItem();
+                                currWish.addSale(currSale);
+                            }
+                        }
+                    }
+
+                    //print out the user's wishlist and mark if it has a match
                     wishes = new String[wishlist.size()];
                     for (int i = 0; i < wishlist.size(); i++) {
                         wishes[i] = wishlist.get(i).getItem();
@@ -87,71 +135,47 @@ public class HomeScreen extends ActionBarActivity {
                         }
                     }
 
-                    final ListView lv = (ListView) findViewById(R.id.myWishlist);
-                    ArrayAdapter<String> friendAdapt = new ArrayAdapter<String>(context,
-                            android.R.layout.simple_list_item_1,
-                            wishes);
+                }
+
+                final ListView lv = (ListView) findViewById(R.id.myWishlist);
+                ArrayAdapter<String> friendAdapt = new ArrayAdapter<String>(context,
+                        android.R.layout.simple_list_item_1,
+                        wishes);
 
 
-                    lv.setAdapter(friendAdapt);
+                lv.setAdapter(friendAdapt);
 
-                    lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                        @Override
-                        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                            String wish = (String) lv.getItemAtPosition(position);
-                            ArrayList<Wish> wishL = myU.getWishlist();
-                            for (Wish itemW : wishL) {
-                                if (itemW.getItem().equals(wish)) {
-                                    if (itemW.getSales().size() > 1) {
-                                        Intent i = new Intent("android.FoundSaleList");
-                                        i.putExtra("Wish", itemW);
-                                        i.putExtra("User", myU);
-                                        startActivity(i);
-                                    } else {
-                                        Intent i = new Intent("android.SaleConnection");
-                                        ItemOnSale sale = itemW.getSales().get(0);
-                                        i.putExtra("Sale", sale);
-                                        i.putExtra("User", myU);
-                                        startActivity(i);
-                                    }
-                                    break;
+                lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                        String wish = (String) lv.getItemAtPosition(position);
+                        ArrayList<Wish> wishL = myU.getWishlist();
+                        Log.d("this is my wishlist on homescreen ", wishL.toString());
+                        for (Wish itemW : wishL) {
+                            Log.d("This is the item: ",itemW.getItem());
+                            Log.d("This is the wish: ", wish);
+                            String it = itemW.getItem() + " (Found!)";
+                            if (it.equals(wish)) {
+                                if (itemW.getSales().size() > 1) {
+                                    Log.d("more than one match! for ", wish);
+                                    Intent i = new Intent("android.FoundSaleList");
+                                    i.putExtra("Wish", itemW);
+                                    i.putExtra("User", myU);
+                                    startActivity(i);
+                                } else {
+                                    Log.d("only one match! for ", wish);
+                                    Intent i = new Intent("android.SaleConnection");
+                                    ItemOnSale sale = itemW.getSales().get(0);
+                                    i.putExtra("Sale", sale);
+                                    i.putExtra("User", myU);
+                                    startActivity(i);
                                 }
+                                break;
                             }
                         }
-                    });
-
-                }
-
-            }
-
-            @Override
-            public void onCancelled(FirebaseError firebaseError) {
-                Log.d("The read failed: ", "too bad");
-            }
-
-        });
-
-        queryRef = myFirebaseRef.child("userInfo").child(username).child("sales").orderByKey();
-
-
-        queryRef.addValueEventListener(new ValueEventListener() {
-
-            @Override
-            public void onDataChange(DataSnapshot snapshot) {
-                if (snapshot.exists()) {
-                    Map<String, Map<String, Object>> list = (Map<String, Map<String, Object>>) snapshot.getValue();
-                    for (Map<String, Object> itemMap : list.values()) {
-                        String it = (String) itemMap.remove("item");
-                        String des = (String) itemMap.remove("description");
-                        double price = (double) itemMap.remove("price");
-
-                        ItemOnSale item = new ItemOnSale(it, price, myU.getUser(), des);
-                        Log.d("This is the item added at get: ", it);
-                        if (globalSales != null && !globalSales.contains(item)) {
-                            globalSales.add(item);
-                        }
                     }
-                }
+                });
+
             }
 
             @Override

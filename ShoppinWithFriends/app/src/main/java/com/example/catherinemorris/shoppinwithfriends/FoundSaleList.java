@@ -15,6 +15,9 @@ import com.firebase.client.Firebase;
 
 import java.util.ArrayList;
 
+/**
+ * this class creates a list of matched sales when there are more than one matches
+ */
 
 public class FoundSaleList extends ActionBarActivity {
 

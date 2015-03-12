@@ -17,6 +17,9 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.Semaphore;
 
+import java.util.HashMap;
+import java.util.Map;
+
 
 public class SaleItem extends ActionBarActivity {
 
