@@ -29,6 +29,8 @@ public class ItemOnSale implements Serializable {
 
     public String getLocation() { return location; }
 
+    public User getUser() { return user;}
+
     private static final long serialVersionUID = 7526471155622776147L;
     /**
      * Always treat de-serialization as a full-blown constructor, by
