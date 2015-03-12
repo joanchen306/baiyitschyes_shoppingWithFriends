@@ -2,6 +2,7 @@ package com.example.catherinemorris.shoppinwithfriends;
 
 import android.app.AlertDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -65,8 +66,10 @@ public class SaleItem extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void back(View view) {
-        finish();
+    public void goHome(View view) {
+        Intent i = new Intent("android.HomeScreen");
+        i.putExtra("User", myU);
+        startActivity(i);
     }
 
     public void sendSaleRequest(View view) throws InterruptedException {

@@ -36,7 +36,7 @@ public class FoundSaleList extends ActionBarActivity {
         final ArrayList<ItemOnSale> salesList = myWish.getSales();
         mySales = new String[salesList.size()];
         for (int i = 0; i < salesList.size(); i++) {
-            mySales[i] = salesList.get(i).getItem();
+            mySales[i] = salesList.get(i).getItem() + (i + 1);
         }
         final ListView lv = (ListView) findViewById(R.id.FoundSales);
         ArrayAdapter<String> friendAdapt = new ArrayAdapter<String>(this,
@@ -50,10 +50,14 @@ public class FoundSaleList extends ActionBarActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 String sale = (String) lv.getItemAtPosition(position);
                 Intent i = new Intent("android.SaleConnection");
+                int num = 1;
                 for (ItemOnSale saleMe : salesList) {
-                    if (saleMe.getItem().equals(sale)) {
+                    String item = saleMe.getItem() + num;
+                    if (item.equals(sale)) {
                         i.putExtra("Sale", saleMe);
+                        break;
                     }
+                    num++;
                 }
                 startActivity(i);
             }

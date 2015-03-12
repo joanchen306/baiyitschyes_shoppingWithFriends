@@ -63,8 +63,8 @@
         android:layout_centerHorizontal="true" />
 
     <Button
-        android:id="@+id/button7"
-        android:text="Back"
+        android:id="@+id/goHomeButton"
+        android:text="Home"
         android:textColor="#FFFFFF"
         android:textSize="17dp"
         android:layout_width="60dp"
@@ -76,7 +76,7 @@
         android:shadowRadius="5"
         android:clickable="true"
         android:nestedScrollingEnabled="false"
-        android:onClick="back"
+        android:onClick="goHome"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true" />
 

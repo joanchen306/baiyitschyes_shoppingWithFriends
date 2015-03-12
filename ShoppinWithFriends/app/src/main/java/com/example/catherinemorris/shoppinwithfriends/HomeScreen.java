@@ -37,7 +37,7 @@ public class HomeScreen extends ActionBarActivity {
 
     ArrayList<Wish> wishlist = new ArrayList<>();
     ArrayList<ItemOnSale> globalSales = new ArrayList<>();
-    String[] wishes = null;
+    String[] wishes;
 
     /**
      * Overrides onCreate to store the User who is currently logged in
@@ -91,6 +91,8 @@ public class HomeScreen extends ActionBarActivity {
 
 
 
+        wishes = new String[wishlist.size()];
+
         queryRef = myFirebaseRef.child("userInfo").child(username).child("wishlist").orderByValue();
 
 
@@ -124,8 +126,8 @@ public class HomeScreen extends ActionBarActivity {
                         }
                     }
 
-                    //print out the user's wishlist and mark if it has a match
                     wishes = new String[wishlist.size()];
+                    //print out the user's wishlist and mark if it has a match
                     for (int i = 0; i < wishlist.size(); i++) {
                         wishes[i] = wishlist.get(i).getItem();
                         if (wishlist.get(i).getMatched()) {
@@ -138,6 +140,9 @@ public class HomeScreen extends ActionBarActivity {
                 }
 
                 final ListView lv = (ListView) findViewById(R.id.myWishlist);
+                if (wishes == null) {
+
+                }
                 ArrayAdapter<String> friendAdapt = new ArrayAdapter<String>(context,
                         android.R.layout.simple_list_item_1,
                         wishes);
