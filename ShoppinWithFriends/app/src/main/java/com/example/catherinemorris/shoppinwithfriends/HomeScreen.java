@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.content.Intent;
@@ -92,6 +93,22 @@ public class HomeScreen extends ActionBarActivity {
 
 
                     lv.setAdapter(friendAdapt);
+
+                    lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                        @Override
+                        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                            String wish = (String) lv.getItemAtPosition(position);
+                            ArrayList<Wish> wishL = myU.getWishlist();
+                            for (Wish itemW : wishL) {
+                                if (itemW.getItem().equals(wish)) {
+
+                                }
+                            }
+                            Intent i = new Intent("android.Profile");
+                            i.putExtra("Wish", wish);
+                            startActivity(i);
+                        }
+                    });
 
                 }
             }

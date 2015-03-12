@@ -99,6 +99,7 @@
         android:choiceMode="singleChoice"
         android:layout_below="@+id/text"
         android:layout_toEndOf="@+id/FriendsList"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:clickable="true" />
 
 </RelativeLayout>

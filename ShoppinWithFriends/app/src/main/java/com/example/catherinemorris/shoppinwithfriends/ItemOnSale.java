@@ -12,14 +12,12 @@ public class ItemOnSale implements Serializable {
 
 
     private String item;
-    private String description;
     private double price;
     private User user;
     private String location;
 
-    public ItemOnSale(String it, String des, double price, User seller, String loc) {
+    public ItemOnSale(String it, double price, User seller, String loc) {
         item = it;
-        description = des;
         this.price = price;
         user = seller;
         location = loc;
