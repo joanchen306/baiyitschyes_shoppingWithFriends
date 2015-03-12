@@ -20,7 +20,6 @@ public class Wish implements Serializable {
     private ArrayList<String> matchIDList;
 
     User myU;
-    SaleDB db = new SaleDB();
 
     public Wish(String it, String des, double price) {
         item = it;

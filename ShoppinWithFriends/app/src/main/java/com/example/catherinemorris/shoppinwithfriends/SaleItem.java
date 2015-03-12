@@ -1,5 +1,7 @@
 package com.example.catherinemorris.shoppinwithfriends;
 
+import android.app.AlertDialog;
+import android.content.Context;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -13,11 +15,13 @@ import com.firebase.client.Firebase;
 public class SaleItem extends ActionBarActivity {
 
     User myU;
-    Firebase myFirebaseRef;
+    private Firebase myFirebaseRef;
 
     private EditText itemName;
     private EditText itemPrice;
     private EditText itemLoc;
+
+    Context context = this;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,11 +64,22 @@ public class SaleItem extends ActionBarActivity {
         itemLoc = (EditText) this.findViewById(R.id.itemLocation);
         itemPrice = (EditText) this.findViewById(R.id.priceField);
 
-        final String item = itemName.getText().toString();
-        final String loc = itemLoc.getText().toString();
-        final double price = Double.parseDouble(itemPrice.getText().toString());
+        String item = itemName.getText().toString();
+        String loc = itemLoc.getText().toString();
+        double price = Double.parseDouble(itemPrice.getText().toString());
 
-        final ItemOnSale saleMe = new ItemOnSale(item, price, myU, loc);
-        final String username = myU.getUser();
+        if (item.equals("") | loc.equals("") | itemPrice.getText().toString().equals("")) {
+            AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
+            builder1.setMessage("No fields should be blank");
+            builder1.setCancelable(true);
+            AlertDialog alert11 = builder1.create();
+            alert11.show();
+        } else {
+
+            ItemOnSale saleMe = new ItemOnSale(item, price, myU, loc);
+
+            myFirebaseRef = new Firebase("https://baiyitschyes.firebaseio.com");
+            myFirebaseRef.child("sales").push().setValue(saleMe);
+        }
     }
 }

@@ -94,7 +94,7 @@ public class Enter_Item_Request extends ActionBarActivity {
         final String descrip = itemDescription.getText().toString();
         final double price = Double.parseDouble(itemPrice.getText().toString());
 
-        if (itemName.equals("") | itemDescription.equals("") | itemPrice.equals("")) {
+        if (item.equals("") | descrip.equals("") | itemPrice.getText().toString().equals("")) {
             AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
             builder1.setMessage("No fields should be blank");
             builder1.setCancelable(true);
