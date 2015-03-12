@@ -39,7 +39,7 @@ public class SaleItem extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sale_item);
 
-        myU = (User) getIntent().getSerializableExtra("User");
+        myU = (User) getIntent().getSerializableExtra("User"); //pulls in myU from the last Activity
         Firebase.setAndroidContext(this);
     }
 
@@ -66,22 +66,33 @@ public class SaleItem extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    /**
+     * Opens the HomeScreen activity and sends the logged in User's
+     * information to the activity via .putExtra()
+     * @param view
+     */
     public void goHome(View view) {
         Intent i = new Intent("android.HomeScreen");
         i.putExtra("User", myU);
         startActivity(i);
     }
 
+    /**
+     * Allows the user to send the information from the EditText fields to the
+     * database.
+     * @param view
+     */
     public void sendSaleRequest(View view) throws InterruptedException {
         itemName = (EditText) this.findViewById(R.id.itemNameField);
         itemLoc = (EditText) this.findViewById(R.id.itemLocation);
         itemPrice = (EditText) this.findViewById(R.id.priceField);
 
-        String item = itemName.getText().toString();
-        String loc = itemLoc.getText().toString();
-        double price = Double.parseDouble(itemPrice.getText().toString());
+        String item = itemName.getText().toString(); //Gets Item name String
+        String loc = itemLoc.getText().toString(); //Gets Item Location String
+        double price = Double.parseDouble(itemPrice.getText().toString()); //Gets Item price double
 
         if (item.equals("") | loc.equals("") | itemPrice.getText().toString().equals("")) {
+            //Error message for if the User tries an illegal input
             AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
             builder1.setMessage("No fields should be blank");
             builder1.setCancelable(true);
@@ -89,11 +100,16 @@ public class SaleItem extends ActionBarActivity {
             alert11.show();
         } else {
             ItemOnSale saleMe = new ItemOnSale(item, price, myU.getUser(), loc);
-            //final Semaphore semaphore = new Semaphore(0);
             myFirebaseRef = new Firebase("https://baiyitschyes.firebaseio.com");
             Firebase itRef = myFirebaseRef.child("globalsales");
             itRef.push().setValue(saleMe);
             Log.d("Tag", "The item is " + item + ". It costs " + price + ". It's from " + loc);
+            //Message to inform user that the data has been put into the database
+            AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
+            builder1.setMessage("You have added " + item + " on the global Sales List");
+            builder1.setCancelable(true);
+            AlertDialog alert11 = builder1.create();
+            alert11.show();
         }
 
 

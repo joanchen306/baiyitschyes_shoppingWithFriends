@@ -132,18 +132,33 @@ public class SalesList extends ActionBarActivity {
         startActivity(i);
     }
 
+    /**
+     * Opens the Setting activity and sends the logged in User's
+     * information to the activity via .putExtra()
+     * @param view
+     */
     public void sendSettings(View view) {
         Intent i = new Intent("android.Settings");
         i.putExtra("User", myU);
         startActivity(i);
     }
 
+    /**
+     * Opens the HomeScreen activity and sends the logged in User's
+     * information to the activity via .putExtra()
+     * @param view
+     */
     public void goToMyWish(View view) {
         Intent i = new Intent("android.HomeScreen");
         i.putExtra("User", myU);
         startActivity(i);
     }
 
+    /**
+     * Opens the FriendWishes activity and sends the logged in User's
+     * information to the activity via .putExtra()
+     * @param view
+     */
     public void goToFWish(View view) {
         Intent i = new Intent("android.FriendWishes");
         i.putExtra("User", myU);

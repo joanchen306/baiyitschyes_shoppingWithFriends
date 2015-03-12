@@ -102,7 +102,7 @@ public class FriendList extends ActionBarActivity {
     }
 
     /**
-     * CLoses the current Activity
+     * Closes the current Activity
      * @param view
      */
     public void goHomeScreen(View view) {
@@ -168,7 +168,7 @@ public class FriendList extends ActionBarActivity {
     }
 
     /**
-     * delet the user that is specified in the text box if the friend is in the
+     * delete the user that is specified in the text box if the friend is in the
      * friendlist of the User. If not shows a warning
      * Sets the text box back to null.
      * @param view
