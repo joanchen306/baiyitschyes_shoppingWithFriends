@@ -56,6 +56,15 @@ public class SaleItem extends ActionBarActivity {
     }
 
     public void sendSaleRequest(View view) {
+        itemName = (EditText) this.findViewById(R.id.itemNameField);
+        itemLoc = (EditText) this.findViewById(R.id.itemLocation);
+        itemPrice = (EditText) this.findViewById(R.id.priceField);
 
+        final String item = itemName.getText().toString();
+        final String loc = itemLoc.getText().toString();
+        final double price = Double.parseDouble(itemPrice.getText().toString());
+
+        final ItemOnSale saleMe = new ItemOnSale(item, price, myU, loc);
+        final String username = myU.getUser();
     }
 }
