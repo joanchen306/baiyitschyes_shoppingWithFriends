@@ -56,7 +56,40 @@ public class HomeScreen extends ActionBarActivity {
 
         String username = myU.getUser();
         Firebase myFirebaseRef = new Firebase("https://baiyitschyes.firebaseio.com");
-        Query queryRef = myFirebaseRef.child("userInfo").child(username).child("wishlist").orderByKey();
+
+        Query queryRef = myFirebaseRef.child("userInfo").child(username).child("sales").orderByKey();
+
+
+        queryRef.addValueEventListener(new ValueEventListener() {
+
+            @Override
+            public void onDataChange(DataSnapshot snapshot) {
+                if (snapshot.exists()) {
+                    Map<String, Map<String, Object>> list = (Map<String, Map<String, Object>>) snapshot.getValue();
+                    for (Map<String, Object> itemMap : list.values()) {
+                        String it = (String) itemMap.remove("item");
+                        String loc = (String) itemMap.remove("location");
+                        double price = (double) itemMap.remove("price");
+
+                        ItemOnSale item = new ItemOnSale(it, price, myU, loc);
+                        Log.d("This is the item added at get: ", it);
+                        if (globalSales != null && !globalSales.contains(item)) {
+                            globalSales.add(item);
+                        }
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(FirebaseError firebaseError) {
+                Log.d("The read failed: ", "too bad");
+            }
+
+        });
+
+
+
+        queryRef = myFirebaseRef.child("userInfo").child(username).child("wishlist").orderByKey();
 
 
         queryRef.addValueEventListener(new ValueEventListener() {
@@ -75,6 +108,17 @@ public class HomeScreen extends ActionBarActivity {
                                 wishlist.add(item);
                                 myU.setWishlist(wishlist);
                             }
+                    }
+
+                    for(Wish currWish : wishlist) {
+                        String name = currWish.getItem();
+                        for(ItemOnSale currSale : globalSales) {
+                            String sale = currSale.getItem();
+                            if(name.equals(sale)) {
+                                currWish.foundItem();
+                                currWish.addSale(currSale);
+                            }
+                        }
                     }
 
                     wishes = new String[wishlist.size()];
@@ -122,36 +166,6 @@ public class HomeScreen extends ActionBarActivity {
 
                 }
 
-            }
-
-            @Override
-            public void onCancelled(FirebaseError firebaseError) {
-                Log.d("The read failed: ", "too bad");
-            }
-
-        });
-
-        queryRef = myFirebaseRef.child("userInfo").child(username).child("sales").orderByKey();
-
-
-        queryRef.addValueEventListener(new ValueEventListener() {
-
-            @Override
-            public void onDataChange(DataSnapshot snapshot) {
-                if (snapshot.exists()) {
-                    Map<String, Map<String, Object>> list = (Map<String, Map<String, Object>>) snapshot.getValue();
-                    for (Map<String, Object> itemMap : list.values()) {
-                        String it = (String) itemMap.remove("item");
-                        String des = (String) itemMap.remove("description");
-                        double price = (double) itemMap.remove("price");
-
-                        ItemOnSale item = new ItemOnSale(it, price, myU, des);
-                        Log.d("This is the item added at get: ", it);
-                        if (globalSales != null && !globalSales.contains(item)) {
-                            globalSales.add(item);
-                        }
-                    }
-                }
             }
 
             @Override

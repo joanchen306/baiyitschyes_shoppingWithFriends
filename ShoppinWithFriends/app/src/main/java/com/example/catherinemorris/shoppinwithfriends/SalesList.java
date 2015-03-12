@@ -11,6 +11,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import java.util.ArrayList;
 
 import com.firebase.client.Firebase;
 
@@ -27,7 +28,7 @@ public class SalesList extends ActionBarActivity {
 
         myU = (User) getIntent().getSerializableExtra("User");
 
-        ArrayList<ItemOnSale> saleList = new ArrayList<ItemOnSale>();
+        final ArrayList<ItemOnSale> saleList = new ArrayList<ItemOnSale>();
         //saleList = ;
         globalSales = new String[saleList.size()];
         for (int i = 0; i < saleList.size(); i++) {
