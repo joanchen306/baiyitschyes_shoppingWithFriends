@@ -13,10 +13,10 @@ public class ItemOnSale implements Serializable {
 
     private String item;
     private double price;
-    private User user;
+    private String user;
     private String location;
 
-    public ItemOnSale(String it, double price, User seller, String loc) {
+    public ItemOnSale(String it, double price, String seller, String loc) {
         item = it;
         this.price = price;
         user = seller;
@@ -29,7 +29,7 @@ public class ItemOnSale implements Serializable {
 
     public String getLocation() { return location; }
 
-    public User getUser() { return user;}
+    public String getUser() { return user;}
 
     private static final long serialVersionUID = 7526471155622776147L;
     /**

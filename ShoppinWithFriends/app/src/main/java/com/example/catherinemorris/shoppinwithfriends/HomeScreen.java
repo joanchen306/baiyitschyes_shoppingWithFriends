@@ -145,7 +145,7 @@ public class HomeScreen extends ActionBarActivity {
                         String des = (String) itemMap.remove("description");
                         double price = (double) itemMap.remove("price");
 
-                        ItemOnSale item = new ItemOnSale(it, price, myU, des);
+                        ItemOnSale item = new ItemOnSale(it, price, myU.getUser(), des);
                         Log.d("This is the item added at get: ", it);
                         if (globalSales != null && !globalSales.contains(item)) {
                             globalSales.add(item);

@@ -66,9 +66,10 @@ public class UserDB extends android.app.Application implements Serializable {
 
     public void addUser(User u) {
         myFirebaseRef = new Firebase("https://baiyitschyes.firebaseio.com");
-        Firebase userRef = myFirebaseRef.child("userInfo");
+        Firebase userRef = myFirebaseRef.child("Information");
         userRef.child(u.getUser()).setValue(u);
     }
+
 
     public void deleteUser(User u) {
         Log.d("UserDB deleteUser is called", "" + u);

@@ -11,11 +11,17 @@ import android.view.View;
 import android.widget.EditText;
 
 import com.firebase.client.Firebase;
+import com.firebase.client.FirebaseError;
+
+import java.util.HashMap;
+import java.util.Map;
+import java.util.concurrent.Semaphore;
 
 
 public class SaleItem extends ActionBarActivity {
 
     User myU;
+    UserDB db = new UserDB();
     private Firebase myFirebaseRef;
 
     private EditText itemName;
@@ -60,7 +66,7 @@ public class SaleItem extends ActionBarActivity {
         finish();
     }
 
-    public void sendSaleRequest(View view) {
+    public void sendSaleRequest(View view) throws InterruptedException {
         itemName = (EditText) this.findViewById(R.id.itemNameField);
         itemLoc = (EditText) this.findViewById(R.id.itemLocation);
         itemPrice = (EditText) this.findViewById(R.id.priceField);
@@ -76,12 +82,14 @@ public class SaleItem extends ActionBarActivity {
             AlertDialog alert11 = builder1.create();
             alert11.show();
         } else {
-
-            ItemOnSale saleMe = new ItemOnSale(item, price, myU, loc);
+            ItemOnSale saleMe = new ItemOnSale(item, price, myU.getUser(), loc);
+            //final Semaphore semaphore = new Semaphore(0);
+            myFirebaseRef = new Firebase("https://baiyitschyes.firebaseio.com");
+            Firebase itRef = myFirebaseRef.child("globalsales");
+            itRef.push().setValue(saleMe);
             Log.d("Tag", "The item is " + item + ". It costs " + price + ". It's from " + loc);
-            myFirebaseRef = new Firebase("https://baiyitschyes.firebaseio.com").child("sales");
-            myFirebaseRef.push().setValue(saleMe);
         }
+
 
         itemPrice.setText("");
         itemLoc.setText("");
