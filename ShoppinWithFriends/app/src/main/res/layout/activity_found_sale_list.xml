@@ -1,0 +1,47 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context="com.example.catherinemorris.shoppinwithfriends.FoundSaleList"
+    android:background="#00ffff">
+
+
+    <Button
+        android:id="@+id/button9"
+        android:text="Back"
+        android:textColor="#FFFFFF"
+        android:textSize="17dp"
+        android:layout_width="90dp"
+        android:layout_height="50dp"
+        android:background="@drawable/buttonshape"
+        android:shadowColor="#A8A8A8"
+        android:shadowDx="3"
+        android:shadowDy="1"
+        android:shadowRadius="5"
+        android:clickable="true"
+        android:nestedScrollingEnabled="false"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:onClick="goBack" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/Title"
+        android:layout_alignTop="@+id/button9"
+        android:layout_alignParentStart="true"
+        android:text="Found Sales"
+        android:textSize="30dp" />
+
+    <ListView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/FoundSales"
+        android:layout_below="@+id/Title"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="50dp"
+        android:choiceMode="singleChoice"
+        android:clickable="true" />
+</RelativeLayout>

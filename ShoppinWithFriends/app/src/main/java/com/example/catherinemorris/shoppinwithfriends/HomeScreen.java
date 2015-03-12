@@ -101,12 +101,21 @@ public class HomeScreen extends ActionBarActivity {
                             ArrayList<Wish> wishL = myU.getWishlist();
                             for (Wish itemW : wishL) {
                                 if (itemW.getItem().equals(wish)) {
-
+                                    if (itemW.getSales().size() > 1) {
+                                        Intent i = new Intent("android.FoundSaleList");
+                                        i.putExtra("Wish", itemW);
+                                        i.putExtra("User", myU);
+                                        startActivity(i);
+                                    } else {
+                                        Intent i = new Intent("android.SaleConnection");
+                                        ItemOnSale sale = itemW.getSales().get(0);
+                                        i.putExtra("Sale", sale);
+                                        i.putExtra("User", myU);
+                                        startActivity(i);
+                                    }
+                                    break;
                                 }
                             }
-                            Intent i = new Intent("android.Profile");
-                            i.putExtra("Wish", wish);
-                            startActivity(i);
                         }
                     });
 

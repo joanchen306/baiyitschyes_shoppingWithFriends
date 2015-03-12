@@ -16,5 +16,7 @@
     <string name="title_activity_sales_list">SalesList</string>
     <string name="title_activity_friend_wishes">FriendWishes</string>
     <string name="title_activity_sale_item">SaleItem</string>
+    <string name="title_activity_sale_connection">SaleConnection</string>
+    <string name="title_activity_found_sale_list">FoundSaleList</string>
 
 </resources>

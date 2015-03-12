@@ -23,6 +23,11 @@ public class ItemOnSale implements Serializable {
         location = loc;
     }
 
+    public String getItem() { return item; }
+
+    public double getPrice() { return price; }
+
+    public String getLocation() { return location; }
 
     private static final long serialVersionUID = 7526471155622776147L;
     /**
