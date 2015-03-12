@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -77,9 +78,13 @@ public class SaleItem extends ActionBarActivity {
         } else {
 
             ItemOnSale saleMe = new ItemOnSale(item, price, myU, loc);
-
-            myFirebaseRef = new Firebase("https://baiyitschyes.firebaseio.com");
-            myFirebaseRef.child("sales").push().setValue(saleMe);
+            Log.d("Tag", "The item is " + item + ". It costs " + price + ". It's from " + loc);
+            myFirebaseRef = new Firebase("https://baiyitschyes.firebaseio.com").child("sales");
+            myFirebaseRef.push().setValue(saleMe);
         }
+
+        itemPrice.setText("");
+        itemLoc.setText("");
+        itemName.setText("");
     }
 }

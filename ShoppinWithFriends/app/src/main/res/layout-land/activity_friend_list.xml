@@ -69,10 +69,9 @@
         android:layout_height="wrap_content"
         android:text="Delete Friend"
         android:id="@+id/deleteUser"
-        android:layout_alignBottom="@+id/friendList"
-        android:layout_alignParentEnd="true"
-        android:layout_marginBottom="76dp"
         android:clickable="true"
         android:nestedScrollingEnabled="false"
-        android:onClick="deleteFriends" />
+        android:onClick="deleteFriends"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true" />
 </RelativeLayout>
