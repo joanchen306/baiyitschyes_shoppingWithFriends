@@ -13,6 +13,8 @@ import android.widget.ListView;
 
 import com.firebase.client.Firebase;
 
+import java.util.ArrayList;
+
 
 public class FoundSaleList extends ActionBarActivity {
 
@@ -28,12 +30,13 @@ public class FoundSaleList extends ActionBarActivity {
         myU = (User) getIntent().getSerializableExtra("User");
         myWish = (Wish) getIntent().getSerializableExtra("Wish");
 
-        ArrayList<ItemOnSale> salesList = myWish.getSales();
+
+        final ArrayList<ItemOnSale> salesList = myWish.getSales();
         mySales = new String[salesList.size()];
         for (int i = 0; i < salesList.size(); i++) {
-            mySales[i] = salesList.get(i);
+            mySales[i] = salesList.get(i).getItem();
         }
-        final ListView lv = (ListView) findViewById(R.id.salesList);
+        final ListView lv = (ListView) findViewById(R.id.FoundSales);
         ArrayAdapter<String> friendAdapt = new ArrayAdapter<String>(this,
                 android.R.layout.simple_list_item_1,
                 mySales);

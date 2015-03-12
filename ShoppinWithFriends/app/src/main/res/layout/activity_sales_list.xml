@@ -108,5 +108,12 @@
         android:layout_centerHorizontal="true"
         android:onClick="goToFWish" />
 
+    <ListView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/listView"
+        android:layout_below="@+id/text"
+        android:layout_alignParentStart="true" />
+
 
 </RelativeLayout>

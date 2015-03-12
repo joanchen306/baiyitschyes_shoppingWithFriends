@@ -28,13 +28,13 @@ public class SaleConnection extends ActionBarActivity implements Serializable {
         sale = (ItemOnSale) getIntent().getSerializableExtra("Sale");
 
         TextView currName = (TextView)findViewById(R.id.itemField);
-        currentUsername.setText(sale.getItem());
+        currName.setText(sale.getItem());
 
         TextView currPrice = (TextView) findViewById(R.id.priceField);
-        currentEmail.setText(sale.getPrice());
+        currPrice.setText("" + sale.getPrice());
 
         TextView currLoc = (TextView) findViewById(R.id.locationField);
-        currentEmail.setText(sale.getLocation());
+        currLoc.setText(sale.getLocation());
     }
 
 
