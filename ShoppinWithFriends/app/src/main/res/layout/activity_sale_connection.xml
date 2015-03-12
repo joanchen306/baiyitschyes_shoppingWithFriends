@@ -5,8 +5,7 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
     tools:context="com.example.catherinemorris.shoppinwithfriends.SaleConnection"
-    android:background="#00ffff"
-    android:id="@+id/">
+    android:background="#00ffff" >
 
 
     <Button
