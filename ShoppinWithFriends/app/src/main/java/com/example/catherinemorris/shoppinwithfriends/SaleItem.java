@@ -72,6 +72,11 @@ public class SaleItem extends ActionBarActivity {
         startActivity(i);
     }
 
+    public void goToMap(View view) {
+        Intent i = new Intent("android.Map");
+        startActivity(i);
+    }
+
     public void sendSaleRequest(View view) throws InterruptedException {
         itemName = (EditText) this.findViewById(R.id.itemNameField);
         itemLoc = (EditText) this.findViewById(R.id.itemLocation);
