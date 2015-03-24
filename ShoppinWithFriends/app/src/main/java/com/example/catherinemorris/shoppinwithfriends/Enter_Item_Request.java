@@ -23,6 +23,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * This class is the Object of the Sale Reports that are reported by users
+ */
 
 public class Enter_Item_Request extends ActionBarActivity {
 
