@@ -1,6 +1,7 @@
 package com.example.catherinemorris.shoppinwithfriends;
 
 import android.app.usage.UsageEvents;
+import android.content.Intent;
 import android.location.Address;
 import android.location.Criteria;
 import android.location.Geocoder;
@@ -9,6 +10,7 @@ import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
+import android.view.View;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -68,7 +70,7 @@ public class Map extends FragmentActivity {
         latitude = 33.7550;
         longitude = -84.3900;
 
-        Marker myLoc = googleMap.addMarker(new MarkerOptions().position(myPos).title("My Location").draggable(true));
+        Marker myLoc = googleMap.addMarker(new MarkerOptions().position(myPos).title("Here").draggable(true));
         myPositionList.add(latitude);
         myPositionList.add(longitude);
         myLoc.setVisible(true);
@@ -76,4 +78,8 @@ public class Map extends FragmentActivity {
 
     }
 
+    public void backToSale(View view) {
+        Intent i = new Intent("android.BackSaleItem");
+        startActivity(i);
+    }
 }

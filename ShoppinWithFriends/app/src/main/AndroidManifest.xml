@@ -222,6 +222,9 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".Map" />
         </activity>
+
+
+
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyBwZXQJ_vx4LzGKqh-TcmFUXPK8ivW2lWY"/>
