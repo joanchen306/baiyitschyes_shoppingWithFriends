@@ -79,6 +79,7 @@ public class SaleItem extends ActionBarActivity {
 
     public void goToMap(View view) {
         Intent i = new Intent("android.Map");
+        i.putExtra("User", myU);
         startActivity(i);
     }
 

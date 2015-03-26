@@ -76,7 +76,7 @@
         android:shadowRadius="5"
         android:clickable="true"
         android:nestedScrollingEnabled="false"
-        android:onClick="goToMaps"
+        android:onClick="goHome"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true" />
 
