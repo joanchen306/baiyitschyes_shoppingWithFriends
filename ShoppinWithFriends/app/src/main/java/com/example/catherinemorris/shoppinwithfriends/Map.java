@@ -1,12 +1,8 @@
 package com.example.catherinemorris.shoppinwithfriends;
 
-import android.app.usage.UsageEvents;
 import android.content.Intent;
-import android.location.Address;
 import android.location.Criteria;
-import android.location.Geocoder;
 import android.location.Location;
-import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
@@ -20,8 +16,6 @@ import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.util.ArrayList;
-import java.util.List;
-import java.util.Locale;
 
 
 public class Map extends FragmentActivity {
@@ -70,11 +64,13 @@ public class Map extends FragmentActivity {
         latitude = 33.7550;
         longitude = -84.3900;
 
+
+        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(myPos, 15));
         Marker myLoc = googleMap.addMarker(new MarkerOptions().position(myPos).title("Here").draggable(true));
         myPositionList.add(latitude);
         myPositionList.add(longitude);
         myLoc.setVisible(true);
-        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(myPos, 15));
+
 
     }
 
