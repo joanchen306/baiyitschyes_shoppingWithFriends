@@ -79,7 +79,7 @@ public class Map extends FragmentActivity {
     }
 
     public void backToSale(View view) {
-        Intent i = new Intent("android.BackSaleItem");
+        Intent i = new Intent("android.SaleItem");
         startActivity(i);
     }
 }
