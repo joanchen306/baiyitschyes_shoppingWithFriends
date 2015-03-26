@@ -33,17 +33,11 @@ public class Map extends FragmentActivity {
 
 
         SupportMapFragment fm = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
-
         googleMap = fm.getMap();
-
         googleMap.setMyLocationEnabled(true);
-
         LocationManager locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
-
         Criteria criteria = new Criteria();
-
         String provider = locationManager.getBestProvider(criteria, true);
-
         Location location = locationManager.getLastKnownLocation(provider);
 
         double latitude;
@@ -60,6 +54,8 @@ public class Map extends FragmentActivity {
 //            longitude = 84.3900;
 //        }
 
+
+        //use this for my location
         myPos = ATLANTA;
         latitude = 33.7550;
         longitude = -84.3900;
@@ -67,6 +63,9 @@ public class Map extends FragmentActivity {
 
         googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(myPos, 15));
         Marker myLoc = googleMap.addMarker(new MarkerOptions().position(myPos).title("Here").draggable(true));
+        LatLng dragPos = myLoc.getPosition();
+        latitude = dragPos.latitude;
+        longitude = dragPos.longitude;
         myPositionList.add(latitude);
         myPositionList.add(longitude);
         myLoc.setVisible(true);
