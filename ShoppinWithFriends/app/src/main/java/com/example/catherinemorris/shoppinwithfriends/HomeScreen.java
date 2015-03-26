@@ -41,7 +41,9 @@ public class HomeScreen extends ActionBarActivity {
 
     /**
      * Overrides onCreate to store the User who is currently logged in
-     * to myU
+     * to myU. It also uses the database to determine the WishList for each User.
+     * Then, it goes through and determines whether or not each Wish has been
+     * found in the Global Sales List.
      * @param savedInstanceState
      */
     @Override
@@ -227,18 +229,33 @@ public class HomeScreen extends ActionBarActivity {
         startActivity(i);
     }
 
+    /**
+     * Opens the Setting activity and sends the logged in User's
+     * information to the activity via .putExtra()
+     * @param view
+     */
     public void sendSettings(View view) {
         Intent i = new Intent("android.Settings");
         i.putExtra("User", myU);
         startActivity(i);
     }
 
+    /**
+     * Opens the SalesList activity and sends the logged in User's
+     * information to the activity via .putExtra()
+     * @param view
+     */
     public void goToSalesList(View view) {
         Intent i = new Intent("android.SalesList");
         i.putExtra("User", myU);
         startActivity(i);
     }
 
+    /**
+     * Opens the FriendWishes activity and sends the logged in User's
+     * information to the activity via .putExtra()
+     * @param view
+     */
     public void goToFWish(View view) {
         Intent i = new Intent("android.FriendWishes");
         i.putExtra("User", myU);

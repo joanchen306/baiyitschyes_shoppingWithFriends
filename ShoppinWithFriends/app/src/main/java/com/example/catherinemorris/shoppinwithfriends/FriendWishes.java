@@ -8,6 +8,11 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
+import java.util.ArrayList;
+
+/**
+ * Retrieve the user's friends wishes and display them
+ */
 
 public class FriendWishes extends ActionBarActivity {
 
@@ -19,6 +24,9 @@ public class FriendWishes extends ActionBarActivity {
         setContentView(R.layout.activity_friend_wishes);
 
         myU = (User) getIntent().getSerializableExtra("User");
+
+        //Retrieve the User's Friends List
+        ArrayList friends = myU.getFriends();
     }
 
 

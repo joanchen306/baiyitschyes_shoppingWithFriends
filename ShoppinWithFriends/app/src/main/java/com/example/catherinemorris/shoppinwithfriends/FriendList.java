@@ -25,6 +25,11 @@ import java.util.HashMap;
 import java.util.Map;
 import android.widget.AdapterView.OnItemClickListener;
 
+/**
+ * Retrieves the List of Friends from the User Object and allows the user to
+ * add and delet friends.
+ */
+
 public class FriendList extends ActionBarActivity {
 
     User myU;
@@ -102,7 +107,7 @@ public class FriendList extends ActionBarActivity {
     }
 
     /**
-     * CLoses the current Activity
+     * Closes the current Activity
      * @param view
      */
     public void goHomeScreen(View view) {
@@ -118,8 +123,6 @@ public class FriendList extends ActionBarActivity {
         mUserText = (EditText) this.findViewById(R.id.userText);
         final String friend = mUserText.getText().toString();
 
-        Log.d("Is this working?","Yes it " + friend);
-
         myFirebaseRef = new Firebase("https://baiyitschyes.firebaseio.com");
         Query queryRef = myFirebaseRef.child("userInfo").orderByChild("user").equalTo(friend);
 
@@ -131,7 +134,6 @@ public class FriendList extends ActionBarActivity {
             public void onDataChange(DataSnapshot snapshot) {
                 if (snapshot.exists()) {
                     friendN.add(friend);
-                    Log.d("Update FriendList by adding:", friend);
                     if (myFirebaseRef.child("userInfo").child(username).child("friends").equals(null)) {
                     } else {
                         Firebase friendRef = myFirebaseRef.child("userInfo").child(username).child("friends");
@@ -168,7 +170,7 @@ public class FriendList extends ActionBarActivity {
     }
 
     /**
-     * delet the user that is specified in the text box if the friend is in the
+     * delete the user that is specified in the text box if the friend is in the
      * friendlist of the User. If not shows a warning
      * Sets the text box back to null.
      * @param view

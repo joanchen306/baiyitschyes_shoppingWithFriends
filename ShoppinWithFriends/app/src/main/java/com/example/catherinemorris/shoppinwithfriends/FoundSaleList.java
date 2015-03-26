@@ -25,23 +25,29 @@ public class FoundSaleList extends ActionBarActivity {
     User myU;
     String[] mySales;
 
+    /**
+     * Defines what a FoundSaleList looks like when it is opened. First it creates a ListView
+     * that has a listener that will be called if someone touches the list. From there, it
+     * determines what element was touched and sends the info to that Intent.
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_found_sale_list);
 
-        myU = (User) getIntent().getSerializableExtra("User");
-        myWish = (Wish) getIntent().getSerializableExtra("Wish");
+        myU = (User) getIntent().getSerializableExtra("User"); //pulls in myU from the last Activity
+        myWish = (Wish) getIntent().getSerializableExtra("Wish"); //pulls in the Wish that the User clicked on in HomeScreen
 
         final ArrayList<ItemOnSale> salesList = myWish.getSales();
         mySales = new String[salesList.size()];
         for (int i = 0; i < salesList.size(); i++) {
             mySales[i] = salesList.get(i).getItem() + (i + 1);
-        }
+        } //Created an array, mySales, that has a String list of all sales that match the wish
         final ListView lv = (ListView) findViewById(R.id.FoundSales);
         ArrayAdapter<String> friendAdapt = new ArrayAdapter<String>(this,
                 android.R.layout.simple_list_item_1,
-                mySales);
+                mySales); //Adds the list of Strings into the listView
 
         lv.setAdapter(friendAdapt);
 
@@ -61,7 +67,7 @@ public class FoundSaleList extends ActionBarActivity {
                 }
                 startActivity(i);
             }
-        });
+        }); //A listener to both determine what Sale was clicked on, and to subsequently open
     }
 
 
@@ -87,6 +93,10 @@ public class FoundSaleList extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    /**
+     * Closes the current Activity
+     * @param view
+     */
     public void goBack(View view) {
         finish();
     }

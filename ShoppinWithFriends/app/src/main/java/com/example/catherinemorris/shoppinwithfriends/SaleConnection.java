@@ -19,13 +19,18 @@ public class SaleConnection extends ActionBarActivity implements Serializable {
     User myU;
 
 
+    /**
+     * Pulls the information from the previous Activity to populate this Activity with
+     * information pertaining to the ItemOnSale in question.
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sale_connection);
 
-        myU = (User) getIntent().getSerializableExtra("User");
-        sale = (ItemOnSale) getIntent().getSerializableExtra("Sale");
+        myU = (User) getIntent().getSerializableExtra("User"); //pulls in myU from the last Activity
+        sale = (ItemOnSale) getIntent().getSerializableExtra("Sale"); //pulls in the ItemOnSale that the User clicked on in HomeScreen or FoundSaleList
 
         TextView currName = (TextView)findViewById(R.id.itemField);
         currName.setText(sale.getItem());
@@ -61,6 +66,10 @@ public class SaleConnection extends ActionBarActivity implements Serializable {
         return super.onOptionsItemSelected(item);
     }
 
+    /**
+     * Closes the current Activity
+     * @param view
+     */
     public void goBack(View view) {
         finish();
     }
