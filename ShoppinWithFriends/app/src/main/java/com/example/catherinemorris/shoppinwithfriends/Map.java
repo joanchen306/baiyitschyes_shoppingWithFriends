@@ -31,6 +31,8 @@ import java.util.List;
 
 public class Map extends FragmentActivity {
 
+    User myU;
+
     GoogleMap googleMap;
     MarkerOptions markerOptions;
     LatLng latlng;
@@ -46,6 +48,8 @@ public class Map extends FragmentActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_map);
+
+        myU = (User) getIntent().getSerializableExtra("User");
 
         SupportMapFragment fm = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
         googleMap = fm.getMap();
@@ -179,12 +183,14 @@ public class Map extends FragmentActivity {
 
     public void doneWithMap(View view) {
         Intent i = new Intent("android.SaleItem");
+        i.putExtra("User", myU);
         i.putExtra("saleLocation", saleLatLong);
         startActivity(i);
     }
 
     public void backToSale(View view) {
         Intent i = new Intent("android.SaleItem");
+        i.putExtra("User", myU);
         startActivity(i);
     }
 }
