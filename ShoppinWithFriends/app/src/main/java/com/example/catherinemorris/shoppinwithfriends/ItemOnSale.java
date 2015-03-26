@@ -15,6 +15,7 @@ public class ItemOnSale implements Serializable {
     private double price;
     private String user;
     private String location;
+    private long timeStamp;
 
     public ItemOnSale(String it, double price, String seller, String loc) {
         item = it;
