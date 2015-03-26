@@ -77,6 +77,11 @@ public class SaleItem extends ActionBarActivity {
         startActivity(i);
     }
 
+    public void goToMap(View view) {
+        Intent i = new Intent("android.Map");
+        startActivity(i);
+    }
+
     /**
      * Allows the user to send the information from the EditText fields to the
      * database.

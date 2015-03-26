@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/mapLayout"
+    android:orientation="vertical"
+    tools:context=".Map" >
+
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/find"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Find"
+            android:layout_alignParentRight="true"
+            />
+
+        <EditText
+            android:id="@+id/locsearch"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:hint="Enter location"
+            android:layout_toLeftOf="@id/find" />
+
+    </RelativeLayout>
+
+    <!--<fragment xmlns:android="http://schemas.android.com/apk/res/android"-->
+        <!--android:id="@+id/map"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--class="com.google.android.gms.maps.SupportMapFragment" />-->
+
+    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".MapActivity" >
+
+        <fragment xmlns:map="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/map"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:scrollbars="vertical"
+            class="com.google.android.gms.maps.SupportMapFragment"/>
+
+        <RadioGroup
+            android:id="@+id/radio_group_list_selector"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:orientation="horizontal"
+            android:background="#80000000"
+            android:padding="4dp" >
+
+        <RadioButton
+            android:id="@+id/backToSale"
+            android:text="Back"
+            android:gravity="center_horizontal|center_vertical"
+            android:textColor="#FFFFFF"
+            android:textSize="17dp"
+            android:layout_width="80dp"
+            android:layout_height="35dp"
+            android:background="@drawable/buttonshape"
+            android:shadowColor="#A8A8A8"
+            android:shadowDx="3"
+            android:shadowDy="1"
+            android:shadowRadius="5"
+            android:clickable="true"
+            android:nestedScrollingEnabled="false"
+            android:onClick="backToSale"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+        />
+        <View
+            android:id="@+id/VerticalLine2"
+            android:layout_width="1dip"
+            android:layout_height="match_parent"
+            android:background="#aaa" />
+
+            <RadioButton
+                android:id="@+id/doneWithMap"
+                android:text="Done"
+                android:gravity="center_horizontal|center_vertical"
+                android:textColor="#FFFFFF"
+                android:textSize="17dp"
+                android:layout_width="80dp"
+                android:layout_height="35dp"
+                android:background="@drawable/buttonshape"
+                android:shadowColor="#A8A8A8"
+                android:shadowDx="3"
+                android:shadowDy="1"
+                android:shadowRadius="5"
+                android:clickable="true"
+                android:nestedScrollingEnabled="false"
+                android:onClick="doneWithMap"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                />
+            <View
+                android:id="@+id/VerticalLine"
+                android:layout_width="1dip"
+                android:layout_height="match_parent"
+                android:background="#aaa" />
+
+
+
+        </RadioGroup>
+    </FrameLayout>
+
+</LinearLayout>
+
+
