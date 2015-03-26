@@ -79,9 +79,6 @@ public class Map extends FragmentActivity {
 //        String provider = locationManager.getBestProvider(criteria, true);
 //        Location location = locationManager.getLastKnownLocation(provider);
 
-
-
-
 //        double latitude;
 //        double longitude;
 
@@ -110,7 +107,6 @@ public class Map extends FragmentActivity {
 //        myPositionList.add(longitude);
 //        myLoc.setVisible(true);
 
-
     }
 
     @Override
@@ -118,6 +114,11 @@ public class Map extends FragmentActivity {
         getMenuInflater().inflate(R.menu.menu_map, menu);
         return true;
     }
+
+    /**
+     * Creates a Geocoder of the input location and gets three location addresses
+     * Uses the location addresses to place draggable markers on map
+     */
 
     private class GeocoderTask extends AsyncTask<String, Void, List<Address>> {
 
@@ -161,7 +162,6 @@ public class Map extends FragmentActivity {
                 markerOptions.position(latlng);
                 markerOptions.title(addressText);
                 markerOptions.draggable(true);
-                googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(myPos, 13));
                 googleMap.addMarker(markerOptions);
                 saleLatLong = latlng;
 
@@ -172,9 +172,19 @@ public class Map extends FragmentActivity {
         }
     }
 
-    public void backToSale(View view) {
+    /**
+     * Goes back to sale item page
+     * @param view
+     */
+
+    public void doneWithMap(View view) {
         Intent i = new Intent("android.SaleItem");
         i.putExtra("saleLocation", saleLatLong);
+        startActivity(i);
+    }
+
+    public void backToSale(View view) {
+        Intent i = new Intent("android.SaleItem");
         startActivity(i);
     }
 }
