@@ -68,11 +68,12 @@ public class Map extends FragmentActivity {
         latitude = 33.7550;
         longitude = -84.3900;
 
-        Marker myLoc = googleMap.addMarker(new MarkerOptions().position(myPos).title("My Location"));
+        Marker myLoc = googleMap.addMarker(new MarkerOptions().position(myPos).title("My Location").draggable(true));
         myPositionList.add(latitude);
         myPositionList.add(longitude);
         myLoc.setVisible(true);
         googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(myPos, 15));
+
     }
 
 }
