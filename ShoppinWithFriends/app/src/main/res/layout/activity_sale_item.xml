@@ -83,7 +83,7 @@
         android:layout_alignEnd="@+id/mapButton" />
 
     <Button
-        android:text="Choose on Map"
+        android:text="Find on Map"
         android:id="@+id/mapButton"
         android:textColor="#FFFFFF"
         android:textSize="17dp"
