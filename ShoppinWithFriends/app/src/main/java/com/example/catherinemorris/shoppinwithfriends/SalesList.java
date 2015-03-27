@@ -48,13 +48,30 @@ public class SalesList extends ActionBarActivity {
                     Map<String, Map<String, Object>> list = (Map<String, Map<String, Object>>) snapshot.getValue();
                     for (Map<String, Object> itemMap : list.values()) {
                         String it = (String) itemMap.remove("item");
-                        ArrayList<Double> loc = (ArrayList<Double>) itemMap.remove("location");
                         double price = (double) itemMap.remove("price");
                         String um = (String) itemMap.remove("user");
-                        ItemOnSale item = new ItemOnSale(it, price, um, new LatLng(loc.get(0), loc.get(1)));
-                        if (saleList != null && !saleList.contains(item)) {
-                            saleList.add(item);
-
+                        try {
+                            ArrayList<Double> loc = (ArrayList<Double>) itemMap.remove("location");
+                            //ArrayList<Integer> exp = (ArrayList<Integer>) itemMap.remove("expDate");
+                            ItemOnSale item = new ItemOnSale(it, price, um, new LatLng(loc.get(0), loc.get(1)));
+                            //   Log.d("This is the item added at get: ", it);
+                            if (saleList != null && !saleList.contains(item)) {
+                                saleList.add(item);
+                            }
+                        } catch (ClassCastException ex) {
+                            String loc = (String) itemMap.remove("location");
+                            ItemOnSale item = new ItemOnSale(it, price, um);
+                            //   Log.d("This is the item added at get: ", it);
+                            if (saleList != null && !saleList.contains(item)) {
+                                saleList.add(item);
+                            }
+                        } catch (NullPointerException e) {
+                            String loc = (String) itemMap.remove("location");
+                            ItemOnSale item = new ItemOnSale(it, price, um);
+                            //   Log.d("This is the item added at get: ", it);
+                            if (saleList != null && !saleList.contains(item)) {
+                                saleList.add(item);
+                            }
                         }
                     }
 
