@@ -189,8 +189,6 @@ public class Map extends FragmentActivity {
     }
 
     public void backToSale(View view) {
-        Intent i = new Intent("android.SaleItem");
-        i.putExtra("User", myU);
-        startActivity(i);
+        finish();
     }
 }
