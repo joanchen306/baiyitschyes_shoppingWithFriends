@@ -17,7 +17,6 @@ class ItemOnSale implements Serializable {
     private String item;
     private double price;
     private String user;
-    private LatLng val = new LatLng(33.7550,-84.3900);
     private ArrayList<Double> location = new ArrayList<>();
     private long timeStamp;
 
@@ -38,8 +37,8 @@ class ItemOnSale implements Serializable {
         this.price = price;
         user = seller;
         location = new ArrayList<Double>();
-        location.add(0, val.latitude);
-        location.add(1, val.longitude);
+        location.add(0, 33.7550);
+        location.add(1, -84.3900);
     }
 
     public void setLocation(LatLng loc) {
