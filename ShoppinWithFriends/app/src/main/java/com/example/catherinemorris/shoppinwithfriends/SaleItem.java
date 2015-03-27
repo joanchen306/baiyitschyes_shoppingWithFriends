@@ -94,7 +94,7 @@ public class SaleItem extends ActionBarActivity {
         double price = Double.parseDouble(etPrice.getText().toString());
         saleItem = new ItemOnSale(it, price, myU.getUser());
         i.putExtra("User", myU);
-        i.putExtra("saleItem", saleItem);
+        i.putExtra("ItemOnSale", saleItem);
         startActivity(i);
     }
 
@@ -105,7 +105,6 @@ public class SaleItem extends ActionBarActivity {
      */
     public void sendSaleRequest(View view) throws InterruptedException {
         itemName = (EditText) this.findViewById(R.id.itemNameField);
-        itemLoc = (EditText) this.findViewById(R.id.itemLocation);
         itemPrice = (EditText) this.findViewById(R.id.priceField);
 
         String item = itemName.getText().toString(); //Gets Item Double.parseDouble(itemPrice.getText().toString());name String
@@ -133,7 +132,6 @@ public class SaleItem extends ActionBarActivity {
 
 
         itemPrice.setText("");
-        itemLoc.setText("");
         itemName.setText("");
     }
 }
