@@ -11,8 +11,9 @@
         android:layout_height="wrap_content"
         android:id="@+id/text"
         android:textSize="33dp"
+        android:layout_marginTop="47dp"
         android:layout_below="@+id/button5"
-        android:layout_marginTop="43dp" />
+        android:layout_centerHorizontal="true" />
 
     <Button
         android:id="@+id/FriendsList"
@@ -35,7 +36,7 @@
 
     <Button
 
-        android:text="Settings"
+        android:text="Options"
         android:textColor="#FFFFFF"
         android:textSize="17dp"
 
@@ -104,9 +105,9 @@
         android:shadowRadius="5"
         android:clickable="true"
         android:nestedScrollingEnabled="false"
+        android:onClick="goToFWish"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:onClick="goToFWish" />
+        android:layout_alignParentEnd="true" />
 
     <ListView
         android:layout_width="wrap_content"

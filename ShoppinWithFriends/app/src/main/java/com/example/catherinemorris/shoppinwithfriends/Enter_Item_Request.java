@@ -104,7 +104,7 @@ public class Enter_Item_Request extends ActionBarActivity {
 
         if (item.equals("") | descrip.equals("") | itemPrice.getText().toString().equals("")) {
             AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
-            builder1.setMessage("No fields should be blank");
+            builder1.setMessage("No fields should be blank.");
             builder1.setCancelable(true);
             AlertDialog alert11 = builder1.create();
             alert11.show();
@@ -140,7 +140,7 @@ public class Enter_Item_Request extends ActionBarActivity {
                     }
 
                     AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
-                    builder1.setMessage("You have added " + item + " on your wish list :)");
+                    builder1.setMessage("You have added " + item + " to your wish list.");
                     builder1.setCancelable(true);
                     AlertDialog alert11 = builder1.create();
                     alert11.show();

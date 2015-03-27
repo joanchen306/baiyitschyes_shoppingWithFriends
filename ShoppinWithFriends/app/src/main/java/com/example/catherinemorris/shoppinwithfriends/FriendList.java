@@ -181,7 +181,7 @@ public class FriendList extends ActionBarActivity {
         String un = mUserText.getText().toString();
         if(!friendN.contains(un)) {
             AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
-            builder1.setMessage("you don't have a friend named: " + un);
+            builder1.setMessage("You don't have a friend named: " + un);
             builder1.setCancelable(true);
             AlertDialog alert11 = builder1.create();
             alert11.show();
@@ -193,7 +193,7 @@ public class FriendList extends ActionBarActivity {
             friendN = db.friendN;
 
             AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
-            builder1.setMessage("You have deleted " + un + " as a friend :'(");
+            builder1.setMessage("You have deleted " + un + " as a friend.");
             builder1.setCancelable(true);
             AlertDialog alert11 = builder1.create();
             alert11.show();

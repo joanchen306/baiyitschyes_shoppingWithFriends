@@ -36,7 +36,7 @@
 
     <Button
 
-        android:text="Settings"
+        android:text="Options"
         android:textColor="#FFFFFF"
         android:textSize="17dp"
 

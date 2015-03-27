@@ -18,8 +18,9 @@
         android:id="@+id/textView3"
         android:textSize="24dp"
         android:gravity="center_horizontal"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_below="@+id/back"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="60dp" />
 
     <Button
         android:id="@+id/register"
@@ -38,9 +39,9 @@
         android:clickable="true"
         android:nestedScrollingEnabled="false"
         android:onClick="sendMessageJoin"
-        android:layout_marginTop="44dp"
-        android:layout_below="@+id/RePassField"
-        android:layout_alignStart="@+id/RePassField" />
+        android:layout_below="@+id/EmailField"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="38dp" />
 
     <Button
         android:id="@+id/back"
@@ -59,8 +60,8 @@
         android:clickable="true"
         android:nestedScrollingEnabled="false"
         android:onClick="sendMessageBack"
-        android:layout_alignTop="@+id/register"
-        android:layout_alignEnd="@+id/RePassField" />
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -69,10 +70,10 @@
         android:inputType="textPersonName"
         android:ems="10"
         android:id="@+id/UserField"
+        android:editable="false"
+        android:layout_marginTop="40dp"
         android:layout_below="@+id/textView3"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="98dp"
-        android:editable="false" />
+        android:layout_centerHorizontal="true" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -81,7 +82,7 @@
         android:inputType="textPassword"
         android:ems="10"
         android:id="@+id/RePassField"
-        android:layout_below="@+id/PassField"
+        android:layout_below="@+id/UserField"
         android:layout_centerHorizontal="true" />
 
     <EditText
@@ -91,7 +92,7 @@
         android:inputType="textPassword"
         android:ems="10"
         android:id="@+id/PassField"
-        android:layout_below="@+id/EmailField"
+        android:layout_below="@+id/RePassField"
         android:layout_centerHorizontal="true" />
 
     <EditText
@@ -101,6 +102,6 @@
         android:inputType="textEmailAddress"
         android:ems="10"
         android:id="@+id/EmailField"
-        android:layout_below="@+id/UserField"
+        android:layout_below="@+id/PassField"
         android:layout_centerHorizontal="true" />
 </RelativeLayout>
