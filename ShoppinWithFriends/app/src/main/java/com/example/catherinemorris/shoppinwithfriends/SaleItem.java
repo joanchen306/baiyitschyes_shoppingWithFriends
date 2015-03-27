@@ -100,7 +100,7 @@ public class SaleItem extends ActionBarActivity {
         if (item.equals("") | loc.equals("") | itemPrice.getText().toString().equals("")) {
             //Error message for if the User tries an illegal input
             AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
-            builder1.setMessage("No fields should be blank");
+            builder1.setMessage("No fields should be blank.");
             builder1.setCancelable(true);
             AlertDialog alert11 = builder1.create();
             alert11.show();
@@ -112,7 +112,7 @@ public class SaleItem extends ActionBarActivity {
             Log.d("Tag", "The item is " + item + ". It costs " + price + ". It's from " + loc);
             //Message to inform user that the data has been put into the database
             AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
-            builder1.setMessage("You have added " + item + " on the global Sales List");
+            builder1.setMessage("You have added " + item + " to the global Sales List.");
             builder1.setCancelable(true);
             AlertDialog alert11 = builder1.create();
             alert11.show();

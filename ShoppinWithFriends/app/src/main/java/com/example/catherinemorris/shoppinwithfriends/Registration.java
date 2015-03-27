@@ -75,7 +75,7 @@ public class Registration extends ActionBarActivity {
                     } else {
                         myU = null;
                         AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
-                        builder1.setMessage("Please make sure you have entered valid email");
+                        builder1.setMessage("Please make sure you have entered valid email.");
                         builder1.setCancelable(true);
                         AlertDialog alert11 = builder1.create();
                         alert11.show();
