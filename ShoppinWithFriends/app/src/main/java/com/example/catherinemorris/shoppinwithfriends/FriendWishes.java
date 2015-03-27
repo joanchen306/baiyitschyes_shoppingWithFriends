@@ -16,7 +16,7 @@ import java.util.ArrayList;
 
 public class FriendWishes extends ActionBarActivity {
 
-    User myU;
+    private User myU;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

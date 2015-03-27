@@ -26,22 +26,23 @@
         android:layout_alignParentEnd="true"
         android:onClick="goBack" />
 
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/Title"
-        android:layout_alignTop="@+id/button9"
-        android:layout_alignParentStart="true"
-        android:text="Found Sales"
-        android:textSize="30dp" />
-
     <ListView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/FoundSales"
-        android:layout_below="@+id/Title"
         android:layout_alignParentStart="true"
         android:layout_marginTop="50dp"
         android:choiceMode="singleChoice"
-        android:clickable="true" />
+        android:clickable="true"
+        android:layout_alignTop="@+id/button9" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Found Sales"
+        android:id="@+id/textView5"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:textSize="37dp" />
 </RelativeLayout>

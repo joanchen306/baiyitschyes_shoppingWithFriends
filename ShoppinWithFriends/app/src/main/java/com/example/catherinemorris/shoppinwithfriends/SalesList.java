@@ -24,10 +24,10 @@ import com.firebase.client.ValueEventListener;
 
 public class SalesList extends ActionBarActivity {
 
-    User myU;
-    String[] globalSales;
-    ArrayList<ItemOnSale> saleList = new ArrayList<ItemOnSale>();
-    Context context = this;
+    private User myU;
+    private String[] globalSales;
+    private ArrayList<ItemOnSale> saleList = new ArrayList<ItemOnSale>();
+    private Context context = this;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -15,8 +15,8 @@ import java.io.Serializable;
 
 public class SaleConnection extends ActionBarActivity implements Serializable {
 
-    ItemOnSale sale;
-    User myU;
+    private ItemOnSale sale;
+    private User myU;
 
 
     /**

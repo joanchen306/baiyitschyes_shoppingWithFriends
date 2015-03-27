@@ -1,5 +1,7 @@
 package com.example.catherinemorris.shoppinwithfriends;
 
+import com.google.android.gms.maps.model.LatLng;
+
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -8,26 +10,27 @@ import java.io.Serializable;
 /**
  * Created by James Nugent on 3/5/2015.
  */
-public class ItemOnSale implements Serializable {
+class ItemOnSale implements Serializable {
 
 
     private String item;
     private double price;
     private String user;
-    private String location;
+    private LatLng location;
 
-    public ItemOnSale(String it, double price, String seller, String loc) {
+    public ItemOnSale(String it, double price, String seller) {
         item = it;
         this.price = price;
         user = seller;
-        location = loc;
     }
 
     public String getItem() { return item; }
 
     public double getPrice() { return price; }
 
-    public String getLocation() { return location; }
+    public LatLng getLocation() { return location; }
+
+    public void setLocation(LatLng loc) { location = loc; }
 
     public String getUser() { return user;}
 

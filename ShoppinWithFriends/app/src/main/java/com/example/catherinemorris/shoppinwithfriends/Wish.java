@@ -10,7 +10,7 @@ import java.util.ArrayList;
  * A request that has been made for the sale of a particular item
  * Created by Caitlin Morris on 2/28/15.
  */
-public class Wish implements Serializable {
+class Wish implements Serializable {
 
     private String item;
     private String description;
@@ -19,7 +19,7 @@ public class Wish implements Serializable {
     private boolean matched;
     private ArrayList<ItemOnSale> matchedSales = new ArrayList<ItemOnSale>();
 
-    User myU;
+    private User myU;
 
     public Wish(String it, String des, double price) {
         item = it;

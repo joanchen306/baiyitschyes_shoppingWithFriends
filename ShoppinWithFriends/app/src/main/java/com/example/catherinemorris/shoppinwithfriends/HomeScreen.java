@@ -25,19 +25,17 @@ import java.util.Map;
 
 public class HomeScreen extends ActionBarActivity {
 
-    User myU;
-    Wish mySale;
-    UserDB udb;
+    private User myU;
 
-    String found = " (Found!)";
-    String looking = " (Still looking!)";
+    private String found = " (Found!)";
+    private String looking = " (Still looking!)";
 
 
-    Context context = this;
+    private Context context = this;
 
-    ArrayList<Wish> wishlist = new ArrayList<>();
-    ArrayList<ItemOnSale> globalSales = new ArrayList<>();
-    String[] wishes;
+    private ArrayList<Wish> wishlist = new ArrayList<>();
+    private ArrayList<ItemOnSale> globalSales = new ArrayList<>();
+    private String[] wishes;
 
     /**
      * Overrides onCreate to store the User who is currently logged in
@@ -53,7 +51,7 @@ public class HomeScreen extends ActionBarActivity {
         Firebase.setAndroidContext(this);
 
 
-        //gets and maybe prints wishlist
+        //gets and prints wishlist
         myU = (User) getIntent().getSerializableExtra("User");
 
         String username = myU.getUser();
@@ -62,7 +60,7 @@ public class HomeScreen extends ActionBarActivity {
         Query queryRef = myFirebaseRef.child("globalsales").orderByKey();
 
 
-        queryRef.addValueEventListener(new ValueEventListener() {
+        queryRef.addValueEventListener(new ValueEventListener() { //JOAN LOOK AT ME
 
             @Override
             public void onDataChange(DataSnapshot snapshot) {
@@ -223,7 +221,6 @@ public class HomeScreen extends ActionBarActivity {
      * @param view
      */
     public void openFriends(View view) {
-        Button button = (Button) view;
         Intent i = new Intent("android.FriendList");
         i.putExtra("User", myU);
         startActivity(i);

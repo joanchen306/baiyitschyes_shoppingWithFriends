@@ -32,17 +32,17 @@ import android.widget.AdapterView.OnItemClickListener;
 
 public class FriendList extends ActionBarActivity {
 
-    User myU;
-    UserDB db = new UserDB();
+    private User myU;
+    private UserDB db = new UserDB();
 
-    String[] myFriends = null;
-    ArrayList<String> friendN = db.friendN;
+    private String[] myFriends = null;
+    private ArrayList<String> friendN = db.friendN;
 
-    Firebase myFirebaseRef;
+    private Firebase myFirebaseRef;
 
     private EditText mUserText;
 
-    final Context context = this;
+    private final Context context = this;
 
     /**
      * Overrides onCreate() to store the User who is currently logged in into

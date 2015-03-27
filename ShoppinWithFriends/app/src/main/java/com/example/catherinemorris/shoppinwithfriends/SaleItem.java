@@ -22,10 +22,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 
-public class SaleItem extends ActionBarActivity {
+class SaleItem extends ActionBarActivity {
 
-    User myU;
-    UserDB db = new UserDB();
+    private User myU;
+    private UserDB db = new UserDB();
     private Firebase myFirebaseRef;
 
     private EditText itemName;
@@ -104,7 +104,7 @@ public class SaleItem extends ActionBarActivity {
             AlertDialog alert11 = builder1.create();
             alert11.show();
         } else {
-            ItemOnSale saleMe = new ItemOnSale(item, price, myU.getUser(), loc);
+            ItemOnSale saleMe = new ItemOnSale(item, price, myU.getUser());
             myFirebaseRef = new Firebase("https://baiyitschyes.firebaseio.com");
             Firebase itRef = myFirebaseRef.child("globalsales");
             itRef.push().setValue(saleMe);

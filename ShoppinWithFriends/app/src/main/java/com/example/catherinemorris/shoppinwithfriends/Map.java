@@ -31,12 +31,12 @@ import java.util.List;
 
 public class Map extends FragmentActivity {
 
-    GoogleMap googleMap;
-    MarkerOptions markerOptions;
-    LatLng latlng;
+    private GoogleMap googleMap;
+    private MarkerOptions markerOptions;
+    private LatLng latlng;
     ArrayList<Double> myPositionList = new ArrayList<Double>();
     LatLng myPos;
-    LatLng saleLatLong;
+    private LatLng saleLatLong;
     final static LatLng ATLANTA = new LatLng(33.7550,-84.3900);
 
     LinearLayout mapLinLay;

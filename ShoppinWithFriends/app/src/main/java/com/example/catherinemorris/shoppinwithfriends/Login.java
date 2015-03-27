@@ -23,19 +23,13 @@ import java.util.Map;
 
 public class Login extends ActionBarActivity {
 
-    /**
-     * private static final String[] DUMMY_CREDENTIALS = new String[]{
-     * "foo@example.com:hello", "bar@example.com:world"
-     * };
-     */
-    User myU;
-
-    UserDB udb = new UserDB();
+    private User myU;
+    private UserDB udb = new UserDB();
     private EditText mUserView;
     private EditText mPasswordView;
 
 
-    final Context context = this;
+    private final Context context = this;
 
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,7 +60,6 @@ public class Login extends ActionBarActivity {
      * @param view
      */
     public void sendMessageBack(View view) {
-        Button button = (Button) view;
         finish();
     }
 
@@ -78,7 +71,6 @@ public class Login extends ActionBarActivity {
      * @return none
      */
     public void sendMessageLogin(View view) {
-        Button button = (Button) view;
 
         // Store values at the time of the login attempt.
         mUserView = (EditText) this.findViewById(R.id.UserField);
@@ -107,10 +99,6 @@ public class Login extends ActionBarActivity {
                         Map<String, Object> userMap = (Map<String, Object>) snapshot.getValue();
                         String pass = (String) userMap.remove("passWord");
                         if (password.equals(pass)) {
-                            String email = (String) userMap.remove("email");
-                            long s = (long) userMap.remove("numSales");
-                            long r = (long) userMap.remove("rate");
-                           // myU = new User(username, email, pass, r, s, 0);
                             udb.getFriends(username);
                             Intent i = new Intent("android.HomeScreen");
                             i.putExtra("User", userFile);

@@ -16,14 +16,10 @@ import com.firebase.client.Firebase;
 
 public class Registration extends ActionBarActivity {
 
-    private EditText mUserView;
-    private EditText mPassView;
-    private EditText mEmailView;
-    private EditText mRePassView;
 
-    UserDB db = new UserDB();
-    User myU;
-    final Context context = this;
+    private UserDB db = new UserDB();
+    private User myU;
+    private final Context context = this;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,11 +47,10 @@ public class Registration extends ActionBarActivity {
      */
 
     public void sendMessageJoin(View view) {
-        Button button = (Button) view;
-        mUserView = (EditText) this.findViewById(R.id.UserField);
-        mPassView = (EditText) this.findViewById(R.id.PassField);
-        mEmailView = (EditText) this.findViewById(R.id.EmailField);
-        mRePassView = (EditText) this.findViewById(R.id.RePassField);
+        EditText mUserView = (EditText) this.findViewById(R.id.UserField);
+        EditText mPassView = (EditText) this.findViewById(R.id.PassField);
+        EditText mEmailView = (EditText) this.findViewById(R.id.EmailField);
+        EditText mRePassView = (EditText) this.findViewById(R.id.RePassField);
 
         String mUser = mUserView.getText().toString();
         String mEmail = mEmailView.getText().toString();
@@ -64,7 +59,6 @@ public class Registration extends ActionBarActivity {
 
 
         if (mUser != null) {
-
             if (mPass != null && mRePass != null) {
                 if (mPass.equals(mRePass) && mUser != null && mEmail != null) {
                     myU = new User(mUser, mEmail, mPass);
@@ -93,7 +87,6 @@ public class Registration extends ActionBarActivity {
      * @param view
      */
     public void sendMessageBack(View view) {
-        Button button = (Button) view;
         finish();
     }
 
