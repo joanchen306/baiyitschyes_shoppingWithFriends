@@ -64,7 +64,6 @@ public class Registration extends ActionBarActivity {
 
 
         if (mUser != null) {
-
             if (mPass != null && mRePass != null) {
                 if (mPass.equals(mRePass) && mUser != null && mEmail != null) {
                     myU = new User(mUser, mEmail, mPass);

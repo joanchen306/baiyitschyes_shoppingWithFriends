@@ -71,25 +71,6 @@ public class UserDB extends android.app.Application implements Serializable {
     }
 
 
-    public void deleteUser(User u) {
-        Log.d("UserDB deleteUser is called", "" + u);
-        myFirebaseRef = new Firebase("https://baiyitschyes.firebaseio.com");
-        final Firebase userRef = myFirebaseRef.child("userInfo").child(u.getUser());
-
-        userRef.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot snapshot) {
-                userRef.setValue(null);
-            }
-
-            @Override
-            public void onCancelled(FirebaseError firebaseError) {
-            }
-        });
-
-    }
-
-
     /**
      * finds the user's friend list and delets the specifies friend if it exists
      * @param u, the User that is currently using the app
