@@ -180,10 +180,7 @@ public class Map extends FragmentActivity {
         alert11.show();
 
 
-        Intent i = getParentActivityIntent();
-        i.putExtra("User", myU);
-        i.putExtra("saleItem", saleItem);
-        startActivity(i);
+        finish();
     }
 
     public void backToSale(View view) {

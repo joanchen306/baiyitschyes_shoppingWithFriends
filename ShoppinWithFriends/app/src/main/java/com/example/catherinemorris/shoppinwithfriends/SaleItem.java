@@ -24,7 +24,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 
-class SaleItem extends ActionBarActivity {
+public class SaleItem extends ActionBarActivity {
 
     private User myU;
     private UserDB db = new UserDB();
@@ -37,7 +37,6 @@ class SaleItem extends ActionBarActivity {
     ItemOnSale saleItem;
     String it;
     String pr;
-    boolean hasSelectedLocation = false;
 
     Context context = this;
 
@@ -49,14 +48,6 @@ class SaleItem extends ActionBarActivity {
         myU = (User) getIntent().getSerializableExtra("User"); //pulls in myU from the last Activity
         Firebase.setAndroidContext(this);
 
-
-        //saleItem = (ItemOnSale) getIntent().getSerializableExtra("saleItem");
-  /*      if(saleItem != null) {
-            EditText etName = (EditText) this.findViewById(R.id.itemNameField);
-            etName.setText(saleItem.getItem());
-            EditText etPrice = (EditText) this.findViewById(R.id.priceField);
-            etPrice.setText("" + saleItem.getPrice());*/
-        //}
     }
 
 
