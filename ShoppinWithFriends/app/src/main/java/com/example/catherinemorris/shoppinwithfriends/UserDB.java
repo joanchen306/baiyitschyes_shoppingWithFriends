@@ -21,7 +21,7 @@ import java.util.Map;
 /**
  * Created by joanchen on 2/18/15.
  */
-public class UserDB extends android.app.Application implements Serializable {
+class UserDB extends android.app.Application implements Serializable {
 
     private Firebase myFirebaseRef;
     private boolean loggedIn = true;
@@ -30,7 +30,7 @@ public class UserDB extends android.app.Application implements Serializable {
     public static ArrayList<String> friendN;
     public static ArrayList<Wish> wishlist;
 
-    User myU;
+    private User myU;
 
     @Override
     public void onCreate() {

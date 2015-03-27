@@ -21,9 +21,9 @@ import java.util.ArrayList;
 
 public class FoundSaleList extends ActionBarActivity {
 
-    Wish myWish;
-    User myU;
-    String[] mySales;
+    private Wish myWish;
+    private User myU;
+    private String[] mySales;
 
     /**
      * Defines what a FoundSaleList looks like when it is opened. First it creates a ListView

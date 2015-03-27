@@ -11,7 +11,7 @@ import java.util.ArrayList;
 /**
  * Created by James Nugent on 3/5/2015.
  */
-public class ItemOnSale implements Serializable {
+class ItemOnSale implements Serializable {
 
 
     private String item;
@@ -38,10 +38,9 @@ public class ItemOnSale implements Serializable {
         item = it;
         this.price = price;
         user = seller;
-        location.add(0.0);
-        location.add(0.0);
-        //expDate = new ArrayList<>();
-        //expDate.add(90);
+        location = new ArrayList<Double>();
+        location.add(0, 33.7550);
+        location.add(1, -84.3900);
     }
 
     public void setLocation(LatLng loc) {
@@ -52,6 +51,8 @@ public class ItemOnSale implements Serializable {
     public String getItem() { return item; }
 
     public double getPrice() { return price; }
+
+    public ArrayList<Double> getLocation() { return location; }
 
     public String getUser() { return user;}
 

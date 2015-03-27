@@ -14,7 +14,7 @@ import android.widget.ListView;
 public class Settings extends ActionBarActivity {
 
     private String[] options = {"Request Sale", "Add Sale", "Preferences", "Logout"};
-    User myU;
+    private User myU;
 
     private Settings set = this;
 

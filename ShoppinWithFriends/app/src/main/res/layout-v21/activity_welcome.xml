@@ -31,7 +31,7 @@
         android:shadowRadius="5"
         android:clickable="true"
         android:nestedScrollingEnabled="false"
-        android:onClick="sendMessage"
+        android:onClick="goLogin"
         android:layout_marginBottom="15dp"
         android:layout_alignParentBottom="true"
         android:layout_alignStart="@+id/register" />
@@ -52,7 +52,7 @@
         android:shadowRadius="5"
         android:clickable="true"
         android:nestedScrollingEnabled="false"
-        android:onClick="sendMessageR"
+        android:onClick="goRegister"
         android:layout_marginBottom="15dp"
         android:layout_above="@+id/login"
         android:layout_centerHorizontal="true" />

@@ -22,7 +22,7 @@
         android:id="@+id/button"
         android:textSize="20dp"
         android:clickable="true"
-        android:onClick="sendMessage"
+        android:onClick="goLogin"
         android:layout_marginBottom="46dp"
         android:layout_alignParentBottom="true"
         android:layout_alignEnd="@+id/button2"
@@ -35,7 +35,7 @@
         android:id="@+id/button2"
         android:textSize="20dp"
         android:clickable="true"
-        android:onClick="sendMessageR"
+        android:onClick="goRegister"
         android:layout_above="@+id/button"
         android:layout_centerHorizontal="true" />
 

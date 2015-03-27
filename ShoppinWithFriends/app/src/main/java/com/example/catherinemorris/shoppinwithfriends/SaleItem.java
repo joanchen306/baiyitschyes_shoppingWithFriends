@@ -24,10 +24,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 
-public class SaleItem extends ActionBarActivity {
+class SaleItem extends ActionBarActivity {
 
-    User myU;
-    UserDB db = new UserDB();
+    private User myU;
+    private UserDB db = new UserDB();
     private Firebase myFirebaseRef;
 
     private EditText itemName;
@@ -50,13 +50,13 @@ public class SaleItem extends ActionBarActivity {
         Firebase.setAndroidContext(this);
 
 
-        saleItem = (ItemOnSale) getIntent().getSerializableExtra("saleItem");
-        if(saleItem != null) {
+        //saleItem = (ItemOnSale) getIntent().getSerializableExtra("saleItem");
+  /*      if(saleItem != null) {
             EditText etName = (EditText) this.findViewById(R.id.itemNameField);
             etName.setText(saleItem.getItem());
             EditText etPrice = (EditText) this.findViewById(R.id.priceField);
-            etPrice.setText("" + saleItem.getPrice());
-        }
+            etPrice.setText("" + saleItem.getPrice());*/
+        //}
     }
 
 
