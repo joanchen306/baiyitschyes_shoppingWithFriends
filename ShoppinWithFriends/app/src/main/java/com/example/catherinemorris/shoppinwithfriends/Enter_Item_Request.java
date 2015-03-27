@@ -121,7 +121,7 @@ public class Enter_Item_Request extends ActionBarActivity {
                 public void onDataChange(DataSnapshot snapshot) {
 
                     wishlist.add(wishItems);
-                    Log.d("Update wishlist by adding:", wishItems.getItem());
+ //                   Log.d("Update:", wishItems.getItem());
                     if (wishlist.size() == 1) {
                         myFirebaseRef.child("userInfo").child(username).child("wishlist").child(item).setValue(wishItems);
                     } else {

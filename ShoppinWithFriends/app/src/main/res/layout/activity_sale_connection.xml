@@ -1,3 +1,11 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/mapLayout"
+    android:orientation="vertical"
+    tools:context=".SaleConnection" >
+
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
@@ -89,3 +97,18 @@
         android:layout_marginTop="80dp"
         android:layout_centerHorizontal="true" />
 </RelativeLayout>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="80dp"
+android:layout_height="80dp"
+tools:context=".SaleConnection" >
+
+<fragment xmlns:map="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/smallmap"
+    android:layout_width="80dp"
+    android:layout_height="80dp"
+    android:layout_weight="1"
+    android:scrollbars="vertical"
+    class="com.google.android.gms.maps.SupportMapFragment"/>
+</FrameLayout>
+</LinearLayout>

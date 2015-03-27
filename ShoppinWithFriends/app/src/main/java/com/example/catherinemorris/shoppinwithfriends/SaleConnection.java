@@ -7,6 +7,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.LatLng;
+
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -15,8 +19,11 @@ import java.io.Serializable;
 
 public class SaleConnection extends ActionBarActivity implements Serializable {
 
-    private ItemOnSale sale;
-    private User myU;
+    ItemOnSale sale;
+    User myU;
+    GoogleMap googleMap;
+
+    final static LatLng ATLANTA = new LatLng(33.7550,-84.3900);
 
 
     /**
@@ -37,6 +44,43 @@ public class SaleConnection extends ActionBarActivity implements Serializable {
 
         TextView currPrice = (TextView) findViewById(R.id.PriceField);
         currPrice.setText("" + sale.getPrice());
+
+//        SupportMapFragment fm = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.smallmap);
+//        googleMap = fm.getMap();
+//
+//        googleMap.setMyLocationEnabled(true);
+//        LocationManager locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
+//        Criteria criteria = new Criteria();
+//        String provider = locationManager.getBestProvider(criteria, true);
+//        Location location = locationManager.getLastKnownLocation(provider);
+
+        double latitude;
+        double longitude;
+
+//        if(location != null) {
+//            latitude = location.getLatitude();
+//            longitude = location.getLongitude();
+//            myPos = new LatLng(latitude, longitude);
+//
+//        } else {
+//            myPos = ATLANTA;
+//            latitude = 33.7550;
+//            longitude = 84.3900;
+//        }
+
+
+        //use this for my location
+//        myPos = ATLANTA;
+//
+//
+//        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(myPos, 15));
+//        Marker myLoc = googleMap.addMarker(new MarkerOptions().position(myPos).title("Here").draggable(true));
+//        LatLng dragPos = myLoc.getPosition();
+//        latitude = dragPos.latitude;
+//        longitude = dragPos.longitude;
+//        myPositionList.add(latitude);
+//        myPositionList.add(longitude);
+//        myLoc.setVisible(true);
 
         TextView currLoc = (TextView) findViewById(R.id.locationField);
         currLoc.setText(sale.getLocation().toString());

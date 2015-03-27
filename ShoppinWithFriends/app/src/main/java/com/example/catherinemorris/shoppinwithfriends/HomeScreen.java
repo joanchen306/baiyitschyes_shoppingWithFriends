@@ -72,17 +72,26 @@ public class HomeScreen extends ActionBarActivity {
                         String it = (String) itemMap.remove("item");
                         double price = (double) itemMap.remove("price");
                         String um = (String) itemMap.remove("user");
+                        //JOAN RETRIEVE THE LOCATION FROM THE DATABASE
                         try {
                             ArrayList<Double> loc = (ArrayList<Double>) itemMap.remove("location");
+                            //ArrayList<Integer> exp = (ArrayList<Integer>) itemMap.remove("expDate");
                             ItemOnSale item = new ItemOnSale(it, price, um, new LatLng(loc.get(0), loc.get(1)));
-                            Log.d("This is the item added at get: ", it);
+                         //   Log.d("This is the item added at get: ", it);
                             if (globalSales != null && !globalSales.contains(item)) {
                                 globalSales.add(item);
                             }
                         } catch (ClassCastException ex) {
                             String loc = (String) itemMap.remove("location");
                             ItemOnSale item = new ItemOnSale(it, price, um);
-                            Log.d("This is the item added at get: ", it);
+                         //   Log.d("This is the item added at get: ", it);
+                            if (globalSales != null && !globalSales.contains(item)) {
+                                globalSales.add(item);
+                            }
+                        } catch (NullPointerException e) {
+                            String loc = (String) itemMap.remove("location");
+                            ItemOnSale item = new ItemOnSale(it, price, um);
+                            //   Log.d("This is the item added at get: ", it);
                             if (globalSales != null && !globalSales.contains(item)) {
                                 globalSales.add(item);
                             }
@@ -116,7 +125,7 @@ public class HomeScreen extends ActionBarActivity {
                             String des = (String) itemMap.remove("description");
                             double price = (double) itemMap.remove("price");
                             Wish item = new Wish(it, des, price);
-                            Log.d("This is the item added at get: ", it);
+                       //     Log.d("This is the item added at get: ", it);
                             if (wishlist != null && !wishlist.contains(item)) {
                                 wishlist.add(item);
                                 myU.setWishlist(wishlist);
@@ -164,14 +173,14 @@ public class HomeScreen extends ActionBarActivity {
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                         String wish = (String) lv.getItemAtPosition(position);
                         ArrayList<Wish> wishL = myU.getWishlist();
-                        Log.d("this is my wishlist on homescreen ", wishL.toString());
+                       // Log.d("this is my wishlist on homescreen ", wishL.toString());
                         for (Wish itemW : wishL) {
                             Log.d("This is the item: ",itemW.getItem());
                             Log.d("This is the wish: ", wish);
                             String it = itemW.getItem() + " (Found!)";
                             if (it.equals(wish)) {
                                 if (itemW.getSales().size() > 1) {
-                                    Log.d("more than one match! for ", wish);
+                         //           Log.d("more than one match! for ", wish);
                                     Intent i = new Intent("android.FoundSaleList");
                                     i.putExtra("Wish", itemW);
                                     i.putExtra("User", myU);
