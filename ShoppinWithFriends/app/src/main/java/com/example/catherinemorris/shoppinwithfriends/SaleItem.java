@@ -14,6 +14,8 @@ import android.widget.EditText;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
 
+import org.w3c.dom.Text;
+
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.Semaphore;
@@ -33,6 +35,9 @@ public class SaleItem extends ActionBarActivity {
     private EditText itemLoc;
 
     ItemOnSale saleItem;
+    String it;
+    String pr;
+    boolean hasSelectedLocation = false;
 
     Context context = this;
 
@@ -44,11 +49,16 @@ public class SaleItem extends ActionBarActivity {
         myU = (User) getIntent().getSerializableExtra("User"); //pulls in myU from the last Activity
         Firebase.setAndroidContext(this);
 
-        EditText etName = (EditText) this.findViewById(R.id.itemNameField);
-        EditText etPrice = (EditText) this.findViewById(R.id.priceField);
-        String name = etName.getText().toString();
-        double price = Double.parseDouble(etPrice.getText().toString());
-        saleItem = new ItemOnSale(name, price, myU.getUser());
+
+        saleItem = (ItemOnSale) getIntent().getSerializableExtra("saleItem");
+        if(saleItem != null) {
+            EditText etName = (EditText) this.findViewById(R.id.itemNameField);
+            etName.setText(saleItem.getItem());
+            EditText etPrice = (EditText) this.findViewById(R.id.priceField);
+            etPrice.setText("" + saleItem.getPrice());
+            EditText etLocation = (EditText) this.findViewById(R.id.itemLocation);
+            etLocation.setText(saleItem.getLocation());
+        }
     }
 
 
@@ -85,8 +95,15 @@ public class SaleItem extends ActionBarActivity {
         startActivity(i);
     }
 
+
     public void goToMap(View view) {
         Intent i = new Intent("android.Map");
+        EditText etName = (EditText) this.findViewById(R.id.itemNameField);
+        EditText etPrice = (EditText) this.findViewById(R.id.priceField);
+        it = etName.getText().toString();
+        pr = etPrice.getText().toString();
+        double price = Double.parseDouble(etPrice.getText().toString());
+        saleItem = new ItemOnSale(it, price, myU.getUser());
         i.putExtra("User", myU);
         i.putExtra("saleItem", saleItem);
         startActivity(i);

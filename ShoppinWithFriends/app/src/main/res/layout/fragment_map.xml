@@ -34,12 +34,6 @@
 
     </RelativeLayout>
 
-    <!--<fragment xmlns:android="http://schemas.android.com/apk/res/android"-->
-        <!--android:id="@+id/map"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="match_parent"-->
-        <!--class="com.google.android.gms.maps.SupportMapFragment" />-->
-
     <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
@@ -54,15 +48,7 @@
             android:scrollbars="vertical"
             class="com.google.android.gms.maps.SupportMapFragment"/>
 
-        <RadioGroup
-            android:id="@+id/radio_group_list_selector"
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:orientation="horizontal"
-            android:background="#80000000"
-            android:padding="4dp" >
-
-        <RadioButton
+        <Button
             android:id="@+id/backToSale"
             android:text="Back"
             android:gravity="center_horizontal|center_vertical"
@@ -80,6 +66,7 @@
             android:onClick="backToSale"
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
         />
         <View
             android:id="@+id/VerticalLine2"
@@ -87,34 +74,32 @@
             android:layout_height="match_parent"
             android:background="#aaa" />
 
-            <RadioButton
-                android:id="@+id/doneWithMap"
-                android:text="Done"
-                android:gravity="center_horizontal|center_vertical"
-                android:textColor="#FFFFFF"
-                android:textSize="17dp"
-                android:layout_width="80dp"
-                android:layout_height="35dp"
-                android:background="@drawable/buttonshape"
-                android:shadowColor="#A8A8A8"
-                android:shadowDx="3"
-                android:shadowDy="1"
-                android:shadowRadius="5"
-                android:clickable="true"
-                android:nestedScrollingEnabled="false"
-                android:onClick="doneWithMap"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentEnd="true"
-                />
-            <View
+        <View
                 android:id="@+id/VerticalLine"
                 android:layout_width="1dip"
                 android:layout_height="match_parent"
                 android:background="#aaa" />
 
-
-
-        </RadioGroup>
+        <Button
+            android:id="@+id/doneWithMap"
+            android:text="Report Sale"
+            android:gravity="center_horizontal|center_vertical"
+            android:textColor="#FFFFFF"
+            android:textSize="17dp"
+            android:layout_width="80dp"
+            android:layout_height="35dp"
+            android:background="@drawable/buttonshape"
+            android:shadowColor="#A8A8A8"
+            android:shadowDx="3"
+            android:shadowDy="1"
+            android:shadowRadius="5"
+            android:clickable="true"
+            android:nestedScrollingEnabled="false"
+            android:onClick="reportSale"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentLeft="true"
+            android:layout_gravity="right|top" />
     </FrameLayout>
 
 </LinearLayout>

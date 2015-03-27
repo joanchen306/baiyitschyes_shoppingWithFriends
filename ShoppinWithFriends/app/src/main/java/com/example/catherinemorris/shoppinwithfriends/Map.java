@@ -153,12 +153,15 @@ public class Map extends FragmentActivity {
             // Clears all the existing markers on the map
             googleMap.clear();
 
+
+
             // Adding Markers on Google Map for each matching address
             for(int i=0;i<addresses.size();i++){
 
                 Address address = (Address) addresses.get(i);
 
                 // Creating an instance of GeoPoint, to display in Google Map
+
                 latlng = new LatLng(address.getLatitude(), address.getLongitude());
 
                 String addressText = String.format("%s, %s",
@@ -173,8 +176,7 @@ public class Map extends FragmentActivity {
                 saleLatLong = latlng;
 
                 // Locate the first location
-                if(i==0)
-                    googleMap.animateCamera(CameraUpdateFactory.newLatLng(latlng));
+                if(i==0){ googleMap.animateCamera(CameraUpdateFactory.newLatLng(latlng)); }
             }
         }
     }
@@ -184,10 +186,12 @@ public class Map extends FragmentActivity {
      * @param view
      */
 
-    public void doneWithMap(View view) {
-        Intent i = new Intent("android.SaleItem");
+    public void reportSale(View view) {
+        latlng = markerOptions.getPosition();
+        saleItem.setLocation(latlng.toString());
+        Intent i = getParentActivityIntent();
         i.putExtra("User", myU);
-
+        i.putExtra("saleItem", saleItem);
         startActivity(i);
     }
 
