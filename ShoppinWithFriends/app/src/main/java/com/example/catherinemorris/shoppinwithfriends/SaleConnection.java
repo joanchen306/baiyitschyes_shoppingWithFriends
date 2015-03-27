@@ -1,5 +1,6 @@
 package com.example.catherinemorris.shoppinwithfriends;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -45,17 +46,17 @@ public class SaleConnection extends ActionBarActivity implements Serializable {
         TextView currPrice = (TextView) findViewById(R.id.PriceField);
         currPrice.setText("" + sale.getPrice());
 
-//        SupportMapFragment fm = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.smallmap);
-//        googleMap = fm.getMap();
-//
+        SupportMapFragment fm = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.smallmap);
+        googleMap = fm.getMap();
+
 //        googleMap.setMyLocationEnabled(true);
 //        LocationManager locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
 //        Criteria criteria = new Criteria();
 //        String provider = locationManager.getBestProvider(criteria, true);
 //        Location location = locationManager.getLastKnownLocation(provider);
 
-        double latitude;
-        double longitude;
+//        double latitude;
+//        double longitude;
 
 //        if(location != null) {
 //            latitude = location.getLatitude();
@@ -107,6 +108,13 @@ public class SaleConnection extends ActionBarActivity implements Serializable {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    private void openMap (View view) {
+        Intent i = new Intent("android.SaleConnectionMap");
+        i.putExtra("User", myU);
+        i.putExtra("Sale", sale);
+        startActivity(i);
     }
 
     /**

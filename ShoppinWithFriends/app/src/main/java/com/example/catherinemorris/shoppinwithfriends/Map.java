@@ -58,7 +58,7 @@ public class Map extends FragmentActivity {
         Firebase.setAndroidContext(this);
 
         myU = (User) getIntent().getSerializableExtra("User");
-        saleItem = (ItemOnSale) getIntent().getSerializableExtra("saleItem");
+        saleItem = (ItemOnSale) getIntent().getSerializableExtra("ItemOnSale");
 
         SupportMapFragment fm = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
         googleMap = fm.getMap();
