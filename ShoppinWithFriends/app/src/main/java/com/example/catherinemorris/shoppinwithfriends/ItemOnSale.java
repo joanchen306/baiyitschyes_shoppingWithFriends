@@ -17,9 +17,8 @@ class ItemOnSale implements Serializable {
     private String item;
     private double price;
     private String user;
-    private LatLng val = new LatLng(33.7550,-84.3900);
     private ArrayList<Double> location = new ArrayList<>();
-    private long timeStamp;
+    //private ArrayList<Integer> expDate;
 
     //used to call the item and to put it in the list
     public ItemOnSale(String it, double price, String seller, LatLng loc) {
@@ -28,6 +27,8 @@ class ItemOnSale implements Serializable {
         user = seller;
         location.add(loc.latitude);
         location.add(loc.longitude);
+        //expDate = new ArrayList<>();
+        //expDate.add(90);
     }
 
     //useed to create a sales item when reported
@@ -38,8 +39,8 @@ class ItemOnSale implements Serializable {
         this.price = price;
         user = seller;
         location = new ArrayList<Double>();
-        location.add(0, val.latitude);
-        location.add(1, val.longitude);
+        location.add(0, 33.7550);
+        location.add(1, -84.3900);
     }
 
     public void setLocation(LatLng loc) {

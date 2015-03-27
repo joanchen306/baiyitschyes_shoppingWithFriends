@@ -47,6 +47,7 @@ class SaleItem extends ActionBarActivity {
 
         myU = (User) getIntent().getSerializableExtra("User"); //pulls in myU from the last Activity
         Firebase.setAndroidContext(this);
+
     }
 
 
@@ -108,10 +109,9 @@ class SaleItem extends ActionBarActivity {
         itemPrice = (EditText) this.findViewById(R.id.priceField);
 
         String item = itemName.getText().toString(); //Gets Item Double.parseDouble(itemPrice.getText().toString());name String
-        String loc = itemLoc.getText().toString(); //Gets Item Location String
         double price = Double.parseDouble(itemPrice.getText().toString()); //Gets Item price double
 
-        if (item.equals("") | loc.equals("") | itemPrice.getText().toString().equals("")) {
+        if (item.equals("") | itemPrice.getText().toString().equals("")) {
             //Error message for if the User tries an illegal input
             AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
             builder1.setMessage("No fields should be blank.");
