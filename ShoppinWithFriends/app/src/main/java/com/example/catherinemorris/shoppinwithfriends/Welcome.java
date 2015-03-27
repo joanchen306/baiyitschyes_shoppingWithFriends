@@ -29,8 +29,7 @@ public class Welcome extends ActionBarActivity {
      * Opens the Registration Activity
      * @param view
      */
-    public void sendMessageR(View view) {
-        Button button = (Button) view;
+    public void goRegister(View view) {
         startActivity(new Intent(this, Registration.class));
     }
 
@@ -38,8 +37,7 @@ public class Welcome extends ActionBarActivity {
      * Opens the Login Activity
      * @param view
      */
-    public void sendMessage(View view) {
-        Button button = (Button) view;
+    public void goLogin(View view) {
         startActivity(new Intent(this, Login.class));
     }
 

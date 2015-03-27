@@ -11,12 +11,13 @@ import java.util.ArrayList;
 /**
  * Created by James Nugent on 3/5/2015.
  */
-public class ItemOnSale implements Serializable {
+class ItemOnSale implements Serializable {
 
 
     private String item;
     private double price;
     private String user;
+
     private ArrayList<Double> location = new ArrayList<>();
     private long timeStamp;
 
@@ -46,6 +47,8 @@ public class ItemOnSale implements Serializable {
     public String getItem() { return item; }
 
     public double getPrice() { return price; }
+
+    public ArrayList<Double> getLocation() { return location; }
 
     public String getUser() { return user;}
 

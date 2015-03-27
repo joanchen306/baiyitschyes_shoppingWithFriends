@@ -7,7 +7,7 @@ import java.util.ArrayList;
 /**
  * Created by James Nugent on 2/18/2015.
  */
-public class User implements Serializable{
+class User implements Serializable{
     private ArrayList<Wish> wishlist = new ArrayList<>();
     private ArrayList<String> friendList = new ArrayList<>();
     private String username;

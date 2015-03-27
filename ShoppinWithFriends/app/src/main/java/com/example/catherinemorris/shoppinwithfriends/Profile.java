@@ -28,7 +28,7 @@ import java.util.Map;
 
 public class Profile extends ActionBarActivity {
 
-    User myU;
+    private User myU;
     UserDB db = new UserDB();
     private RatingBar ratingBar;
     private String username;

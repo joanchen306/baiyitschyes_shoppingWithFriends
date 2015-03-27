@@ -29,15 +29,15 @@ import java.util.Map;
 
 public class Enter_Item_Request extends ActionBarActivity {
 
-    User myU;
-    Firebase myFirebaseRef;
+    private User myU;
+    private Firebase myFirebaseRef;
 
     private EditText itemName;
     private EditText itemDescription;
     private EditText itemPrice;
-    Context context = this;
+    private Context context = this;
 
-    ArrayList<Wish> wishlist = new ArrayList<>();
+    private ArrayList<Wish> wishlist = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
