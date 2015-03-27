@@ -178,9 +178,10 @@ public class Map extends FragmentActivity {
         builder1.setCancelable(true);
         AlertDialog alert11 = builder1.create();
         alert11.show();
+        Intent i = new Intent("android.HomeScreen");
+        i.putExtra("User", myU);
+        startActivity(i);
 
-
-        finish();
     }
 
     public void backToSale(View view) {
