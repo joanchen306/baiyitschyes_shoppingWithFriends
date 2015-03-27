@@ -24,7 +24,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 
-class SaleItem extends ActionBarActivity {
+public class SaleItem extends ActionBarActivity {
 
     private User myU;
     private UserDB db = new UserDB();
