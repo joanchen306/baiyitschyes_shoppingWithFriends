@@ -73,6 +73,7 @@ public class HomeScreen extends ActionBarActivity {
                         double price = (double) itemMap.remove("price");
                         String um = (String) itemMap.remove("user");
                         //JOAN RETRIEVE THE LOCATION FROM THE DATABASE
+                        // I DID!
                         try {
                             ArrayList<Double> loc = (ArrayList<Double>) itemMap.remove("location");
                             //ArrayList<Integer> exp = (ArrayList<Integer>) itemMap.remove("expDate");
