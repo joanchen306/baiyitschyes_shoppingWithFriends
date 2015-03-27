@@ -20,6 +20,7 @@ import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
 import com.firebase.client.Query;
 import com.firebase.client.ValueEventListener;
+import com.google.android.gms.maps.model.LatLng;
 
 
 public class SalesList extends ActionBarActivity {
@@ -35,6 +36,7 @@ public class SalesList extends ActionBarActivity {
         setContentView(R.layout.activity_sales_list);
         Firebase.setAndroidContext(this);
 
+        //goes to the database and gets all the global sales
         myU = (User) getIntent().getSerializableExtra("User");
         Firebase myFirebaseRef = new Firebase("https://baiyitschyes.firebaseio.com");
         Query queryRef = myFirebaseRef.child("globalsales").orderByKey();
@@ -46,18 +48,16 @@ public class SalesList extends ActionBarActivity {
                     Map<String, Map<String, Object>> list = (Map<String, Map<String, Object>>) snapshot.getValue();
                     for (Map<String, Object> itemMap : list.values()) {
                         String it = (String) itemMap.remove("item");
-                        String loc = (String) itemMap.remove("location");
+                        ArrayList<Double> loc = (ArrayList<Double>) itemMap.remove("location");
                         double price = (double) itemMap.remove("price");
                         String um = (String) itemMap.remove("user");
-
-                        ItemOnSale item = new ItemOnSale(it, price, um);
+                        ItemOnSale item = new ItemOnSale(it, price, um, new LatLng(loc.get(0), loc.get(1)));
                         if (saleList != null && !saleList.contains(item)) {
                             saleList.add(item);
 
                         }
                     }
 
-                    Log.d("This is the globalSale in SalesList: ", saleList.toString());
                     globalSales = new String[saleList.size()];
                     for (int i = 0; i < saleList.size(); i++) {
                         globalSales[i] = saleList.get(i).getItem();

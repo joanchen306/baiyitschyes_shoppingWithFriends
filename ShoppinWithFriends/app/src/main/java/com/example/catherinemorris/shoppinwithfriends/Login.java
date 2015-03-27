@@ -1,6 +1,7 @@
 package com.example.catherinemorris.shoppinwithfriends;
 
 import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -91,8 +92,13 @@ public class Login extends ActionBarActivity {
                 public void onDataChange(DataSnapshot snapshot) {
                     if(snapshot == null || snapshot.getValue() == null) {
                         AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
-                        builder1.setMessage("You are not registered.");
-                        builder1.setCancelable(true);
+                        builder1.setMessage(R.string.common_google_play_services_invalid_account_text)
+                            .setTitle(R.string.common_google_play_services_invalid_account_title)
+                            .setPositiveButton(R.string.accept, new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+                                    // User clicked OK button
+                                }
+                            });
                         AlertDialog alert11 = builder1.create();
                         alert11.show();
                     } else {

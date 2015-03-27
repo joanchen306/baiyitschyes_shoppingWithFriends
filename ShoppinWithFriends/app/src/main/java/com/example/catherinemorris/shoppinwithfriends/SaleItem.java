@@ -14,6 +14,8 @@ import android.widget.EditText;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
 
+import org.w3c.dom.Text;
+
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.Semaphore;
@@ -32,6 +34,11 @@ class SaleItem extends ActionBarActivity {
     private EditText itemPrice;
     private EditText itemLoc;
 
+    ItemOnSale saleItem;
+    String it;
+    String pr;
+    boolean hasSelectedLocation = false;
+
     Context context = this;
 
     @Override
@@ -41,6 +48,15 @@ class SaleItem extends ActionBarActivity {
 
         myU = (User) getIntent().getSerializableExtra("User"); //pulls in myU from the last Activity
         Firebase.setAndroidContext(this);
+
+
+        saleItem = (ItemOnSale) getIntent().getSerializableExtra("saleItem");
+        if(saleItem != null) {
+            EditText etName = (EditText) this.findViewById(R.id.itemNameField);
+            etName.setText(saleItem.getItem());
+            EditText etPrice = (EditText) this.findViewById(R.id.priceField);
+            etPrice.setText("" + saleItem.getPrice());
+        }
     }
 
 
@@ -77,9 +93,17 @@ class SaleItem extends ActionBarActivity {
         startActivity(i);
     }
 
+
     public void goToMap(View view) {
         Intent i = new Intent("android.Map");
+        EditText etName = (EditText) this.findViewById(R.id.itemNameField);
+        EditText etPrice = (EditText) this.findViewById(R.id.priceField);
+        it = etName.getText().toString();
+        pr = etPrice.getText().toString();
+        double price = Double.parseDouble(etPrice.getText().toString());
+        saleItem = new ItemOnSale(it, price, myU.getUser());
         i.putExtra("User", myU);
+        i.putExtra("saleItem", saleItem);
         startActivity(i);
     }
 
@@ -93,7 +117,7 @@ class SaleItem extends ActionBarActivity {
         itemLoc = (EditText) this.findViewById(R.id.itemLocation);
         itemPrice = (EditText) this.findViewById(R.id.priceField);
 
-        String item = itemName.getText().toString(); //Gets Item name String
+        String item = itemName.getText().toString(); //Gets Item Double.parseDouble(itemPrice.getText().toString());name String
         String loc = itemLoc.getText().toString(); //Gets Item Location String
         double price = Double.parseDouble(itemPrice.getText().toString()); //Gets Item price double
 
@@ -109,7 +133,6 @@ class SaleItem extends ActionBarActivity {
             myFirebaseRef = new Firebase("https://baiyitschyes.firebaseio.com");
             Firebase itRef = myFirebaseRef.child("globalsales");
             itRef.push().setValue(saleMe);
-            Log.d("Tag", "The item is " + item + ". It costs " + price + ". It's from " + loc);
             //Message to inform user that the data has been put into the database
             AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
             builder1.setMessage("You have added " + item + " to the global Sales List.");
