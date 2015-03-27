@@ -56,8 +56,6 @@ public class SaleItem extends ActionBarActivity {
             etName.setText(saleItem.getItem());
             EditText etPrice = (EditText) this.findViewById(R.id.priceField);
             etPrice.setText("" + saleItem.getPrice());
-            EditText etLocation = (EditText) this.findViewById(R.id.itemLocation);
-            etLocation.setText(saleItem.getLocation());
         }
     }
 
@@ -131,11 +129,10 @@ public class SaleItem extends ActionBarActivity {
             AlertDialog alert11 = builder1.create();
             alert11.show();
         } else {
-            ItemOnSale saleMe = new ItemOnSale(item, price, myU.getUser(), loc);
+            ItemOnSale saleMe = new ItemOnSale(item, price, myU.getUser());
             myFirebaseRef = new Firebase("https://baiyitschyes.firebaseio.com");
             Firebase itRef = myFirebaseRef.child("globalsales");
             itRef.push().setValue(saleMe);
-            Log.d("Tag", "The item is " + item + ". It costs " + price + ". It's from " + loc);
             //Message to inform user that the data has been put into the database
             AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
             builder1.setMessage("You have added " + item + " to the global Sales List.");

@@ -1,9 +1,12 @@
 package com.example.catherinemorris.shoppinwithfriends;
 
+import com.google.android.gms.maps.model.LatLng;
+
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
+import java.util.ArrayList;
 
 /**
  * Created by James Nugent on 3/5/2015.
@@ -14,29 +17,35 @@ public class ItemOnSale implements Serializable {
     private String item;
     private double price;
     private String user;
-    private String location;
+    private ArrayList<Double> location = new ArrayList<>();
     private long timeStamp;
 
-    public ItemOnSale(String it, double price, String seller, String loc) {
+    //used to call the item and to put it in the list
+    public ItemOnSale(String it, double price, String seller, LatLng loc) {
         item = it;
         this.price = price;
         user = seller;
-        location = loc;
+        location.add(loc.latitude);
+        location.add(loc.longitude);
     }
 
+    //useed to create a sales item when reported
+    //location will be set in a later process
+    //through set location
     public ItemOnSale(String it, double price, String seller) {
         item = it;
         this.price = price;
         user = seller;
     }
 
-    public void setLocation(String loc) { location = loc; }
+    public void setLocation(LatLng loc) {
+        location.add(loc.latitude);
+        location.add(loc.longitude);
+    }
 
     public String getItem() { return item; }
 
     public double getPrice() { return price; }
-
-    public String getLocation() { return location; }
 
     public String getUser() { return user;}
 
