@@ -94,7 +94,7 @@ public class SaleItem extends ActionBarActivity {
         double price = Double.parseDouble(etPrice.getText().toString());
         saleItem = new ItemOnSale(it, price, myU.getUser());
         i.putExtra("User", myU);
-        i.putExtra("saleItem", saleItem);
+        i.putExtra("ItemOnSale", saleItem);
         startActivity(i);
     }
 
