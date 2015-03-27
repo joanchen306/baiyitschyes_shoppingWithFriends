@@ -23,6 +23,14 @@ public class ItemOnSale implements Serializable {
         location = loc;
     }
 
+    public ItemOnSale(String it, double price, String seller) {
+        item = it;
+        this.price = price;
+        user = seller;
+    }
+
+    public void setLocation(String loc) { location = loc; }
+
     public String getItem() { return item; }
 
     public double getPrice() { return price; }

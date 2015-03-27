@@ -32,6 +32,8 @@ public class SaleItem extends ActionBarActivity {
     private EditText itemPrice;
     private EditText itemLoc;
 
+    ItemOnSale saleItem;
+
     Context context = this;
 
     @Override
@@ -41,6 +43,12 @@ public class SaleItem extends ActionBarActivity {
 
         myU = (User) getIntent().getSerializableExtra("User"); //pulls in myU from the last Activity
         Firebase.setAndroidContext(this);
+
+        EditText etName = (EditText) this.findViewById(R.id.itemNameField);
+        EditText etPrice = (EditText) this.findViewById(R.id.priceField);
+        String name = etName.getText().toString();
+        double price = Double.parseDouble(etPrice.getText().toString());
+        saleItem = new ItemOnSale(name, price, myU.getUser());
     }
 
 
@@ -80,6 +88,7 @@ public class SaleItem extends ActionBarActivity {
     public void goToMap(View view) {
         Intent i = new Intent("android.Map");
         i.putExtra("User", myU);
+        i.putExtra("saleItem", saleItem);
         startActivity(i);
     }
 
@@ -93,7 +102,7 @@ public class SaleItem extends ActionBarActivity {
         itemLoc = (EditText) this.findViewById(R.id.itemLocation);
         itemPrice = (EditText) this.findViewById(R.id.priceField);
 
-        String item = itemName.getText().toString(); //Gets Item name String
+        String item = itemName.getText().toString(); //Gets Item Double.parseDouble(itemPrice.getText().toString());name String
         String loc = itemLoc.getText().toString(); //Gets Item Location String
         double price = Double.parseDouble(itemPrice.getText().toString()); //Gets Item price double
 
