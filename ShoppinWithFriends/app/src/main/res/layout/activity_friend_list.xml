@@ -13,9 +13,9 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="My Friends"
         android:id="@+id/textView2"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true"
-        android:textSize="50dp" />
+        android:textSize="50dp"
+        android:layout_below="@+id/scrollView"
+        android:layout_alignEnd="@+id/friendList" />
 
     <ListView
         android:layout_width="wrap_content"
@@ -50,8 +50,8 @@
         android:clickable="true"
         android:nestedScrollingEnabled="false"
         android:onClick="goHomeScreen"
-        android:layout_above="@+id/friendList"
-        android:layout_alignParentEnd="true" />
+        android:layout_below="@+id/scrollView"
+        android:layout_toEndOf="@+id/scrollView" />
 
     <Button
         android:id="@+id/addFriend"
@@ -79,8 +79,8 @@
         android:layout_height="wrap_content"
         android:id="@+id/userText"
         android:hint="Enter Username"
-        android:layout_alignParentBottom="true"
-        android:layout_toEndOf="@+id/addFriend" />
+        android:layout_alignBottom="@+id/deleteFriend"
+        android:layout_centerHorizontal="true" />
 
     <Button
         android:id="@+id/deleteFriend"

@@ -50,7 +50,7 @@ public class SalesList extends ActionBarActivity {
                         double price = (double) itemMap.remove("price");
                         String um = (String) itemMap.remove("user");
 
-                        ItemOnSale item = new ItemOnSale(it, price, um, loc);
+                        ItemOnSale item = new ItemOnSale(it, price, um);
                         if (saleList != null && !saleList.contains(item)) {
                             saleList.add(item);
 

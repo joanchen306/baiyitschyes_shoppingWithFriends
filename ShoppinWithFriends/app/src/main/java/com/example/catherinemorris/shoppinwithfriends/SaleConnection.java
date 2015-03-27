@@ -40,7 +40,7 @@ public class SaleConnection extends ActionBarActivity implements Serializable {
 
 
         TextView currLoc = (TextView) findViewById(R.id.locationField);
-        currLoc.setText(sale.getLocation());
+        currLoc.setText(sale.getLocation().toString());
     }
 
 

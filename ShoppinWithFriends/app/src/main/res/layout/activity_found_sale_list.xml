@@ -22,9 +22,9 @@
         android:shadowRadius="5"
         android:clickable="true"
         android:nestedScrollingEnabled="false"
+        android:onClick="goBack"
         android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:onClick="goBack" />
+        android:layout_alignParentStart="true" />
 
     <ListView
         android:layout_width="wrap_content"

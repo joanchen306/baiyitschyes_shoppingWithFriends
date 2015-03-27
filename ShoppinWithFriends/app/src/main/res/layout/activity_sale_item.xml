@@ -11,8 +11,8 @@
         android:layout_height="wrap_content"
         android:id="@+id/text"
         android:textSize="33dp"
-        android:layout_below="@+id/button5"
-        android:layout_marginTop="43dp" />
+        android:layout_marginTop="80dp"
+        android:layout_centerHorizontal="true" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -39,10 +39,10 @@
         android:inputType="textPostalAddress"
         android:ems="10"
         android:id="@+id/itemLocation"
-        android:layout_marginTop="87dp"
         android:hint="Location"
-        android:layout_below="@+id/priceField"
-        android:layout_centerHorizontal="true" />
+        android:layout_marginBottom="73dp"
+        android:layout_above="@+id/button3"
+        android:layout_alignStart="@+id/button3" />
 
     <Button
         android:id="@+id/button3"
@@ -76,15 +76,15 @@
         android:shadowRadius="5"
         android:clickable="true"
         android:nestedScrollingEnabled="false"
-        android:onClick="goToMaps"
+        android:onClick="goHome"
         android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentStart="true"
+        android:layout_toStartOf="@+id/itemLocation"
+        android:layout_alignEnd="@+id/mapButton" />
 
     <Button
         android:text="Choose on Map"
         android:id="@+id/mapButton"
-        android:layout_alignBottom="@+id/itemLocation"
-        android:layout_alignParentEnd="true"
         android:textColor="#FFFFFF"
         android:textSize="17dp"
         android:layout_width="100dp"
@@ -96,7 +96,8 @@
         android:shadowRadius="5"
         android:clickable="true"
         android:nestedScrollingEnabled="false"
-        android:onClick="goToMap"/>
-
+        android:onClick="goToMap"
+        android:layout_alignBottom="@+id/itemLocation"
+        android:layout_alignParentStart="true" />
 
 </RelativeLayout>

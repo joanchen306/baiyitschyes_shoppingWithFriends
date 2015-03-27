@@ -72,11 +72,11 @@ public class HomeScreen extends ActionBarActivity {
                         double price = (double) itemMap.remove("price");
                         String um = (String) itemMap.remove("user");
 
-                        ItemOnSale item = new ItemOnSale(it, price, um, loc);
+                        ItemOnSale item = new ItemOnSale(it, price, um);
                         Log.d("This is the item added at get: ", it);
                         if (globalSales != null && !globalSales.contains(item)) {
                             globalSales.add(item);
-                            Log.d("Matched " + item.getItem() + " , $ " + item.getPrice() + " at ", item.getLocation());
+                            Log.d("Matched " + item.getItem() + " , $ " + item.getPrice() + " at ", item.getLocation().toString());
                         }
                     }
                 }
