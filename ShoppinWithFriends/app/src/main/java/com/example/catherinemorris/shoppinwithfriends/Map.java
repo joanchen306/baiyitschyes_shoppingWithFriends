@@ -43,7 +43,6 @@ public class Map extends FragmentActivity {
     ArrayList<Double> myPositionList = new ArrayList<Double>();
     LatLng myPos;
     LatLng saleLatLong;
-    final static LatLng ATLANTA = new LatLng(33.7550,-84.3900);
 
     ItemOnSale saleItem;
 
@@ -86,40 +85,6 @@ public class Map extends FragmentActivity {
         // Setting button click event listener for the find button
         btn_find.setOnClickListener(findClickListener);
 
-
-//        googleMap.setMyLocationEnabled(true);
-//        LocationManager locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
-//        Criteria criteria = new Criteria();
-//        String provider = locationManager.getBestProvider(criteria, true);
-//        Location location = locationManager.getLastKnownLocation(provider);
-
-//        double latitude;
-//        double longitude;
-
-//        if(location != null) {
-//            latitude = location.getLatitude();
-//            longitude = location.getLongitude();
-//            myPos = new LatLng(latitude, longitude);
-//
-//        } else {
-//            myPos = ATLANTA;
-//            latitude = 33.7550;
-//            longitude = 84.3900;
-//        }
-
-
-        //use this for my location
-//        myPos = ATLANTA;
-//
-//
-//        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(myPos, 15));
-//        Marker myLoc = googleMap.addMarker(new MarkerOptions().position(myPos).title("Here").draggable(true));
-//        LatLng dragPos = myLoc.getPosition();
-//        latitude = dragPos.latitude;
-//        longitude = dragPos.longitude;
-//        myPositionList.add(latitude);
-//        myPositionList.add(longitude);
-//        myLoc.setVisible(true);
 
     }
 
