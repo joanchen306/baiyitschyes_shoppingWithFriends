@@ -44,6 +44,8 @@ class ItemOnSale implements Serializable {
     }
 
     public void setLocation(LatLng loc) {
+        location.remove(0);
+        location.remove(1);
         location.add(loc.latitude);
         location.add(loc.longitude);
     }
