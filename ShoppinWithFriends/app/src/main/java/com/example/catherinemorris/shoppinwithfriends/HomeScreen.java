@@ -18,7 +18,9 @@ import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
 import com.firebase.client.Query;
 import com.firebase.client.ValueEventListener;
+import com.google.android.gms.maps.model.LatLng;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Map;
 
@@ -70,15 +72,23 @@ public class HomeScreen extends ActionBarActivity {
                     Map<String, Map<String, Object>> list = (Map<String, Map<String, Object>>) snapshot.getValue();
                     for (Map<String, Object> itemMap : list.values()) {
                         String it = (String) itemMap.remove("item");
-                        String loc = (String) itemMap.remove("location");
                         double price = (double) itemMap.remove("price");
                         String um = (String) itemMap.remove("user");
+                        try {
+                            ArrayList<Double> loc = (ArrayList<Double>) itemMap.remove("location");
+                            ItemOnSale item = new ItemOnSale(it, price, um, new LatLng(loc.get(0), loc.get(1)));
+                            Log.d("This is the item added at get: ", it);
+                            if (globalSales != null && !globalSales.contains(item)) {
+                                globalSales.add(item);
+                            }
+                        } catch (ClassCastException ex) {
+                            String loc = (String) itemMap.remove("location");
+                            ItemOnSale item = new ItemOnSale(it, price, um);
+                            Log.d("This is the item added at get: ", it);
+                            if (globalSales != null && !globalSales.contains(item)) {
+                                globalSales.add(item);
+                            }
 
-                        ItemOnSale item = new ItemOnSale(it, price, um, loc);
-                        Log.d("This is the item added at get: ", it);
-                        if (globalSales != null && !globalSales.contains(item)) {
-                            globalSales.add(item);
-                            Log.d("Matched " + item.getItem() + " , $ " + item.getPrice() + " at ", item.getLocation());
                         }
                     }
                 }

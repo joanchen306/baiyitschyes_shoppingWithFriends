@@ -1,5 +1,7 @@
 package com.example.catherinemorris.shoppinwithfriends;
 
+import android.app.AlertDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.location.Address;
 import android.location.Criteria;
@@ -17,6 +19,7 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
+import com.firebase.client.Firebase;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.SupportMapFragment;
@@ -26,6 +29,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 
@@ -45,11 +49,14 @@ public class Map extends FragmentActivity {
 
     LinearLayout mapLinLay;
 
+    final private Context context = this;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_map);
+        Firebase.setAndroidContext(this);
 
         myU = (User) getIntent().getSerializableExtra("User");
         saleItem = (ItemOnSale) getIntent().getSerializableExtra("saleItem");
@@ -187,8 +194,27 @@ public class Map extends FragmentActivity {
      */
 
     public void reportSale(View view) {
+        //sets the location of the sale item
         latlng = markerOptions.getPosition();
-        saleItem.setLocation(latlng.toString());
+        saleItem.setLocation(latlng);
+
+        //sets the date of the sale reported
+        Calendar c = Calendar.getInstance();
+        int day = c.get(Calendar.DATE);
+        int month = c.get(Calendar.MONTH);
+        int year = c.get(Calendar.YEAR);
+
+        Firebase myFirebaseRef = new Firebase("https://baiyitschyes.firebaseio.com");
+        Firebase itRef = myFirebaseRef.child("globalsales");
+        itRef.push().setValue(saleItem);
+        //Message to inform user that the data has been put into the database
+        AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
+        builder1.setMessage("You have added " + saleItem.getItem() + " to the global Sales List.");
+        builder1.setCancelable(true);
+        AlertDialog alert11 = builder1.create();
+        alert11.show();
+
+
         Intent i = getParentActivityIntent();
         i.putExtra("User", myU);
         i.putExtra("saleItem", saleItem);
