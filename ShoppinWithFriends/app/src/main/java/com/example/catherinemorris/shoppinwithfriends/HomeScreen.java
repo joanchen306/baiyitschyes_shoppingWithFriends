@@ -76,7 +76,6 @@ public class HomeScreen extends ActionBarActivity {
                         Log.d("This is the item added at get: ", it);
                         if (globalSales != null && !globalSales.contains(item)) {
                             globalSales.add(item);
-                            Log.d("Matched " + item.getItem() + " , $ " + item.getPrice() + " at ", item.getLocation().toString());
                         }
                     }
                 }

@@ -44,6 +44,9 @@ public class FriendList extends ActionBarActivity {
 
     private final Context context = this;
 
+    private AlertDialog.Builder builder1;
+    private String alertM;
+
     /**
      * Overrides onCreate() to store the User who is currently logged in into
      * myU. Creates a String array by parsing through the stored friendList in
@@ -142,8 +145,9 @@ public class FriendList extends ActionBarActivity {
                         friendRef.updateChildren(friends);
                     }
 
-                    AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
-                    builder1.setMessage("You have added " + friend + " as a new friend :)");
+                    builder1 = new AlertDialog.Builder(context);
+                    alertM = "You have added " + friend + " as a new friend :)";
+                    builder1.setMessage(alertM);
                     builder1.setCancelable(true);
                     AlertDialog alert11 = builder1.create();
                     alert11.show();
@@ -153,8 +157,9 @@ public class FriendList extends ActionBarActivity {
 
                 }
                 else {
-                    AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
-                    builder1.setMessage("This user does not exist");
+                    builder1 = new AlertDialog.Builder(context);
+                    alertM = "This user does not exist";
+                    builder1.setMessage(alertM);
                     builder1.setCancelable(true);
                     AlertDialog alert11 = builder1.create();
                     alert11.show();
@@ -167,6 +172,10 @@ public class FriendList extends ActionBarActivity {
         });
 
         mUserText.setText("");
+    }
+
+    public String getMessage() {
+        return alertM;
     }
 
     /**
