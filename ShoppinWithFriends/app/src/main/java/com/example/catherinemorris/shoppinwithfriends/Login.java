@@ -99,7 +99,7 @@ public class Login extends ActionBarActivity {
                 public void onDataChange(DataSnapshot snapshot) {
                     if(snapshot == null || snapshot.getValue() == null) {
                         AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
-                        builder1.setMessage("You are not registered");
+                        builder1.setMessage("You are not registered.");
                         builder1.setCancelable(true);
                         AlertDialog alert11 = builder1.create();
                         alert11.show();
@@ -118,7 +118,7 @@ public class Login extends ActionBarActivity {
                         }
                         else {
                             AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
-                            builder1.setMessage("Wrong Password");
+                            builder1.setMessage("Wrong Password.");
                             builder1.setCancelable(true);
                             AlertDialog alert11 = builder1.create();
                             alert11.show();
@@ -133,7 +133,7 @@ public class Login extends ActionBarActivity {
 
         } else {
             AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
-            builder1.setMessage("no information should be left blank for correct login");
+            builder1.setMessage("No information should be left blank.");
             builder1.setCancelable(true);
             AlertDialog alert11 = builder1.create();
             alert11.show();
