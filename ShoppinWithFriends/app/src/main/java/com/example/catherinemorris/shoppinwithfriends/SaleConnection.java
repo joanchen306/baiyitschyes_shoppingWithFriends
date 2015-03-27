@@ -110,7 +110,7 @@ public class SaleConnection extends ActionBarActivity implements Serializable {
         return super.onOptionsItemSelected(item);
     }
 
-    private void openMap (View view) {
+    public void openMap (View view) {
         Intent i = new Intent("android.SaleConnectionMap");
         i.putExtra("User", myU);
         i.putExtra("Sale", sale);
