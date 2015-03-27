@@ -7,12 +7,13 @@
     tools:context=".HomeScreen"
     android:background="#00ffff">
 
-    <TextView android:text="Welcome to Shopping with Friends" android:layout_width="wrap_content"
+    <TextView android:text="Welcome to Shopping" android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/text"
         android:textSize="33dp"
+        android:layout_marginTop="42dp"
         android:layout_below="@+id/button5"
-        android:layout_marginTop="43dp" />
+        android:layout_centerHorizontal="true" />
 
     <Button
         android:id="@+id/FriendsList"
@@ -35,7 +36,7 @@
 
     <Button
 
-        android:text="Settings"
+        android:text="Options"
         android:textColor="#FFFFFF"
         android:textSize="17dp"
 
@@ -68,9 +69,9 @@
         android:shadowRadius="5"
         android:clickable="true"
         android:nestedScrollingEnabled="false"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:onClick="goToFWish" />
+        android:onClick="goToFWish"
+        android:layout_alignTop="@+id/sales"
+        android:layout_alignParentStart="true" />
 
     <Button
         android:id="@+id/sales"
@@ -97,10 +98,19 @@
         android:layout_height="wrap_content"
         android:id="@+id/myWishlist"
         android:choiceMode="singleChoice"
-        android:layout_below="@+id/text"
         android:layout_toEndOf="@+id/FriendsList"
         android:layout_alignParentStart="true"
         android:clickable="true"
-        android:layout_above="@+id/angry_btn" />
+        android:layout_above="@+id/angry_btn"
+        android:layout_below="@+id/textView5" />
+
+    <TextView
+        android:text="with Friends!"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView5"
+        android:textSize="33dp"
+        android:layout_below="@+id/text"
+        android:layout_toEndOf="@+id/FriendsList" />
 
 </RelativeLayout>

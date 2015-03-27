@@ -24,11 +24,11 @@
         android:textAppearance="@android:style/Theme.Black"
         android:text="Welcome back to Shopping with Friends!"
         android:id="@+id/textView"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="56dp"
+        android:layout_marginTop="49dp"
         android:textSize="24dp"
-        android:gravity="center_horizontal" />
+        android:gravity="center_horizontal"
+        android:layout_below="@+id/back"
+        android:layout_alignParentStart="true" />
 
     <Button
         android:id="@+id/back"
@@ -47,8 +47,8 @@
         android:clickable="true"
         android:nestedScrollingEnabled="false"
         android:onClick="sendMessageBack"
-        android:layout_alignParentBottom="true"
-        android:layout_alignStart="@+id/login" />
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true" />
 
     <Button
         android:id="@+id/login"

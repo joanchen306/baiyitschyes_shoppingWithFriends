@@ -7,22 +7,23 @@
     tools:context="com.example.catherinemorris.shoppinwithfriends.Enter_Item_Request$PlaceholderFragment"
     android:background="#00FFFF">
 
-    <TextView android:text="What are you looking for?" android:layout_width="wrap_content"
+    <TextView android:text="What are you" android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/text"
         android:textSize="33dp"
-        android:layout_below="@+id/button5"
-        android:layout_marginTop="43dp" />
+        android:layout_marginTop="42dp"
+        android:layout_below="@+id/button8"
+        android:layout_centerHorizontal="true" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/itemNameField"
         android:hint="Item"
-        android:layout_above="@+id/priceField"
-        android:layout_alignEnd="@+id/itemDescriptionField"
-        android:layout_marginBottom="33dp"
-        android:layout_alignStart="@+id/priceField" />
+        android:layout_below="@+id/textView8"
+        android:layout_marginTop="38dp"
+        android:layout_alignEnd="@+id/textView8"
+        android:layout_alignStart="@+id/textView8" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -30,10 +31,10 @@
         android:id="@+id/priceField"
         android:inputType="number|numberDecimal"
         android:hint="Price"
-        android:layout_above="@+id/requestItem"
-        android:layout_alignStart="@+id/requestItem"
-        android:layout_marginBottom="116dp"
-        android:layout_alignEnd="@+id/itemDescriptionField" />
+        android:layout_below="@+id/itemNameField"
+        android:layout_alignStart="@+id/itemNameField"
+        android:layout_marginTop="40dp"
+        android:layout_alignEnd="@+id/itemNameField" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -42,10 +43,8 @@
         android:ems="10"
         android:id="@+id/itemDescriptionField"
         android:hint="Item Description"
-        android:layout_marginTop="58dp"
-        android:layout_below="@+id/itemNameField"
-        android:layout_centerHorizontal="true"
-        android:layout_above="@+id/requestItem" />
+        android:layout_marginTop="375dp"
+        android:layout_centerHorizontal="true" />
 
     <Button
         android:id="@+id/requestItem"
@@ -83,5 +82,14 @@
         android:nestedScrollingEnabled="false"
         android:onClick="back"
         android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:text="looking for?"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView8"
+        android:textSize="33dp"
+        android:layout_below="@+id/text"
+        android:layout_centerHorizontal="true" />
 </RelativeLayout>
