@@ -71,7 +71,6 @@ public class FriendList extends ActionBarActivity {
 
         lv.setAdapter(friendAdapt);
         Firebase.setAndroidContext(this);
-        Log.d("f" , friendN.toString());
 
         lv.setOnItemClickListener(new OnItemClickListener() {
             @Override
@@ -197,7 +196,6 @@ public class FriendList extends ActionBarActivity {
         } else {
             friendN.remove(un);
             myU.deleteFriend(un);
-            Log.d("deleteFriends is called", un);
             mUserText.setText("");
             friendN = db.friendN;
 

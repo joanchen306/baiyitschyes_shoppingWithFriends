@@ -121,7 +121,6 @@ public class Enter_Item_Request extends ActionBarActivity {
                 public void onDataChange(DataSnapshot snapshot) {
 
                     wishlist.add(wishItems);
- //                   Log.d("Update:", wishItems.getItem());
                     if (wishlist.size() == 1) {
                         myFirebaseRef.child("userInfo").child(username).child("wishlist").child(item).setValue(wishItems);
                     } else {
@@ -148,7 +147,6 @@ public class Enter_Item_Request extends ActionBarActivity {
                     Intent i = new Intent("android.HomeScreen");
                     i.putExtra("User", myU);
                     startActivity(i);
-                    //finish();
 
                 }
 

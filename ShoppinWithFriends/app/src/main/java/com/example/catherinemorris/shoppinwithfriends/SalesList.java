@@ -143,7 +143,6 @@ public class SalesList extends ActionBarActivity {
      * @param view
      */
     public void openFriends(View view) {
-        Button button = (Button) view;
         Intent i = new Intent("android.FriendList");
         i.putExtra("User", myU);
         startActivity(i);

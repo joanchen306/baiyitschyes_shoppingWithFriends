@@ -31,7 +31,7 @@ class ItemOnSale implements Serializable {
         //expDate.add(90);
     }
 
-    //useed to create a sales item when reported
+    //used to create a sales item when reported
     //location will be set in a later process
     //through set location
     public ItemOnSale(String it, double price, String seller) {

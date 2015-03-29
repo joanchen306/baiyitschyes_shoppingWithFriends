@@ -26,7 +26,6 @@ class Wish implements Serializable {
         description = des;
         this.price = price;
         matched = false;
-        //db.addSales(this);
     }
 
     public String getItem() {

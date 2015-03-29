@@ -103,7 +103,7 @@ public class Profile extends ActionBarActivity {
     }
 
     /**
-     * CLoses the current Activity
+     * Closes the current Activity
      * @param view
      */
     public void goBack(View view) {
