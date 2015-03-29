@@ -4,10 +4,7 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.location.Address;
-import android.location.Criteria;
 import android.location.Geocoder;
-import android.location.Location;
-import android.location.LocationManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
@@ -15,8 +12,6 @@ import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.firebase.client.Firebase;
@@ -24,12 +19,10 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Calendar;
+//import java.util.Calendar;
 import java.util.List;
 
 
@@ -38,14 +31,11 @@ public class Map extends FragmentActivity {
     private GoogleMap googleMap;
     private MarkerOptions markerOptions;
     private LatLng latlng;
-    ArrayList<Double> myPositionList = new ArrayList<Double>();
-    LatLng myPos;
-    private LatLng saleLatLong;
+
     final static LatLng ATLANTA = new LatLng(33.7550,-84.3900);
 
     private ItemOnSale saleItem;
 
-    LinearLayout mapLinLay;
     private User myU;
 
     final private Context context = this;
@@ -120,42 +110,45 @@ public class Map extends FragmentActivity {
 
             if(addresses==null || addresses.size()==0){
                 Toast.makeText(getBaseContext(), "No Location found", Toast.LENGTH_SHORT).show();
-            }
+            } else {
 
-            // Clears all the existing markers on the map
-            googleMap.clear();
+                // Clears all the existing markers on the map
+                googleMap.clear();
+                //LatLng saleLatLong;
 
 
+                // Adding Markers on Google Map for each matching address
+                for (int i = 0; i < addresses.size(); i++) {
 
-            // Adding Markers on Google Map for each matching address
-            for(int i=0;i<addresses.size();i++){
+                    Address address = addresses.get(i);
 
-                Address address = (Address) addresses.get(i);
+                    // Creating an instance of GeoPoint, to display in Google Map
 
-                // Creating an instance of GeoPoint, to display in Google Map
+                    latlng = new LatLng(address.getLatitude(), address.getLongitude());
 
-                latlng = new LatLng(address.getLatitude(), address.getLongitude());
+                    String addressText = String.format("%s, %s",
+                            address.getMaxAddressLineIndex() > 0 ? address.getAddressLine(0) : "",
+                            address.getCountryName());
 
-                String addressText = String.format("%s, %s",
-                        address.getMaxAddressLineIndex() > 0 ? address.getAddressLine(0) : "",
-                        address.getCountryName());
+                    markerOptions = new MarkerOptions();
+                    markerOptions.position(latlng);
+                    markerOptions.title(addressText);
+                    markerOptions.draggable(true);
+                    googleMap.addMarker(markerOptions);
+                    //saleLatLong = latlng;
 
-                markerOptions = new MarkerOptions();
-                markerOptions.position(latlng);
-                markerOptions.title(addressText);
-                markerOptions.draggable(true);
-                googleMap.addMarker(markerOptions);
-                saleLatLong = latlng;
-
-                // Locate the first location
-                if(i==0){ googleMap.animateCamera(CameraUpdateFactory.newLatLng(latlng)); }
+                    // Locate the first location
+                    if (i == 0) {
+                        googleMap.animateCamera(CameraUpdateFactory.newLatLng(latlng));
+                    }
+                }
             }
         }
     }
 
     /**
      * Goes back to sale item page
-     * @param view
+     * @param view used to overwrite method
      */
 
     public void reportSale(View view) {
@@ -164,10 +157,10 @@ public class Map extends FragmentActivity {
         saleItem.setLocation(latlng);
 
         //sets the date of the sale reported
-        Calendar c = Calendar.getInstance();
-        int day = c.get(Calendar.DATE);
-        int month = c.get(Calendar.MONTH);
-        int year = c.get(Calendar.YEAR);
+        //Calendar c = Calendar.getInstance();
+        //int day = c.get(Calendar.DATE);
+        //int month = c.get(Calendar.MONTH);
+        //int year = c.get(Calendar.YEAR);
 
         Firebase myFirebaseRef = new Firebase("https://baiyitschyes.firebaseio.com");
         Firebase itRef = myFirebaseRef.child("globalsales");

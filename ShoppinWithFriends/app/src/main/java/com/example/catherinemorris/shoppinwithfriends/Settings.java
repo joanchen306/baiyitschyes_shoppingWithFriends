@@ -13,10 +13,10 @@ import android.widget.ListView;
 
 public class Settings extends ActionBarActivity {
 
-    private String[] options = {"Request Sale", "Add Sale", "Preferences", "Logout"};
+    private final String[] options = {"Request Sale", "Add Sale", "Preferences", "Logout"};
     private User myU;
 
-    private Settings set = this;
+    private final Settings set = this;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,7 +26,7 @@ public class Settings extends ActionBarActivity {
         myU = (User) getIntent().getSerializableExtra("User");
 
         final ListView lv = (ListView) findViewById(R.id.settingOpts);
-        ArrayAdapter<String> friendAdapt = new ArrayAdapter<String>(this,
+        ArrayAdapter<String> friendAdapt = new ArrayAdapter<>(this,
                 android.R.layout.simple_list_item_1,
                 options);
 
@@ -48,9 +48,10 @@ public class Settings extends ActionBarActivity {
                     Intent i = new Intent("android.SaleItem");
                     i.putExtra("User", myU);
                     startActivity(i);
-                } else if (friend.equals("Preferences")) {
+                } //else if (friend.equals("Preferences")) {
 
-                } else if (friend.equals("Logout")) {
+                //}
+                else if (friend.equals("Logout")) {
                     /**
                      * Logs you out of Application. It both moves you to Welcome screen and
                      * logs you out of the database.

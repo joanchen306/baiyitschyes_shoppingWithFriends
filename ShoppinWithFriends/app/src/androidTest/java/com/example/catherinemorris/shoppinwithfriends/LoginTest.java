@@ -9,12 +9,11 @@ import android.test.AndroidTestCase;
 import android.widget.EditText;
 
 
-public class LoginTest extends ActivityInstrumentationTestCase2<Login> {
+class LoginTest extends ActivityInstrumentationTestCase2<Login> {
 
-    Login mActivity;
+    private Login mActivity;
     private EditText mUserView;
     private EditText mPassWord;
-    AlertDialog.Builder alert;
 
     public LoginTest(Class<Login> activityClass) {
         super(activityClass);

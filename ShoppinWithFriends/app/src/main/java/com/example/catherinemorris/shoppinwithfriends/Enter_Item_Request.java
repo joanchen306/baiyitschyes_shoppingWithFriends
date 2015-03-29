@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -32,12 +31,10 @@ public class Enter_Item_Request extends ActionBarActivity {
     private User myU;
     private Firebase myFirebaseRef;
 
-    private EditText itemName;
-    private EditText itemDescription;
-    private EditText itemPrice;
-    private Context context = this;
 
-    private ArrayList<Wish> wishlist = new ArrayList<>();
+    private final Context context = this;
+
+    private final ArrayList<Wish> wishlist = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,17 +80,20 @@ public class Enter_Item_Request extends ActionBarActivity {
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fragment_enter__item__request, container, false);
-            return rootView;
+            return inflater.inflate(R.layout.fragment_enter__item__request, container, false);
         }
     }
 
     /**
      * When a user sends in an item request it adds in the wishlist on the database
-     * @param view
+     * @param view Used as an override
      */
 
     public void sendItemRequest(View view) {
+        EditText itemName;
+        EditText itemDescription;
+        EditText itemPrice;
+
         itemName = (EditText) this.findViewById(R.id.itemNameField);
         itemDescription = (EditText) this.findViewById(R.id.itemDescriptionField);
         itemPrice = (EditText) this.findViewById(R.id.priceField);

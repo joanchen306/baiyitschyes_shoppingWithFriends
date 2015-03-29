@@ -21,7 +21,7 @@
         android:id="@+id/BButton"
         android:text="Back"
         android:textColor="#FFFFFF"
-        android:textSize="17dp"
+        android:textSize="17sp"
         android:layout_width="90dp"
         android:layout_height="50dp"
         android:background="@drawable/buttonshape"
@@ -89,7 +89,7 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Sale Report"
         android:id="@+id/report"
-        android:textSize="30dp"
+        android:textSize="30sp"
         android:layout_marginTop="80dp"
         android:layout_centerHorizontal="true" />
 
@@ -97,7 +97,7 @@
         android:id="@+id/showOnMap"
         android:text="Show on Map"
         android:textColor="#FFFFFF"
-        android:textSize="17dp"
+        android:textSize="17sp"
         android:layout_width="90dp"
         android:layout_height="50dp"
         android:background="@drawable/buttonshape"
@@ -117,7 +117,6 @@ tools:context=".SaleConnection" >
     android:id="@+id/smallmap"
     android:layout_width="80dp"
     android:layout_height="80dp"
-    android:layout_weight="1"
     android:scrollbars="vertical"
     class="com.google.android.gms.maps.SupportMapFragment"/>
 </FrameLayout>

@@ -26,7 +26,7 @@ public class FriendWishes extends ActionBarActivity {
         myU = (User) getIntent().getSerializableExtra("User");
 
         //Retrieve the User's Friends List
-        ArrayList friends = myU.getFriends();
+        //ArrayList friends = myU.getFriends();
     }
 
 
@@ -54,10 +54,9 @@ public class FriendWishes extends ActionBarActivity {
     /**
      * Opens the FriendList activity and sends the logged in User's
      * information to the activity via .putExtra()
-     * @param view
+     * @param view helps my code
      */
     public void openFriends(View view) {
-        Button button = (Button) view;
         Intent i = new Intent("android.FriendList");
         i.putExtra("User", myU);
         startActivity(i);

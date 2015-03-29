@@ -44,7 +44,6 @@
             android:id="@+id/map"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
             android:scrollbars="vertical"
             class="com.google.android.gms.maps.SupportMapFragment"/>
 
@@ -53,16 +52,13 @@
             android:text="Back"
             android:gravity="center_horizontal|center_vertical"
             android:textColor="#FFFFFF"
-            android:textSize="17dp"
+            android:textSize="17sp"
             android:layout_width="80dp"
             android:layout_height="35dp"
             android:background="@drawable/buttonshape"
             android:clickable="true"
             android:nestedScrollingEnabled="false"
             android:onClick="backToSale"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
         />
         <View
             android:id="@+id/VerticalLine2"
@@ -81,16 +77,13 @@
             android:text="Report Sale"
             android:gravity="center_horizontal|center_vertical"
             android:textColor="#FFFFFF"
-            android:textSize="17dp"
+            android:textSize="17sp"
             android:layout_width="80dp"
             android:layout_height="35dp"
             android:background="@drawable/buttonshape"
             android:clickable="true"
             android:nestedScrollingEnabled="false"
             android:onClick="reportSale"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentLeft="true"
             android:layout_gravity="right|top" />
     </FrameLayout>
 

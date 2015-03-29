@@ -1,44 +1,23 @@
 package com.example.catherinemorris.shoppinwithfriends;
 
-import android.app.AlertDialog;
-import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 
 import com.firebase.client.Firebase;
-import com.firebase.client.FirebaseError;
 
-import org.w3c.dom.Text;
-
-import java.util.HashMap;
-import java.util.Map;
-import java.util.concurrent.Semaphore;
-
-import java.util.HashMap;
-import java.util.Map;
 
 
 public class SaleItem extends ActionBarActivity {
 
     private User myU;
-    private UserDB db = new UserDB();
-    private Firebase myFirebaseRef;
 
-    private EditText itemName;
-    private EditText itemPrice;
-    private EditText itemLoc;
 
-    ItemOnSale saleItem;
-    String it;
-    String pr;
 
-    Context context = this;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,7 +55,7 @@ public class SaleItem extends ActionBarActivity {
     /**
      * Opens the HomeScreen activity and sends the logged in User's
      * information to the activity via .putExtra()
-     * @param view
+     * @param view used to overwrite method
      */
     public void goHome(View view) {
         Intent i = new Intent("android.HomeScreen");
@@ -86,11 +65,15 @@ public class SaleItem extends ActionBarActivity {
 
 
     public void goToMap(View view) {
+        ItemOnSale saleItem;
+        String it;
+        //String pr;
+
         Intent i = new Intent("android.Map");
         EditText etName = (EditText) this.findViewById(R.id.itemNameField);
         EditText etPrice = (EditText) this.findViewById(R.id.priceField);
         it = etName.getText().toString();
-        pr = etPrice.getText().toString();
+        //pr = etPrice.getText().toString();
         double price = Double.parseDouble(etPrice.getText().toString());
         saleItem = new ItemOnSale(it, price, myU.getUser());
         i.putExtra("User", myU);
@@ -103,6 +86,7 @@ public class SaleItem extends ActionBarActivity {
      * database.
      * @param view
      */
+    /**
     public void sendSaleRequest(View view) throws InterruptedException {
         itemName = (EditText) this.findViewById(R.id.itemNameField);
         itemPrice = (EditText) this.findViewById(R.id.priceField);
@@ -134,4 +118,5 @@ public class SaleItem extends ActionBarActivity {
         itemPrice.setText("");
         itemName.setText("");
     }
+     */
 }

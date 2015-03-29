@@ -6,7 +6,6 @@ package com.example.catherinemorris.shoppinwithfriends;
  */
 
 
-import android.content.Context;
 
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -15,7 +14,6 @@ import android.view.MenuItem;
 import android.view.View;
 
 import android.widget.TextView;
-import android.widget.RatingBar;
 
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
@@ -28,17 +26,15 @@ import java.util.Map;
 
 public class Profile extends ActionBarActivity {
 
-    private User myU;
-    UserDB db = new UserDB();
-    private RatingBar ratingBar;
     private String username;
-    Context context = this;
+
+
 
 
     /**
      * Creates the view by searching in the database for the information
      * of the specified user and displays it
-     * @param savedInstanceState
+     * @param savedInstanceState used to overwrite method
      */
 
     @Override
@@ -47,7 +43,6 @@ public class Profile extends ActionBarActivity {
         setContentView(R.layout.activity_profile);
         Firebase.setAndroidContext(this);
 
-        myU = (User) getIntent().getSerializableExtra("User");
 
         username = getIntent().getStringExtra("Friend");
         Firebase myFirebaseRef = new Firebase("https://baiyitschyes.firebaseio.com");
@@ -104,7 +99,7 @@ public class Profile extends ActionBarActivity {
 
     /**
      * Closes the current Activity
-     * @param view
+     * @param view used to overwrite method
      */
     public void goBack(View view) {
         finish();

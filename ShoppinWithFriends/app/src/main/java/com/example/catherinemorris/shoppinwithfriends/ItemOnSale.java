@@ -9,14 +9,14 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
- * Created by James Nugent on 3/5/2015.
+ * Used to monitor Items on Sale
  */
 class ItemOnSale implements Serializable {
 
 
-    private String item;
-    private double price;
-    private String user;
+    private final String item;
+    private final double price;
+    private final String user;
     private ArrayList<Double> location = new ArrayList<>();
     //private ArrayList<Integer> expDate;
 
@@ -38,7 +38,7 @@ class ItemOnSale implements Serializable {
         item = it;
         this.price = price;
         user = seller;
-        location = new ArrayList<Double>();
+        location = new ArrayList<>();
         location.add(0, 33.7550);
         location.add(1, -84.3900);
     }

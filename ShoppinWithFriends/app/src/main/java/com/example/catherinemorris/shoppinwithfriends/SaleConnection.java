@@ -8,21 +8,17 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
-import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.SupportMapFragment;
+//import com.google.android.gms.maps.GoogleMap;
+//import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.io.Serializable;
 
 
 public class SaleConnection extends ActionBarActivity {
 
-    ItemOnSale sale;
-    User myU;
-    GoogleMap googleMap;
+    private ItemOnSale sale;
+    private User myU;
+
 
     final static LatLng ATLANTA = new LatLng(33.7550,-84.3900);
 
@@ -30,10 +26,12 @@ public class SaleConnection extends ActionBarActivity {
     /**
      * Pulls the information from the previous Activity to populate this Activity with
      * information pertaining to the ItemOnSale in question.
-     * @param savedInstanceState
+     * @param savedInstanceState used to overwrite method
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        //GoogleMap googleMap;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sale_connection);
 
@@ -46,8 +44,8 @@ public class SaleConnection extends ActionBarActivity {
         TextView currPrice = (TextView) findViewById(R.id.PriceField);
         currPrice.setText("" + sale.getPrice());
 
-        SupportMapFragment fm = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.smallmap);
-        googleMap = fm.getMap();
+        //SupportMapFragment fm = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.smallmap);
+        //googleMap = fm.getMap();
 
 //        googleMap.setMyLocationEnabled(true);
 //        LocationManager locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
@@ -119,7 +117,7 @@ public class SaleConnection extends ActionBarActivity {
 
     /**
      * Closes the current Activity
-     * @param view
+     * @param view used to overwrite method
      */
     public void goBack(View view) {
         finish();

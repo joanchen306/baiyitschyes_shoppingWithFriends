@@ -1,28 +1,30 @@
 package com.example.catherinemorris.shoppinwithfriends;
 
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.io.Serializable;
-import java.io.*;
 import java.util.ArrayList;
 
 /**
- * Created by James Nugent on 2/18/2015.
+ * A User object that is the main variable carrying through the app
  */
 class User implements Serializable{
     private ArrayList<Wish> wishlist = new ArrayList<>();
-    private ArrayList<String> friendList = new ArrayList<>();
-    private String username;
-    private String password;
-    private String email;
+    private final ArrayList<String> friendList = new ArrayList<>();
+    private final String username;
+    private final String password;
+    private final String email;
     private long rating = 0;
     private long numSales = 0;
     private long numRate = 0;
 
-    private UserDB db = new UserDB();
+    private final UserDB db = new UserDB();
 
     /**
      * A test User constructor that creates a User with only a String for
      * the username
-     * @param user
+     * @param user used to overwrite method
      */
     public User (String user) {
         username = user;
@@ -70,7 +72,7 @@ class User implements Serializable{
 
     /**
      * Returns User's Username
-     * @return
+     * @return name of user
      */
     public String getUser() {
         return username;
@@ -78,7 +80,7 @@ class User implements Serializable{
 
     /**
      * Returns User's Email
-     * @return
+     * @return email of user
      */
     public String getEmail() {
         return email;
@@ -86,7 +88,7 @@ class User implements Serializable{
 
     /**
      * Returns User's Password
-     * @return
+     * @return password of user
      */
     public String getPassWord() {
         return password;
@@ -94,7 +96,7 @@ class User implements Serializable{
 
     /**
      * Returns User's Rating
-     * @return
+     * @return rating of user
      */
     public long getRate() {
         return rating;
@@ -102,7 +104,7 @@ class User implements Serializable{
 
     /**
      * Returns User's Number of Sales
-     * @return
+     * @return Number of sales user has reported
      */
     public long getNumSales() {
         return numSales;
@@ -111,7 +113,7 @@ class User implements Serializable{
     /**
      * Returns User's friend list in the form of an ArrayList of
      * String usernames
-     * @return
+     * @return an Array of friends
      */
     public ArrayList<String> getFriends() {
         return friendList;
@@ -123,7 +125,6 @@ class User implements Serializable{
 
     /**
      * Increments sale counter
-     * @return
      */
     public void addSale() {
         numSales++;
@@ -131,7 +132,6 @@ class User implements Serializable{
 
     /**
      * Adds a rating to use and updates overall stars
-     * @return
      */
     public void addRate(int rate) {
         long totRate = rate + numRate * rating;
@@ -139,17 +139,16 @@ class User implements Serializable{
         rating = totRate / numRate;
     }
 
-    public void deleteUser(User user) {
+    //public void deleteUser(User user) {
         //friendList.remove(user.getUser());
-    }
+    //}
 
-    public void login() {
+    //public void login() {
 
-    }
+//    }
 
     /**
      * Invokes the database logout method
-     * @return
      */
     public void logout() {
         db.logout();
@@ -157,7 +156,6 @@ class User implements Serializable{
 
     /**
      * Removes a given friend from the ArrayList of Users
-     * @return boolean
      */
     public void deleteFriend(String deleteU) {
         db.deleteFriend(this, deleteU);

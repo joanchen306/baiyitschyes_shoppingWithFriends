@@ -8,10 +8,9 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 
-public class AddFriendTest {
+class AddFriendTest {
 
     private FriendList friendListTest;
-    private User userTester;
     private EditText nameField;
 
     @Before

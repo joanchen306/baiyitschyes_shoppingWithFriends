@@ -5,7 +5,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -27,16 +26,16 @@ import android.widget.AdapterView.OnItemClickListener;
 
 /**
  * Retrieves the List of Friends from the User Object and allows the user to
- * add and delet friends.
+ * add and delete friends.
  */
 
 public class FriendList extends ActionBarActivity {
 
     private User myU;
-    private UserDB db = new UserDB();
+    private final UserDB db = new UserDB();
 
     private String[] myFriends = null;
-    private ArrayList<String> friendN = db.friendN;
+    private ArrayList<String> friendN;
 
     private Firebase myFirebaseRef;
 
@@ -51,21 +50,21 @@ public class FriendList extends ActionBarActivity {
      * Overrides onCreate() to store the User who is currently logged in into
      * myU. Creates a String array by parsing through the stored friendList in
      * the database. Puts that String array into the ListView.
-     * @param savedInstanceState
+     * @param savedInstanceState used to overwrite method
      */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_friend_list);
         Firebase.setAndroidContext(this);
-
+        friendN = db.friendN;
         myU = (User) getIntent().getSerializableExtra("User");
         myFriends = new String[friendN.size()];
         for (int i = 0; i < friendN.size(); i++) {
             myFriends[i] = friendN.get(i);
         }
         final ListView lv = (ListView) findViewById(R.id.friendList);
-        ArrayAdapter<String> friendAdapt = new ArrayAdapter<String>(this,
+        ArrayAdapter<String> friendAdapt = new ArrayAdapter<>(this,
                 android.R.layout.simple_list_item_1,
                 myFriends);
 
@@ -110,7 +109,7 @@ public class FriendList extends ActionBarActivity {
 
     /**
      * Closes the current Activity
-     * @param view
+     * @param view used to overwrite method
      */
     public void goHomeScreen(View view) {
         finish();
@@ -119,7 +118,7 @@ public class FriendList extends ActionBarActivity {
     /**
      * Finds the string stored in the Edit Text. Adds the User that has that
      * username to User's friendList. Sets the text back to null.
-     * @param view
+     * @param view used to overwrite method
      */
     public void addFriends(View view) {
         mUserText = (EditText) this.findViewById(R.id.userText);
@@ -136,10 +135,10 @@ public class FriendList extends ActionBarActivity {
             public void onDataChange(DataSnapshot snapshot) {
                 if (snapshot.exists()) {
                     friendN.add(friend);
-                    if (myFirebaseRef.child("userInfo").child(username).child("friends").equals(null)) {
-                    } else {
+                    if (myFirebaseRef.child("userInfo").child(username).child("friends") != null) {
+
                         Firebase friendRef = myFirebaseRef.child("userInfo").child(username).child("friends");
-                        Map<String, Object> friends = new HashMap<String, Object>();
+                        Map<String, Object> friends = new HashMap<>();
                         friends.put(friend, friend);
                         friendRef.updateChildren(friends);
                     }
@@ -151,7 +150,7 @@ public class FriendList extends ActionBarActivity {
                     AlertDialog alert11 = builder1.create();
                     alert11.show();
 
-                    ArrayAdapter<String> friendAdapt = new ArrayAdapter<String>(context, android.R.layout.simple_list_item_1, friendN);
+                    ArrayAdapter<String> friendAdapt = new ArrayAdapter<>(context, android.R.layout.simple_list_item_1, friendN);
                     lv.setAdapter(friendAdapt);
 
                 }
@@ -181,7 +180,7 @@ public class FriendList extends ActionBarActivity {
      * delete the user that is specified in the text box if the friend is in the
      * friendlist of the User. If not shows a warning
      * Sets the text box back to null.
-     * @param view
+     * @param view used to overwrite method
      */
 
     public void deleteFriends(View view) {
@@ -210,7 +209,7 @@ public class FriendList extends ActionBarActivity {
                 myFriends[i] = friendN.get(i);
             }
             ListView lv = (ListView) findViewById(R.id.friendList);
-            ArrayAdapter<String> friendAdapt = new ArrayAdapter<String>(this,
+            ArrayAdapter<String> friendAdapt = new ArrayAdapter<>(this,
                     android.R.layout.simple_list_item_1,
                     myFriends);
 
