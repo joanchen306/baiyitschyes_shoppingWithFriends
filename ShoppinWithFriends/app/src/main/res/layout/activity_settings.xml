@@ -5,7 +5,7 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
     tools:context="com.example.catherinemorris.shoppinwithfriends.Settings"
-    android:background="#00ffff">
+    android:background="#007f8f">
 
     <Button
         android:id="@+id/button4"
@@ -15,10 +15,6 @@
         android:layout_width="80dp"
         android:layout_height="50dp"
         android:background="@drawable/buttonshape"
-        android:shadowColor="#A8A8A8"
-        android:shadowDx="3"
-        android:shadowDy="1"
-        android:shadowRadius="5"
         android:clickable="true"
         android:nestedScrollingEnabled="false"
         android:onClick="goHomeScreen"

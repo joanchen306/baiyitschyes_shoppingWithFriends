@@ -5,13 +5,12 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
     tools:context="com.example.catherinemorris.shoppinwithfriends.Enter_Item_Request$PlaceholderFragment"
-    android:background="#00FFFF">
+    android:background="#007f8f">
 
     <TextView android:text="What are you" android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/text"
         android:textSize="33dp"
-        android:layout_marginTop="42dp"
         android:layout_below="@+id/button8"
         android:layout_centerHorizontal="true" />
 
@@ -43,7 +42,7 @@
         android:ems="10"
         android:id="@+id/itemDescriptionField"
         android:hint="Item Description"
-        android:layout_marginTop="375dp"
+        android:layout_marginTop="320dp"
         android:layout_centerHorizontal="true" />
 
     <Button
@@ -55,10 +54,6 @@
         android:layout_width="90dp"
         android:layout_height="50dp"
         android:background="@drawable/buttonshape"
-        android:shadowColor="#A8A8A8"
-        android:shadowDx="3"
-        android:shadowDy="1"
-        android:shadowRadius="5"
         android:clickable="true"
         android:nestedScrollingEnabled="false"
         android:onClick="sendItemRequest"
@@ -74,10 +69,6 @@
         android:layout_width="60dp"
         android:layout_height="50dp"
         android:background="@drawable/buttonshape"
-        android:shadowColor="#A8A8A8"
-        android:shadowDx="3"
-        android:shadowDy="1"
-        android:shadowRadius="5"
         android:clickable="true"
         android:nestedScrollingEnabled="false"
         android:onClick="back"
