@@ -10,10 +10,10 @@
         android:textAppearance="@android:style/TextAppearance.DeviceDefault.Large"
         android:text="Welcome to Shopping with Friends!"
         android:id="@+id/welcomeText"
-        style="Times New Roman"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:gravity="center" />
+        android:gravity="center"
+        style="@style/Base.TextAppearance.AppCompat.Title" />
 
     <Button
         android:id="@+id/login"
