@@ -40,12 +40,6 @@
         android:layout_height="match_parent"
         tools:context=".MapActivity" >
 
-        <fragment xmlns:map="http://schemas.android.com/apk/res-auto"
-            android:id="@+id/map"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:scrollbars="vertical"
-            class="com.google.android.gms.maps.SupportMapFragment"/>
 
         <Button
             android:id="@+id/backToSale"

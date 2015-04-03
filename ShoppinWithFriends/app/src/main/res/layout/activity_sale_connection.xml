@@ -107,17 +107,5 @@
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true" />
 </RelativeLayout>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-xmlns:tools="http://schemas.android.com/tools"
-android:layout_width="80dp"
-android:layout_height="80dp"
-tools:context=".SaleConnection" >
 
-<fragment xmlns:map="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/smallmap"
-    android:layout_width="80dp"
-    android:layout_height="80dp"
-    android:scrollbars="vertical"
-    class="com.google.android.gms.maps.SupportMapFragment"/>
-</FrameLayout>
 </LinearLayout>
