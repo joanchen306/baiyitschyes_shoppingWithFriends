@@ -9,21 +9,12 @@
     tools:context=".SaleConnectionMap" >
 
 
-    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".SaleConnectionMapActivity" >
 
-        <fragment xmlns:map="http://schemas.android.com/apk/res-auto"
-            android:id="@+id/map2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:scrollbars="vertical"
-            class="com.google.android.gms.maps.SupportMapFragment"/>
+
+
 
         <Button
-            android:id="@+id/backToSale2"
+            android:id="@+id/bachB"
             android:text="Back"
             android:gravity="center_horizontal|center_vertical"
             android:textColor="#FFFFFF"
@@ -48,7 +39,6 @@
             android:background="#aaa" />
 
 
-    </FrameLayout>
 
 </LinearLayout>
 

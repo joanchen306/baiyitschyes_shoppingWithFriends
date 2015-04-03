@@ -45,13 +45,11 @@ class UserDB extends android.app.Application implements Serializable {
             @Override
             public void onSuccess(Map<String, Object> result) {
                 loggedIn = true;
-                Log.d("Successfully created user account with uid: ", u.getEmail());
             }
 
             @Override
             public void onError(FirebaseError firebaseError) {
                 loggedIn = false;
-                Log.d("Failed creating user account with uid: ", u.getEmail());
             }
         });
     }
@@ -78,7 +76,6 @@ class UserDB extends android.app.Application implements Serializable {
         myFirebaseRef = new Firebase("https://baiyitschyes.firebaseio.com");
         final String username = u.getUser();
         final Firebase friendRef = myFirebaseRef.child("userInfo").child(username).child("friends").child(friend);
-        Log.d("UserDB deleteFriend is called", friend);
 
         friendRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -131,7 +128,6 @@ class UserDB extends android.app.Application implements Serializable {
                 String friend = (String)dataSnapshot.getValue();
                 if (!friendN.contains(friend)) {
                     friendN.add(friend);
-                    Log.d("Child add in getfriend when added: ", friend);
                 }
 
             }
