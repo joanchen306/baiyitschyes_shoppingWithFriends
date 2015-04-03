@@ -35,6 +35,7 @@ public class Enter_Item_Request extends ActionBarActivity {
     private final Context context = this;
 
     private final ArrayList<Wish> wishlist = new ArrayList<>();
+    private boolean builderAlertCreated;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,6 +85,10 @@ public class Enter_Item_Request extends ActionBarActivity {
         }
     }
 
+    public boolean DialogAlertCreated() {
+        return builderAlertCreated;
+    }
+
     /**
      * When a user sends in an item request it adds in the wishlist on the database
      * @param view Used as an override
@@ -103,6 +108,7 @@ public class Enter_Item_Request extends ActionBarActivity {
         final double price = Double.parseDouble(itemPrice.getText().toString());
 
         if (item.equals("") | descrip.equals("") | itemPrice.getText().toString().equals("")) {
+            builderAlertCreated = true;
             AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
             builder1.setMessage("No fields should be blank.");
             builder1.setCancelable(true);
