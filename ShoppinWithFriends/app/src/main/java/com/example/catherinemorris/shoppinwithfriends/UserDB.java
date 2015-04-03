@@ -19,18 +19,15 @@ import java.util.ArrayList;
 import java.util.Map;
 
 /**
- * Created by joanchen on 2/18/15.
+ * manages interaction between User and database
  */
 class UserDB extends android.app.Application implements Serializable {
 
     private Firebase myFirebaseRef;
     private boolean loggedIn = true;
-    private int registered = -1;
-    private int counter = 0;
-    public static ArrayList<String> friendN;
-    public static ArrayList<Wish> wishlist;
 
-    private User myU;
+    public static ArrayList<String> friendN;
+
 
     @Override
     public void onCreate() {
@@ -40,7 +37,7 @@ class UserDB extends android.app.Application implements Serializable {
 
     /**
      * Creates a new User account in the database and logs that User in
-     * @param u
+     * @param u used to overwrite method
      */
     public void authUser(final User u) {
         myFirebaseRef = new Firebase("https://baiyitschyes.firebaseio.com");
@@ -48,20 +45,18 @@ class UserDB extends android.app.Application implements Serializable {
             @Override
             public void onSuccess(Map<String, Object> result) {
                 loggedIn = true;
-                Log.d("Successfully created user account with uid: ", u.getEmail());
             }
 
             @Override
             public void onError(FirebaseError firebaseError) {
                 loggedIn = false;
-                Log.d("Failed creating user account with uid: ", u.getEmail());
             }
         });
     }
 
     /**
      * Adds a User to the database
-     * @param u
+     * @param u used to overwrite method
      */
 
     public void addUser(User u) {
@@ -81,7 +76,6 @@ class UserDB extends android.app.Application implements Serializable {
         myFirebaseRef = new Firebase("https://baiyitschyes.firebaseio.com");
         final String username = u.getUser();
         final Firebase friendRef = myFirebaseRef.child("userInfo").child(username).child("friends").child(friend);
-        Log.d("UserDB deleteFriend is called", friend);
 
         friendRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -99,7 +93,7 @@ class UserDB extends android.app.Application implements Serializable {
 
     /**
      * Returns an ArrayList of Strings of all the friend's a given User has.
-     * @param username
+     * @param username used to overwrite method
      */
     public void getFriends(final String username) {
         myFirebaseRef = new Firebase("https://baiyitschyes.firebaseio.com");
@@ -134,7 +128,6 @@ class UserDB extends android.app.Application implements Serializable {
                 String friend = (String)dataSnapshot.getValue();
                 if (!friendN.contains(friend)) {
                     friendN.add(friend);
-                    Log.d("Child add in getfriend when added: ", friend);
                 }
 
             }
@@ -173,7 +166,7 @@ class UserDB extends android.app.Application implements Serializable {
 
     /**
      * Returns whether or not a user is logged in to the App
-     * @return
+     * @return true if logged in
      */
     public boolean isLoggedIn() {
         return loggedIn;
@@ -181,9 +174,8 @@ class UserDB extends android.app.Application implements Serializable {
 
     /**
      * Returns a negative number if the user is not registered with the database
-     * @return
      */
-    public int getRegistered() { return registered; }
+
 
     private static final long serialVersionUID = 7526471155622776147L;
     /**

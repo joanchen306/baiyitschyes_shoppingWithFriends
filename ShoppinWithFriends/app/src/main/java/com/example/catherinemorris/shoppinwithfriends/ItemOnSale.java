@@ -9,14 +9,14 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
- * Created by James Nugent on 3/5/2015.
+ * Used to monitor Items on Sale
  */
 class ItemOnSale implements Serializable {
 
 
-    private String item;
-    private double price;
-    private String user;
+    private final String item;
+    private final double price;
+    private final String user;
     private ArrayList<Double> location = new ArrayList<>();
     //private ArrayList<Integer> expDate;
 
@@ -31,7 +31,7 @@ class ItemOnSale implements Serializable {
         //expDate.add(90);
     }
 
-    //useed to create a sales item when reported
+    //used to create a sales item when reported
     //location will be set in a later process
     //through set location
     public ItemOnSale(String it, double price, String seller) {
@@ -41,6 +41,7 @@ class ItemOnSale implements Serializable {
         location = new ArrayList<Double>();
         location.add(33.7550);
         location.add(-84.3900);
+
     }
 
     public void setLocation(LatLng loc) {

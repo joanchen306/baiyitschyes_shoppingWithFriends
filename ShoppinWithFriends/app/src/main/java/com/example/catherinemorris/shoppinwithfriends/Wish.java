@@ -12,21 +12,18 @@ import java.util.ArrayList;
  */
 class Wish implements Serializable {
 
-    private String item;
-    private String description;
-    private double price;
-    private User user;
+    private final String item;
+    private final String description;
+    private final double price;
     private boolean matched;
-    private ArrayList<ItemOnSale> matchedSales = new ArrayList<ItemOnSale>();
+    private final ArrayList<ItemOnSale> matchedSales = new ArrayList<>();
 
-    private User myU;
 
     public Wish(String it, String des, double price) {
         item = it;
         description = des;
         this.price = price;
         matched = false;
-        //db.addSales(this);
     }
 
     public String getItem() {

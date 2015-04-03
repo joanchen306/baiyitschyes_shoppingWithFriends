@@ -6,9 +6,6 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
-
-import java.util.ArrayList;
 
 /**
  * Retrieve the user's friends wishes and display them
@@ -26,7 +23,7 @@ public class FriendWishes extends ActionBarActivity {
         myU = (User) getIntent().getSerializableExtra("User");
 
         //Retrieve the User's Friends List
-        ArrayList friends = myU.getFriends();
+        //ArrayList friends = myU.getFriends();
     }
 
 
@@ -48,17 +45,15 @@ public class FriendWishes extends ActionBarActivity {
         if (id == R.id.action_settings) {
             return true;
         }
-
         return super.onOptionsItemSelected(item);
     }
 
     /**
      * Opens the FriendList activity and sends the logged in User's
      * information to the activity via .putExtra()
-     * @param view
+     * @param view helps my code
      */
     public void openFriends(View view) {
-        Button button = (Button) view;
         Intent i = new Intent("android.FriendList");
         i.putExtra("User", myU);
         startActivity(i);

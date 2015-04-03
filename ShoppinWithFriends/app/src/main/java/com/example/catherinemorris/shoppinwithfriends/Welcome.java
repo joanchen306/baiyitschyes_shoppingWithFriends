@@ -6,7 +6,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.content.Intent;
-import android.widget.Button;
 
 
 public class Welcome extends ActionBarActivity {
@@ -27,7 +26,7 @@ public class Welcome extends ActionBarActivity {
 
     /**
      * Opens the Registration Activity
-     * @param view
+     * @param view used to overwrite method
      */
     public void goRegister(View view) {
         startActivity(new Intent(this, Registration.class));
@@ -35,7 +34,7 @@ public class Welcome extends ActionBarActivity {
 
     /**
      * Opens the Login Activity
-     * @param view
+     * @param view used to overwrite method
      */
     public void goLogin(View view) {
         startActivity(new Intent(this, Login.class));

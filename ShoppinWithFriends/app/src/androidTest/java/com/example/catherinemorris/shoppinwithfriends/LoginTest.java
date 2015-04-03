@@ -7,7 +7,6 @@ import android.test.UiThreadTest;
 import android.widget.Button;
 import android.widget.EditText;
 
-import com.firebase.client.Firebase;
 
 
 public class LoginTest extends ActivityInstrumentationTestCase2<Login> {

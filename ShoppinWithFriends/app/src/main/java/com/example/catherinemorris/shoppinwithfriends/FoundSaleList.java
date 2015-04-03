@@ -3,7 +3,6 @@ package com.example.catherinemorris.shoppinwithfriends;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -11,7 +10,6 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-import com.firebase.client.Firebase;
 
 import java.util.ArrayList;
 
@@ -21,22 +19,23 @@ import java.util.ArrayList;
 
 public class FoundSaleList extends ActionBarActivity {
 
-    private Wish myWish;
-    private User myU;
-    private String[] mySales;
+
 
     /**
      * Defines what a FoundSaleList looks like when it is opened. First it creates a ListView
      * that has a listener that will be called if someone touches the list. From there, it
      * determines what element was touched and sends the info to that Intent.
-     * @param savedInstanceState
+     * @param savedInstanceState used to overwrite method
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_found_sale_list);
 
-        myU = (User) getIntent().getSerializableExtra("User"); //pulls in myU from the last Activity
+        Wish myWish;
+        String[] mySales;
+
+
         myWish = (Wish) getIntent().getSerializableExtra("Wish"); //pulls in the Wish that the User clicked on in HomeScreen
 
         final ArrayList<ItemOnSale> salesList = myWish.getSales();
@@ -45,7 +44,7 @@ public class FoundSaleList extends ActionBarActivity {
             mySales[i] = salesList.get(i).getItem() + (i + 1);
         } //Created an array, mySales, that has a String list of all sales that match the wish
         final ListView lv = (ListView) findViewById(R.id.FoundSales);
-        ArrayAdapter<String> friendAdapt = new ArrayAdapter<String>(this,
+        ArrayAdapter<String> friendAdapt = new ArrayAdapter<>(this,
                 android.R.layout.simple_list_item_1,
                 mySales); //Adds the list of Strings into the listView
 
@@ -95,7 +94,7 @@ public class FoundSaleList extends ActionBarActivity {
 
     /**
      * Closes the current Activity
-     * @param view
+     * @param view used to overwrite method
      */
     public void goBack(View view) {
         finish();

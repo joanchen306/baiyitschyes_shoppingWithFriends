@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 
 import android.app.AlertDialog;
@@ -17,8 +16,8 @@ import com.firebase.client.Firebase;
 public class Registration extends ActionBarActivity {
 
 
-    private UserDB db = new UserDB();
-    private User myU;
+    private final UserDB db = new UserDB();
+
     private final Context context = this;
 
     @Override
@@ -42,11 +41,12 @@ public class Registration extends ActionBarActivity {
      * or if any of the text boxes are empty
      * If succeed, this should bring the user to their homepage
      *
-     * @param view
-     * @return void
+     * @param view used to overwrite method
      */
 
     public void sendMessageJoin(View view) {
+        User myU;
+
         EditText mUserView = (EditText) this.findViewById(R.id.UserField);
         EditText mPassView = (EditText) this.findViewById(R.id.PassField);
         EditText mEmailView = (EditText) this.findViewById(R.id.EmailField);
@@ -58,9 +58,9 @@ public class Registration extends ActionBarActivity {
         String mRePass = mRePassView.getText().toString();
 
 
-        if (mUser != null) {
+        if (!mUser.equals("")) {
             if (mPass != null && mRePass != null) {
-                if (mPass.equals(mRePass) && mUser != null && mEmail != null) {
+                if (mPass.equals(mRePass) && !mUser.equals("") && mEmail != null) {
                     myU = new User(mUser, mEmail, mPass);
                     if (db.isLoggedIn()) {
                         db.addUser(myU);
@@ -68,7 +68,7 @@ public class Registration extends ActionBarActivity {
                         //i.putExtra("User", myU);
                         startActivity(i);
                     } else {
-                        myU = null;
+                        //myU = null;
                         AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
                         builder1.setMessage("Please make sure you have entered valid email.");
                         builder1.setCancelable(true);
@@ -84,7 +84,7 @@ public class Registration extends ActionBarActivity {
 
     /**
      * Closes the Registration Activity and returns to the Welcome screen.
-     * @param view
+     * @param view used to overwrite method
      */
     public void sendMessageBack(View view) {
         finish();

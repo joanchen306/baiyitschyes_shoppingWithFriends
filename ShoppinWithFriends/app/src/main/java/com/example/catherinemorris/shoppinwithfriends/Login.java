@@ -8,7 +8,6 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 
 import android.content.Context;
@@ -19,15 +18,14 @@ import com.firebase.client.FirebaseError;
 import com.firebase.client.Query;
 import com.firebase.client.ValueEventListener;
 
-import java.util.ArrayList;
 import java.util.Map;
 import java.util.NoSuchElementException;
 
 
 public class Login extends ActionBarActivity {
 
-    private User myU;
-    private UserDB udb = new UserDB();
+
+    private final UserDB udb = new UserDB();
     private EditText mUserView;
     private EditText mPasswordView;
 
@@ -42,6 +40,7 @@ public class Login extends ActionBarActivity {
         setContentView(R.layout.fragment_login);
         Firebase.setAndroidContext(this);
 
+        User myU;
         if (this.getParent() instanceof Registration) {
             myU = (User) getIntent().getSerializableExtra("User");
 
@@ -62,7 +61,7 @@ public class Login extends ActionBarActivity {
 
     /**
      * Closes the Login Activity and returns to the Welcome screen.
-     * @param view
+     * @param view used to overwrite method
      */
     public void sendMessageBack(View view) {
         finish();
@@ -72,8 +71,7 @@ public class Login extends ActionBarActivity {
      * This methods allows the user to login if they 
      * entered the correct password and username
      * should bring the user to their homepage
-     * @param view
-     * @return none
+     * @param view used to overwrite method
      */
     public void sendMessageLogin(View view) {
 

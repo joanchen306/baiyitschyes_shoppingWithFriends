@@ -5,12 +5,14 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
     tools:context=".HomeScreen"
-    android:background="#00ffff">
+    android:background = "@drawable/shoppingwithfriends1"
+    android:backgroundTint="#007f8f"
+    android:backgroundTintMode="src_over">
 
     <TextView android:text="Welcome to Shopping" android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/text"
-        android:textSize="33dp"
+        android:textSize="33sp"
         android:layout_marginTop="42dp"
         android:layout_below="@+id/button5"
         android:layout_centerHorizontal="true" />
@@ -20,15 +22,11 @@
 
         android:text="Friends List"
         android:textColor="#FFFFFF"
-        android:textSize="17dp"
+        android:textSize="17sp"
 
         android:layout_width="90dp"
         android:layout_height="50dp"
         android:background="@drawable/buttonshape"
-        android:shadowColor="#A8A8A8"
-        android:shadowDx="3"
-        android:shadowDy="1"
-        android:shadowRadius="5"
         android:clickable="true"
         android:onClick="openFriends"
         android:layout_above="@+id/text"
@@ -38,15 +36,11 @@
 
         android:text="Options"
         android:textColor="#FFFFFF"
-        android:textSize="17dp"
+        android:textSize="17sp"
 
         android:layout_width="90dp"
         android:layout_height="50dp"
         android:background="@drawable/buttonshape"
-        android:shadowColor="#A8A8A8"
-        android:shadowDx="3"
-        android:shadowDy="1"
-        android:shadowRadius="5"
         android:clickable="true"
         android:id="@+id/button5"
         android:layout_alignParentTop="true"
@@ -63,10 +57,6 @@
         android:layout_width="90dp"
         android:layout_height="50dp"
         android:background="@drawable/buttonshape"
-        android:shadowColor="#A8A8A8"
-        android:shadowDx="3"
-        android:shadowDy="1"
-        android:shadowRadius="5"
         android:clickable="true"
         android:nestedScrollingEnabled="false"
         android:onClick="goToFWish"
@@ -78,15 +68,11 @@
 
         android:text="Sales"
         android:textColor="#FFFFFF"
-        android:textSize="17dp"
+        android:textSize="17sp"
 
         android:layout_width="90dp"
         android:layout_height="50dp"
         android:background="@drawable/buttonshape"
-        android:shadowColor="#A8A8A8"
-        android:shadowDx="3"
-        android:shadowDy="1"
-        android:shadowRadius="5"
         android:clickable="true"
         android:nestedScrollingEnabled="false"
         android:layout_alignParentBottom="true"
@@ -109,7 +95,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/textView5"
-        android:textSize="33dp"
+        android:textSize="33sp"
         android:layout_below="@+id/text"
         android:layout_toEndOf="@+id/FriendsList" />
 

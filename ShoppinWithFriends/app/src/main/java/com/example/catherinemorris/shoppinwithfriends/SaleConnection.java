@@ -8,21 +8,17 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
-import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.SupportMapFragment;
+//import com.google.android.gms.maps.GoogleMap;
+//import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.io.Serializable;
 
 
-public class SaleConnection extends ActionBarActivity implements Serializable {
+public class SaleConnection extends ActionBarActivity {
 
-    ItemOnSale sale;
-    User myU;
-    GoogleMap googleMap;
+    private ItemOnSale sale;
+    private User myU;
+
 
     final static LatLng ATLANTA = new LatLng(33.7550,-84.3900);
 
@@ -30,10 +26,12 @@ public class SaleConnection extends ActionBarActivity implements Serializable {
     /**
      * Pulls the information from the previous Activity to populate this Activity with
      * information pertaining to the ItemOnSale in question.
-     * @param savedInstanceState
+     * @param savedInstanceState used to overwrite method
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        //GoogleMap googleMap;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sale_connection);
 
@@ -46,8 +44,8 @@ public class SaleConnection extends ActionBarActivity implements Serializable {
         TextView currPrice = (TextView) findViewById(R.id.PriceField);
         currPrice.setText("" + sale.getPrice());
 
-        SupportMapFragment fm = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.smallmap);
-        googleMap = fm.getMap();
+        //SupportMapFragment fm = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.smallmap);
+        //googleMap = fm.getMap();
 
 //        googleMap.setMyLocationEnabled(true);
 //        LocationManager locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
@@ -110,7 +108,7 @@ public class SaleConnection extends ActionBarActivity implements Serializable {
         return super.onOptionsItemSelected(item);
     }
 
-    private void openMap (View view) {
+    public void openMap (View view) {
         Intent i = new Intent("android.SaleConnectionMap");
         i.putExtra("User", myU);
         i.putExtra("Sale", sale);
@@ -119,33 +117,9 @@ public class SaleConnection extends ActionBarActivity implements Serializable {
 
     /**
      * Closes the current Activity
-     * @param view
+     * @param view used to overwrite method
      */
     public void goBack(View view) {
         finish();
-    }
-
-    private static final long serialVersionUID = 7526471155622776147L;
-    /**
-     * Always treat de-serialization as a full-blown constructor, by
-     * validating the final state of the de-serialized object.
-     */
-    private void readObject(
-            ObjectInputStream aInputStream
-    ) throws ClassNotFoundException, IOException {
-        //always perform the default de-serialization first
-        aInputStream.defaultReadObject();
-
-    }
-
-    /**
-     * This is the default implementation of writeObject.
-     * Customise if necessary.
-     */
-    private void writeObject(
-            ObjectOutputStream aOutputStream
-    ) throws IOException {
-        //perform the default serialization for all non-transient, non-static fields
-        aOutputStream.defaultWriteObject();
     }
 }

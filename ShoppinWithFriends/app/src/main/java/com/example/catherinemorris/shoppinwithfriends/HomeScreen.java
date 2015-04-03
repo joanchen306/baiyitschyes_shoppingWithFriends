@@ -9,7 +9,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.content.Intent;
 import android.widget.ListView;
 
@@ -20,7 +19,6 @@ import com.firebase.client.Query;
 import com.firebase.client.ValueEventListener;
 import com.google.android.gms.maps.model.LatLng;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Map;
 
@@ -29,14 +27,14 @@ public class HomeScreen extends ActionBarActivity {
 
     private User myU;
 
-    private String found = " (Found!)";
-    private String looking = " (Still looking!)";
+    private final String found = " (Found!)";
+    private final String looking = " (Still looking!)";
 
 
-    private Context context = this;
+    private final Context context = this;
 
-    private ArrayList<Wish> wishlist = new ArrayList<>();
-    private ArrayList<ItemOnSale> globalSales = new ArrayList<>();
+    private final ArrayList<Wish> wishlist = new ArrayList<>();
+    private final ArrayList<ItemOnSale> globalSales = new ArrayList<>();
     private String[] wishes;
 
     /**
@@ -44,7 +42,7 @@ public class HomeScreen extends ActionBarActivity {
      * to myU. It also uses the database to determine the WishList for each User.
      * Then, it goes through and determines whether or not each Wish has been
      * found in the Global Sales List.
-     * @param savedInstanceState
+     * @param savedInstanceState used to overwrite method
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,20 +78,13 @@ public class HomeScreen extends ActionBarActivity {
                             //ArrayList<Integer> exp = (ArrayList<Integer>) itemMap.remove("expDate");
                             ItemOnSale item = new ItemOnSale(it, price, um, new LatLng(loc.get(0), loc.get(1)));
                             if (globalSales != null && !globalSales.contains(item)) {
+
                                 globalSales.add(item);
                             }
                         } catch (ClassCastException ex) {
-                            String loc = (String) itemMap.remove("location");
                             ItemOnSale item = new ItemOnSale(it, price, um);
                          //   Log.d("This is the item added at get: ", it);
-                            if (globalSales != null && !globalSales.contains(item)) {
-                                globalSales.add(item);
-                            }
-                        } catch (NullPointerException e) {
-                            String loc = (String) itemMap.remove("location");
-                            ItemOnSale item = new ItemOnSale(it, price, um);
-                            //   Log.d("This is the item added at get: ", it);
-                            if (globalSales != null && !globalSales.contains(item)) {
+                            if (!globalSales.contains(item)) {
                                 globalSales.add(item);
                             }
                         }
@@ -127,7 +118,7 @@ public class HomeScreen extends ActionBarActivity {
                             double price = (double) itemMap.remove("price");
                             Wish item = new Wish(it, des, price);
                        //     Log.d("This is the item added at get: ", it);
-                            if (wishlist != null && !wishlist.contains(item)) {
+                            if (!wishlist.contains(item)) {
                                 wishlist.add(item);
                                 myU.setWishlist(wishlist);
                             }
@@ -159,10 +150,7 @@ public class HomeScreen extends ActionBarActivity {
                 }
 
                 final ListView lv = (ListView) findViewById(R.id.myWishlist);
-                if (wishes == null) {
-
-                }
-                ArrayAdapter<String> friendAdapt = new ArrayAdapter<String>(context,
+                ArrayAdapter<String> friendAdapt = new ArrayAdapter<>(context,
                         android.R.layout.simple_list_item_1,
                         wishes);
 
@@ -237,7 +225,7 @@ public class HomeScreen extends ActionBarActivity {
     /**
      * Opens the FriendList activity and sends the logged in User's
      * information to the activity via .putExtra()
-     * @param view
+     * @param view used to overwrite method
      */
     public void openFriends(View view) {
         Intent i = new Intent("android.FriendList");
@@ -248,7 +236,7 @@ public class HomeScreen extends ActionBarActivity {
     /**
      * Opens the Setting activity and sends the logged in User's
      * information to the activity via .putExtra()
-     * @param view
+     * @param view used to overwrite method
      */
     public void sendSettings(View view) {
         Intent i = new Intent("android.Settings");
@@ -259,7 +247,7 @@ public class HomeScreen extends ActionBarActivity {
     /**
      * Opens the SalesList activity and sends the logged in User's
      * information to the activity via .putExtra()
-     * @param view
+     * @param view used to overwrite method
      */
     public void goToSalesList(View view) {
         Intent i = new Intent("android.SalesList");
@@ -270,7 +258,7 @@ public class HomeScreen extends ActionBarActivity {
     /**
      * Opens the FriendWishes activity and sends the logged in User's
      * information to the activity via .putExtra()
-     * @param view
+     * @param view used to overwrite method
      */
     public void goToFWish(View view) {
         Intent i = new Intent("android.FriendWishes");

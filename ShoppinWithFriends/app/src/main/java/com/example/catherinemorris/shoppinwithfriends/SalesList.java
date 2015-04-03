@@ -10,7 +10,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.ListView;
 import java.util.ArrayList;
 import java.util.Map;
@@ -27,8 +26,8 @@ public class SalesList extends ActionBarActivity {
 
     private User myU;
     private String[] globalSales;
-    private ArrayList<ItemOnSale> saleList = new ArrayList<ItemOnSale>();
-    private Context context = this;
+    private final ArrayList<ItemOnSale> saleList = new ArrayList<>();
+    private final Context context = this;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,21 +54,13 @@ public class SalesList extends ActionBarActivity {
                             //ArrayList<Integer> exp = (ArrayList<Integer>) itemMap.remove("expDate");
                             ItemOnSale item = new ItemOnSale(it, price, um, new LatLng(loc.get(0), loc.get(1)));
                             //   Log.d("This is the item added at get: ", it);
-                            if (saleList != null && !saleList.contains(item)) {
+                            if (!saleList.contains(item)) {
                                 saleList.add(item);
                             }
                         } catch (ClassCastException ex) {
-                            String loc = (String) itemMap.remove("location");
                             ItemOnSale item = new ItemOnSale(it, price, um);
                             //   Log.d("This is the item added at get: ", it);
-                            if (saleList != null && !saleList.contains(item)) {
-                                saleList.add(item);
-                            }
-                        } catch (NullPointerException e) {
-                            String loc = (String) itemMap.remove("location");
-                            ItemOnSale item = new ItemOnSale(it, price, um);
-                            //   Log.d("This is the item added at get: ", it);
-                            if (saleList != null && !saleList.contains(item)) {
+                            if (!saleList.contains(item)) {
                                 saleList.add(item);
                             }
                         }
@@ -80,7 +71,7 @@ public class SalesList extends ActionBarActivity {
                         globalSales[i] = saleList.get(i).getItem();
                     }
                     final ListView lv = (ListView) findViewById(R.id.globalList);
-                    ArrayAdapter<String> friendAdapt = new ArrayAdapter<String>(context,
+                    ArrayAdapter<String> friendAdapt = new ArrayAdapter<>(context,
                             android.R.layout.simple_list_item_1,
                             globalSales);
 
@@ -140,10 +131,9 @@ public class SalesList extends ActionBarActivity {
     /**
      * Opens the FriendList activity and sends the logged in User's
      * information to the activity via .putExtra()
-     * @param view
+     * @param view used to overwrite method
      */
     public void openFriends(View view) {
-        Button button = (Button) view;
         Intent i = new Intent("android.FriendList");
         i.putExtra("User", myU);
         startActivity(i);
@@ -152,7 +142,7 @@ public class SalesList extends ActionBarActivity {
     /**
      * Opens the Setting activity and sends the logged in User's
      * information to the activity via .putExtra()
-     * @param view
+     * @param view used to overwrite method
      */
     public void sendSettings(View view) {
         Intent i = new Intent("android.Settings");
@@ -163,7 +153,7 @@ public class SalesList extends ActionBarActivity {
     /**
      * Opens the HomeScreen activity and sends the logged in User's
      * information to the activity via .putExtra()
-     * @param view
+     * @param view used to overwrite method
      */
     public void goToMyWish(View view) {
         Intent i = new Intent("android.HomeScreen");
@@ -174,7 +164,7 @@ public class SalesList extends ActionBarActivity {
     /**
      * Opens the FriendWishes activity and sends the logged in User's
      * information to the activity via .putExtra()
-     * @param view
+     * @param view used to overwrite method
      */
     public void goToFWish(View view) {
         Intent i = new Intent("android.FriendWishes");
