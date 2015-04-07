@@ -19,7 +19,6 @@ import com.firebase.client.Query;
 import com.firebase.client.ValueEventListener;
 
 import java.util.Map;
-import java.util.NoSuchElementException;
 
 
 public class Login extends ActionBarActivity {
@@ -86,7 +85,7 @@ public class Login extends ActionBarActivity {
 
     }
 
-    public void logIn(final String username, final String password) {
+     void logIn(final String username, final String password) {
 
         if (!username.equals("") && !password.equals("")) {
             Firebase myFirebaseRef = new Firebase("https://baiyitschyes.firebaseio.com");
@@ -114,7 +113,7 @@ public class Login extends ActionBarActivity {
                             udb.getFriends(username);
                             User userFile = new User(username, password);
 
-                            setLoggedIn(true);
+                            setLoggedIn();
                             Intent i = new Intent("android.HomeScreen");
                             i.putExtra("User", userFile);
                             startActivity(i);
@@ -147,9 +146,9 @@ public class Login extends ActionBarActivity {
 
     }
 
-    public void setLoggedIn(boolean bool) {
+    void setLoggedIn() {
         Log.d("is logged in", "yes");
-        loggedIn = bool;
+        loggedIn = true;
     }
 
     public boolean getLoggedIn() {

@@ -38,7 +38,7 @@ class ItemOnSale implements Serializable {
         item = it;
         this.price = price;
         user = seller;
-        location = new ArrayList<Double>();
+        location = new ArrayList<>();
         location.add(33.7550);
         location.add(-84.3900);
 

@@ -77,7 +77,7 @@ public class HomeScreen extends ActionBarActivity {
                             ArrayList<Double> loc = (ArrayList<Double>) itemMap.remove("location");
                             //ArrayList<Integer> exp = (ArrayList<Integer>) itemMap.remove("expDate");
                             ItemOnSale item = new ItemOnSale(it, price, um, new LatLng(loc.get(0), loc.get(1)));
-                            if (globalSales != null && !globalSales.contains(item)) {
+                            if (!globalSales.contains(item)) {
 
                                 globalSales.add(item);
                             }

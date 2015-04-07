@@ -26,8 +26,11 @@ class UserDB extends android.app.Application implements Serializable {
     private Firebase myFirebaseRef;
     private boolean loggedIn = true;
 
-    public static ArrayList<String> friendN;
+    private static ArrayList<String> friendN;
 
+    public ArrayList<String> retList() {
+        return friendN;
+    }
 
     @Override
     public void onCreate() {
@@ -66,11 +69,13 @@ class UserDB extends android.app.Application implements Serializable {
     }
 
 
+    public ArrayList<String> getFriendL() { return friendN;}
     /**
      * finds the user's friend list and delets the specifies friend if it exists
      * @param u, the User that is currently using the app
      * @param friend, the username of the friend that the user wants to delete
      */
+
 
     public void deleteFriend(final User u, final String friend) {
         myFirebaseRef = new Firebase("https://baiyitschyes.firebaseio.com");
