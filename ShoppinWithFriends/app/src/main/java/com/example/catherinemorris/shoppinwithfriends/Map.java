@@ -53,7 +53,7 @@ public class Map extends FragmentActivity {
         SupportMapFragment fm = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
         googleMap = fm.getMap();
 
-        // Getting reference to btn_find of the layout activity_main
+        // Getting reference to find button
         Button btn_find = (Button) findViewById(R.id.find);
 
         // Defining button click event listener for the find button
@@ -114,16 +114,10 @@ public class Map extends FragmentActivity {
 
                 // Clears all the existing markers on the map
                 googleMap.clear();
-                //LatLng saleLatLong;
-
 
                 // Adding Markers on Google Map for each matching address
                 for (int i = 0; i < addresses.size(); i++) {
-
                     Address address = addresses.get(i);
-
-                    // Creating an instance of GeoPoint, to display in Google Map
-
                     latlng = new LatLng(address.getLatitude(), address.getLongitude());
 
                     String addressText = String.format("%s, %s",
@@ -135,7 +129,6 @@ public class Map extends FragmentActivity {
                     markerOptions.title(addressText);
                     markerOptions.draggable(true);
                     googleMap.addMarker(markerOptions);
-                    //saleLatLong = latlng;
 
                     // Locate the first location
                     if (i == 0) {

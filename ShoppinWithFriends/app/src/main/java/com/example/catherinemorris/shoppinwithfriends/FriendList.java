@@ -57,7 +57,7 @@ public class FriendList extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_friend_list);
         Firebase.setAndroidContext(this);
-        //friendN = db.getFriendL();
+        friendN = db.getFriendL();
         myU = (User) getIntent().getSerializableExtra("User");
         myFriends = new String[friendN.size()];
         for (int i = 0; i < friendN.size(); i++) {

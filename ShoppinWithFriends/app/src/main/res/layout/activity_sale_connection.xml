@@ -103,9 +103,9 @@
         android:background="@drawable/buttonshape"
         android:clickable="true"
         android:nestedScrollingEnabled="false"
-        android:onClick="openMap"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/locationField"
+        android:onClick="openMap"/>
 </RelativeLayout>
 
 </LinearLayout>

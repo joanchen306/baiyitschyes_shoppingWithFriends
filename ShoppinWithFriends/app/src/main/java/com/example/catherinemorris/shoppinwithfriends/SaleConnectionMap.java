@@ -5,50 +5,68 @@ import android.support.v4.app.FragmentActivity;
 import android.view.Menu;
 import android.view.View;
 import com.firebase.client.Firebase;
+import com.google.android.gms.maps.CameraUpdate;
+import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.LatLngBounds;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.util.ArrayList;
 
-public class SaleConnectionMap extends FragmentActivity {
+public class SaleConnectionMap extends FragmentActivity implements OnMapReadyCallback {
+    private User myU;
+    private MarkerOptions markerOptions;
+    private LatLng latLong;
+    private ItemOnSale saleItem;
+    private GoogleMap googleMap;
 
 
     private final static LatLng ATLANTA = new LatLng(33.7550,-84.3900);
 
-
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        GoogleMap googleMap;
-        MarkerOptions markerOptions;
-        ItemOnSale saleItem;
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.fragment_map);
+        setContentView(R.layout.fragment_sale_connection_map);
         Firebase.setAndroidContext(this);
 
-        saleItem = (ItemOnSale) getIntent().getSerializableExtra("Sale");
+        myU = (User) getIntent().getSerializableExtra("User");
+        saleItem = (ItemOnSale) getIntent().getSerializableExtra("ItemOnSale");
 
-        SupportMapFragment fm = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
-        googleMap = fm.getMap();
+        SupportMapFragment fm = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.saleconnectionmap);
+        //googleMap = fm.getMap();
+        fm.getMapAsync(this);
+
+    }
+
+    @Override
+    public void onMapReady(GoogleMap map) {
+        map.setMyLocationEnabled(true);
+        map.clear();
+        LatLngBounds.Builder builder = new LatLngBounds.Builder();
 
         markerOptions = new MarkerOptions();
         markerOptions.position(ATLANTA);
         markerOptions.title("My Location");
         markerOptions.draggable(true);
-        googleMap.addMarker(markerOptions);
+        map.addMarker(markerOptions);
+        builder.include(markerOptions.getPosition());
 
         MarkerOptions itemMarker = new MarkerOptions();
         ArrayList<Double> loc = saleItem.getLocation();
-        LatLng latLong = new LatLng(loc.get(0),loc.get(1));
+        latLong = new LatLng(loc.get(0),loc.get(1));
         itemMarker.position(latLong);
         itemMarker.title("Item Location");
-        googleMap.addMarker(itemMarker);
+        map.addMarker(itemMarker);
+        builder.include(itemMarker.getPosition());
 
-
+        LatLngBounds bounds = builder.build();
+        //int padding = 0;
+        CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngBounds(bounds,25,25,5);
+        map.moveCamera(cameraUpdate);
     }
 
     @Override
@@ -56,47 +74,6 @@ public class SaleConnectionMap extends FragmentActivity {
         getMenuInflater().inflate(R.menu.menu_sale_connection_map, menu);
         return true;
     }
-
-//    /**
-//     * Creates a Geocoder of the input location and gets three location addresses
-//     * Uses the location addresses to place draggable markers on map
-//     */
-//
-//    private class GeocoderTask extends AsyncTask<String, Void, List<Address>> {
-//
-//        protected List<Address> doInBackground(String... locationName) {
-//            // Creating an instance of Geocoder class
-//            Geocoder geocoder = new Geocoder(getBaseContext());
-//            List<Address> addresses = null;
-//
-//            try {
-//                // Getting a maximum of 3 Address that matches the input text
-//                addresses = geocoder.getFromLocationName(locationName[0], 3);
-//            } catch (IOException e) {
-//                e.printStackTrace();
-//            }
-//            return addresses;
-//        }
-//
-//        @Override
-//        protected void onPostExecute(List<Address> addresses) {
-//
-//            if(addresses==null || addresses.size()==0){
-//                Toast.makeText(getBaseContext(), "No Location found", Toast.LENGTH_SHORT).show();
-//            }
-//
-//            // Clears all the existing markers on the map
-//            googleMap.clear();
-//
-//
-//                markerOptions = new MarkerOptions();
-//                markerOptions.position(ATLANTA);
-//                markerOptions.title("My Location");
-//                markerOptions.draggable(true);
-//                googleMap.addMarker(markerOptions);
-//
-//            }
-//        }
 
     /**
      * Goes back to SaleConnection page
