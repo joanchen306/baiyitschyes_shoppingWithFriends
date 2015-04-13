@@ -12,17 +12,12 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.LatLngBounds;
-import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.util.ArrayList;
 
 public class SaleConnectionMap extends FragmentActivity implements OnMapReadyCallback {
-    private User myU;
-    private MarkerOptions markerOptions;
-    private LatLng latLong;
     private ItemOnSale saleItem;
-    private GoogleMap googleMap;
 
 
     private final static LatLng ATLANTA = new LatLng(33.7550,-84.3900);
@@ -33,11 +28,9 @@ public class SaleConnectionMap extends FragmentActivity implements OnMapReadyCal
         setContentView(R.layout.fragment_sale_connection_map);
         Firebase.setAndroidContext(this);
 
-        myU = (User) getIntent().getSerializableExtra("User");
         saleItem = (ItemOnSale) getIntent().getSerializableExtra("ItemOnSale");
 
         SupportMapFragment fm = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.saleconnectionmap);
-        //googleMap = fm.getMap();
         fm.getMapAsync(this);
 
     }
@@ -48,7 +41,7 @@ public class SaleConnectionMap extends FragmentActivity implements OnMapReadyCal
         map.clear();
         LatLngBounds.Builder builder = new LatLngBounds.Builder();
 
-        markerOptions = new MarkerOptions();
+        MarkerOptions markerOptions = new MarkerOptions();
         markerOptions.position(ATLANTA);
         markerOptions.title("My Location");
         markerOptions.draggable(true);
@@ -57,7 +50,7 @@ public class SaleConnectionMap extends FragmentActivity implements OnMapReadyCal
 
         MarkerOptions itemMarker = new MarkerOptions();
         ArrayList<Double> loc = saleItem.getLocation();
-        latLong = new LatLng(loc.get(0),loc.get(1));
+        LatLng latLong = new LatLng(loc.get(0),loc.get(1));
         itemMarker.position(latLong);
         itemMarker.title("Item Location");
         map.addMarker(itemMarker);
