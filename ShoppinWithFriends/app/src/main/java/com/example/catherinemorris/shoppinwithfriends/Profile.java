@@ -13,6 +13,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.firebase.client.DataSnapshot;
@@ -27,6 +28,11 @@ import java.util.Map;
 public class Profile extends ActionBarActivity {
 
     private String username;
+    private RatingBar ratingBar;
+    TextView ratingVal;
+    int numRatings;
+    int sumRate;
+
 
 
 
@@ -43,6 +49,7 @@ public class Profile extends ActionBarActivity {
         setContentView(R.layout.activity_profile);
         Firebase.setAndroidContext(this);
 
+        addListenerOnRatingBar();
 
         username = getIntent().getStringExtra("Friend");
         Firebase myFirebaseRef = new Firebase("https://baiyitschyes.firebaseio.com");
@@ -68,10 +75,24 @@ public class Profile extends ActionBarActivity {
                 TextView currentRating = (TextView)findViewById(R.id.currentRating);
                 currentRating.setText(""+rate);
             }
-                @Override
-                public void onCancelled(FirebaseError firebaseError) {
-                }
-            });
+            @Override
+            public void onCancelled(FirebaseError firebaseError) {
+            }
+        });
+    }
+
+    public void addListenerOnRatingBar() {
+        ratingBar = (RatingBar) findViewById(R.id.ratingBar);
+        ratingVal = (TextView) findViewById(R.id.currentRating);
+
+        ratingBar.setOnRatingBarChangeListener((new RatingBar.OnRatingBarChangeListener() {
+            @Override
+            public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
+                rating = (rating + sumRate) / numRatings;
+                ratingVal.setText(String.valueOf(rating));
+
+            }
+        }));
     }
 
 
