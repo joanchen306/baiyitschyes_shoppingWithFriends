@@ -103,10 +103,9 @@
         android:background="@drawable/buttonshape"
         android:clickable="true"
         android:nestedScrollingEnabled="false"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@id/locationField"
-        android:onClick="openMap"/>
-</RelativeLayout>
+        android:onClick="openMap"
+        android:layout_below="@+id/locationText"
+        android:layout_alignEnd="@+id/priceField" />
 
     <Button
         android:id="@+id/addComment"
@@ -119,8 +118,31 @@
         android:clickable="true"
         android:nestedScrollingEnabled="false"
         android:onClick="addComment"
-        android:layout_alignBottom="@+id/"
-        android:layout_alignStart="@+id/showOnMap" />
+        android:layout_below="@+id/showOnMap"
+        android:layout_alignParentEnd="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/saleConnectionComment"
+        android:hint="Write Comment Here!"
+        android:layout_below="@+id/showOnMap"
+        android:layout_alignEnd="@+id/report"
+        android:layout_alignStart="@+id/showOnMap"
+        android:layout_alignBottom="@+id/addComment" />
+
+    <ListView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/saleConnectionListView"
+        android:layout_below="@+id/saleConnectionComment"
+        android:layout_alignEnd="@+id/addComment" />
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/commentScrollView2"
+        android:layout_alignParentStart="true" />
 
 
+</RelativeLayout>
 </LinearLayout>

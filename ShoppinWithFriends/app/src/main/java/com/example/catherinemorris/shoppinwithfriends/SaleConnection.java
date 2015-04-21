@@ -1,17 +1,22 @@
 package com.example.catherinemorris.shoppinwithfriends;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.TextView;
 
 //import com.google.android.gms.maps.GoogleMap;
 //import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 
+import java.util.ArrayList;
 
 
 public class SaleConnection extends ActionBarActivity {
@@ -19,6 +24,8 @@ public class SaleConnection extends ActionBarActivity {
     private ItemOnSale sale;
     private User myU;
 
+    ArrayList<String> comments = new ArrayList<String>();
+    private final Context context = this;
 
     final static LatLng ATLANTA = new LatLng(33.7550,-84.3900);
 
@@ -86,4 +93,15 @@ public class SaleConnection extends ActionBarActivity {
     public void goBack(View view) {
         finish();
     }
+
+    public void addComment(View view) {
+        EditText etComment = (EditText) this.findViewById(R.id.saleConnectionComment);
+        final String comment = etComment.getText().toString();
+        comments.add(comment);
+        ListView commentList = (ListView) findViewById(R.id.saleConnectionListView);
+        ArrayAdapter<String> commentAdapt = new ArrayAdapter<>(context, android.R.layout.simple_list_item_1, comments);
+        commentList.setAdapter(commentAdapt);
+        commentAdapt.notifyDataSetChanged();
+    }
 }
+
