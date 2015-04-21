@@ -108,4 +108,19 @@
         android:onClick="openMap"/>
 </RelativeLayout>
 
+    <Button
+        android:id="@+id/addComment"
+        android:text="Comment"
+        android:textColor="#FFFFFF"
+        android:textSize="17sp"
+        android:layout_width="90dp"
+        android:layout_height="50dp"
+        android:background="@drawable/buttonshape"
+        android:clickable="true"
+        android:nestedScrollingEnabled="false"
+        android:onClick="addComment"
+        android:layout_alignBottom="@+id/"
+        android:layout_alignStart="@+id/showOnMap" />
+
+
 </LinearLayout>

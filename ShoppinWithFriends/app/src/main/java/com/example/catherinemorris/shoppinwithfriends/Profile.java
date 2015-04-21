@@ -7,12 +7,16 @@ package com.example.catherinemorris.shoppinwithfriends;
 
 
 
+import android.content.Context;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import android.widget.ArrayAdapter;
+import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
@@ -22,6 +26,7 @@ import com.firebase.client.FirebaseError;
 import com.firebase.client.Query;
 import com.firebase.client.ValueEventListener;
 
+import java.util.ArrayList;
 import java.util.Map;
 
 
@@ -32,6 +37,9 @@ public class Profile extends ActionBarActivity {
     TextView ratingVal;
     int numRatings;
     int sumRate;
+
+    ArrayList<String> comments = new ArrayList<String>();
+    private final Context context = this;
 
 
 
@@ -49,7 +57,17 @@ public class Profile extends ActionBarActivity {
         setContentView(R.layout.activity_profile);
         Firebase.setAndroidContext(this);
 
-        addListenerOnRatingBar();
+//        final ListView commentList = (ListView) findViewById(R.id.commentListView);
+//        if(comments.length > 0) {
+//            ArrayAdapter<String> friendAdapt = new ArrayAdapter<>(this,
+//                    android.R.layout.simple_list_item_1,
+//                    comments);
+//            commentList.setAdapter(friendAdapt);
+//        }
+
+
+
+        //addListenerOnRatingBar();
 
         username = getIntent().getStringExtra("Friend");
         Firebase myFirebaseRef = new Firebase("https://baiyitschyes.firebaseio.com");
@@ -80,20 +98,20 @@ public class Profile extends ActionBarActivity {
             }
         });
     }
-
-    public void addListenerOnRatingBar() {
-        ratingBar = (RatingBar) findViewById(R.id.ratingBar);
-        ratingVal = (TextView) findViewById(R.id.currentRating);
-
-        ratingBar.setOnRatingBarChangeListener((new RatingBar.OnRatingBarChangeListener() {
-            @Override
-            public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
-                rating = (rating + sumRate) / numRatings;
-                ratingVal.setText(String.valueOf(rating));
-
-            }
-        }));
-    }
+//
+//    public void addListenerOnRatingBar() {
+//        ratingBar = (RatingBar) findViewById(R.id.ratingBar);
+//        ratingVal = (TextView) findViewById(R.id.currentRating);
+//
+//        ratingBar.setOnRatingBarChangeListener((new RatingBar.OnRatingBarChangeListener() {
+//            @Override
+//            public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
+//                rating = (rating + sumRate) / numRatings;
+//                ratingVal.setText(String.valueOf(rating));
+//
+//            }
+//        }));
+//    }
 
 
     @Override
@@ -126,6 +144,15 @@ public class Profile extends ActionBarActivity {
         finish();
     }
 
+    public void addComment(View view) {
+        EditText etComment = (EditText) this.findViewById(R.id.comment);
+        final String comment = etComment.getText().toString();
+        comments.add(comment);
+        ListView commentList = (ListView) findViewById(R.id.commentListView);
+        ArrayAdapter<String> commentAdapt = new ArrayAdapter<>(context, android.R.layout.simple_list_item_1, comments);
+        commentList.setAdapter(commentAdapt);
+        commentAdapt.notifyDataSetChanged();
+    }
 
 }
 
