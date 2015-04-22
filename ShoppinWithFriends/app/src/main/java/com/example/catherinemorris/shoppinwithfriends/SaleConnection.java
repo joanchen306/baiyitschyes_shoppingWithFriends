@@ -46,6 +46,8 @@ public class SaleConnection extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         //GoogleMap googleMap;
+        addListenerOnRatingBar();
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sale_connection);
 
@@ -86,6 +88,10 @@ public class SaleConnection extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    /**
+     * opens the google map
+     * @param view
+     */
     public void openMap (View view) {
         Intent i = new Intent("android.SaleConnectionMap");
         i.putExtra("User", myU);
@@ -101,6 +107,11 @@ public class SaleConnection extends ActionBarActivity {
         finish();
     }
 
+
+    /**
+     * adds a comment on the sale report page of the particular item found
+     * @param view
+     */
     public void addComment(View view) {
         EditText etComment = (EditText) this.findViewById(R.id.saleConnectionComment);
         final String comment = etComment.getText().toString();
@@ -112,7 +123,10 @@ public class SaleConnection extends ActionBarActivity {
     }
 
 
-
+    /**
+     * adds listener on the rating bar
+     * calculates the new rating based on the current rating and user input
+     */
     public void addListenerOnRatingBar() {
         ratingBar = (RatingBar) findViewById(R.id.ratingBar);
         ratingVal = (TextView) findViewById(R.id.currentRating);
