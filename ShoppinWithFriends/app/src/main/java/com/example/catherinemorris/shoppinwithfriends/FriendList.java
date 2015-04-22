@@ -57,8 +57,8 @@ public class FriendList extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_friend_list);
         Firebase.setAndroidContext(this);
-            friendN = db.getList();
-            myU = (User) getIntent().getSerializableExtra("User");
+        friendN = db.getFriendL();
+        myU = (User) getIntent().getSerializableExtra("User");
         myFriends = new String[friendN.size()];
         for (int i = 0; i < friendN.size(); i++) {
             myFriends[i] = friendN.get(i);
@@ -176,17 +176,12 @@ public class FriendList extends ActionBarActivity {
         return alertM;
     }
 
-    /**
-     * delete the user that is specified in the text box if the friend is in the
-     * friendlist of the User. If not shows a warning
-     * Sets the text box back to null.
-     * @param view used to overwrite method
-     */
-
     public void deleteFriends(View view) {
         mUserText = (EditText) this.findViewById(R.id.userText);
         String un = mUserText.getText().toString();
-        if(!friendN.contains(un)) {
+
+        un = deleteFriend(un);
+        if(un == null) {
             AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
             builder1.setMessage("You don't have a friend named: " + un);
             builder1.setCancelable(true);
@@ -216,5 +211,35 @@ public class FriendList extends ActionBarActivity {
             lv.setAdapter(friendAdapt);
         }
     }
+
+    public String deleteFriend(String un) {
+        if (!friendN.contains(un)) {
+            return null;
+        } else {
+            friendN.remove(un);
+            return un;
+        }
+    }
+
+    public ArrayList<String> globalfriend = new ArrayList<>();
+
+    public void addFriend(String un) {
+        globalfriend.add("joanmouse");
+        globalfriend.add("jnugent6");
+        globalfriend.add("dillon");
+        if (globalfriend.contains(un) && !friendN.contains(un)) {
+            friendN.add(un);
+        }
+    }
+
+    public void setFriendN(ArrayList<String> list) {
+        friendN = list;
+    }
+
+    public ArrayList<String> getFriendN() {
+        return friendN;
+    }
+
+
 
 }

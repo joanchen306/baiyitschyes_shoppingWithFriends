@@ -1,17 +1,23 @@
 package com.example.catherinemorris.shoppinwithfriends;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.EditText;
+import android.widget.ListView;
+import android.widget.RatingBar;
 import android.widget.TextView;
 
 //import com.google.android.gms.maps.GoogleMap;
 //import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 
+import java.util.ArrayList;
 
 
 public class SaleConnection extends ActionBarActivity {
@@ -19,6 +25,14 @@ public class SaleConnection extends ActionBarActivity {
     private ItemOnSale sale;
     private User myU;
 
+    private String username;
+    private RatingBar ratingBar;
+    TextView ratingVal;
+    int numRatings;
+    int sumRate;
+
+    ArrayList<String> comments = new ArrayList<String>();
+    private final Context context = this;
 
     final static LatLng ATLANTA = new LatLng(33.7550,-84.3900);
 
@@ -44,42 +58,6 @@ public class SaleConnection extends ActionBarActivity {
         TextView currPrice = (TextView) findViewById(R.id.PriceField);
         currPrice.setText("" + sale.getPrice());
 
-        //SupportMapFragment fm = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.smallmap);
-        //googleMap = fm.getMap();
-
-//        googleMap.setMyLocationEnabled(true);
-//        LocationManager locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
-//        Criteria criteria = new Criteria();
-//        String provider = locationManager.getBestProvider(criteria, true);
-//        Location location = locationManager.getLastKnownLocation(provider);
-
-//        double latitude;
-//        double longitude;
-
-//        if(location != null) {
-//            latitude = location.getLatitude();
-//            longitude = location.getLongitude();
-//            myPos = new LatLng(latitude, longitude);
-//
-//        } else {
-//            myPos = ATLANTA;
-//            latitude = 33.7550;
-//            longitude = 84.3900;
-//        }
-
-
-        //use this for my location
-//        myPos = ATLANTA;
-//
-//
-//        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(myPos, 15));
-//        Marker myLoc = googleMap.addMarker(new MarkerOptions().position(myPos).title("Here").draggable(true));
-//        LatLng dragPos = myLoc.getPosition();
-//        latitude = dragPos.latitude;
-//        longitude = dragPos.longitude;
-//        myPositionList.add(latitude);
-//        myPositionList.add(longitude);
-//        myLoc.setVisible(true);
 
         TextView currLoc = (TextView) findViewById(R.id.locationField);
         currLoc.setText(sale.getLocation().toString());
@@ -111,7 +89,7 @@ public class SaleConnection extends ActionBarActivity {
     public void openMap (View view) {
         Intent i = new Intent("android.SaleConnectionMap");
         i.putExtra("User", myU);
-        i.putExtra("Sale", sale);
+        i.putExtra("ItemOnSale", sale);
         startActivity(i);
     }
 
@@ -122,4 +100,33 @@ public class SaleConnection extends ActionBarActivity {
     public void goBack(View view) {
         finish();
     }
+
+    public void addComment(View view) {
+        EditText etComment = (EditText) this.findViewById(R.id.saleConnectionComment);
+        final String comment = etComment.getText().toString();
+        comments.add(comment);
+        ListView commentList = (ListView) findViewById(R.id.saleConnectionListView);
+        ArrayAdapter<String> commentAdapt = new ArrayAdapter<>(context, android.R.layout.simple_list_item_1, comments);
+        commentList.setAdapter(commentAdapt);
+        commentAdapt.notifyDataSetChanged();
+    }
+
+
+
+    public void addListenerOnRatingBar() {
+        ratingBar = (RatingBar) findViewById(R.id.ratingBar);
+        ratingVal = (TextView) findViewById(R.id.currentRating);
+
+        ratingBar.setOnRatingBarChangeListener((new RatingBar.OnRatingBarChangeListener() {
+            @Override
+            public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
+                // rating = (rating + sumRate) / numRatings;
+                TextView currentRating = (TextView) findViewById(R.id.currentRating);
+                ratingVal.setText(String.valueOf(rating));
+                currentRating.setText(""+rating);
+
+            }
+        }));
+    }
 }
+

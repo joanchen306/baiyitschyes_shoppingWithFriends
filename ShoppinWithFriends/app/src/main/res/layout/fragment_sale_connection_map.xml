@@ -1,20 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/mapLayout"
+    android:id="@+id/mapLayout2"
     android:orientation="vertical"
     tools:context=".SaleConnectionMap" >
 
-
-
-
-
-
         <Button
-            android:id="@+id/bachB"
+            android:id="@+id/backB"
             android:text="Back"
             android:gravity="center_horizontal|center_vertical"
             android:textColor="#FFFFFF"
@@ -38,8 +34,11 @@
             android:layout_height="match_parent"
             android:background="#aaa" />
 
+    <fragment
+        android:id="@+id/saleconnectionmap"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="vertical"
+        class="com.google.android.gms.maps.SupportMapFragment"/>
 
-
-</LinearLayout>
-
-
+</FrameLayout>
