@@ -153,8 +153,11 @@ public class Map extends FragmentActivity {
 
     public void reportSale(View view) {
         //sets the location of the sale item
-        latlng = markerOptions.getPosition();
-        saleItem.setLocation(latlng);
+
+        if (markerOptions != null) {
+            latlng = markerOptions.getPosition();
+            saleItem.setLocation(latlng);
+        }
 
         //sets the date of the sale reported
         //Calendar c = Calendar.getInstance();

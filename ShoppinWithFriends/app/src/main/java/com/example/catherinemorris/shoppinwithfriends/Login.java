@@ -5,6 +5,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.widget.EditText;
@@ -26,6 +27,8 @@ public class Login extends ActionBarActivity {
     private final UserDB udb = new UserDB();
     private EditText mUserView;
     private EditText mPasswordView;
+
+    private static boolean loggedIn = false;
 
 
     private final Context context = this;
@@ -78,10 +81,13 @@ public class Login extends ActionBarActivity {
         final String username = mUserView.getText().toString();
         final String password = mPasswordView.getText().toString();
 
+        logIn(username, password);
+
+    }
+
+    void logIn(final String username, final String password) {
 
         if (!username.equals("") && !password.equals("")) {
-
-            final User userFile = new User(username, password);
             Firebase myFirebaseRef = new Firebase("https://baiyitschyes.firebaseio.com");
             Query queryRef = myFirebaseRef.child("userInfo").child(username);
 
@@ -89,14 +95,15 @@ public class Login extends ActionBarActivity {
                 @Override
                 public void onDataChange(DataSnapshot snapshot) {
                     if(snapshot == null || snapshot.getValue() == null) {
+                        Log.d("Not registered", "yes");
                         AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
                         builder1.setMessage(R.string.common_google_play_services_invalid_account_text)
-                            .setTitle(R.string.common_google_play_services_invalid_account_title)
-                            .setPositiveButton(R.string.accept, new DialogInterface.OnClickListener() {
-                                public void onClick(DialogInterface dialog, int id) {
-                                    // User clicked OK button
-                                }
-                            });
+                                .setTitle(R.string.common_google_play_services_invalid_account_title)
+                                .setPositiveButton(R.string.accept, new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int id) {
+                                        // User clicked OK button
+                                    }
+                                });
                         AlertDialog alert11 = builder1.create();
                         alert11.show();
                     } else {
@@ -104,11 +111,16 @@ public class Login extends ActionBarActivity {
                         String pass = (String) userMap.remove("passWord");
                         if (password.equals(pass)) {
                             udb.getFriends(username);
+                            User userFile = new User(username, password);
+
+                            setLoggedIn();
                             Intent i = new Intent("android.HomeScreen");
                             i.putExtra("User", userFile);
                             startActivity(i);
+
                         }
                         else {
+                            Log.d("Wrong PassWord", "yes");
                             AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
                             builder1.setMessage("Wrong Password.");
                             builder1.setCancelable(true);
@@ -124,11 +136,22 @@ public class Login extends ActionBarActivity {
             });
 
         } else {
+            Log.d("Blank", "yes");
             AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
             builder1.setMessage("No information should be left blank.");
             builder1.setCancelable(true);
             AlertDialog alert11 = builder1.create();
             alert11.show();
         }
+
+    }
+
+    void setLoggedIn() {
+        Log.d("is logged in", "yes");
+        loggedIn = true;
+    }
+
+    public boolean getLoggedIn() {
+        return loggedIn;
     }
 }

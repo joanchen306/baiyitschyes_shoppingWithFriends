@@ -39,8 +39,9 @@ class ItemOnSale implements Serializable {
         this.price = price;
         user = seller;
         location = new ArrayList<>();
-        location.add(0, 33.7550);
-        location.add(1, -84.3900);
+        location.add(33.7550);
+        location.add(-84.3900);
+
     }
 
     public void setLocation(LatLng loc) {

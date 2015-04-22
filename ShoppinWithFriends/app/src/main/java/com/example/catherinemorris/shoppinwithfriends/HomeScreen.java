@@ -50,10 +50,13 @@ public class HomeScreen extends ActionBarActivity {
         setContentView(R.layout.activity_home_screen);
         Firebase.setAndroidContext(this);
 
+        Log.d("homescreen", "opened");
 
-        //gets and prints wishlist
+
         myU = (User) getIntent().getSerializableExtra("User");
 
+
+        //Calls
         String username = myU.getUser();
         Firebase myFirebaseRef = new Firebase("https://baiyitschyes.firebaseio.com");
 
@@ -70,14 +73,12 @@ public class HomeScreen extends ActionBarActivity {
                         String it = (String) itemMap.remove("item");
                         double price = (double) itemMap.remove("price");
                         String um = (String) itemMap.remove("user");
-                        //JOAN RETRIEVE THE LOCATION FROM THE DATABASE
-                        // I DID!
                         try {
                             ArrayList<Double> loc = (ArrayList<Double>) itemMap.remove("location");
                             //ArrayList<Integer> exp = (ArrayList<Integer>) itemMap.remove("expDate");
                             ItemOnSale item = new ItemOnSale(it, price, um, new LatLng(loc.get(0), loc.get(1)));
-                         //   Log.d("This is the item added at get: ", it);
                             if (!globalSales.contains(item)) {
+
                                 globalSales.add(item);
                             }
                         } catch (ClassCastException ex) {

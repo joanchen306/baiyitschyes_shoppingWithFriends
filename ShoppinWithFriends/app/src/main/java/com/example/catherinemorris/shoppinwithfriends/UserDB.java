@@ -26,9 +26,12 @@ class UserDB extends android.app.Application implements Serializable {
     private Firebase myFirebaseRef;
     private boolean loggedIn = true;
 
-    public static ArrayList<String> friendN;
+    private static ArrayList<String> friendN;
 
 
+    public ArrayList<String> getList() {
+        return friendN;
+    }
     @Override
     public void onCreate() {
         super.onCreate();

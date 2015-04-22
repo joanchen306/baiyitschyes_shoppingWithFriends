@@ -35,7 +35,7 @@ public class FriendList extends ActionBarActivity {
     private final UserDB db = new UserDB();
 
     private String[] myFriends = null;
-    private ArrayList<String> friendN;
+    private ArrayList<String> friendN = new ArrayList<>();
 
     private Firebase myFirebaseRef;
 
@@ -57,8 +57,8 @@ public class FriendList extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_friend_list);
         Firebase.setAndroidContext(this);
-        friendN = db.friendN;
-        myU = (User) getIntent().getSerializableExtra("User");
+            friendN = db.getList();
+            myU = (User) getIntent().getSerializableExtra("User");
         myFriends = new String[friendN.size()];
         for (int i = 0; i < friendN.size(); i++) {
             myFriends[i] = friendN.get(i);
@@ -196,7 +196,7 @@ public class FriendList extends ActionBarActivity {
             friendN.remove(un);
             myU.deleteFriend(un);
             mUserText.setText("");
-            friendN = db.friendN;
+            friendN = db.getList();
 
             AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
             builder1.setMessage("You have deleted " + un + " as a friend.");
