@@ -1,4 +1,4 @@
-package com.example.catherinemorris.shoppinwithfriends;
+package com.example.catherinemorris.shoppinwithfriends.View;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -12,6 +12,7 @@ import android.widget.EditText;
 
 import android.content.Context;
 
+import com.example.catherinemorris.shoppinwithfriends.R;
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
@@ -19,7 +20,8 @@ import com.firebase.client.Query;
 import com.firebase.client.ValueEventListener;
 
 import java.util.Map;
-
+import com.example.catherinemorris.shoppinwithfriends.Controller.User;
+import com.example.catherinemorris.shoppinwithfriends.Model.UserDB;
 
 public class Login extends ActionBarActivity {
 

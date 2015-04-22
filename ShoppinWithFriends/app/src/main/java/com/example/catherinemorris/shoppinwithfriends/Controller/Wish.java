@@ -1,4 +1,4 @@
-package com.example.catherinemorris.shoppinwithfriends;
+package com.example.catherinemorris.shoppinwithfriends.Controller;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -10,7 +10,7 @@ import java.util.ArrayList;
  * A request that has been made for the sale of a particular item
  * Created by Caitlin Morris on 2/28/15.
  */
-class Wish implements Serializable {
+public class Wish implements Serializable {
 
     private final String item;
     private final String description;

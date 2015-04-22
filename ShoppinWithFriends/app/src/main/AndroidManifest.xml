@@ -33,7 +33,7 @@
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
         <activity
-            android:name=".Welcome"
+            android:name=".View.Welcome"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -43,9 +43,9 @@
         </activity>
 
         <activity
-            android:name=".Login"
+            android:name=".View.Login"
             android:label="@string/app_name"
-            android:parentActivityName=".Welcome" >
+            android:parentActivityName=".View.Welcome" >
             <intent-filter>
                 <action android:name="android.Login" />
 
@@ -54,12 +54,12 @@
 
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".Welcome" />
+                android:value=".View.Welcome" />
         </activity>
         <activity
-            android:name=".Registration"
+            android:name=".View.Registration"
             android:label="@string/app_name"
-            android:parentActivityName=".Welcome" >
+            android:parentActivityName=".View.Welcome" >
             <intent-filter>
                 <action android:name="android.Registration" />
 
@@ -68,12 +68,12 @@
 
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".Registration" />
+                android:value=".View.Registration" />
         </activity>
         <activity
-            android:name=".HomeScreen"
+            android:name=".View.HomeScreen"
             android:label="@string/app_name"
-            android:parentActivityName=".Login" >
+            android:parentActivityName=".View.Login" >
             <intent-filter>
                 <action android:name="android.HomeScreen" />
 
@@ -82,12 +82,12 @@
 
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".HomeScreen" />
+                android:value=".View.HomeScreen" />
         </activity>
         <activity
-            android:name=".FriendList"
+            android:name=".View.FriendList"
             android:label="@string/app_name"
-            android:parentActivityName=".HomeScreen" >
+            android:parentActivityName=".View.HomeScreen" >
             <intent-filter>
                 <action android:name="android.FriendList" />
 
@@ -96,12 +96,12 @@
 
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".FriendList" />
+                android:value=".View.FriendList" />
         </activity>
         <activity
-            android:name=".Profile"
+            android:name=".View.Profile"
             android:label="@string/app_name"
-            android:parentActivityName=".FriendList" >
+            android:parentActivityName=".View.FriendList" >
             <intent-filter>
                 <action android:name="android.Profile" />
 
@@ -110,12 +110,12 @@
 
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".Profile" />
+                android:value=".View.Profile" />
         </activity>
         <activity
-            android:name=".Enter_Item_Request"
+            android:name=".View.Enter_Item_Request"
             android:label="@string/app_name"
-            android:parentActivityName=".Settings" >
+            android:parentActivityName=".View.Settings" >
             <intent-filter>
                 <action android:name="android.Enter_Item_Request" />
 
@@ -124,12 +124,12 @@
 
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".Settings" />
+                android:value=".View.Settings" />
         </activity>
         <activity
-            android:name=".SaleItem"
+            android:name=".View.SaleItem"
             android:label="@string/app_name"
-            android:parentActivityName=".Settings" >
+            android:parentActivityName=".View.Settings" >
             <intent-filter>
                 <action android:name="android.SaleItem" />
 
@@ -138,12 +138,12 @@
 
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".Settings" />
+                android:value=".View.Settings" />
         </activity>
         <activity
-            android:name=".Settings"
+            android:name=".View.Settings"
             android:label="@string/app_name"
-            android:parentActivityName=".HomeScreen" >
+            android:parentActivityName=".View.HomeScreen" >
             <intent-filter>
                 <action android:name="android.Settings" />
 
@@ -152,12 +152,12 @@
 
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".HomeScreen" />
+                android:value=".View.HomeScreen" />
         </activity>
         <activity
-            android:name=".SalesList"
+            android:name=".View.SalesList"
             android:label="@string/app_name"
-            android:parentActivityName=".HomeScreen" >
+            android:parentActivityName=".View.HomeScreen" >
             <intent-filter>
                 <action android:name="android.SalesList" />
 
@@ -166,12 +166,12 @@
 
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".HomeScreen" />
+                android:value=".View.HomeScreen" />
         </activity>
         <activity
-            android:name=".FriendWishes"
+            android:name=".View.FriendWishes"
             android:label="@string/app_name"
-            android:parentActivityName=".HomeScreen" >
+            android:parentActivityName=".View.HomeScreen" >
             <intent-filter>
                 <action android:name="android.FriendWishes" />
 
@@ -180,12 +180,12 @@
 
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".HomeScreen" />
+                android:value=".View.HomeScreen" />
         </activity>
         <activity
-            android:name=".SaleConnection"
+            android:name=".View.SaleConnection"
             android:label="@string/app_name"
-            android:parentActivityName=".HomeScreen" >
+            android:parentActivityName=".View.HomeScreen" >
             <intent-filter>
                 <action android:name="android.SaleConnection" />
 
@@ -193,12 +193,12 @@
             </intent-filter>
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".HomeScreen" />
+                android:value=".View.HomeScreen" />
         </activity>
         <activity
-            android:name=".FoundSaleList"
+            android:name=".View.FoundSaleList"
             android:label="@string/app_name"
-            android:parentActivityName=".HomeScreen" >
+            android:parentActivityName=".View.HomeScreen" >
             <intent-filter>
                 <action android:name="android.FoundSaleList" />
 
@@ -206,12 +206,12 @@
             </intent-filter>
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".HomeScreen" />
+                android:value=".View.HomeScreen" />
         </activity>
         <activity
-            android:name=".SaleConnectionMap"
+            android:name=".View.SaleConnectionMap"
             android:label="@string/app_name"
-            android:parentActivityName=".SaleConnection" >
+            android:parentActivityName=".View.SaleConnection" >
             <intent-filter>
                 <action android:name="android.SaleConnectionMap" />
 
@@ -219,13 +219,13 @@
             </intent-filter>
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".SaleConnectionMap" />
+                android:value=".View.SaleConnectionMap" />
         </activity>
 
         <activity
-            android:name=".Map"
+            android:name=".View.Map"
             android:label="@string/app_name"
-            android:parentActivityName=".SaleItem" >
+            android:parentActivityName=".View.SaleItem" >
             <intent-filter>
                 <action android:name="android.Map" />
 
@@ -234,7 +234,7 @@
 
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".SaleItem" />
+                android:value=".View.SaleItem" />
         </activity>
 
 

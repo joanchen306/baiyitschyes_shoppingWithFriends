@@ -1,4 +1,4 @@
-package com.example.catherinemorris.shoppinwithfriends;
+package com.example.catherinemorris.shoppinwithfriends.View;
 
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
@@ -6,7 +6,8 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-
+import com.example.catherinemorris.shoppinwithfriends.Controller.User;
+import com.example.catherinemorris.shoppinwithfriends.R;
 /**
  * Retrieve the user's friends wishes and display them
  */

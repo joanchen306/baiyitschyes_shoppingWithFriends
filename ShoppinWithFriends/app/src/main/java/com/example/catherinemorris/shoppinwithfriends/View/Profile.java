@@ -1,4 +1,4 @@
-package com.example.catherinemorris.shoppinwithfriends;
+package com.example.catherinemorris.shoppinwithfriends.View;
 
 /**
  * This class displays the username, email, ratings, and number
@@ -29,6 +29,7 @@ import com.firebase.client.ValueEventListener;
 import java.util.ArrayList;
 import java.util.Map;
 
+import com.example.catherinemorris.shoppinwithfriends.R;
 
 public class Profile extends ActionBarActivity {
 

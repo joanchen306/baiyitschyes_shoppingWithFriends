@@ -1,4 +1,4 @@
-package com.example.catherinemorris.shoppinwithfriends;
+package com.example.catherinemorris.shoppinwithfriends.View;
 
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
@@ -10,7 +10,9 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-
+import com.example.catherinemorris.shoppinwithfriends.Controller.Wish;
+import com.example.catherinemorris.shoppinwithfriends.Controller.ItemOnSale;
+import com.example.catherinemorris.shoppinwithfriends.R;
 import java.util.ArrayList;
 
 /**
