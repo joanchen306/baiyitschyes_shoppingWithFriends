@@ -100,6 +100,11 @@ public class Profile extends ActionBarActivity {
         });
     }
 
+
+    /**
+     * adds a listener to the rating bar
+     * gets the current rating and calculates the new rating based on user input.
+     */
     public void addListenerOnRatingBar() {
         ratingBar = (RatingBar) findViewById(R.id.ratingBar);
         ratingVal = (TextView) findViewById(R.id.currentRating);
@@ -147,6 +152,10 @@ public class Profile extends ActionBarActivity {
         finish();
     }
 
+    /**
+     * adds comments to list view on profile page
+     * @param view
+     */
     public void addComment(View view) {
         EditText etComment = (EditText) this.findViewById(R.id.comment);
         final String comment = etComment.getText().toString();
