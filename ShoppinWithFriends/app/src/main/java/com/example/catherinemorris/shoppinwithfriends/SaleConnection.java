@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.RatingBar;
 import android.widget.TextView;
 
 //import com.google.android.gms.maps.GoogleMap;
@@ -23,6 +24,12 @@ public class SaleConnection extends ActionBarActivity {
 
     private ItemOnSale sale;
     private User myU;
+
+    private String username;
+    private RatingBar ratingBar;
+    TextView ratingVal;
+    int numRatings;
+    int sumRate;
 
     ArrayList<String> comments = new ArrayList<String>();
     private final Context context = this;
@@ -102,6 +109,24 @@ public class SaleConnection extends ActionBarActivity {
         ArrayAdapter<String> commentAdapt = new ArrayAdapter<>(context, android.R.layout.simple_list_item_1, comments);
         commentList.setAdapter(commentAdapt);
         commentAdapt.notifyDataSetChanged();
+    }
+
+
+
+    public void addListenerOnRatingBar() {
+        ratingBar = (RatingBar) findViewById(R.id.ratingBar);
+        ratingVal = (TextView) findViewById(R.id.currentRating);
+
+        ratingBar.setOnRatingBarChangeListener((new RatingBar.OnRatingBarChangeListener() {
+            @Override
+            public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
+                // rating = (rating + sumRate) / numRatings;
+                TextView currentRating = (TextView) findViewById(R.id.currentRating);
+                ratingVal.setText(String.valueOf(rating));
+                currentRating.setText(""+rating);
+
+            }
+        }));
     }
 }
 

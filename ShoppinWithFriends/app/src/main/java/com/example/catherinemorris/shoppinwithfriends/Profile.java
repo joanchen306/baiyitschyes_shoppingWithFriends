@@ -67,7 +67,7 @@ public class Profile extends ActionBarActivity {
 
 
 
-        //addListenerOnRatingBar();
+        addListenerOnRatingBar();
 
         username = getIntent().getStringExtra("Friend");
         Firebase myFirebaseRef = new Firebase("https://baiyitschyes.firebaseio.com");
@@ -90,28 +90,30 @@ public class Profile extends ActionBarActivity {
                 TextView currentSales = (TextView)findViewById(R.id.currentSales);
                 currentSales.setText(""+sales);
 
-                TextView currentRating = (TextView)findViewById(R.id.currentRating);
-                currentRating.setText(""+rate);
+//                TextView currentRating = (TextView)findViewById(R.id.currentRating);
+//                currentRating.setText(""+rate);
             }
             @Override
             public void onCancelled(FirebaseError firebaseError) {
             }
         });
     }
-//
-//    public void addListenerOnRatingBar() {
-//        ratingBar = (RatingBar) findViewById(R.id.ratingBar);
-//        ratingVal = (TextView) findViewById(R.id.currentRating);
-//
-//        ratingBar.setOnRatingBarChangeListener((new RatingBar.OnRatingBarChangeListener() {
-//            @Override
-//            public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
-//                rating = (rating + sumRate) / numRatings;
-//                ratingVal.setText(String.valueOf(rating));
-//
-//            }
-//        }));
-//    }
+
+    public void addListenerOnRatingBar() {
+        ratingBar = (RatingBar) findViewById(R.id.ratingBar);
+        ratingVal = (TextView) findViewById(R.id.currentRating);
+
+        ratingBar.setOnRatingBarChangeListener((new RatingBar.OnRatingBarChangeListener() {
+            @Override
+            public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
+                // rating = (rating + sumRate) / numRatings;
+                TextView currentRating = (TextView) findViewById(R.id.currentRating);
+                ratingVal.setText(String.valueOf(rating));
+                currentRating.setText(""+rating);
+
+            }
+        }));
+    }
 
 
     @Override
