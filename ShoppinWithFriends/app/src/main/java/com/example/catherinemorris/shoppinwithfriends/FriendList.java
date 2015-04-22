@@ -35,7 +35,7 @@ public class FriendList extends ActionBarActivity {
     private final UserDB db = new UserDB();
 
     private String[] myFriends = null;
-    private ArrayList<String> friendN;
+    private ArrayList<String> friendN = new ArrayList<>();
 
     private Firebase myFirebaseRef;
 
@@ -191,7 +191,7 @@ public class FriendList extends ActionBarActivity {
             friendN.remove(un);
             myU.deleteFriend(un);
             mUserText.setText("");
-            friendN = db.retList();
+            friendN = db.getList();
 
             AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
             builder1.setMessage("You have deleted " + un + " as a friend.");

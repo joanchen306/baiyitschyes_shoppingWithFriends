@@ -85,7 +85,7 @@ public class Login extends ActionBarActivity {
 
     }
 
-     void logIn(final String username, final String password) {
+    void logIn(final String username, final String password) {
 
         if (!username.equals("") && !password.equals("")) {
             Firebase myFirebaseRef = new Firebase("https://baiyitschyes.firebaseio.com");

@@ -32,6 +32,9 @@ class UserDB extends android.app.Application implements Serializable {
         return friendN;
     }
 
+    public ArrayList<String> getList() {
+        return friendN;
+    }
     @Override
     public void onCreate() {
         super.onCreate();
