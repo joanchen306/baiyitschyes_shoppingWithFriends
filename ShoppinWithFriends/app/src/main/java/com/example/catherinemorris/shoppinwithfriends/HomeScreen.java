@@ -1,12 +1,19 @@
 package com.example.catherinemorris.shoppinwithfriends;
 
+import android.support.v4.app.Fragment;
 import android.content.Context;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.view.PagerAdapter;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.content.Intent;
@@ -37,9 +44,48 @@ public class HomeScreen extends ActionBarActivity {
     private final ArrayList<ItemOnSale> globalSales = new ArrayList<>();
     private String[] wishes;
 
+    //slide screen variables
+
+        /*
+        * number of views in the home screen
+        * */
+        private static final int NUM_PAGES = 3;
+
+        /*
+        * pager widget that takes care of animation of swipe views
+        * */
+        private ViewPager mPager;
+
+
+        /*
+        * chooses which view to use (home screen, settings, or friends list)
+        * */
+        private PagerAdapter mPagerAdapter;
+
+
+        private class ScreenSlideAdapter extends FragmentPagerAdapter {
+            //constructor
+            public ScreenSlideAdapter(FragmentManager man) {
+                super(man);
+            }
+
+            @Override
+            public Fragment getItem(int index) {
+                return new ScreenSlideFragment();
+            }
+
+            //get number of pages
+            @Override
+            public int getCount() {
+                return NUM_PAGES;
+            }
+        }
+
+
+
     /**
-     * Overrides onCreate to store the User who is currently logged in
-     * to myU. It also uses the database to determine the WishList for each User.
+     * Overrides onCreate to store the Useer who is currently logged in
+     * to myU. It also uses the databas to determine the WishList for each User.
      * Then, it goes through and determines whether or not each Wish has been
      * found in the Global Sales List.
      * @param savedInstanceState used to overwrite method
@@ -47,7 +93,7 @@ public class HomeScreen extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home_screen);
+        setContentView(R.layout.home_screen_slide);
         Firebase.setAndroidContext(this);
 
         Log.d("homescreen", "opened");
@@ -61,6 +107,11 @@ public class HomeScreen extends ActionBarActivity {
         Firebase myFirebaseRef = new Firebase("https://baiyitschyes.firebaseio.com");
 
         Query queryRef = myFirebaseRef.child("globalsales").orderByKey();
+
+        //swipe screen stuff
+        mPager = (ViewPager) findViewById(R.id.pager);
+        mPagerAdapter = new ScreenSlideAdapter(getSupportFragmentManager());
+        mPager.setAdapter(mPagerAdapter);
 
 
         queryRef.addValueEventListener(new ValueEventListener() { //JOAN LOOK AT ME
