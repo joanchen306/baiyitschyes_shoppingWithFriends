@@ -1,15 +1,15 @@
-package com.example.catherinemorris.shoppinwithfriends;
+package com.example.catherinemorris.shoppinwithfriends.Controller;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
-
+import com.example.catherinemorris.shoppinwithfriends.Model.UserDB;
 /**
  * A User object that is the main variable carrying through the app
  */
-class User implements Serializable{
+public class User implements Serializable{
     private ArrayList<Wish> wishlist = new ArrayList<>();
     private final ArrayList<String> friendList = new ArrayList<>();
     private final String username;

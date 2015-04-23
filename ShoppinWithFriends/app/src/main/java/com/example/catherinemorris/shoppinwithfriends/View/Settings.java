@@ -1,4 +1,6 @@
-package com.example.catherinemorris.shoppinwithfriends;
+package com.example.catherinemorris.shoppinwithfriends.View;
+
+import com.example.catherinemorris.shoppinwithfriends.Controller.User;
 
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
@@ -10,6 +12,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import com.example.catherinemorris.shoppinwithfriends.R;
 
 public class Settings extends ActionBarActivity {
 

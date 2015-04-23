@@ -1,4 +1,4 @@
-package com.example.catherinemorris.shoppinwithfriends;
+package com.example.catherinemorris.shoppinwithfriends.View;
 
 import android.app.AlertDialog;
 import android.content.Context;
@@ -23,7 +23,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import android.widget.AdapterView.OnItemClickListener;
-
+import com.example.catherinemorris.shoppinwithfriends.Controller.User;
+import com.example.catherinemorris.shoppinwithfriends.Model.UserDB;
+import com.example.catherinemorris.shoppinwithfriends.R;
 /**
  * Retrieves the List of Friends from the User Object and allows the user to
  * add and delete friends.
@@ -35,7 +37,7 @@ public class FriendList extends ActionBarActivity {
     private final UserDB db = new UserDB();
 
     private String[] myFriends = null;
-    private ArrayList<String> friendN;
+    private ArrayList<String> friendN = new ArrayList<>();
 
     private Firebase myFirebaseRef;
 
@@ -191,7 +193,7 @@ public class FriendList extends ActionBarActivity {
             friendN.remove(un);
             myU.deleteFriend(un);
             mUserText.setText("");
-            friendN = db.retList();
+            friendN = db.getList();
 
             AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
             builder1.setMessage("You have deleted " + un + " as a friend.");

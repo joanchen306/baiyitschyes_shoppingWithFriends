@@ -1,4 +1,4 @@
-package com.example.catherinemorris.shoppinwithfriends;
+package com.example.catherinemorris.shoppinwithfriends.View;
 
 import android.support.v4.app.Fragment;
 import android.content.Context;
@@ -29,7 +29,10 @@ import com.google.android.gms.maps.model.LatLng;
 import java.util.ArrayList;
 import java.util.Map;
 
-
+import com.example.catherinemorris.shoppinwithfriends.Controller.User;
+import com.example.catherinemorris.shoppinwithfriends.Controller.Wish;
+import com.example.catherinemorris.shoppinwithfriends.Controller.ItemOnSale;
+import com.example.catherinemorris.shoppinwithfriends.R;
 public class HomeScreen extends ActionBarActivity {
 
     private User myU;

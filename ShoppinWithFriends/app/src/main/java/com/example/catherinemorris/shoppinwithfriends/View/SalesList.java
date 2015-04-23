@@ -1,4 +1,4 @@
-package com.example.catherinemorris.shoppinwithfriends;
+package com.example.catherinemorris.shoppinwithfriends.View;
 
 import android.content.Context;
 import android.content.Intent;
@@ -20,7 +20,9 @@ import com.firebase.client.FirebaseError;
 import com.firebase.client.Query;
 import com.firebase.client.ValueEventListener;
 import com.google.android.gms.maps.model.LatLng;
-
+import com.example.catherinemorris.shoppinwithfriends.Controller.User;
+import com.example.catherinemorris.shoppinwithfriends.Controller.ItemOnSale;
+import com.example.catherinemorris.shoppinwithfriends.R;
 
 public class SalesList extends ActionBarActivity {
 

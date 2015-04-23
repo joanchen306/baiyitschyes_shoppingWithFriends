@@ -1,9 +1,11 @@
-package com.example.catherinemorris.shoppinwithfriends;
+package com.example.catherinemorris.shoppinwithfriends.View;
 
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.view.Menu;
 import android.view.View;
+
+import com.example.catherinemorris.shoppinwithfriends.R;
 import com.firebase.client.Firebase;
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -15,6 +17,7 @@ import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.util.ArrayList;
+import com.example.catherinemorris.shoppinwithfriends.Controller.ItemOnSale;
 
 public class SaleConnectionMap extends FragmentActivity implements OnMapReadyCallback {
     private ItemOnSale saleItem;

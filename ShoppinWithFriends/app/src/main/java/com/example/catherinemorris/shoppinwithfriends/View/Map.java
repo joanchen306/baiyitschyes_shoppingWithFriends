@@ -1,4 +1,4 @@
-package com.example.catherinemorris.shoppinwithfriends;
+package com.example.catherinemorris.shoppinwithfriends.View;
 
 import android.app.AlertDialog;
 import android.content.Context;
@@ -24,7 +24,9 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import java.io.IOException;
 //import java.util.Calendar;
 import java.util.List;
-
+import com.example.catherinemorris.shoppinwithfriends.Controller.User;
+import com.example.catherinemorris.shoppinwithfriends.Controller.ItemOnSale;
+import com.example.catherinemorris.shoppinwithfriends.R;
 
 public class Map extends FragmentActivity {
 

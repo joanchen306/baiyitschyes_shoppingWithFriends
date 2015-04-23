@@ -1,4 +1,4 @@
-package com.example.catherinemorris.shoppinwithfriends;
+package com.example.catherinemorris.shoppinwithfriends.Model;
 
 
 import android.util.Log;
@@ -17,11 +17,12 @@ import java.io.Serializable;
 
 import java.util.ArrayList;
 import java.util.Map;
+import com.example.catherinemorris.shoppinwithfriends.Controller.User;
 
 /**
  * manages interaction between User and database
  */
-class UserDB extends android.app.Application implements Serializable {
+public class UserDB extends android.app.Application implements Serializable {
 
     private Firebase myFirebaseRef;
     private boolean loggedIn = true;
@@ -32,6 +33,9 @@ class UserDB extends android.app.Application implements Serializable {
         return friendN;
     }
 
+    public ArrayList<String> getList() {
+        return friendN;
+    }
     @Override
     public void onCreate() {
         super.onCreate();

@@ -1,4 +1,4 @@
-package com.example.catherinemorris.shoppinwithfriends;
+package com.example.catherinemorris.shoppinwithfriends.View;
 
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
@@ -11,7 +11,11 @@ import android.widget.EditText;
 import android.app.AlertDialog;
 import android.content.Context;
 
+import com.example.catherinemorris.shoppinwithfriends.R;
 import com.firebase.client.Firebase;
+
+import com.example.catherinemorris.shoppinwithfriends.Model.UserDB;
+import com.example.catherinemorris.shoppinwithfriends.Controller.User;
 
 public class Registration extends ActionBarActivity {
 

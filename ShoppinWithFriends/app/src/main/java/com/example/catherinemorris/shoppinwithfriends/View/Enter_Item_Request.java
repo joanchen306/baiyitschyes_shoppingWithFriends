@@ -1,4 +1,4 @@
-package com.example.catherinemorris.shoppinwithfriends;
+package com.example.catherinemorris.shoppinwithfriends.View;
 
 import android.app.AlertDialog;
 import android.content.Context;
@@ -21,6 +21,10 @@ import com.firebase.client.ValueEventListener;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+
+import com.example.catherinemorris.shoppinwithfriends.Controller.User;
+import com.example.catherinemorris.shoppinwithfriends.Controller.Wish;
+import com.example.catherinemorris.shoppinwithfriends.R;
 
 /**
  * This class is the Object of the Sale Reports that are reported by users

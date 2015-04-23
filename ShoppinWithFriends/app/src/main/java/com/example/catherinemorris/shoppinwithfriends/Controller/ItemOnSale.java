@@ -1,4 +1,4 @@
-package com.example.catherinemorris.shoppinwithfriends;
+package com.example.catherinemorris.shoppinwithfriends.Controller;
 
 import com.google.android.gms.maps.model.LatLng;
 
@@ -11,7 +11,7 @@ import java.util.ArrayList;
 /**
  * Used to monitor Items on Sale
  */
-class ItemOnSale implements Serializable {
+public class ItemOnSale implements Serializable {
 
 
     private final String item;

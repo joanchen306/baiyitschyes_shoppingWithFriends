@@ -1,24 +1,41 @@
-package com.example.catherinemorris.shoppinwithfriends;
+package com.example.catherinemorris.shoppinwithfriends.View;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.EditText;
+import android.widget.ListView;
+import android.widget.RatingBar;
 import android.widget.TextView;
 
 //import com.google.android.gms.maps.GoogleMap;
 //import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 
+import java.util.ArrayList;
 
+import com.example.catherinemorris.shoppinwithfriends.Controller.ItemOnSale;
+import com.example.catherinemorris.shoppinwithfriends.Controller.User;
+import com.example.catherinemorris.shoppinwithfriends.R;
 
 public class SaleConnection extends ActionBarActivity {
 
     private ItemOnSale sale;
     private User myU;
 
+    private String username;
+    private RatingBar ratingBar;
+    TextView ratingVal;
+    int numRatings;
+    int sumRate;
+
+    ArrayList<String> comments = new ArrayList<String>();
+    private final Context context = this;
 
     final static LatLng ATLANTA = new LatLng(33.7550,-84.3900);
 
@@ -32,6 +49,8 @@ public class SaleConnection extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         //GoogleMap googleMap;
+        addListenerOnRatingBar();
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sale_connection);
 
@@ -72,6 +91,10 @@ public class SaleConnection extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    /**
+     * opens the google map
+     * @param view
+     */
     public void openMap (View view) {
         Intent i = new Intent("android.SaleConnectionMap");
         i.putExtra("User", myU);
@@ -86,4 +109,41 @@ public class SaleConnection extends ActionBarActivity {
     public void goBack(View view) {
         finish();
     }
+
+
+    /**
+     * adds a comment on the sale report page of the particular item found
+     * @param view
+     */
+    public void addComment(View view) {
+        EditText etComment = (EditText) this.findViewById(R.id.saleConnectionComment);
+        final String comment = etComment.getText().toString();
+        comments.add(comment);
+        ListView commentList = (ListView) findViewById(R.id.saleConnectionListView);
+        ArrayAdapter<String> commentAdapt = new ArrayAdapter<>(context, android.R.layout.simple_list_item_1, comments);
+        commentList.setAdapter(commentAdapt);
+        commentAdapt.notifyDataSetChanged();
+    }
+
+
+    /**
+     * adds listener on the rating bar
+     * calculates the new rating based on the current rating and user input
+     */
+    public void addListenerOnRatingBar() {
+        ratingBar = (RatingBar) findViewById(R.id.ratingBar);
+        ratingVal = (TextView) findViewById(R.id.currentRating);
+
+        ratingBar.setOnRatingBarChangeListener((new RatingBar.OnRatingBarChangeListener() {
+            @Override
+            public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
+                // rating = (rating + sumRate) / numRatings;
+                TextView currentRating = (TextView) findViewById(R.id.currentRating);
+                ratingVal.setText(String.valueOf(rating));
+                currentRating.setText(""+rating);
+
+            }
+        }));
+    }
 }
+

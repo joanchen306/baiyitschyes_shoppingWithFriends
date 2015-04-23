@@ -1,4 +1,4 @@
-package com.example.catherinemorris.shoppinwithfriends;
+package com.example.catherinemorris.shoppinwithfriends.View;
 
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -7,6 +7,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.content.Intent;
 
+import com.example.catherinemorris.shoppinwithfriends.R;
 
 public class Welcome extends ActionBarActivity {
 
