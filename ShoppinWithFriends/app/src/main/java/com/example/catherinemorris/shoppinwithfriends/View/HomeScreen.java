@@ -1,5 +1,6 @@
 package com.example.catherinemorris.shoppinwithfriends.View;
 
+import android.app.AlertDialog;
 import android.support.v4.app.Fragment;
 import android.content.Context;
 import android.support.v4.app.FragmentManager;
@@ -17,8 +18,11 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.content.Intent;
+import android.widget.EditText;
 import android.widget.ListView;
+import android.support.v4.view.ViewPager.SimpleOnPageChangeListener;
 
+import com.example.catherinemorris.shoppinwithfriends.Model.UserDB;
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
@@ -27,6 +31,7 @@ import com.firebase.client.ValueEventListener;
 import com.google.android.gms.maps.model.LatLng;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Map;
 
 import com.example.catherinemorris.shoppinwithfriends.Controller.User;
@@ -47,12 +52,13 @@ public class HomeScreen extends ActionBarActivity {
     private final ArrayList<ItemOnSale> globalSales = new ArrayList<>();
     private String[] wishes;
 
+
     //slide screen variables
 
         /*
         * number of views in the home screen
         * */
-        private static final int NUM_PAGES = 3;
+        private static final int NUM_PAGES = 2;
 
         /*
         * pager widget that takes care of animation of swipe views
@@ -74,7 +80,13 @@ public class HomeScreen extends ActionBarActivity {
 
             @Override
             public Fragment getItem(int index) {
-                return new ScreenSlideFragment();
+                switch(index) {
+                    case 1:
+                        return new FriendsListFragment();
+                    default:
+                        return new ScreenSlideFragment();
+
+                }
             }
 
             //get number of pages
@@ -105,6 +117,7 @@ public class HomeScreen extends ActionBarActivity {
         myU = (User) getIntent().getSerializableExtra("User");
 
 
+
         //Calls
         String username = myU.getUser();
         Firebase myFirebaseRef = new Firebase("https://baiyitschyes.firebaseio.com");
@@ -116,9 +129,18 @@ public class HomeScreen extends ActionBarActivity {
         mPagerAdapter = new ScreenSlideAdapter(getSupportFragmentManager());
         mPager.setAdapter(mPagerAdapter);
 
+        mPager.setOnPageChangeListener(new SimpleOnPageChangeListener() {
+
+            @Override
+            public void onPageSelected(int position)
+            {
+                     openFriends(mPager);
+            }
+        });
+
+
 
         queryRef.addValueEventListener(new ValueEventListener() { //JOAN LOOK AT ME
-
             @Override
             public void onDataChange(DataSnapshot snapshot) {
                 if (snapshot.exists()) {
@@ -319,4 +341,5 @@ public class HomeScreen extends ActionBarActivity {
         i.putExtra("User", myU);
         startActivity(i);
     }
+
 }

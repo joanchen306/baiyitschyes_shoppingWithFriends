@@ -114,7 +114,9 @@ public class FriendList extends ActionBarActivity {
      * @param view used to overwrite method
      */
     public void goHomeScreen(View view) {
-        finish();
+        Intent i = new Intent("android.HomeScreen");
+        i.putExtra("User", myU);
+        startActivity(i);
     }
 
     /**
